@@ -124,7 +124,7 @@ const IndexPage = () => (
             </p>
         </Content>
         <Footer>
-            <span>&copy; 2020, Chris Shelton</span>
+            <span>&copy; {new Date().getFullYear()}, Chris Shelton</span>
         </Footer>
     </Container>
 )
