@@ -1,11 +1,14 @@
 import React from "react"
 import SEO from "../components/seo"
 import styled from "@emotion/styled"
-import { Global, css } from "@emotion/core"
+import { Global } from "@emotion/core"
 import { Link } from "gatsby"
 import Image from "../components/image"
 
-import { colours, fonts } from "../styles/variables"
+import globalStyles from "../styles/global"
+import pageStyles from "../styles/index"
+
+import { colours } from "../styles/variables"
 
 const Container = styled.div`
     height: 100vh;
@@ -25,7 +28,8 @@ const Header = styled.div`
 
         li {
             float: left;
-            &:not(:first-child) {
+
+            &:not(:first-of-type) {
                 margin-left: 20px;
             }
 
@@ -35,7 +39,7 @@ const Header = styled.div`
                 }
 
                 &:hover {
-                    color: #adbfd2;
+                    color: ${colours.primaryLight};
                 }
             }
         }
@@ -44,7 +48,6 @@ const Header = styled.div`
 
 const Content = styled.div`
     flex-grow: 1;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,51 +59,13 @@ const Content = styled.div`
 const Footer = styled.div`
     flex-shrink: 1;
 
-    span {
-        float: right;
-    }
-`
-
-const name = css`
-    font-size: 40px;
-    margin-top: 20px;
-`
-
-const location = css`
-    font-size: 18px;
-`
-
-const title = css`
-    font-size: 25px;
-    margin-top: 20px;
-`
-
-const experience = css`
-    font-size: 18px;
-    margin-top: 5px;
+    text-align: right;
 `
 
 const IndexPage = () => (
     <Container>
-        <Global
-            styles={css`
-                * {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                }
-
-                html,
-                body,
-                #___gatsby {
-                    height: 100%;
-
-                    font-family: ${fonts.primary};
-                    color: ${colours.primaryText};
-                }
-            `}
-        />
         <SEO title="Home" />
+        <Global styles={globalStyles} />
         <Header>
             <ul>
                 <li>
@@ -115,17 +80,16 @@ const IndexPage = () => (
             <div style={{ width: `200px` }}>
                 <Image />
             </div>
-            <div css={name}>Chris Shelton</div>
-            <div css={location}>Leeds, UK</div>
-            <div css={title}>Software Engineer</div>
-            <p css={experience}>
+            <div css={pageStyles.name}>Chris Shelton</div>
+            <div css={pageStyles.location}>Leeds, UK</div>
+            <div css={pageStyles.title}>Software Engineer</div>
+            <p css={pageStyles.experience}>
                 Specialising in full-stack web application development using
-                ASP.NET Core and Node.js
+                <span css={pageStyles.bold}> ASP.NET Core</span> and
+                <span css={pageStyles.bold}> Node.js</span>
             </p>
         </Content>
-        <Footer>
-            <span>&copy; {new Date().getFullYear()}, Chris Shelton</span>
-        </Footer>
+        <Footer>&copy; {new Date().getFullYear()}, Chris Shelton</Footer>
     </Container>
 )
 

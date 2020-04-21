@@ -30,7 +30,7 @@ const Image = () => {
         <Img
             fluid={data.placeholderImage.childImageSharp.fluid}
             alt="Chris Shelton portfolio"
-            style={{ "border-radius": `50%` }}
+            style={{ borderRadius: `50%` }}
         />
     )
 }
