@@ -77,7 +77,7 @@ const IndexPage = () => (
             </ul>
         </Header>
         <Content>
-            <div style={{ width: `200px` }}>
+            <div css={pageStyles.mugshotContainer}>
                 <Image />
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>

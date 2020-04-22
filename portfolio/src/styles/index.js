@@ -1,22 +1,36 @@
 import { css } from "@emotion/core"
 
+function getResponsiveFontSize(size, maxSize) {
+    return `
+        font-size: ${size}vw;
+        @media (min-width: 350px) {
+            font-size: ${maxSize}px;
+        }
+    `
+}
+
+const mugshotContainer = css`
+    width: 200px;
+    max-width: 60%;
+`
+
 const name = css`
-    font-size: 40px;
     margin-top: 20px;
+    ${getResponsiveFontSize(10, 40)}
 `
 
 const location = css`
-    font-size: 18px;
+    ${getResponsiveFontSize(6, 18)}
 `
 
 const title = css`
-    font-size: 25px;
     margin-top: 20px;
+    ${getResponsiveFontSize(8, 25)}
 `
 
 const experience = css`
-    font-size: 18px;
     margin-top: 5px;
+    ${getResponsiveFontSize(5, 18)}
 `
 
 const bold = css`
@@ -24,6 +38,7 @@ const bold = css`
 `
 
 export default {
+    mugshotContainer,
     name,
     location,
     title,
