@@ -62,9 +62,16 @@ const Footer = styled.div`
     text-align: right;
 `
 
+const seo = {
+    title: "Home",
+    description: `Portfolio for Chris Shelton. Leeds-based software engineer,
+        specialising in full-stack web application development using
+        ASP.NET Core and Node.js`,
+}
+
 const IndexPage = () => (
     <Container>
-        <SEO title="Home" />
+        <SEO title={seo.title} description={seo.description} />
         <Global styles={globalStyles} />
         <Header>
             <ul>
