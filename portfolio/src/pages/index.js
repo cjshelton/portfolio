@@ -33,14 +33,13 @@ const Header = styled.div`
                 margin-left: 20px;
             }
 
-            a {
-                &:visited {
-                    color: ${colours.primaryText};
-                }
+            a,
+            &:visited {
+                color: ${colours.primaryText};
+            }
 
-                &:hover {
-                    color: ${colours.primaryLight};
-                }
+            a:hover {
+                color: ${colours.primaryLight};
             }
         }
     }
