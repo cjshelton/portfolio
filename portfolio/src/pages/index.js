@@ -73,6 +73,19 @@ const Footer = styled.div`
         justify-content: center;
         text-align: right;
     }
+
+    @media (max-width: 350px) {
+        flex-direction: column;
+
+        .socials,
+        .copyright {
+            text-align: center;
+        }
+
+        .socials {
+            margin-bottom: 5px;
+        }
+    }
 `
 
 const seo = {
