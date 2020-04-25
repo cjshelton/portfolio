@@ -3,6 +3,10 @@ module.exports = {
         title: `Portfolio`,
         description: `Chris Shelton's Portfolio.`,
         author: `Chris Shelton`,
+        socials: {
+            github: "https://github.com/cjshelton",
+            linkedIn: "https://www.linkedin.com/in/chris-shelton-aa135084/",
+        },
     },
     plugins: [
         `gatsby-plugin-emotion`,
