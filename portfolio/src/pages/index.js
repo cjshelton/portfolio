@@ -89,7 +89,7 @@ const Footer = styled.div`
 `
 
 const seo = {
-    title: "Home",
+    title: "Portfolio",
     description: `Portfolio for Chris Shelton. Leeds-based software engineer,
         specialising in full-stack web application development using
         ASP.NET Core and Node.js`,

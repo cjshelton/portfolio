@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Landing Page",
+        "link": "/",
+        "order": 1
+    },
+    {
+        "name": "Home",
+        "link": "/home",
+        "order": 2
+    },
+    {
+        "name": "Skills and Experience",
+        "link": "/skills-and-experience",
+        "order": 3
+    },
+    {
+        "name": "Personal Projects",
+        "link": "/personal-projects",
+        "order": 4
+    }
+]
