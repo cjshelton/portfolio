@@ -23,7 +23,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 400px;
     background-color: ${colours.primary};
     padding: 20px;
     text-align: center;

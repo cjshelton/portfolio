@@ -10,7 +10,8 @@ export default css`
 
     html,
     body,
-    #___gatsby {
+    #___gatsby,
+    #gatsby-focus-wrapper {
         height: 100%;
 
         font-family: ${fonts.primary};

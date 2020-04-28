@@ -12,7 +12,7 @@ const seo = {
 const HomePage = () => (
     <Layout page="Home">
         <SEO title={seo.title} description={seo.description} />
-        <h1>Home</h1>
+        <h1 style={{ color: "black" }}>Home</h1>
     </Layout>
 )
 
