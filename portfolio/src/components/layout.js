@@ -9,22 +9,20 @@ import globalStyles from "../styles/global"
 const SiteContainer = styled.div`
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 const sidebar = css`
     height: 100%;
     width: 30%;
     max-width: 400px;
-    display: inline-block;
-    vertical-align: top;
+    position: fixed;
 `
 
 const content = css`
-    height: 100%;
-    width: 70%;
-    width: 600px;
-    display: inline-block;
-    vertical-align: top;
+    flex-grow: 1;
+    margin-left: min(400px, 30%);
 `
 
 export default ({ page, children }) => (
