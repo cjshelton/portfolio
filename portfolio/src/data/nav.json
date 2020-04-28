@@ -1,12 +1,12 @@
 [
     {
-        "name": "Landing Page",
-        "link": "/",
+        "name": "Home",
+        "link": "/home",
         "order": 1
     },
     {
-        "name": "Home",
-        "link": "/home",
+        "name": "Blog",
+        "link": "https://cjshelton.github.io/blog",
         "order": 2
     },
     {

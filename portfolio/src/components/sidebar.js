@@ -49,6 +49,12 @@ const Middle = styled.div`
             background-color: ${colours.primaryDark};
             background-color: #243342;
             margin: 10px 0;
+
+            a {
+                display: block;
+                width: 100%;
+            }
+
             a,
             &:visited {
                 text-decoration: none;
