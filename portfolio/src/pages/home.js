@@ -1,7 +1,6 @@
 import React from "react"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import Sidebar from "../components/sidebar"
 
 const seo = {
     title: "Home",
@@ -11,9 +10,9 @@ const seo = {
 }
 
 const HomePage = () => (
-    <Layout>
+    <Layout page="Home">
         <SEO title={seo.title} description={seo.description} />
-        <Sidebar page="Home"></Sidebar>
+        <h1>Home</h1>
     </Layout>
 )
 
