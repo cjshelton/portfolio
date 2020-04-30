@@ -39,7 +39,7 @@ const content = css`
 export default ({ page, children }) => (
     <SiteContainer>
         <Global styles={globalStyles} />
-        <Navbar></Navbar>
+        <Navbar page={page}></Navbar>
         <div css={sidebar}>
             <Sidebar page={page}></Sidebar>
         </div>

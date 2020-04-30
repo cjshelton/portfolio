@@ -66,10 +66,16 @@ const navContainer = css`
             a,
             &:visited {
                 color: ${colours.primaryText};
+                text-decoration: none;
             }
 
             a:hover {
                 color: ${colours.primaryLight};
+                text-decoration: underline;
+            }
+
+            &.current {
+                text-decoration: underline;
             }
         }
     }
