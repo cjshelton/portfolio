@@ -6,5 +6,5 @@ export const colours = {
 }
 
 export const fonts = {
-    primary: "Arial",
+    primary: `'Rubik', sans-serif;`,
 }
