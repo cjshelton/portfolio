@@ -3,6 +3,8 @@ import styled from "@emotion/styled"
 
 import Image from "../components/image"
 import Socials from "../components/socials"
+import Nav from "../components/nav"
+
 import { colours } from "../styles/variables"
 import pageStyles from "../styles/sidebar"
 
@@ -95,22 +97,7 @@ const Sidebar = ({ page }) => (
             <div css={pageStyles.title}>Software Engineer</div>
         </Upper>
         <Middle>
-            <nav>
-                <ul>
-                    {navData.map((data, index) => {
-                        return (
-                            <li
-                                key={`nav_item_${index}`}
-                                className={page === data.name ? "current" : ""}
-                            >
-                                <a href={data.link} style={{ color: "white" }}>
-                                    {data.name}
-                                </a>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </nav>
+            <Nav page={page}></Nav>
         </Middle>
         <Lower>
             <div className="socials">
