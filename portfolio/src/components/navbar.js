@@ -5,9 +5,7 @@ import { css } from "@emotion/core"
 import Image from "../components/image"
 import Nav from "../components/nav"
 
-import { colours } from "../styles/variables"
-
-const mediumWidth = `900px`
+import { colours, sizes } from "../styles/variables"
 
 const TopNav = styled.div`
     display: none; /* Hidden by default. Show on smaller devices. */
@@ -19,7 +17,7 @@ const TopNav = styled.div`
 
     flex-shrink: 1;
 
-    @media (max-width: ${mediumWidth}) {
+    @media (max-width: ${sizes.medium}) {
         display: block;
     }
 `

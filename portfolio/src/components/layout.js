@@ -6,8 +6,7 @@ import Sidebar from "../components/sidebar"
 import Navbar from "../components/navbar"
 
 import globalStyles from "../styles/global"
-
-const mediumWidth = `900px`
+import { sizes } from "../styles/variables"
 
 const SiteContainer = styled.div`
     height: 100%;
@@ -22,7 +21,7 @@ const sidebar = css`
     max-width: 400px;
     position: fixed;
 
-    @media (max-width: ${mediumWidth}) {
+    @media (max-width: ${sizes.medium}) {
         display: none;
     }
 `
@@ -31,7 +30,7 @@ const content = css`
     flex-grow: 1;
     margin-left: min(400px, 30%);
 
-    @media (max-width: ${mediumWidth}) {
+    @media (max-width: ${sizes.medium}) {
         margin-left: 0;
     }
 `
