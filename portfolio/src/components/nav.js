@@ -1,5 +1,7 @@
 import React from "react"
+import styled from "@emotion/styled"
 
+import { colours } from "../styles/variables"
 import navData from "../data/nav.json"
 
 navData.sort((a, b) => {
@@ -10,9 +12,30 @@ navData.sort((a, b) => {
     return 1
 })
 
+const List = styled.ul`
+    list-style: none;
+
+    li {
+        a,
+        &:visited {
+            text-decoration: none;
+            color: ${colours.primaryText};
+        }
+
+        a:hover {
+            color: ${colours.primaryLight};
+            text-decoration: underline;
+        }
+
+        &.current {
+            text-decoration: underline;
+        }
+    }
+`
+
 const Nav = ({ page }) => (
     <nav>
-        <ul>
+        <List>
             {navData.map((data, index) => {
                 return (
                     <li
@@ -23,7 +46,7 @@ const Nav = ({ page }) => (
                     </li>
                 )
             })}
-        </ul>
+        </List>
     </nav>
 )
 

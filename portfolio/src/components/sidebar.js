@@ -42,7 +42,6 @@ const Middle = styled.div`
     justify-content: center;
 
     ul {
-        list-style: none;
         font-size: 20px;
 
         li {
@@ -55,23 +54,12 @@ const Middle = styled.div`
                 width: 100%;
             }
 
-            a,
-            &:visited {
-                text-decoration: none;
-                color: ${colours.primaryText};
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
             &:hover {
                 background-color: ${colours.primaryDark};
             }
 
             &.current {
                 background-color: ${colours.primaryDark};
-                text-decoration: underline;
             }
         }
     }

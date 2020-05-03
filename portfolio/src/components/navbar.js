@@ -46,7 +46,6 @@ const navContainer = css`
     font-size: 16px;
 
     ul {
-        list-style: none;
         font-size: 16px;
 
         li {
@@ -54,21 +53,6 @@ const navContainer = css`
 
             &:not(:first-of-type) {
                 margin-left: 10px;
-            }
-
-            a,
-            &:visited {
-                color: ${colours.primaryText};
-                text-decoration: none;
-            }
-
-            a:hover {
-                color: ${colours.primaryLight};
-                text-decoration: underline;
-            }
-
-            &.current {
-                text-decoration: underline;
             }
         }
     }
@@ -98,17 +82,12 @@ const navContainer = css`
                         margin-left: 0;
                     }
 
-                    a:hover {
-                        text-decoration: underline;
-                    }
-
                     &:hover {
                         background-color: ${colours.primaryDark};
                     }
 
                     &.current {
                         background-color: ${colours.primaryDark};
-                        text-decoration: underline;
                     }
                 }
             }
@@ -158,10 +137,7 @@ const Navbar = ({ page }) => {
                     {isMenuOpen && <FontAwesomeIcon icon={faTimes} />}
                 </button>
             </div>
-            <div
-                className={isMenuOpen ? "menu-open" : "something-else"}
-                css={navContainer}
-            >
+            <div className={isMenuOpen ? "menu-open" : ""} css={navContainer}>
                 <Nav page={page}></Nav>
             </div>
         </TopNav>
