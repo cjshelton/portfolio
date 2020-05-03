@@ -37,8 +37,8 @@ module.exports = {
             options: {
                 fonts: [
                     {
-                        family: `Rubik`,
-                        variants: [`400`, `700`],
+                        family: `Poppins`,
+                        variants: [`300`, `400`],
                     },
                 ],
             },
