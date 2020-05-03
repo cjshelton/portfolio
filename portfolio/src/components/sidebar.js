@@ -47,8 +47,7 @@ const Middle = styled.div`
 
         li {
             padding: 10px 2px;
-            background-color: ${colours.primaryDark};
-            background-color: #243342;
+            background-color: ${colours.primaryMediumLight};
             margin: 10px 0;
 
             a {
