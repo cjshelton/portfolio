@@ -36,7 +36,7 @@ const Header = styled.div`
 
             a,
             &:visited {
-                color: ${colours.primaryText};
+                color: ${colours.primaryTextLight};
             }
 
             a:hover {

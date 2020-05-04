@@ -14,7 +14,7 @@ const socialIcon = css`
     line-height: ${iconSize};
     display: inline-block;
     vertical-align: middle;
-    color: ${colours.primaryText};
+    color: ${colours.primaryTextLight};
 `
 
 /*

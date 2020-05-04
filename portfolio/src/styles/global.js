@@ -15,6 +15,6 @@ export default css`
         height: 100%;
 
         font-family: ${fonts.primary};
-        color: ${colours.primaryText};
+        color: ${colours.primaryTextLight};
     }
 `

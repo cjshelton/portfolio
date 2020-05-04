@@ -19,7 +19,7 @@ const List = styled.ul`
         a,
         &:visited {
             text-decoration: none;
-            color: ${colours.primaryText};
+            color: ${colours.primaryTextLight};
         }
 
         a:hover {
