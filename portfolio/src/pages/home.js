@@ -3,6 +3,8 @@ import { css } from "@emotion/core"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 
+import { sizes } from "../styles/variables"
+
 const seo = {
     title: "Home",
     description: `Portfolio for Chris Shelton. Leeds-based software engineer,
@@ -43,11 +45,19 @@ const imageContainer = css`
         h1 {
             font-size: 40px;
             font-weight: 400;
+
+            @media (max-width: ${sizes.xSmall}) {
+                font-size: 10vw;
+            }
         }
 
         h2 {
             font-size: 20px;
             font-weight: 300;
+
+            @media (max-width: ${sizes.xSmall}) {
+                font-size: 5vw;
+            }
         }
     }
 `

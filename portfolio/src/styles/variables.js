@@ -13,4 +13,5 @@ export const fonts = {
 export const sizes = {
     medium: "900px",
     small: "800px",
+    xSmall: "500px",
 }

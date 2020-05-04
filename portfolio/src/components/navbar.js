@@ -33,12 +33,20 @@ const mugshotContainer = css`
 
 const mugshot = css`
     width: 50px;
+
+    @media (max-width: ${sizes.xSmall}) {
+        width: 12vw;
+    }
 `
 
 const siteTitle = css`
     flex-grow: 1;
     margin-left: 10px;
     font-size: 20px;
+
+    @media (max-width: ${sizes.xSmall}) {
+        font-size: 5vw;
+    }
 `
 
 const navContainer = css`
