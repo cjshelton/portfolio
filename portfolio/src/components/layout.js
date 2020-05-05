@@ -15,7 +15,11 @@ const SiteContainer = styled.div`
     flex-direction: column;
 `
 
-const sidebar = css`
+const navbarContainer = css`
+    flex-shrink: 1;
+`
+
+const sidebarContainer = css`
     height: 100%;
     width: 30%;
     max-width: 400px;
@@ -38,8 +42,10 @@ const content = css`
 export default ({ page, children }) => (
     <SiteContainer>
         <Global styles={globalStyles} />
-        <Navbar page={page}></Navbar>
-        <div css={sidebar}>
+        <div css={navbarContainer}>
+            <Navbar page={page}></Navbar>
+        </div>
+        <div css={sidebarContainer}>
             <Sidebar page={page}></Sidebar>
         </div>
         <div css={content}>{children}</div>
