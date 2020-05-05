@@ -1,10 +1,11 @@
 export const colours = {
     primary: "#2C3E50",
-    primaryMediumLight: "#243342",
+    primaryLight: "#ADBFD2",
+    primaryMediumLight: "#486684",
+    primaryMediumDark: "#243342",
+    primaryDark: "#121A21",
     primaryTextLight: "#FFFFFF",
     primaryTextDark: "#121A21",
-    primaryLight: "#ADBFD2",
-    primaryDark: "#121A21",
 }
 
 export const fonts = {
