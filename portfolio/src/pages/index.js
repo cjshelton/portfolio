@@ -2,9 +2,11 @@ import React from "react"
 import SEO from "../components/seo"
 import styled from "@emotion/styled"
 import { Global } from "@emotion/core"
-import { Link } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
 import Image from "../components/image"
 import Socials from "../components/socials"
+import Button from "../components/btn"
 
 import globalStyles from "../styles/global"
 import pageStyles from "../styles/index"
@@ -21,31 +23,6 @@ const Container = styled.div`
     padding: 10px 20px;
 `
 
-const Header = styled.div`
-    flex-shrink: 1;
-
-    ul {
-        list-style: none;
-
-        li {
-            float: left;
-
-            &:not(:first-of-type) {
-                margin-left: 20px;
-            }
-
-            a,
-            &:visited {
-                color: ${colours.primaryText};
-            }
-
-            a:hover {
-                color: ${colours.primaryLight};
-            }
-        }
-    }
-`
-
 const Content = styled.div`
     flex-grow: 1;
     display: flex;
@@ -54,6 +31,10 @@ const Content = styled.div`
     align-items: center;
 
     text-align: center;
+
+    .view-portfolio-button {
+        margin-top: 20px;
+    }
 `
 
 const Footer = styled.div`
@@ -89,7 +70,7 @@ const Footer = styled.div`
 `
 
 const seo = {
-    title: "Home",
+    title: "Portfolio",
     description: `Portfolio for Chris Shelton. Leeds-based software engineer,
         specialising in full-stack web application development using
         ASP.NET Core and Node.js`,
@@ -99,16 +80,6 @@ const IndexPage = () => (
     <Container>
         <SEO title={seo.title} description={seo.description} />
         <Global styles={globalStyles} />
-        <Header>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <a href="https://cjshelton.github.io/blog">Blog</a>
-                </li>
-            </ul>
-        </Header>
         <Content>
             <div css={pageStyles.mugshotContainer}>
                 <Image />
@@ -121,6 +92,9 @@ const IndexPage = () => (
                 <span css={pageStyles.bold}> ASP.NET Core</span> and
                 <span css={pageStyles.bold}> Node.js</span>
             </p>
+            <Button medium className="view-portfolio-button" to="/home">
+                <FontAwesomeIcon icon={faChevronCircleRight} /> View Portfolio
+            </Button>
         </Content>
         <Footer>
             <div className="socials">

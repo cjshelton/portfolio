@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { colours } from "../styles/variables"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -30,7 +31,10 @@ const Image = () => {
         <Img
             fluid={data.placeholderImage.childImageSharp.fluid}
             alt="Chris Shelton portfolio"
-            style={{ borderRadius: `50%` }}
+            style={{
+                borderRadius: `50%`,
+                boxShadow: `0px 6px 6px ${colours.primaryDark}`,
+            }}
         />
     )
 }

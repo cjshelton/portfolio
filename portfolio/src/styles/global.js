@@ -10,10 +10,11 @@ export default css`
 
     html,
     body,
-    #___gatsby {
+    #___gatsby,
+    #gatsby-focus-wrapper {
         height: 100%;
 
         font-family: ${fonts.primary};
-        color: ${colours.primaryText};
+        color: ${colours.primaryTextLight};
     }
 `

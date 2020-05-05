@@ -1,13 +1,20 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { colours } from "../styles/variables"
 import { css } from "@emotion/core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
-const socialImage = css`
-    height: 30px;
-    width: 30px;
+const iconSize = "30px"
+
+const socialIcon = css`
+    width: ${iconSize};
+    font-size: ${iconSize};
+    line-height: ${iconSize};
     display: inline-block;
     vertical-align: middle;
+    color: ${colours.primaryTextLight};
 `
 
 /*
@@ -55,7 +62,7 @@ const Socials = () => {
                 <Img
                     fluid={data.gitHubImage.childImageSharp.fluid}
                     alt="GitHub logo"
-                    css={socialImage}
+                    css={socialIcon}
                 />
             </a>
 
@@ -63,9 +70,14 @@ const Socials = () => {
                 <Img
                     fluid={data.linkedInImage.childImageSharp.fluid}
                     alt="LinkedIn logo"
-                    css={socialImage}
+                    css={socialIcon}
                     style={{ marginLeft: "10px" }}
                 />
+            </a>
+            <a href="mailto:cjshelton@outlook.com">
+                <div css={socialIcon} style={{ marginLeft: "10px" }}>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                </div>
             </a>
         </div>
     )

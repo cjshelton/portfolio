@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Home",
+        "link": "/home",
+        "order": 1
+    },
+    {
+        "name": "Blog",
+        "link": "https://cjshelton.github.io/blog",
+        "order": 2
+    }
+]

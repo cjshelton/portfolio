@@ -32,6 +32,17 @@ module.exports = {
                 icon: `src/images/mugshot-colour.jpg`, // This path is relative to the root of the site.
             },
         },
+        {
+            resolve: `gatsby-plugin-prefetch-google-fonts`,
+            options: {
+                fonts: [
+                    {
+                        family: `Poppins`,
+                        variants: [`300`, `400`],
+                    },
+                ],
+            },
+        },
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
