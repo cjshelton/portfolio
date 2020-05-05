@@ -21,7 +21,7 @@ const imageContainer = css`
     width: 100%;
     min-height: 250px;
     background-color: #d5d5d5; /* Base colour from the image to show before it loads. */
-    background-image: url("./images/home.jpg");
+    background-image: url("/images/home.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
