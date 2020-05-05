@@ -154,8 +154,7 @@ const HomePage = () => {
                         software development life cycle, gained through my
                         professional career and doing projects in my own time. I
                         specialise in full-stack web application development
-                        using both ASP.NET Core and Node.js. My full skill set
-                        can be found on my Skills and Experience page.
+                        using both ASP.NET Core and Node.js.
                     </p>
                 </section>
                 <section>

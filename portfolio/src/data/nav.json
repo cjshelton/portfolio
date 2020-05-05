@@ -8,15 +8,5 @@
         "name": "Blog",
         "link": "https://cjshelton.github.io/blog",
         "order": 2
-    },
-    {
-        "name": "Skills and Experience",
-        "link": "/skills-and-experience",
-        "order": 3
-    },
-    {
-        "name": "Personal Projects",
-        "link": "/personal-projects",
-        "order": 4
     }
 ]
