@@ -67,10 +67,22 @@ const PageContent = styled.div`
     color: ${colours.primaryTextDark};
     padding: 50px 80px;
 
+    @media (max-width: ${sizes.small}) {
+        padding: 20px 40px;
+    }
+
+    @media (max-width: ${sizes.xSmall}) {
+        padding: 20px 20px;
+    }
+
     .greeting {
         font-size: 20px;
         margin-bottom: 10px;
         margin-left: 10px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 5vw;
+        }
     }
 
     .home-section-header {
@@ -83,12 +95,20 @@ const PageContent = styled.div`
         &::before {
             content: "// ";
         }
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 5vw;
+        }
     }
 
     .home-section {
         font-size: 16px;
         margin-bottom: 10px;
         padding: 0 10px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 4vw;
+        }
     }
 `
 
