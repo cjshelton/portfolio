@@ -3,8 +3,11 @@ import SEO from "../components/seo"
 import styled from "@emotion/styled"
 import { Global } from "@emotion/core"
 import { Link } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
 import Image from "../components/image"
 import Socials from "../components/socials"
+import Button from "../components/btn"
 
 import globalStyles from "../styles/global"
 import pageStyles from "../styles/index"
@@ -54,6 +57,10 @@ const Content = styled.div`
     align-items: center;
 
     text-align: center;
+
+    .view-portfolio-button {
+        margin-top: 20px;
+    }
 `
 
 const Footer = styled.div`
@@ -121,6 +128,9 @@ const IndexPage = () => (
                 <span css={pageStyles.bold}> ASP.NET Core</span> and
                 <span css={pageStyles.bold}> Node.js</span>
             </p>
+            <Button medium className="view-portfolio-button" to="/home">
+                <FontAwesomeIcon icon={faChevronCircleRight} /> View Portfolio
+            </Button>
         </Content>
         <Footer>
             <div className="socials">
