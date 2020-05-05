@@ -79,7 +79,7 @@ const navContainer = css`
                 font-size: 18px;
 
                 li {
-                    background-color: ${colours.primaryMediumLight};
+                    background-color: ${colours.primaryMediumDark};
                     padding: 8px 0;
                     margin-bottom: 10px;
                     display: block;
