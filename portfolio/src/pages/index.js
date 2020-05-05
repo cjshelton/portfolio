@@ -24,31 +24,6 @@ const Container = styled.div`
     padding: 10px 20px;
 `
 
-const Header = styled.div`
-    flex-shrink: 1;
-
-    ul {
-        list-style: none;
-
-        li {
-            float: left;
-
-            &:not(:first-of-type) {
-                margin-left: 20px;
-            }
-
-            a,
-            &:visited {
-                color: ${colours.primaryTextLight};
-            }
-
-            a:hover {
-                color: ${colours.primaryLight};
-            }
-        }
-    }
-`
-
 const Content = styled.div`
     flex-grow: 1;
     display: flex;
@@ -106,16 +81,6 @@ const IndexPage = () => (
     <Container>
         <SEO title={seo.title} description={seo.description} />
         <Global styles={globalStyles} />
-        <Header>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <a href="https://cjshelton.github.io/blog">Blog</a>
-                </li>
-            </ul>
-        </Header>
         <Content>
             <div css={pageStyles.mugshotContainer}>
                 <Image />
