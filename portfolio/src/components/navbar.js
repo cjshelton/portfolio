@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
+
+// Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
+import "@fortawesome/fontawesome-svg-core/styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 

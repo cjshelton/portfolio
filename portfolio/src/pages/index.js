@@ -2,8 +2,12 @@ import React from "react"
 import SEO from "../components/seo"
 import styled from "@emotion/styled"
 import { Global } from "@emotion/core"
+
+// Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
+import "@fortawesome/fontawesome-svg-core/styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
+
 import Image from "../components/image"
 import Socials from "../components/socials"
 import Button from "../components/btn"

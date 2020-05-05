@@ -3,6 +3,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { colours } from "../styles/variables"
 import { css } from "@emotion/core"
+
+// Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
+import "@fortawesome/fontawesome-svg-core/styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
