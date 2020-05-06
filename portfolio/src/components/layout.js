@@ -4,9 +4,10 @@ import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import Sidebar from "../components/sidebar"
 import Navbar from "../components/navbar"
+import Footer from "../components/footer"
 
 import globalStyles from "../styles/global"
-import { sizes } from "../styles/variables"
+import { sizes, colours } from "../styles/variables"
 
 const SiteContainer = styled.div`
     height: 100%;
@@ -39,6 +40,19 @@ const content = css`
     }
 `
 
+const footer = css`
+    display: none;
+    flex-shrink: 1;
+    padding: 20px;
+
+    background-color: ${colours.primary};
+    color: ${colours.primaryTextLight};
+
+    @media (max-width: ${sizes.medium}) {
+        display: block;
+    }
+`
+
 export default ({ page, children }) => (
     <SiteContainer>
         <Global styles={globalStyles} />
@@ -49,5 +63,8 @@ export default ({ page, children }) => (
             <Sidebar page={page}></Sidebar>
         </div>
         <div css={content}>{children}</div>
+        <div css={footer}>
+            <Footer></Footer>
+        </div>
     </SiteContainer>
 )
