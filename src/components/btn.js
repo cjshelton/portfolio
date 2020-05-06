@@ -37,6 +37,17 @@ const mediumStyles = css`
     }
 `
 
+const mediumLightStyles = css`
+    ${baseStyles}
+    background-color: ${colours.primaryMediumLight};
+    color: ${colours.primaryTextLight};
+    box-shadow: 3px 3px 2px ${colours.primaryDark};
+
+    &:hover {
+        background-color: ${colours.primaryLight};
+    }
+`
+
 const lightStyles = css`
     ${baseStyles}
     background-color: ${colours.primaryLight};
@@ -48,9 +59,18 @@ const lightStyles = css`
     }
 `
 
-const Button = ({ light, medium, dark, className, children, to }) => {
+const Button = ({
+    light,
+    mediumLight,
+    medium,
+    dark,
+    className,
+    children,
+    to,
+}) => {
     let themeStyles
     if (light) themeStyles = lightStyles
+    else if (mediumLight) themeStyles = mediumLightStyles
     else if (medium) themeStyles = mediumStyles
     else if (dark) themeStyles = darkStyles
     else themeStyles = lightStyles

@@ -1,12 +1,97 @@
 import React from "react"
+import { Global } from "@emotion/core"
+import { css } from "@emotion/core"
+import styled from "@emotion/styled"
 
 import SEO from "../components/seo"
+import Footer from "../components/footer"
+import Button from "../components/btn"
+
+import globalStyles from "../styles/global"
+import { colours, sizes } from "../styles/variables"
+
+const seo = {
+    title: "Page Not Found",
+    description: `Portfolio for Chris Shelton. Leeds-based software engineer,
+        specialising in full-stack web application development using
+        ASP.NET Core and Node.js`,
+}
+
+const container = css`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: ${colours.primary};
+`
+
+const Content = styled.div`
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    .sad-face {
+        font-family: "Roboto", sans-serif;
+        font-weight: 900;
+        font-size: 140px;
+        color: ${colours.primaryMediumLight};
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 30vw;
+        }
+    }
+
+    .title {
+        font-size: 35px;
+        margin-top: 20px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 7vw;
+        }
+    }
+
+    .message {
+        margin-top: 5px;
+        font-size: 18px;
+        margin-bottom: 40px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 4vw;
+        }
+    }
+
+    .home-button {
+        min-width: 80px;
+    }
+`
+
+const FooterContainer = styled.div`
+    flex-shrink: 1;
+`
 
 const NotFoundPage = () => (
-    <div>
-        <SEO title="404: Not found" />
-        <h1>NOT FOUND</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <div css={container}>
+        <SEO title={seo.title} description={seo.description} />
+        <Global styles={globalStyles} />
+        <Content>
+            <div className="sad-face">:(</div>
+            <h1 className="title">Page Not Found</h1>
+            <p className="message">
+                Oops! The page you requested does not exist.
+            </p>
+            <Button className="home-button" medium to="/home">
+                Home
+            </Button>
+        </Content>
+
+        <FooterContainer>
+            <Footer></Footer>
+        </FooterContainer>
     </div>
 )
 
