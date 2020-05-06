@@ -141,7 +141,9 @@ const Navbar = ({ page }) => {
                     </Link>
                 </div>
             </div>
-            <div css={siteTitle}>Portfolio | Chris Shelton</div>
+            <div css={siteTitle}>
+                <Link to="/">Portfolio | Chris Shelton</Link>
+            </div>
             <div css={navButtonContainer}>
                 <button
                     className={isMenuOpen ? "menu-button" : ""}
