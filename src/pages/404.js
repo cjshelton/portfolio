@@ -10,11 +10,6 @@ import Button from "../components/btn"
 import globalStyles from "../styles/global"
 import { colours, sizes } from "../styles/variables"
 
-// Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFrown } from "@fortawesome/free-regular-svg-icons"
-
 const seo = {
     title: "Page Not Found",
     description: `Portfolio for Chris Shelton. Leeds-based software engineer,
