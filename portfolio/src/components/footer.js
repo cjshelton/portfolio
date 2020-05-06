@@ -1,45 +1,61 @@
 import React from "react"
 import Socials from "../components/socials"
 
-import styled from "@emotion/styled"
+import { css } from "@emotion/core"
+
 import { sizes } from "../styles/variables"
 
-const Content = styled.div`
-    display: flex;
+const expandedStyles = css`
     flex-direction: row;
-    align-items: center;
+`
 
-    .socials {
-        flex-grow: 1;
-        text-align: left;
-    }
+const collapsedStyles = css`
+    flex-direction: column;
+    justify-content: center;
 
     .copyright {
-        flex-grow: 1;
-        text-align: right;
-    }
-
-    @media (max-width: ${sizes.small}) {
-        flex-direction: column;
-        justify-content: center;
-
-        .copyright {
-            margin-top: 8px;
-        }
+        margin-top: 5px;
     }
 `
 
-const Footer = () => (
-    <footer>
-        <Content>
-            <div className="socials">
-                <Socials></Socials>
+function getFooterStyles(isCollapsed) {
+    return css`
+        display: flex;
+        ${isCollapsed ? collapsedStyles : expandedStyles}
+
+        align-items: center;
+
+        .socials {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .copyright {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        @media (max-width: ${sizes.small}) {
+            ${collapsedStyles}
+        }
+    `
+}
+
+const Footer = ({ collapsed }) => {
+    const styles = getFooterStyles(collapsed)
+
+    return (
+        <footer>
+            <div css={styles}>
+                <div className="socials">
+                    <Socials></Socials>
+                </div>
+                <div className="copyright">
+                    &copy; {new Date().getFullYear()}, Chris Shelton
+                </div>
             </div>
-            <div className="copyright">
-                &copy; {new Date().getFullYear()}, Chris Shelton
-            </div>
-        </Content>
-    </footer>
-)
+        </footer>
+    )
+}
 
 export default Footer
