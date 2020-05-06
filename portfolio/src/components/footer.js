@@ -24,7 +24,7 @@ const Content = styled.div`
         justify-content: center;
 
         .copyright {
-            margin-top: 10px;
+            margin-top: 8px;
         }
     }
 `

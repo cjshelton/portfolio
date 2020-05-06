@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
 
 import Image from "../components/image"
-import Socials from "../components/socials"
 import Button from "../components/btn"
+import Footer from "../components/footer"
 
 import globalStyles from "../styles/global"
 import pageStyles from "../styles/index"
@@ -41,36 +41,8 @@ const Content = styled.div`
     }
 `
 
-const Footer = styled.div`
+const FooterContainer = styled.div`
     flex-shrink: 1;
-
-    display: flex;
-    flex-direction: row;
-
-    .socials {
-        flex-grow: 1;
-    }
-
-    .copyright {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: right;
-    }
-
-    @media (max-width: 350px) {
-        flex-direction: column;
-
-        .socials,
-        .copyright {
-            text-align: center;
-        }
-
-        .socials {
-            margin-bottom: 5px;
-        }
-    }
 `
 
 const seo = {
@@ -100,14 +72,9 @@ const IndexPage = () => (
                 <FontAwesomeIcon icon={faChevronCircleRight} /> View Portfolio
             </Button>
         </Content>
-        <Footer>
-            <div className="socials">
-                <Socials></Socials>
-            </div>
-            <div className="copyright">
-                &copy; {new Date().getFullYear()}, Chris Shelton
-            </div>
-        </Footer>
+        <FooterContainer>
+            <Footer></Footer>
+        </FooterContainer>
     </Container>
 )
 
