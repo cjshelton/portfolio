@@ -8,7 +8,7 @@ import Footer from "../components/footer"
 import Button from "../components/btn"
 
 import globalStyles from "../styles/global"
-import { colours } from "../styles/variables"
+import { colours, sizes } from "../styles/variables"
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -26,6 +26,7 @@ const container = css`
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 20px;
     background-color: ${colours.primary};
 `
 
@@ -37,28 +38,45 @@ const Content = styled.div`
     align-items: center;
     justify-content: center;
 
+    text-align: center;
+
     .sad-face {
         font-family: "Roboto", sans-serif;
         font-weight: 900;
         font-size: 140px;
-        color: ${colours.primaryMediumDark};
+        color: ${colours.primaryMediumLight};
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 30vw;
+        }
     }
 
     .title {
         font-size: 35px;
         margin-top: 20px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 7vw;
+        }
     }
 
     .message {
         margin-top: 5px;
         font-size: 18px;
         margin-bottom: 40px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 4vw;
+        }
+    }
+
+    .home-button {
+        min-width: 80px;
     }
 `
 
 const FooterContainer = styled.div`
     flex-shrink: 1;
-    padding: 10px;
 `
 
 const NotFoundPage = () => (
@@ -71,7 +89,7 @@ const NotFoundPage = () => (
             <p className="message">
                 Oops! The page you requested does not exist.
             </p>
-            <Button medium to="/home">
+            <Button className="home-button" mediumLight to="/home">
                 Home
             </Button>
         </Content>
