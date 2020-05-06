@@ -3,8 +3,8 @@ import styled from "@emotion/styled"
 import { Link } from "gatsby"
 
 import Image from "../components/image"
-import Socials from "../components/socials"
 import Nav from "../components/nav"
+import Footer from "../components/footer"
 
 import { colours } from "../styles/variables"
 import pageStyles from "../styles/sidebar"
@@ -68,10 +68,6 @@ const Middle = styled.div`
 
 const Lower = styled.div`
     flex-shrink: 1;
-
-    .socials {
-        margin-bottom: 5px;
-    }
 `
 
 const Sidebar = ({ page }) => (
@@ -90,12 +86,7 @@ const Sidebar = ({ page }) => (
             <Nav page={page}></Nav>
         </Middle>
         <Lower>
-            <div className="socials">
-                <Socials></Socials>
-            </div>
-            <div className="copyright">
-                &copy; {new Date().getFullYear()}, Chris Shelton
-            </div>
+            <Footer collapsed></Footer>
         </Lower>
     </Container>
 )
