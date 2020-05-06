@@ -16,5 +16,11 @@ export default css`
 
         font-family: ${fonts.primary};
         color: ${colours.primaryTextLight};
+
+        /* Set default styles for links. */
+        a {
+            color: ${colours.primaryTextLight};
+            text-decoration: none;
+        }
     }
 `

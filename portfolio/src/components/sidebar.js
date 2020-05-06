@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 import Image from "../components/image"
 import Socials from "../components/socials"
@@ -77,7 +78,9 @@ const Sidebar = ({ page }) => (
     <Container>
         <Upper>
             <div css={pageStyles.mugshotContainer}>
-                <Image />
+                <Link to="/">
+                    <Image />
+                </Link>
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
             <div css={pageStyles.location}>Leeds, UK</div>
