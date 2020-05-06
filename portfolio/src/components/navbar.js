@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
+import { Link } from "gatsby"
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -135,7 +136,9 @@ const Navbar = ({ page }) => {
         <TopNav>
             <div css={mugshotContainer}>
                 <div css={mugshot}>
-                    <Image></Image>
+                    <Link to="/">
+                        <Image />
+                    </Link>
                 </div>
             </div>
             <div css={siteTitle}>Portfolio | Chris Shelton</div>
