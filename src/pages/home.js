@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import SEO from "../components/seo"
-import Layout from "../components/layout"
+import Layout from "../components/layouts/site"
 
 import { sizes, colours } from "../styles/variables"
 
