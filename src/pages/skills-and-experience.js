@@ -23,7 +23,9 @@ const contentJsx = (
             <h1 className="section-header">Education</h1>
             <p className="section">
                 I proudly graduated from The University of Leeds in 2016, with a
-                First-class (Hons) in Computer Science.
+                First-class (Hons) in Computer Science. I also received an award
+                for academic excellence two years in a row during my time at
+                University.
             </p>
             <p className="section">
                 Prior to going to university, I had very little experience of
@@ -33,26 +35,57 @@ const contentJsx = (
                 and have been since.
             </p>
             <p className="section">
-                I thoroughly enjoyed my degree. I enjoyed the challenges it gave
-                me, and the opportunities it has given me for my future. I
-                worked hard, and it paid off, and that has enabled me to do
+                I thoroughly enjoyed my degree. I enjoyed the challenges it
+                presented, and the opportunities it has given me for my future.
+                I worked hard, and it paid off, and that has enabled me to do
                 something as a job every day, which feels much more like a
                 hobby.
             </p>
         </section>
         <section>
+            <h1 className="section-header">Professional Experience</h1>
+            <p className="section">
+                Since graduating from university in 2016, I have worked as a
+                Technical Specialist at Bluesmith Information Systems in Leeds,
+                focusing on full-stack web development for enterprise
+                applications.
+            </p>
+            <p className="section">
+                I have 3 years' experience in the Microsoft tech-stack,
+                designing and building ASP.NET and SQL Server applications, with
+                the last year working with ASP.NET Core.
+            </p>
+            <p className="section">
+                More recently, I have been up-skilling in JavaScript, working
+                exclusively with Node.js and front-end technologies like
+                Knockout and Vue.
+            </p>
+        </section>
+        <section>
             <h1 className="section-header">Core Skills</h1>
             <p className="section">
-                Below is a list of skills I am experienced in, gained either in
-                my professional career or through personal and side projects at
-                home.
+                Since graduating from university in 2016, I have worked as a
+                Technical Specialist at Bluesmith Information Systems in Leeds,
+                focusing on full-stack web development for enterprise
+                applications.
+            </p>
+            <p className="section">
+                I have 3 years' experience in the Microsoft tech-stack,
+                designing and building ASP.NET and SQL Server applications, with
+                the last year working with ASP.NET Core.
+            </p>
+            <p className="section">
+                More recently, I have been up-skilling in JavaScript, working
+                exclusively with Node.js and front-end technologies like
+                Knockout and Vue.
             </p>
         </section>
         <section>
             <h1 className="section-header">Other Skills</h1>
             <p className="section">
-                Below are skills I am less experienced in, but contribute to my
-                experiences and abilities as a well-rounded software engineer.
+                Below are skills I am less experienced in, or have learnt
+                through side projects, but contribute to my abilities as a
+                well-rounded software engineer.
             </p>
         </section>
     </div>
