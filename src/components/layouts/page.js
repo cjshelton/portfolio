@@ -26,7 +26,7 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(18, 26, 33, 0.3);
+            background-color: rgba(18, 26, 33, 0.5);
 
             display: flex;
             flex-direction: column;

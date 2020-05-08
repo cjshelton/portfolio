@@ -5,6 +5,11 @@
         "order": 1
     },
     {
+        "name": "Skills and Experience",
+        "link": "/skills-and-experience",
+        "order": 2
+    },
+    {
         "name": "Blog",
         "link": "https://cjshelton.github.io/blog",
         "order": 2
