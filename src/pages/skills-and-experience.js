@@ -5,6 +5,7 @@ import styled from "@emotion/styled"
 import { sizes, colours } from "../styles/variables"
 import Page from "../components/layouts/page"
 import UolLogo from "../components/uol-logo"
+import TechLogo from "../components/tech-logo"
 
 import experienceData from "../data/experience.json"
 
@@ -14,6 +15,11 @@ const seo = {
         specialising in full-stack web application development using
         ASP.NET Core and Node.js`,
 }
+
+const ClearFix = styled.div`
+    float: none;
+    clear: both;
+`
 
 const uolLogoContainer = css`
     width: 200px;
@@ -43,6 +49,26 @@ const ExperienceEntry = styled.div`
         @media (max-width: ${sizes.xSmall}) {
             font-size: 4vw;
         }
+    }
+`
+
+const SkillEntry = styled.div`
+    width: 120px;
+    height: 120px;
+    float: left;
+
+    display: flex;
+    flex-direction: column;
+
+    .name {
+        flex-shrink: 1;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .logo {
+        max-height: 80px;
+        flex-grow: 1;
     }
 `
 
@@ -79,30 +105,55 @@ const contentJsx = (
         <section>
             <h1 className="section-header">Professional Experience</h1>
 
-            {experienceData.map(({ company, title, period, description }) => {
-                return (
-                    <ExperienceEntry>
-                        <h2 className="experience-company">
-                            {company}, {period}
-                        </h2>
-                        <h3 className="experience-title">{title}</h3>
-                        <p className="section">{description}</p>
-                    </ExperienceEntry>
-                )
-            })}
+            {experienceData.timeline.map(
+                ({ company, title, period, description }) => {
+                    return (
+                        <ExperienceEntry>
+                            <h2 className="experience-company">
+                                {company}, {period}
+                            </h2>
+                            <h3 className="experience-title">{title}</h3>
+                            <p className="section">{description}</p>
+                        </ExperienceEntry>
+                    )
+                }
+            )}
         </section>
         <section>
             <h1 className="section-header">Core Skills</h1>
             <p className="section">
-                My core skills gained through professional experience.
+                Below are some examples of my core skills which I am competent
+                in.
+            </p>
+            {experienceData.skills.map(
+                ({ name, imageSource, imageAltText }) => {
+                    return (
+                        <SkillEntry>
+                            <div className="logo">
+                                <TechLogo
+                                    image={imageSource}
+                                    altText={imageAltText}
+                                ></TechLogo>
+                            </div>
+                            <div className="name">{name}</div>
+                        </SkillEntry>
+                    )
+                }
+            )}
+            <ClearFix />
+            <p className="section" style={{ marginTop: "10px" }}>
+                This list is not exhaustive &mdash; I also have extensive
+                experience in CI/CD, Docker, responsive web design, relational
+                database design, Agile delivery, Message Queuing Systems (Rabbit
+                MQ) and more.
             </p>
         </section>
         <section>
             <h1 className="section-header">Other Skills</h1>
             <p className="section">
-                Below are skills I am less experienced in, or have learnt
-                through side projects, but contribute to my abilities as a
-                well-rounded software engineer.
+                Below are skills I am less experienced in, having learnt them
+                through side projects and personal work, but contribute to my
+                abilities as a well-rounded software engineer.
             </p>
         </section>
     </div>
