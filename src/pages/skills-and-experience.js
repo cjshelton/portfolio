@@ -16,11 +16,6 @@ const seo = {
         ASP.NET Core and Node.js`,
 }
 
-const ClearFix = styled.div`
-    float: none;
-    clear: both;
-`
-
 const uolLogoContainer = css`
     width: 200px;
     margin: 20px auto;
@@ -56,6 +51,7 @@ const SkillsList = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 `
 
 const SkillEntry = styled.div`
@@ -112,7 +108,6 @@ const contentJsx = (
         </section>
         <section>
             <h1 className="section-header">Professional Experience</h1>
-
             {experienceData.timeline.map(
                 ({ company, title, period, description }) => {
                     return (
@@ -149,7 +144,7 @@ const contentJsx = (
                     }
                 )}
             </SkillsList>
-            <p className="section" style={{ marginTop: "10px" }}>
+            <p className="section">
                 This list is not exhaustive &mdash; I also have extensive
                 experience in CI/CD, Docker, responsive web design, relational
                 database design, Agile delivery, Message Queuing Systems (Rabbit
