@@ -1,9 +1,9 @@
 [
     {
         "company": "Bluesmith Information Systems",
-        "title": "Technical Specialist - Industrial Placement",
-        "period": "2014-2015",
-        "description": "As part of my degree, I opted to undertake a year-long industrial placement. After an initial training period, I was introduced to development in the Microsoft tech-stack, including ASP.NET and SQL Server."
+        "title": "Technical Specialist",
+        "period": "2017-Present",
+        "description": "Working on various Agile projects, all focused on full-stack web application development for enterprise applications, using technologies like ASP.NET, ASP.NET Core, Node.js, Knockout and Vue."
     },
     {
         "company": "Bluesmith Information Systems",
@@ -13,8 +13,8 @@
     },
     {
         "company": "Bluesmith Information Systems",
-        "title": "Technical Specialist",
-        "period": "2017-Present",
-        "description": "Working on various Agile projects, all focused on full-stack web application development for enterprise applications, using technologies like ASP.NET, ASP.NET Core, Node.js, Knockout and Vue."
+        "title": "Technical Specialist - Industrial Placement",
+        "period": "2014-2015",
+        "description": "As part of my degree, I opted to undertake a year-long industrial placement. After an initial training period, I was introduced to development in the Microsoft tech-stack, including ASP.NET and SQL Server."
     }
 ]
