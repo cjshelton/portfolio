@@ -2,6 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
+import { sizes, colours } from "../styles/variables"
 import Page from "../components/layouts/page"
 import UolLogo from "../components/uol-logo"
 
@@ -20,16 +21,28 @@ const uolLogoContainer = css`
 `
 
 const ExperienceEntry = styled.div`
+    border-left: 5px solid ${colours.primary};
+    margin-bottom: 20px;
+    margin-left: 10px;
+
     .experience-company {
         font-size: 20px;
         font-weight: 600;
         margin: 0 10px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 5vw;
+        }
     }
 
     .experience-title {
         font-size: 16px;
         margin-bottom: 10px;
         margin: 0 10px 10px 10px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 4vw;
+        }
     }
 `
 
@@ -70,7 +83,7 @@ const contentJsx = (
                 return (
                     <ExperienceEntry>
                         <h2 className="experience-company">
-                            {company} - {period}
+                            {company}, {period}
                         </h2>
                         <h3 className="experience-title">{title}</h3>
                         <p className="section">{description}</p>
