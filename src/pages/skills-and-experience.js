@@ -52,23 +52,31 @@ const ExperienceEntry = styled.div`
     }
 `
 
+const SkillsList = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`
+
 const SkillEntry = styled.div`
-    width: 120px;
-    height: 120px;
-    float: left;
+    flex: 1 0 150px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 10px;
 
-    .name {
-        flex-shrink: 1;
-        font-size: 14px;
-        text-align: center;
+    @media (max-width: ${sizes.xSmall}) {
+        flex-basis: 60px;
     }
 
     .logo {
-        max-height: 80px;
-        flex-grow: 1;
+        width: 100%;
+        max-width: 100px;
+
+        @media (max-width: ${sizes.xSmall}) {
+            max-width: 60px;
+        }
     }
 `
 
@@ -125,22 +133,22 @@ const contentJsx = (
                 Below are some examples of my core skills which I am competent
                 in.
             </p>
-            {experienceData.skills.map(
-                ({ name, imageSource, imageAltText }) => {
-                    return (
-                        <SkillEntry>
-                            <div className="logo">
-                                <TechLogo
-                                    image={imageSource}
-                                    altText={imageAltText}
-                                ></TechLogo>
-                            </div>
-                            <div className="name">{name}</div>
-                        </SkillEntry>
-                    )
-                }
-            )}
-            <ClearFix />
+            <SkillsList>
+                {experienceData.skills.map(
+                    ({ name, imageSource, imageAltText }) => {
+                        return (
+                            <SkillEntry>
+                                <div className="logo">
+                                    <TechLogo
+                                        image={imageSource}
+                                        altText={imageAltText}
+                                    ></TechLogo>
+                                </div>
+                            </SkillEntry>
+                        )
+                    }
+                )}
+            </SkillsList>
             <p className="section" style={{ marginTop: "10px" }}>
                 This list is not exhaustive &mdash; I also have extensive
                 experience in CI/CD, Docker, responsive web design, relational
