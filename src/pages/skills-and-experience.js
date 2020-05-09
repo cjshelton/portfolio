@@ -138,7 +138,7 @@ const contentJsx = (
                     ({ name, imageSource, imageAltText }) => {
                         return (
                             <SkillEntry>
-                                <div className="logo">
+                                <div className="logo" title={name}>
                                     <TechLogo
                                         image={imageSource}
                                         altText={imageAltText}
