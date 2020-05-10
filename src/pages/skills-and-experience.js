@@ -33,6 +33,10 @@ const otherCoreSkill = css`
     border-radius: 5px;
 
     font-size: 14px;
+
+    @media (max-width: ${sizes.xSmall}) {
+        font-size: 3.5vw;
+    }
 `
 
 const otherCoreSkillText = css`
