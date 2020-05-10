@@ -20,21 +20,28 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
         background-position: bottom center;
         position: relative;
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(18, 26, 33, 0.5);
+        /* 
+            Three elements are stacked together in the image container section:
+            background image, overlay and header content. The background image should
+            be at the back of the stack. 
+        */
+        z-index: -1;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-            padding: 0 40px;
-            text-align: center;
+        padding: 10px 20px;
+        text-align: center;
+
+        .header {
+            /* 
+                Three elements are stacked together in the image container section:
+                background image, overlay and header content. The header content should
+                be at the front of the stack. 
+            */
+            z-index: 1;
 
             h1 {
                 font-size: 40px;
@@ -53,6 +60,22 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
                     font-size: 5vw;
                 }
             }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(18, 26, 33, 0.5);
+
+            /* 
+                Three elements are stacked together in the image container section:
+                background image, overlay and header content. The overlay should
+                be in the middle of the stack. 
+            */
+            z-index: 0;
         }
     `
 }
@@ -115,7 +138,8 @@ export default ({
             <SEO title={seo.title} description={seo.description} />
 
             <div css={imageContainerStyles}>
-                <div className="overlay">{header}</div>
+                <div className="overlay"></div>
+                <div className="header">{header}</div>
             </div>
             <PageContent>{content}</PageContent>
         </Layout>
