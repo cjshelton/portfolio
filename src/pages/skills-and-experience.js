@@ -128,9 +128,9 @@ const contentJsx = (
         <section>
             <h1 className="section-header">Professional Experience</h1>
             {experienceData.timeline.map(
-                ({ company, title, period, description }) => {
+                ({ company, title, period, description }, index) => {
                     return (
-                        <ExperienceEntry>
+                        <ExperienceEntry key={index}>
                             <h2 className="experience-company">
                                 {company}, {period}
                             </h2>
@@ -148,10 +148,10 @@ const contentJsx = (
                 in.
             </p>
             <SkillsList>
-                {experienceData.skills.map(
-                    ({ name, imageSource, imageAltText }) => {
+                {experienceData.coreSkills.map(
+                    ({ name, imageSource, imageAltText }, index) => {
                         return (
-                            <SkillEntry>
+                            <SkillEntry key={index}>
                                 <div className="logo" title={name}>
                                     <TechLogo
                                         image={imageSource}
