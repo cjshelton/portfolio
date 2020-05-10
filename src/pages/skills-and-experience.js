@@ -21,6 +21,25 @@ const uolLogoContainer = css`
     margin: 20px auto;
 `
 
+const otherCoreSkill = css`
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin: 2px 3px;
+    padding: 2px 4px;
+
+    background-color: ${colours.primary};
+    color: ${colours.primaryTextLight};
+    border-radius: 5px;
+
+    font-size: 14px;
+`
+
+const otherCoreSkillText = css`
+    display: inline-block;
+    vertical-align: middle;
+`
+
 const ExperienceEntry = styled.div`
     border-left: 5px solid ${colours.primary};
     margin-bottom: 20px;
@@ -144,12 +163,20 @@ const contentJsx = (
                     }
                 )}
             </SkillsList>
-            <p className="section">
-                This list is not exhaustive &mdash; I also have extensive
-                experience in CI/CD, Docker, responsive web design, relational
-                database design, Agile delivery, Message Queuing Systems (Rabbit
-                MQ) and more.
-            </p>
+            <div className="section">
+                <div css={otherCoreSkillText}>
+                    This list is not exhaustive — I also have extensive
+                    experience with
+                </div>
+                {experienceData.additionalCoreSkills.map((skill, index) => {
+                    return (
+                        <div css={otherCoreSkill} key={index}>
+                            {skill}
+                        </div>
+                    )
+                })}
+                <div css={otherCoreSkillText}>and more&hellip;</div>
+            </div>
         </section>
         <section>
             <h1 className="section-header">Other Skills</h1>
