@@ -21,7 +21,7 @@ const uolLogoContainer = css`
     margin: 20px auto;
 `
 
-const baseInlineSkillStyles = css`
+const skillPill = css`
     display: inline-block;
     vertical-align: middle;
     white-space: nowrap;
@@ -34,10 +34,7 @@ const baseInlineSkillStyles = css`
     @media (max-width: ${sizes.xSmall}) {
         font-size: 3.5vw;
     }
-`
 
-const additionalCoreSkill = css`
-    ${baseInlineSkillStyles}
     background-color: ${colours.primaryMediumLight};
     color: ${colours.primaryTextLight};
 `
@@ -45,12 +42,6 @@ const additionalCoreSkill = css`
 const additionalCoreSkillText = css`
     display: inline-block;
     vertical-align: middle;
-`
-
-const otherSkill = css`
-    ${baseInlineSkillStyles}
-    background-color: ${colours.primaryMediumLight};
-    color: ${colours.primaryTextLight};
 `
 
 const ExperienceEntry = styled.div`
@@ -183,7 +174,7 @@ const contentJsx = (
                 </div>
                 {experienceData.additionalCoreSkills.map((skill, index) => {
                     return (
-                        <div css={additionalCoreSkill} key={index}>
+                        <div css={skillPill} key={index}>
                             {skill}
                         </div>
                     )
@@ -202,7 +193,7 @@ const contentJsx = (
             <div className="section">
                 {experienceData.otherSkills.map((skill, index) => {
                     return (
-                        <div css={otherSkill} key={index}>
+                        <div css={skillPill} key={index}>
                             {skill}
                         </div>
                     )
