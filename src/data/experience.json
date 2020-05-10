@@ -31,9 +31,19 @@
             "imageAltText": "Dot Net Core logo"
         },
         {
+            "name": "Node.js",
+            "imageSource": "nodeJs",
+            "imageAltText": "Node.js logo"
+        },
+        {
             "name": "HTML / CSS / JS",
             "imageSource": "frontEnd",
             "imageAltText": "Front-end logos"
+        },
+        {
+            "name": "Vue",
+            "imageSource": "vue",
+            "imageAltText": "Vue logo"
         },
         {
             "name": "git",
@@ -41,19 +51,14 @@
             "imageAltText": "git logo"
         },
         {
-            "name": "Node.js",
-            "imageSource": "nodeJs",
-            "imageAltText": "Node.js logo"
-        },
-        {
             "name": "SQL Server",
             "imageSource": "sqlServer",
             "imageAltText": "SQL Server logo"
         },
         {
-            "name": "Vue",
-            "imageSource": "vue",
-            "imageAltText": "Vue logo"
+            "name": "Docker",
+            "imageSource": "docker",
+            "imageAltText": "Docker logo"
         }
     ],
     "additionalCoreSkills": [

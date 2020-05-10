@@ -56,6 +56,13 @@ const Image = ({ image, altText }) => {
                     }
                 }
             }
+            docker: file(relativePath: { eq: "tech-logos/docker.png" }) {
+                childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
         }
     `)
 
