@@ -21,15 +21,12 @@ const uolLogoContainer = css`
     margin: 20px auto;
 `
 
-const otherCoreSkill = css`
+const baseInlineSkillStyles = css`
     display: inline-block;
     vertical-align: middle;
     white-space: nowrap;
     margin: 2px 3px;
     padding: 2px 4px;
-
-    background-color: ${colours.primary};
-    color: ${colours.primaryTextLight};
     border-radius: 5px;
 
     font-size: 14px;
@@ -39,9 +36,21 @@ const otherCoreSkill = css`
     }
 `
 
-const otherCoreSkillText = css`
+const additionalCoreSkill = css`
+    ${baseInlineSkillStyles}
+    background-color: ${colours.primaryMediumLight};
+    color: ${colours.primaryTextLight};
+`
+
+const additionalCoreSkillText = css`
     display: inline-block;
     vertical-align: middle;
+`
+
+const otherSkill = css`
+    ${baseInlineSkillStyles}
+    background-color: ${colours.primaryMediumLight};
+    color: ${colours.primaryTextLight};
 `
 
 const ExperienceEntry = styled.div`
@@ -168,27 +177,37 @@ const contentJsx = (
                 )}
             </SkillsList>
             <div className="section">
-                <div css={otherCoreSkillText}>
+                <div css={additionalCoreSkillText}>
                     This list is not exhaustive — I also have extensive
                     experience with
                 </div>
                 {experienceData.additionalCoreSkills.map((skill, index) => {
                     return (
-                        <div css={otherCoreSkill} key={index}>
+                        <div css={additionalCoreSkill} key={index}>
                             {skill}
                         </div>
                     )
                 })}
-                <div css={otherCoreSkillText}>and more&hellip;</div>
+                <div css={additionalCoreSkillText}>and more&hellip;</div>
             </div>
         </section>
         <section>
             <h1 className="section-header">Other Skills</h1>
             <p className="section">
-                Below are skills I am less experienced in, having learnt them
-                through side projects and personal work, but contribute to my
+                I also spend time outside of work on personal and side projects
+                which helps me up-skill in other technical areas. Below are some
+                of the skills I am less experienced in, but contribute to my
                 abilities as a well-rounded software engineer.
             </p>
+            <div className="section">
+                {experienceData.otherSkills.map((skill, index) => {
+                    return (
+                        <div css={otherSkill} key={index}>
+                            {skill}
+                        </div>
+                    )
+                })}
+            </div>
         </section>
     </div>
 )

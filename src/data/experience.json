@@ -4,7 +4,7 @@
             "company": "Bluesmith Information Systems",
             "title": "Technical Specialist",
             "period": "2017-Present",
-            "description": "Working on various Agile projects, all focused on full-stack web application development for enterprise applications, using technologies like ASP.NET, ASP.NET Core, Node.js, Knockout and Vue."
+            "description": "Working on various Agile projects, all focused on full-stack web application development for enterprise applications, using technologies like ASP.NET, ASP.NET Core, Node.js, SQL Server, Knockout and Vue."
         },
         {
             "company": "Bluesmith Information Systems",
@@ -62,13 +62,27 @@
         }
     ],
     "additionalCoreSkills": [
+        "SOLID and Object Orientation fundamentals",
+        "Software design patterns",
+        "Workflow tooling - Gulp/Grunt and Webpack",
         "CI/CD",
-        "Docker",
         "Responsive web design",
         "Relational database design",
         "Agile delivery",
         "Message queuing systems (RabbitMQ)",
         "Automated unit and integration testing",
-        "Web security principles"
+        "Web security principles",
+        "DRY / YAGNI"
+    ],
+    "otherSkills": [
+        "TypeScript",
+        "Mongo",
+        "React",
+        "Xamarin",
+        "Jamstack and Static Site Generators",
+        "CSS in JS",
+        "Google Cloud Firestore",
+        "Web Sockets",
+        "Swagger"
     ]
 }
