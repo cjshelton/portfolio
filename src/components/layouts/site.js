@@ -2,12 +2,12 @@ import React from "react"
 import { Global } from "@emotion/core"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import Sidebar from "../components/sidebar"
-import Navbar from "../components/navbar"
-import Footer from "../components/footer"
+import Sidebar from "../sidebar"
+import Navbar from "../navbar"
+import Footer from "../footer"
 
-import globalStyles from "../styles/global"
-import { sizes, colours } from "../styles/variables"
+import globalStyles from "../../styles/global"
+import { sizes, colours } from "../../styles/variables"
 
 const SiteContainer = styled.div`
     height: 100%;

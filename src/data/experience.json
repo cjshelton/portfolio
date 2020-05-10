@@ -1,0 +1,88 @@
+{
+    "timeline": [
+        {
+            "company": "Bluesmith Information Systems",
+            "title": "Technical Specialist",
+            "period": "2017-Present",
+            "description": "Working on various Agile projects, all focused on full-stack web application development for enterprise applications, using technologies like ASP.NET, ASP.NET Core, Node.js, SQL Server, Knockout and Vue."
+        },
+        {
+            "company": "Bluesmith Information Systems",
+            "title": "Graduate Technical Specialist",
+            "period": "2016-2017",
+            "description": "Completed graduate training and began working on projects in the Microsoft tech stack, using ASP.NET and SQL Server."
+        },
+        {
+            "company": "Bluesmith Information Systems",
+            "title": "Technical Specialist - Industrial Placement",
+            "period": "2014-2015",
+            "description": "As part of my degree, I opted to undertake a year-long industrial placement. After an initial training period, I was introduced to development in the Microsoft tech-stack, including ASP.NET and SQL Server."
+        }
+    ],
+    "coreSkills": [
+        {
+            "name": "C#",
+            "imageSource": "cSharp",
+            "imageAltText": "C Sharp logo"
+        },
+        {
+            "name": "ASP.NET Core MVC / WebAPI",
+            "imageSource": "dotNetCore",
+            "imageAltText": "Dot Net Core logo"
+        },
+        {
+            "name": "Node.js",
+            "imageSource": "nodeJs",
+            "imageAltText": "Node.js logo"
+        },
+        {
+            "name": "HTML / CSS / JS",
+            "imageSource": "frontEnd",
+            "imageAltText": "Front-end logos"
+        },
+        {
+            "name": "Vue",
+            "imageSource": "vue",
+            "imageAltText": "Vue logo"
+        },
+        {
+            "name": "git",
+            "imageSource": "git",
+            "imageAltText": "git logo"
+        },
+        {
+            "name": "SQL Server",
+            "imageSource": "sqlServer",
+            "imageAltText": "SQL Server logo"
+        },
+        {
+            "name": "Docker",
+            "imageSource": "docker",
+            "imageAltText": "Docker logo"
+        }
+    ],
+    "additionalCoreSkills": [
+        "SOLID and Object Orientation fundamentals",
+        "Software design patterns",
+        "Workflow tooling - Gulp/Grunt and Webpack",
+        "CI/CD",
+        "Responsive web design",
+        "Relational database design",
+        "Agile delivery",
+        "Message queuing systems (RabbitMQ)",
+        "Automated unit and integration testing",
+        "Web security principles",
+        "DRY / YAGNI"
+    ],
+    "otherSkills": [
+        "TypeScript",
+        "Mongo",
+        "React",
+        "Xamarin",
+        "Jamstack and Static Site Generators",
+        "CSS in JS",
+        "Google Cloud Firestore",
+        "Web Sockets",
+        "Swagger"
+    ]
+}
