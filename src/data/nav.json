@@ -10,8 +10,13 @@
         "order": 2
     },
     {
+        "name": "Personal Projects",
+        "link": "/personal-projects",
+        "order": 3
+    },
+    {
         "name": "Blog",
         "link": "https://cjshelton.github.io/blog",
-        "order": 3
+        "order": 4
     }
 ]
