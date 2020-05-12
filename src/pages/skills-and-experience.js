@@ -6,6 +6,7 @@ import { sizes, colours } from "../styles/variables"
 import Page from "../components/layouts/page"
 import UolLogo from "../components/uol-logo"
 import TechLogo from "../components/tech-logo"
+import SkillPill from "../components/skillPill"
 
 import experienceData from "../data/experience.json"
 
@@ -19,24 +20,6 @@ const seo = {
 const uolLogoContainer = css`
     width: 200px;
     margin: 20px auto;
-`
-
-const skillPill = css`
-    display: inline-block;
-    vertical-align: middle;
-    white-space: nowrap;
-    margin: 2px 3px;
-    padding: 2px 4px;
-    border-radius: 5px;
-
-    font-size: 14px;
-
-    @media (max-width: ${sizes.xSmall}) {
-        font-size: 3.5vw;
-    }
-
-    background-color: ${colours.primaryMediumLight};
-    color: ${colours.primaryTextLight};
 `
 
 const additionalCoreSkillText = css`
@@ -173,11 +156,7 @@ const contentJsx = (
                     experience with
                 </div>
                 {experienceData.additionalCoreSkills.map((skill, index) => {
-                    return (
-                        <div css={skillPill} key={index}>
-                            {skill}
-                        </div>
-                    )
+                    return <SkillPill key={index}>{skill}</SkillPill>
                 })}
                 <div css={additionalCoreSkillText}>and more&hellip;</div>
             </div>
@@ -192,11 +171,7 @@ const contentJsx = (
             </p>
             <div className="section">
                 {experienceData.otherSkills.map((skill, index) => {
-                    return (
-                        <div css={skillPill} key={index}>
-                            {skill}
-                        </div>
-                    )
+                    return <SkillPill key={index}>{skill}</SkillPill>
                 })}
             </div>
         </section>

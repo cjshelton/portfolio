@@ -8,8 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons"
 
-import { sizes, colours } from "../styles/variables"
+import { colours } from "../styles/variables"
 import Page from "../components/layouts/page"
+import SkillPill from "../components/skillPill"
 
 import personalProjectsData from "../data/personal-projects.json"
 
@@ -54,24 +55,6 @@ const link = css`
 const ClearFix = styled.div`
     float: none;
     clear: both;
-`
-
-const skillPill = css`
-    display: inline-block;
-    vertical-align: middle;
-    white-space: nowrap;
-    margin: 2px 3px;
-    padding: 2px 4px;
-    border-radius: 5px;
-
-    font-size: 14px;
-
-    @media (max-width: ${sizes.xSmall}) {
-        font-size: 3.5vw;
-    }
-
-    background-color: ${colours.primaryMediumLight};
-    color: ${colours.primaryTextLight};
 `
 
 const headerJsx = (
@@ -123,13 +106,12 @@ const contentJsx = (
 
                             <ClearFix />
                         </div>
+                        {/* dangerouslySetInnerHTML is safe to use here as the description content is static. */}
                         <div dangerouslySetInnerHTML={htmlDescription}></div>
                         <div className="section">
                             {tags.map((skill, index) => {
                                 return (
-                                    <div css={skillPill} key={index}>
-                                        {skill}
-                                    </div>
+                                    <SkillPill key={index}>{skill}</SkillPill>
                                 )
                             })}
                         </div>
