@@ -11,6 +11,7 @@ import { faBookOpen } from "@fortawesome/free-solid-svg-icons"
 import { colours } from "../styles/variables"
 import Page from "../components/layouts/page"
 import SkillPill from "../components/skillPill"
+import ClearFix from "../components/clearfix"
 
 import personalProjectsData from "../data/personal-projects.json"
 
@@ -50,11 +51,6 @@ const BlogButton = styled.a`
 
 const link = css`
     float: right;
-`
-
-const ClearFix = styled.div`
-    float: none;
-    clear: both;
 `
 
 const headerJsx = (
