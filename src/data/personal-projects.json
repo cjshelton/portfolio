@@ -1,0 +1,19 @@
+{
+    "projects": [
+        {
+            "name": "ASP.NET Core Dependency Tools",
+            "tags": [
+                ".NET Core",
+                "ASP.NET Core",
+                ".NET Standard",
+                "IoC",
+                "NuGet",
+                "Azure DevOps",
+                "Cross Platform"
+            ],
+            "description": "<p class=\"section\">A set of .NET Standard libraries for working with web dependencies in ASP.NET Core, published to NuGet using Azure Dev Ops.</p><p class=\"section\">The first tool is the Web Dependency Validator, which aims to verify that all dependencies in the dependency chain of ASP.NET controllers have been set up in the Inversion of Control (IoC) container. It stops app execution shortly after running and logs an error to make it easier to identify dependency problems, which is more helpful than the app starting, but then throwing an error when HTTP requests are made to the app.</p>",
+            "githubURL": "https://github.com/cjshelton/aspnetcore-dependency-tools",
+            "blogURL": "https://cjshelton.github.io/blog/2019/04/30/publishing-to-nuget-using-azure.html"
+        }
+    ]
+}

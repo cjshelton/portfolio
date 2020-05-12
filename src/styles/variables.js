@@ -6,6 +6,11 @@ export const colours = {
     primaryDark: "#121A21",
     primaryTextLight: "#FFFFFF",
     primaryTextDark: "#121A21",
+
+    githubIcon: "#2FBD50",
+    githubIconLight: "#5CD678",
+    blogIcon: "#660000",
+    blogIconLight: "#990000",
 }
 
 export const fonts = {
