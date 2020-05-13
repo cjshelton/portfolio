@@ -28,9 +28,12 @@ const additionalCoreSkillText = css`
 `
 
 const ExperienceEntry = styled.div`
-    border-left: 5px solid ${colours.primary};
     margin-bottom: 20px;
     margin-left: 10px;
+    padding: 10px 0;
+
+    background-color: ${colours.primaryLight};
+    border-left: 5px solid ${colours.primary};
 
     .experience-company {
         font-size: 20px;
