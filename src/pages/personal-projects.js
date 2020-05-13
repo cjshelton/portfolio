@@ -1,6 +1,5 @@
 import React from "react"
 import { css } from "@emotion/core"
-import styled from "@emotion/styled"
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -26,31 +25,47 @@ const baseLinkStyle = css`
     font-size: 12px;
     padding: 3px;
     border-radius: 5px;
-`
-
-const GitHubButton = styled.a`
-    ${baseLinkStyle}
-    background-color: ${colours.githubIcon};
-    color: white;
-
-    &:hover {
-        background-color: ${colours.githubIconLight};
-    }
-`
-
-const BlogButton = styled.a`
-    ${baseLinkStyle}
-    background-color: ${colours.blogIcon};
-    color: white;
-    margin-right: 5px;
-
-    &:hover {
-        background-color: ${colours.blogIconLight};
-    }
-`
-
-const link = css`
     float: right;
+`
+
+const GetGitHubLinkStyle = isActiveLink => {
+    const activeLinkStyles = css`
+        &:hover {
+            background-color: ${colours.githubIconLight};
+        }
+    `
+
+    return css`
+        ${baseLinkStyle}
+        background-color: ${colours.githubIcon};
+        color: white;
+
+        ${isActiveLink ? activeLinkStyles : ""}
+    `
+}
+
+const GetBlogLinkStyle = isActiveLink => {
+    const activeLinkStyles = css`
+        &:hover {
+            background-color: ${colours.blogIconLight};
+        }
+    `
+
+    return css`
+        ${baseLinkStyle}
+        background-color: ${colours.blogIcon};
+        color: white;
+        margin-right: 5px;
+
+        ${isActiveLink ? activeLinkStyles : ""}
+    `
+}
+const linksLegend = css`
+    background-color: ${colours.primaryLight};
+    padding: 20px;
+    height: 100px;
+    margin-bottom: 30px;
+    border-radius: 5px;
 `
 
 const headerJsx = (
@@ -69,13 +84,25 @@ const contentJsx = (
             <p className="section">
                 I spend some of my personal time working on personal and side
                 projects. This allows me to learn new skills and work with
-                different technologies than my day-to-day job requires.
+                different technologies than my day-to-day job requires. Below
+                are some examples of what I&apos;ve been working on.
             </p>
-            <p className="section">
-                Below are some examples of what I&apos;ve been working on. Where
-                possible, I have linked the GitHub repository links and public
-                URLs.
-            </p>
+            <div css={linksLegend}>
+                <p className="section">
+                    Where available, I have added the following links to each
+                    project:
+                </p>
+                <div css={GetGitHubLinkStyle(false)} href="#">
+                    <FontAwesomeIcon icon={faGithub} /> View Source
+                </div>
+                <div css={GetBlogLinkStyle(false)} href="#">
+                    <FontAwesomeIcon icon={faBookOpen} /> View Article
+                </div>
+                <div css={GetGitHubLinkStyle(false)} href="#">
+                    <FontAwesomeIcon icon={faBookOpen} /> Visit Site
+                </div>
+                <ClearFix />
+            </div>
         </section>
         {personalProjectsData.projects.map(
             ({ name, tags, description, githubURL, blogURL }, index) => {
@@ -88,16 +115,19 @@ const contentJsx = (
                         <h1 className="section-header">{name}</h1>
                         <div className="section">
                             {githubURL && (
-                                <GitHubButton css={link} href={githubURL}>
+                                <a
+                                    css={GetGitHubLinkStyle(true)}
+                                    href={githubURL}
+                                >
                                     <FontAwesomeIcon icon={faGithub} /> View
                                     Source
-                                </GitHubButton>
+                                </a>
                             )}
                             {blogURL && (
-                                <BlogButton css={link} href={blogURL}>
+                                <a css={GetBlogLinkStyle(true)} href={blogURL}>
                                     <FontAwesomeIcon icon={faBookOpen} /> View
                                     Article
-                                </BlogButton>
+                                </a>
                             )}
 
                             <ClearFix />
