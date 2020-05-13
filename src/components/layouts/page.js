@@ -93,6 +93,8 @@ const PageContent = styled.div`
     }
 
     .section-block {
+        margin-bottom: 20px;
+
         .section-header {
             font-size: 24px;
             margin-bottom: 10px;

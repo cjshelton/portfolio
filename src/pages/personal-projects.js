@@ -1,6 +1,5 @@
 import React from "react"
 import { css } from "@emotion/core"
-import styled from "@emotion/styled"
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css"
