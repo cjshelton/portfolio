@@ -11,6 +11,8 @@ export const colours = {
     githubIconLight: "#5CD678",
     blogIcon: "#660000",
     blogIconLight: "#990000",
+    liveSiteIcon: "#0D77E1",
+    liveSiteIconLight: "#56a6f5",
 }
 
 export const fonts = {

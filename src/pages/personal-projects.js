@@ -1,11 +1,13 @@
 import React from "react"
 import { css } from "@emotion/core"
+import styled from "@emotion/styled"
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons"
+import { faGlobe } from "@fortawesome/free-solid-svg-icons"
 
 import { colours } from "../styles/variables"
 import Page from "../components/layouts/page"
@@ -23,7 +25,7 @@ const seo = {
 
 const baseLinkStyle = css`
     font-size: 12px;
-    padding: 3px;
+    padding: 3px 5px;
     border-radius: 5px;
     float: right;
 `
@@ -49,6 +51,21 @@ const BlogLinkStyle = css`
     }
 `
 
+const LiveSiteLinkStyle = css`
+    ${baseLinkStyle}
+    background-color: ${colours.liveSiteIcon};
+    color: white;
+    margin-right: 5px;
+
+    &:hover {
+        background-color: ${colours.liveSiteIconLight};
+    }
+`
+
+const PersonalProjectEntry = styled.section`
+    margin-bottom: 30px;
+`
+
 const headerJsx = (
     <div>
         <h1>Personal Projects</h1>
@@ -70,13 +87,16 @@ const contentJsx = (
             </p>
         </section>
         {personalProjectsData.projects.map(
-            ({ name, tags, description, githubURL, blogURL }, index) => {
+            (
+                { name, tags, description, githubURL, blogURL, liveSiteURL },
+                index
+            ) => {
                 const htmlDescription = {
                     __html: description,
                 }
 
                 return (
-                    <section key={index}>
+                    <PersonalProjectEntry key={index}>
                         <h1 className="section-header">{name}</h1>
                         <div className="section">
                             {githubURL && (
@@ -91,6 +111,11 @@ const contentJsx = (
                                     Article
                                 </a>
                             )}
+                            {liveSiteURL && (
+                                <a css={LiveSiteLinkStyle} href={liveSiteURL}>
+                                    <FontAwesomeIcon icon={faGlobe} /> View Site
+                                </a>
+                            )}
 
                             <ClearFix />
                         </div>
@@ -103,7 +128,7 @@ const contentJsx = (
                                 )
                             })}
                         </div>
-                    </section>
+                    </PersonalProjectEntry>
                 )
             }
         )}
