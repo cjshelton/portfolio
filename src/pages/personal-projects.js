@@ -28,44 +28,25 @@ const baseLinkStyle = css`
     float: right;
 `
 
-const GetGitHubLinkStyle = isActiveLink => {
-    const activeLinkStyles = css`
-        &:hover {
-            background-color: ${colours.githubIconLight};
-        }
-    `
+const GitHubLinkStyle = css`
+    ${baseLinkStyle}
+    background-color: ${colours.githubIcon};
+    color: white;
 
-    return css`
-        ${baseLinkStyle}
-        background-color: ${colours.githubIcon};
-        color: white;
+    &:hover {
+        background-color: ${colours.githubIconLight};
+    }
+`
 
-        ${isActiveLink ? activeLinkStyles : ""}
-    `
-}
+const BlogLinkStyle = css`
+    ${baseLinkStyle}
+    background-color: ${colours.blogIcon};
+    color: white;
+    margin-right: 5px;
 
-const GetBlogLinkStyle = isActiveLink => {
-    const activeLinkStyles = css`
-        &:hover {
-            background-color: ${colours.blogIconLight};
-        }
-    `
-
-    return css`
-        ${baseLinkStyle}
-        background-color: ${colours.blogIcon};
-        color: white;
-        margin-right: 5px;
-
-        ${isActiveLink ? activeLinkStyles : ""}
-    `
-}
-const linksLegend = css`
-    background-color: ${colours.primaryLight};
-    padding: 20px;
-    height: 100px;
-    margin-bottom: 30px;
-    border-radius: 5px;
+    &:hover {
+        background-color: ${colours.blogIconLight};
+    }
 `
 
 const headerJsx = (
@@ -87,22 +68,6 @@ const contentJsx = (
                 different technologies than my day-to-day job requires. Below
                 are some examples of what I&apos;ve been working on.
             </p>
-            <div css={linksLegend}>
-                <p className="section">
-                    Where available, I have added the following links to each
-                    project:
-                </p>
-                <div css={GetGitHubLinkStyle(false)} href="#">
-                    <FontAwesomeIcon icon={faGithub} /> View Source
-                </div>
-                <div css={GetBlogLinkStyle(false)} href="#">
-                    <FontAwesomeIcon icon={faBookOpen} /> View Article
-                </div>
-                <div css={GetGitHubLinkStyle(false)} href="#">
-                    <FontAwesomeIcon icon={faBookOpen} /> Visit Site
-                </div>
-                <ClearFix />
-            </div>
         </section>
         {personalProjectsData.projects.map(
             ({ name, tags, description, githubURL, blogURL }, index) => {
@@ -115,16 +80,13 @@ const contentJsx = (
                         <h1 className="section-header">{name}</h1>
                         <div className="section">
                             {githubURL && (
-                                <a
-                                    css={GetGitHubLinkStyle(true)}
-                                    href={githubURL}
-                                >
+                                <a css={GitHubLinkStyle} href={githubURL}>
                                     <FontAwesomeIcon icon={faGithub} /> View
                                     Source
                                 </a>
                             )}
                             {blogURL && (
-                                <a css={GetBlogLinkStyle(true)} href={blogURL}>
+                                <a css={BlogLinkStyle} href={blogURL}>
                                     <FontAwesomeIcon icon={faBookOpen} /> View
                                     Article
                                 </a>
