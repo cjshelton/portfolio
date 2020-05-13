@@ -92,29 +92,31 @@ const PageContent = styled.div`
         padding: 20px 20px;
     }
 
-    .section-header {
-        font-size: 24px;
-        margin-bottom: 10px;
-        background-color: ${colours.primary};
-        color: ${colours.primaryTextLight};
-        padding: 4px 8px;
+    .section-block {
+        .section-header {
+            font-size: 24px;
+            margin-bottom: 10px;
+            background-color: ${colours.primary};
+            color: ${colours.primaryTextLight};
+            padding: 4px 8px;
 
-        &::before {
-            content: "// ";
+            &::before {
+                content: "// ";
+            }
+
+            @media (max-width: ${sizes.xSmall}) {
+                font-size: 5vw;
+            }
         }
 
-        @media (max-width: ${sizes.xSmall}) {
-            font-size: 5vw;
-        }
-    }
+        .section-text {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 0 10px;
 
-    .section {
-        font-size: 16px;
-        margin-bottom: 10px;
-        padding: 0 10px;
-
-        @media (max-width: ${sizes.xSmall}) {
-            font-size: 4vw;
+            @media (max-width: ${sizes.xSmall}) {
+                font-size: 4vw;
+            }
         }
     }
 `

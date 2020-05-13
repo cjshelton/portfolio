@@ -62,10 +62,6 @@ const LiveSiteLinkStyle = css`
     }
 `
 
-const PersonalProjectEntry = styled.section`
-    margin-bottom: 30px;
-`
-
 const headerJsx = (
     <div>
         <h1>Personal Projects</h1>
@@ -78,8 +74,8 @@ const headerJsx = (
 
 const contentJsx = (
     <div>
-        <section>
-            <p className="section">
+        <section className="section-block">
+            <p className="section-text">
                 I spend some of my personal time working on personal and side
                 projects. This allows me to learn new skills and work with
                 different technologies than my day-to-day job requires. Below
@@ -96,9 +92,9 @@ const contentJsx = (
                 }
 
                 return (
-                    <PersonalProjectEntry key={index}>
+                    <section className="section-block" key={index}>
                         <h1 className="section-header">{name}</h1>
-                        <div className="section">
+                        <div className="section-text">
                             {githubURL && (
                                 <a css={GitHubLinkStyle} href={githubURL}>
                                     <FontAwesomeIcon icon={faGithub} /> View
@@ -121,14 +117,14 @@ const contentJsx = (
                         </div>
                         {/* dangerouslySetInnerHTML is safe to use here as the description content is static. */}
                         <div dangerouslySetInnerHTML={htmlDescription}></div>
-                        <div className="section">
+                        <div className="section-text">
                             {tags.map((skill, index) => {
                                 return (
                                     <SkillPill key={index}>{skill}</SkillPill>
                                 )
                             })}
                         </div>
-                    </PersonalProjectEntry>
+                    </section>
                 )
             }
         )}
