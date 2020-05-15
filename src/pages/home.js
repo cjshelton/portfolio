@@ -105,7 +105,7 @@ const contentSection = (
             </p>
             <p className="section-text">
                 I&apos;m not a total techie &mdash; I also have a keen interest
-                sports, video games, theatre and cooking.
+                in sports, video games, theatre and cooking.
             </p>
         </section>
     </div>
