@@ -55,6 +55,21 @@
                 "CI/CD"
             ],
             "description": "<p class=\"section-text\">I challenged myself a few years ago &mdash; when I had little experience in true front-end development &mdash; to create a static site from scratch for a local amateur dramatics group which I have been a member of for over 20 years. The group had an existing site, but it was dated and not maintained.</p><p class=\"section-text\">I made the decision to stick to more traditional methods &mdash; simple HTML, SCSS, some JS, and Gulp to manage my workflow. I thought using one of the latest JS frameworks would get in the way of a good opportunity to focus more on the fundamentals of the web.</p><p class=\"section-text\">The site is still in use today. It&apos;s well written, and it&apos;s setup with automated CI/CD, so changes are relatively pain-free. On reflection, the site is a perfect candidate to be written with something like Gatsby, and a headless CMS for data which operates on JSON and Markdown files. However, the cost far outweighs the benefit of a re-write, so I&apos;ll be leaving things as they are for the time being.</p>"
+        },
+        {
+            "name": "Home Dashboard App",
+            "tags": [
+                "ASP.NET Core WebAPI",
+                "HTML",
+                "CSS",
+                "Vue",
+                "Xamarin",
+                "Google Cloud Firestore",
+                "Web Sockets",
+                "SignalR",
+                "Raspberry Pi"
+            ],
+            "description": "<p class=\"section-text\">I wanted to be able to use a tablet as a central view and management tool for day-to-day activities and general things around my house. It&apos;s useful to have common things in one view, like the local weather.</p><p class=\"section-text\">I created a web application using Vue and ASP.NET Core WebAPI, and hosted it on my Raspberry Pi (some of the features required a LAN connection so cloud hosting wasn&apos;t an option). For data storage, I chose a Google Firestore document database &mdash; I wanted something cloud-hosted and free for basic use. I needed the app to work in real-time, feeding live updates to the browser without needing to refresh the page; SignalR seemed like the obvious choice. To get the app onto the tablet, I created a single-page Xamarin Forms app which rendered the site in a WebView &mdash; it didn&apos;t seem worth it to create the app natively. I wanted to strengthen my Vue skills and also have the flexibility of viewing the app on other devices.</p>"
         }
     ]
 }
