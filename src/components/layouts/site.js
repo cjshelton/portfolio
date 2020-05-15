@@ -23,8 +23,11 @@ const navbarContainer = css`
 const sidebarContainer = css`
     height: 100%;
     width: 30%;
-    max-width: 400px;
     position: fixed;
+
+    @media (min-width: ${sizes.large}) {
+        width: 400px;
+    }
 
     @media (max-width: ${sizes.medium}) {
         display: none;
@@ -33,7 +36,11 @@ const sidebarContainer = css`
 
 const content = css`
     flex-grow: 1;
-    margin-left: min(400px, 30%);
+    margin-left: 30%;
+
+    @media (min-width: ${sizes.large}) {
+        margin-left: 400px;
+    }
 
     @media (max-width: ${sizes.medium}) {
         margin-left: 0;
