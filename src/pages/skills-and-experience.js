@@ -6,6 +6,7 @@ import { sizes, colours } from "../styles/variables"
 import Page from "../components/layouts/page"
 import UolLogo from "../components/uol-logo"
 import TechLogo from "../components/tech-logo"
+import SkillPill from "../components/skillPill"
 
 import experienceData from "../data/experience.json"
 
@@ -21,33 +22,18 @@ const uolLogoContainer = css`
     margin: 20px auto;
 `
 
-const skillPill = css`
-    display: inline-block;
-    vertical-align: middle;
-    white-space: nowrap;
-    margin: 2px 3px;
-    padding: 2px 4px;
-    border-radius: 5px;
-
-    font-size: 14px;
-
-    @media (max-width: ${sizes.xSmall}) {
-        font-size: 3.5vw;
-    }
-
-    background-color: ${colours.primaryMediumLight};
-    color: ${colours.primaryTextLight};
-`
-
 const additionalCoreSkillText = css`
     display: inline-block;
     vertical-align: middle;
 `
 
 const ExperienceEntry = styled.div`
-    border-left: 5px solid ${colours.primary};
     margin-bottom: 20px;
     margin-left: 10px;
+    padding: 10px 0;
+
+    background-color: ${colours.primaryLight};
+    border-left: 5px solid ${colours.primary};
 
     .experience-company {
         font-size: 20px;
@@ -110,18 +96,18 @@ const headerJsx = (
 
 const contentJsx = (
     <div>
-        <section>
+        <section className="section-block">
             <h1 className="section-header">Education</h1>
             <div css={uolLogoContainer}>
                 <UolLogo></UolLogo>
             </div>
-            <p className="section">
+            <p className="section-text">
                 I proudly graduated from The University of Leeds in 2016, with a
                 First-class (Hons) in Computer Science. I also received an award
                 for academic excellence two years in a row during my time at
                 University.
             </p>
-            <p className="section">
+            <p className="section-text">
                 I thoroughly enjoyed my degree. I enjoyed the challenges it
                 presented, and the opportunities it has given me for my future.
                 I worked hard, and it paid off, and that has enabled me to do
@@ -129,7 +115,7 @@ const contentJsx = (
                 hobby.
             </p>
         </section>
-        <section>
+        <section className="section-block">
             <h1 className="section-header">Professional Experience</h1>
             {experienceData.timeline.map(
                 ({ company, title, period, description }, index) => {
@@ -139,15 +125,15 @@ const contentJsx = (
                                 {company}, {period}
                             </h2>
                             <h3 className="experience-title">{title}</h3>
-                            <p className="section">{description}</p>
+                            <p className="section-text">{description}</p>
                         </ExperienceEntry>
                     )
                 }
             )}
         </section>
-        <section>
+        <section className="section-block">
             <h1 className="section-header">Core Skills</h1>
-            <p className="section">
+            <p className="section-text">
                 Below are some examples of my core skills which I am competent
                 in.
             </p>
@@ -167,36 +153,28 @@ const contentJsx = (
                     }
                 )}
             </SkillsList>
-            <div className="section">
+            <div className="section-text">
                 <div css={additionalCoreSkillText}>
                     This list is not exhaustive — I also have extensive
                     experience with
                 </div>
                 {experienceData.additionalCoreSkills.map((skill, index) => {
-                    return (
-                        <div css={skillPill} key={index}>
-                            {skill}
-                        </div>
-                    )
+                    return <SkillPill key={index}>{skill}</SkillPill>
                 })}
                 <div css={additionalCoreSkillText}>and more&hellip;</div>
             </div>
         </section>
-        <section>
+        <section className="section-block">
             <h1 className="section-header">Other Skills</h1>
-            <p className="section">
+            <p className="section-text">
                 I also spend time outside of work on personal and side projects
                 which helps me up-skill in other technical areas. Below are some
                 of the skills I am less experienced in, but contribute to my
                 abilities as a well-rounded software engineer.
             </p>
-            <div className="section">
+            <div className="section-text">
                 {experienceData.otherSkills.map((skill, index) => {
-                    return (
-                        <div css={skillPill} key={index}>
-                            {skill}
-                        </div>
-                    )
+                    return <SkillPill key={index}>{skill}</SkillPill>
                 })}
             </div>
         </section>
