@@ -20,6 +20,7 @@ export const fonts = {
 }
 
 export const sizes = {
+    large: "1400px",
     medium: "900px",
     small: "650px",
     xSmall: "500px",
