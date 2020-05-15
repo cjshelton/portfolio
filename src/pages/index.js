@@ -68,7 +68,7 @@ const IndexPage = () => (
                 <span css={pageStyles.bold}> ASP.NET Core</span> and
                 <span css={pageStyles.bold}> Node.js</span>
             </p>
-            <Button medium className="view-portfolio-button" to="/home">
+            <Button mediumLight className="view-portfolio-button" to="/home">
                 <FontAwesomeIcon icon={faChevronCircleRight} /> View Portfolio
             </Button>
         </Content>

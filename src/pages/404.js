@@ -84,7 +84,7 @@ const NotFoundPage = () => (
             <p className="message">
                 Oops! The page you requested does not exist.
             </p>
-            <Button className="home-button" medium to="/home">
+            <Button className="home-button" mediumLight to="/home">
                 Home
             </Button>
         </Content>

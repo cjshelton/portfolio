@@ -44,7 +44,7 @@ const mediumLightStyles = css`
     box-shadow: 3px 3px 2px ${colours.primaryDark};
 
     &:hover {
-        background-color: ${colours.primaryLight};
+        background-color: ${colours.primaryMediumDark};
     }
 `
 
