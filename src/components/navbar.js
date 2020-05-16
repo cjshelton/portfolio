@@ -148,6 +148,7 @@ const Navbar = ({ page }) => {
                 <button
                     className={isMenuOpen ? "menu-button" : ""}
                     onClick={() => toggleMenu(!isMenuOpen)}
+                    aria-label="Toggle nav menu"
                 >
                     {!isMenuOpen && <FontAwesomeIcon icon={faBars} />}
                     {isMenuOpen && <FontAwesomeIcon icon={faTimes} />}
