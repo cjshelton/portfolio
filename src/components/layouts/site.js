@@ -69,7 +69,7 @@ export default ({ page, children }) => (
         <div css={sidebarContainer}>
             <Sidebar page={page}></Sidebar>
         </div>
-        <div css={content}>{children}</div>
+        <main css={content}>{children}</main>
         <div css={footer}>
             <Footer></Footer>
         </div>
