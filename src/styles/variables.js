@@ -7,12 +7,12 @@ export const colours = {
     primaryTextLight: "#FFFFFF",
     primaryTextDark: "#121A21",
 
-    githubIcon: "#2FBD50",
-    githubIconLight: "#5CD678",
+    githubIcon: "#000000",
+    githubIconLight: "#333333",
     blogIcon: "#660000",
     blogIconLight: "#990000",
-    liveSiteIcon: "#0D77E1",
-    liveSiteIconLight: "#56a6f5",
+    liveSiteIcon: "#0B66C1",
+    liveSiteIconLight: "#0E80F1",
 }
 
 export const fonts = {
