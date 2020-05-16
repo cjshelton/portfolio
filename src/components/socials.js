@@ -61,7 +61,10 @@ const Socials = () => {
 
     return (
         <div>
-            <a href={data.site.siteMetadata.socials.github}>
+            <a
+                href={data.site.siteMetadata.socials.github}
+                aria-label="Github profile"
+            >
                 <Img
                     fluid={data.gitHubImage.childImageSharp.fluid}
                     alt="GitHub logo"
@@ -69,7 +72,10 @@ const Socials = () => {
                 />
             </a>
 
-            <a href={data.site.siteMetadata.socials.linkedIn}>
+            <a
+                href={data.site.siteMetadata.socials.linkedIn}
+                aria-label="LinkedIn profile"
+            >
                 <Img
                     fluid={data.linkedInImage.childImageSharp.fluid}
                     alt="LinkedIn logo"
@@ -77,7 +83,7 @@ const Socials = () => {
                     style={{ marginLeft: "10px" }}
                 />
             </a>
-            <a href="mailto:cjshelton@outlook.com">
+            <a href="mailto:cjshelton@outlook.com" aria-label="Email me">
                 <div css={socialIcon} style={{ marginLeft: "10px" }}>
                     <FontAwesomeIcon icon={faEnvelope} />
                 </div>
