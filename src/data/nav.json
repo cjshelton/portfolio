@@ -17,6 +17,7 @@
     {
         "name": "Tech Blog",
         "link": "https://cjshelton.github.io/blog",
-        "order": 4
+        "order": 4,
+        "isExternal": true
     }
 ]

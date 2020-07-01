@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 import { colours } from "../styles/variables"
 import navData from "../data/nav.json"
@@ -37,12 +38,18 @@ const Nav = ({ page }) => (
     <nav>
         <List>
             {navData.map((data, index) => {
+                const linkComponent = data.isExternal ? (
+                    <a href={data.link}>{data.name}</a>
+                ) : (
+                    <Link to={data.link}>{data.name}</Link>
+                )
+
                 return (
                     <li
                         key={`nav_item_${index}`}
                         className={page === data.name ? "current" : ""}
                     >
-                        <a href={data.link}>{data.name}</a>
+                        {linkComponent}
                     </li>
                 )
             })}

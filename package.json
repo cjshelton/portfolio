@@ -1,9 +1,9 @@
 {
-    "name": "gatsby-starter-default",
+    "name": "portfolio",
     "private": true,
-    "description": "A simple starter to get up and developing quickly with Gatsby",
-    "version": "0.1.0",
-    "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+    "description": "My personal Portfolio, outlining my skills and experience as a software engineer.",
+    "version": "1.0.0",
+    "author": "Chris Shelton",
     "dependencies": {
         "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.27",
