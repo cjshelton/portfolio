@@ -81,6 +81,7 @@ const Button = ({
     className,
     children,
     to,
+    onClick,
 }) => {
     let themeStyles
     if (white) themeStyles = whiteStyles
@@ -98,7 +99,7 @@ const Button = ({
         )
     } else {
         return (
-            <button css={themeStyles} className={className}>
+            <button css={themeStyles} className={className} onClick={onClick}>
                 {children}
             </button>
         )
