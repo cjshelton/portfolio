@@ -1,10 +1,15 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
 import { colours, sizes } from "../styles/variables"
 
 import Button from "../components/btn"
+
+// Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCookieBite } from "@fortawesome/free-solid-svg-icons"
 
 const cookieBanner = css`
     position: fixed;
@@ -35,6 +40,11 @@ const TextContainer = styled.div`
     flex: 1 0 0;
     margin: 10px 0;
 
+    .acceptance-message {
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
     @media (max-width: ${sizes.xSmall}) {
         font-size: 3vw;
     }
@@ -52,47 +62,95 @@ const ButtonContainer = styled.div`
     }
 `
 
+const acceptCookieName = "accept-ga-tracking"
+const rejectCookieName = "reject-ga-tracking"
+
+function generateLongLivingCookieString(cookieName) {
+    return `${cookieName}=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/`
+}
+
+const GOOGLE_ANALYTICS_TRACKING_ID = "UA-112232176-2"
+const GOOGLE_ANALYTICS_DISABLE_KEY = `ga-disable-${GOOGLE_ANALYTICS_TRACKING_ID}`
+
+function startGoogleAnalyticsTracking() {
+    // Ensure this is false so GA tracking is enabled.
+    window[GOOGLE_ANALYTICS_DISABLE_KEY] = false
+
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+        window.dataLayer.push(arguments)
+    }
+
+    // Only start tracking if the user has explicitly accepted the cookie usage.
+    gtag("js", new Date())
+    gtag("config", GOOGLE_ANALYTICS_TRACKING_ID)
+}
+
 const CookieBanner = () => {
-    const [isDisplayed, setIsDisplayed] = useState(true)
+    const [isDisplayed, setIsDisplayed] = useState(false)
+
+    useEffect(() => {
+        // Check if the user has previously accepted or rejected the GA tracking cookies.
+        if (document.cookie.indexOf(acceptCookieName + "=true") > -1) {
+            // Explicitly enable GA tracking.
+            window[GOOGLE_ANALYTICS_DISABLE_KEY] = false
+            startGoogleAnalyticsTracking()
+
+            setIsDisplayed(false)
+        } else if (document.cookie.indexOf(rejectCookieName + "=true") > -1) {
+            // Explicitly disable GA tracking (this is unnecessary since GA tracking is never initiated),
+            // but worth being explicit.
+            window[GOOGLE_ANALYTICS_DISABLE_KEY] = true
+
+            setIsDisplayed(false)
+        } else {
+            // Otherwise, the user has never made a choice, so show the banner, but don't start tracking.
+            window[GOOGLE_ANALYTICS_DISABLE_KEY] = true
+            setIsDisplayed(true)
+        }
+    }, [])
 
     function rejectCookies() {
-        // Google Analytics will not send data if this Window property is set to true.
-        window["ga-disable-UA-112232176-2"] = true
+        const optOutCookie = generateLongLivingCookieString(rejectCookieName)
+        document.cookie = optOutCookie
 
-        alert("rejected")
+        window[GOOGLE_ANALYTICS_DISABLE_KEY] = true
+
         setIsDisplayed(false)
     }
 
     function acceptCookies() {
-        // Ensure the Window property is false so that Google Analytics will send data.
-        window["ga-disable-UA-112232176-2"] = false
+        const optInCookie = generateLongLivingCookieString(acceptCookieName)
+        document.cookie = optInCookie
 
-        window.dataLayer = window.dataLayer || []
-        function gtag() {
-            window.dataLayer.push(arguments)
-        }
+        startGoogleAnalyticsTracking()
 
-        // Only start tracking if the user has explicitly accepted the cookie usage.
-        gtag("js", new Date())
-        gtag("config", "UA-112232176-2")
-
-        alert("accepted!")
         setIsDisplayed(false)
     }
 
     if (isDisplayed) {
         return (
             <div css={cookieBanner}>
-                <Header>Cookie Preferences</Header>
+                <Header>
+                    <FontAwesomeIcon icon={faCookieBite} /> Cookie Preferences
+                </Header>
                 <TextContainer>
                     <p>
-                        This site uses third-party cookies provided by Google
-                        Analytics to understand how you use the site and how it
-                        can be improved to provide a better experience.
+                        This site uses cookies to understand how you use the
+                        site and how it can be improved to provide a better
+                        experience.
                     </p>
                     <p>
+                        Some cookies are required, and by continuing to browse
+                        this site, you are accepting the use of these required
+                        cookies. Some cookies provided by Google Analytics are
+                        optional, and you are free to opt-out of them being
+                        used.
+                    </p>
+                    <p className="acceptance-message">
                         Please indicate below whether you accept the use of
-                        Google Analytics cookies whilst you visit this site.
+                        optional Google Analytics cookies whilst you visit this
+                        site.
                     </p>
                 </TextContainer>
 
