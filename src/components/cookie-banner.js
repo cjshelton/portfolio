@@ -39,6 +39,7 @@ const Header = styled.h1`
 const TextContainer = styled.div`
     flex: 1 0 0;
     margin: 10px 0;
+    font-size: 16px;
 
     .acceptance-message {
         margin-top: 10px;
@@ -143,7 +144,7 @@ const CookieBanner = () => {
                     <p>
                         Some cookies are required, and by continuing to browse
                         this site, you are accepting the use of these required
-                        cookies. Some cookies provided by Google Analytics are
+                        cookies. Some cookies, provided by Google Analytics, are
                         optional, and you are free to opt-out of them being
                         used.
                     </p>
