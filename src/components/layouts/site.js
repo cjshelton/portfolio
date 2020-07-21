@@ -9,6 +9,8 @@ import Footer from "../footer"
 import globalStyles from "../../styles/global"
 import { sizes, colours } from "../../styles/variables"
 
+import CookieBanner from "../cookie-banner"
+
 const SiteContainer = styled.div`
     height: 100%;
     width: 100%;
@@ -73,5 +75,6 @@ export default ({ page, children }) => (
         <div css={footer}>
             <Footer></Footer>
         </div>
+        <CookieBanner />
     </SiteContainer>
 )
