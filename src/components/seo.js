@@ -68,7 +68,12 @@ function SEO({ description, lang, meta, title }) {
                     content: metaDescription,
                 },
             ].concat(meta)}
-        />
+        >
+            <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=UA-112232176-2"
+            ></script>
+        </Helmet>
     )
 }
 

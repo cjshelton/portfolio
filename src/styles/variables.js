@@ -7,6 +7,8 @@ export const colours = {
     primaryTextLight: "#FFFFFF",
     primaryTextDark: "#121A21",
 
+    white: "#FFFFFF",
+
     githubIcon: "#000000",
     githubIconLight: "#333333",
     blogIcon: "#660000",

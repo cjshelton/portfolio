@@ -11,6 +11,7 @@ import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free
 import Image from "../components/image"
 import Button from "../components/btn"
 import Footer from "../components/footer"
+import CookieBanner from "../components/cookie-banner"
 
 import globalStyles from "../styles/global"
 import pageStyles from "../styles/index"
@@ -75,6 +76,7 @@ const IndexPage = () => (
         <FooterContainer>
             <Footer></Footer>
         </FooterContainer>
+        <CookieBanner />
     </Container>
 )
 
