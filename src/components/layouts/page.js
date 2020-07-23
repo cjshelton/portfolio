@@ -1,15 +1,19 @@
-import React from "react"
-import { Global } from "@emotion/core"
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
+import React from "react";
+import { Global } from "@emotion/core";
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 
-import SEO from "../../components/seo"
-import Layout from "../../components/layouts/site"
+import SEO from "../../components/seo";
+import Layout from "../../components/layouts/site";
 
-import globalStyles from "../../styles/global"
-import { sizes, colours } from "../../styles/variables"
+import globalStyles from "../../styles/global";
+import { sizes, colours } from "../../styles/variables";
 
-function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
+function getImageContainerStyles(
+    backgroundImageUrl,
+    initialBackgroundColour,
+    styles
+) {
     return css`
         width: 100%;
         min-height: 250px;
@@ -77,7 +81,9 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
             */
             z-index: 0;
         }
-    `
+
+        ${styles}
+    `;
 }
 
 const PageContent = styled.div`
@@ -94,13 +100,17 @@ const PageContent = styled.div`
 
     .section-block {
         margin-bottom: 20px;
+        color: ${colours.primaryTextDark};
+
+        h1 {
+            padding: 4px 8px;
+        }
 
         .section-header {
             font-size: 24px;
             margin-bottom: 10px;
             background-color: ${colours.primary};
             color: ${colours.primaryTextLight};
-            padding: 4px 8px;
 
             &::before {
                 content: "// ";
@@ -114,14 +124,17 @@ const PageContent = styled.div`
         .section-text {
             font-size: 16px;
             margin-bottom: 10px;
-            padding: 0 10px;
 
             @media (max-width: ${sizes.xSmall}) {
                 font-size: 4vw;
             }
         }
+
+        .section-content {
+            padding: 0 10px;
+        }
     }
-`
+`;
 
 export default ({
     header,
@@ -130,11 +143,13 @@ export default ({
     seo,
     backgroundImageUrl,
     initialBackgroundColour,
+    styles = {},
 }) => {
     const imageContainerStyles = getImageContainerStyles(
         backgroundImageUrl,
-        initialBackgroundColour
-    )
+        initialBackgroundColour,
+        styles
+    );
 
     return (
         <Layout page={page}>
@@ -147,5 +162,5 @@ export default ({
             </div>
             <PageContent>{content}</PageContent>
         </Layout>
-    )
-}
+    );
+};
