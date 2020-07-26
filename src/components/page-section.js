@@ -43,8 +43,20 @@ const DarkSectionHeading = styled.h1`
 const LightSectionHeading = styled.h1`
     ${BaseHeadingStyles}
 
+    padding: 4px 10px;
+
+    line-height: 24px;
+
     a {
         color: ${colours.primaryTextDark};
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @media (max-width: ${sizes.xSmall}) {
+        line-height: 5vw;
     }
 `;
 

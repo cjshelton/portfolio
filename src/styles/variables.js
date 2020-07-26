@@ -6,6 +6,7 @@ export const colours = {
     primaryDark: "#121A21",
     primaryTextLight: "#FFFFFF",
     primaryTextDark: "#121A21",
+    primaryTextMedium: "#486884",
 
     white: "#FFFFFF",
 
@@ -15,15 +16,15 @@ export const colours = {
     blogIconLight: "#990000",
     liveSiteIcon: "#0B66C1",
     liveSiteIconLight: "#0E80F1",
-}
+};
 
 export const fonts = {
     primary: `'Poppins', sans-serif;`,
-}
+};
 
 export const sizes = {
     large: "1400px",
     medium: "900px",
     small: "800px",
     xSmall: "500px",
-}
+};
