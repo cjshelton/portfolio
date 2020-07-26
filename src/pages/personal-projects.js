@@ -10,6 +10,7 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 import { colours } from "../styles/variables";
 import Page from "../components/layouts/page";
+import PageSection from "../components/page-section";
 import SkillPill from "../components/skillPill";
 import ClearFix from "../components/clearfix";
 
@@ -73,16 +74,14 @@ const headerJsx = (
 
 const contentJsx = (
     <div>
-        <section className="section-block">
-            <div className="section-content">
-                <p className="section-text">
-                    I spend some of my personal time working on personal and
-                    side projects. This allows me to learn new skills and work
-                    with different technologies than my day-to-day job requires.
-                    Below are some examples of what I&apos;ve been working on.
-                </p>
-            </div>
-        </section>
+        <PageSection>
+            <p className="section-text">
+                I spend some of my personal time working on personal and side
+                projects. This allows me to learn new skills and work with
+                different technologies than my day-to-day job requires. Below
+                are some examples of what I&apos;ve been working on.
+            </p>
+        </PageSection>
         {personalProjectsData.projects.map(
             (
                 { name, tags, description, githubURL, blogURL, liveSiteURL },
@@ -93,49 +92,38 @@ const contentJsx = (
                 };
 
                 return (
-                    <section className="section-block" key={index}>
-                        <h1 className="section-header">{name}</h1>
-                        <div className="section-content">
-                            <div className="section-text">
-                                {githubURL && (
-                                    <a css={GitHubLinkStyle} href={githubURL}>
-                                        <FontAwesomeIcon icon={faGithub} /> View
-                                        Source
-                                    </a>
-                                )}
-                                {blogURL && (
-                                    <a css={BlogLinkStyle} href={blogURL}>
-                                        <FontAwesomeIcon icon={faBookOpen} />{" "}
-                                        View Article
-                                    </a>
-                                )}
-                                {liveSiteURL && (
-                                    <a
-                                        css={LiveSiteLinkStyle}
-                                        href={liveSiteURL}
-                                    >
-                                        <FontAwesomeIcon icon={faGlobe} /> View
-                                        Site
-                                    </a>
-                                )}
+                    <PageSection key={index} heading={name}>
+                        <div className="section-text">
+                            {githubURL && (
+                                <a css={GitHubLinkStyle} href={githubURL}>
+                                    <FontAwesomeIcon icon={faGithub} /> View
+                                    Source
+                                </a>
+                            )}
+                            {blogURL && (
+                                <a css={BlogLinkStyle} href={blogURL}>
+                                    <FontAwesomeIcon icon={faBookOpen} /> View
+                                    Article
+                                </a>
+                            )}
+                            {liveSiteURL && (
+                                <a css={LiveSiteLinkStyle} href={liveSiteURL}>
+                                    <FontAwesomeIcon icon={faGlobe} /> View Site
+                                </a>
+                            )}
 
-                                <ClearFix />
-                            </div>
-                            {/* dangerouslySetInnerHTML is safe to use here as the description content is static. */}
-                            <div
-                                dangerouslySetInnerHTML={htmlDescription}
-                            ></div>
-                            <div className="section-text">
-                                {tags.map((skill, index) => {
-                                    return (
-                                        <SkillPill key={index}>
-                                            {skill}
-                                        </SkillPill>
-                                    );
-                                })}
-                            </div>
+                            <ClearFix />
                         </div>
-                    </section>
+                        {/* dangerouslySetInnerHTML is safe to use here as the description content is static. */}
+                        <div dangerouslySetInnerHTML={htmlDescription}></div>
+                        <div className="section-text">
+                            {tags.map((skill, index) => {
+                                return (
+                                    <SkillPill key={index}>{skill}</SkillPill>
+                                );
+                            })}
+                        </div>
+                    </PageSection>
                 );
             }
         )}

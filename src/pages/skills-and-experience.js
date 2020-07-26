@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 import { sizes, colours } from "../styles/variables";
 import Page from "../components/layouts/page";
+import PageSection from "../components/page-section";
 import UolLogo from "../components/uol-logo";
 import TechLogo from "../components/tech-logo";
 import SkillPill from "../components/skillPill";
@@ -93,99 +94,84 @@ const headerJsx = (
 
 const contentJsx = (
     <div>
-        <section className="section-block">
-            <h1 className="section-header">Education</h1>
-            <div className="section-content">
-                <div css={uolLogoContainer}>
-                    <UolLogo></UolLogo>
-                </div>
-                <p className="section-text">
-                    I proudly graduated from The University of Leeds in 2016,
-                    with a First-class (Hons) in Computer Science. I also
-                    received an award for academic excellence two years in a row
-                    during my time at University.
-                </p>
-                <p className="section-text">
-                    I thoroughly enjoyed my degree. I enjoyed the challenges it
-                    presented, and the opportunities it has given me for my
-                    future. I worked hard, and it paid off, and that has enabled
-                    me to do something as a job every day, which feels much more
-                    like a hobby.
-                </p>
+        <PageSection heading="Education">
+            <div css={uolLogoContainer}>
+                <UolLogo></UolLogo>
             </div>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Professional Experience</h1>
-            <div className="section-content">
-                {experienceData.timeline.map(
-                    ({ company, title, period, description }, index) => {
+            <p className="section-text">
+                I proudly graduated from The University of Leeds in 2016, with a
+                First-class (Hons) in Computer Science. I also received an award
+                for academic excellence two years in a row during my time at
+                University.
+            </p>
+            <p className="section-text">
+                I thoroughly enjoyed my degree. I enjoyed the challenges it
+                presented, and the opportunities it has given me for my future.
+                I worked hard, and it paid off, and that has enabled me to do
+                something as a job every day, which feels much more like a
+                hobby.
+            </p>
+        </PageSection>
+        <PageSection heading="Professional Experience">
+            {experienceData.timeline.map(
+                ({ company, title, period, description }, index) => {
+                    return (
+                        <ExperienceEntry key={index}>
+                            <h2 className="experience-company">
+                                {company}, {period}
+                            </h2>
+                            <h3 className="experience-title">{title}</h3>
+                            <p className="section-description">{description}</p>
+                        </ExperienceEntry>
+                    );
+                }
+            )}
+        </PageSection>
+        <PageSection heading="Core Skills">
+            <p className="section-text">
+                Below are some examples of my core skills which I am competent
+                in.
+            </p>
+            <SkillsList>
+                {experienceData.coreSkills.map(
+                    ({ name, imageSource, imageAltText }, index) => {
                         return (
-                            <ExperienceEntry key={index}>
-                                <h2 className="experience-company">
-                                    {company}, {period}
-                                </h2>
-                                <h3 className="experience-title">{title}</h3>
-                                <p className="section-description">
-                                    {description}
-                                </p>
-                            </ExperienceEntry>
+                            <SkillEntry key={index}>
+                                <div className="logo" title={name}>
+                                    <TechLogo
+                                        image={imageSource}
+                                        altText={imageAltText}
+                                    ></TechLogo>
+                                </div>
+                            </SkillEntry>
                         );
                     }
                 )}
-            </div>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Core Skills</h1>
-            <div className="section-content">
-                <p className="section-text">
-                    Below are some examples of my core skills which I am
-                    competent in.
-                </p>
-                <SkillsList>
-                    {experienceData.coreSkills.map(
-                        ({ name, imageSource, imageAltText }, index) => {
-                            return (
-                                <SkillEntry key={index}>
-                                    <div className="logo" title={name}>
-                                        <TechLogo
-                                            image={imageSource}
-                                            altText={imageAltText}
-                                        ></TechLogo>
-                                    </div>
-                                </SkillEntry>
-                            );
-                        }
-                    )}
-                </SkillsList>
-                <div className="section-text">
-                    <div css={additionalCoreSkillText}>
-                        This list is not exhaustive — I also have extensive
-                        experience with
-                    </div>
-                    {experienceData.additionalCoreSkills.map((skill, index) => {
-                        return <SkillPill key={index}>{skill}</SkillPill>;
-                    })}
-                    <div css={additionalCoreSkillText}>and more&hellip;</div>
+            </SkillsList>
+            <div className="section-text">
+                <div css={additionalCoreSkillText}>
+                    This list is not exhaustive — I also have extensive
+                    experience with
                 </div>
+                {experienceData.additionalCoreSkills.map((skill, index) => {
+                    return <SkillPill key={index}>{skill}</SkillPill>;
+                })}
+                <div css={additionalCoreSkillText}>and more&hellip;</div>
             </div>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Other Skills</h1>
-            <div className="section-content">
-                <p className="section-text">
-                    I also spend time outside of work on personal and side
-                    projects which helps me up-skill in other technical areas.
-                    Below are some of the skills I am less experienced in, but
-                    contribute to my abilities as a well-rounded software
-                    engineer.
-                </p>
-                <div className="section-text">
-                    {experienceData.otherSkills.map((skill, index) => {
-                        return <SkillPill key={index}>{skill}</SkillPill>;
-                    })}
-                </div>
+        </PageSection>
+        <PageSection heading="Other Skills">
+            <p className="section-text">
+                I also spend time outside of work on personal and side projects
+                which helps me up-skill in other technical areas. Below are some
+                of the skills I am less experienced in, but contribute to my
+                abilities as a well-rounded software engineer.
+            </p>
+            <div className="section-text">
+                {experienceData.otherSkills.map((skill, index) => {
+                    return <SkillPill key={index}>{skill}</SkillPill>;
+                })}
             </div>
-        </section>
+        </PageSection>
     </div>
 );
 
