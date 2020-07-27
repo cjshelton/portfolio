@@ -3,9 +3,9 @@ import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
-import PageSection from "../components/page-section";
 
 import { DarkHeadingStyles, BlogPublishDateStyles } from "../styles/shared";
+import { colours } from "../styles/variables";
 
 function getSEO(post) {
     return {
@@ -15,6 +15,15 @@ function getSEO(post) {
 }
 
 const BlogPost = styled.article`
+    a {
+        color: ${colours.primaryTextMedium};
+        text-decoration: underline;
+
+        &:hover {
+            color: ${colours.primaryTextMedium};
+        }
+    }
+
     h2 {
         ${DarkHeadingStyles}
     }
