@@ -24,6 +24,10 @@ const BlogPost = styled.article`
         }
     }
 
+    p {
+        margin-bottom: 12px;
+    }
+
     h2 {
         ${DarkHeadingStyles}
     }
