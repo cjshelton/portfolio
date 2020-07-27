@@ -38,6 +38,7 @@ module.exports = {
                     `gatsby-remark-prismjs`,
                     `gatsby-remark-copy-linked-files`,
                     `gatsby-remark-smartypants`,
+                    `gatsby-remark-attr`,
                 ],
             },
         },
@@ -74,4 +75,4 @@ module.exports = {
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
     ],
-}
+};

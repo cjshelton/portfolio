@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
 
 import { sizes, colours } from "../styles/variables";
+import { DarkHeadingStyles, LightHeadingStyles } from "../styles/shared";
 
 const Section = styled.section`
     margin-bottom: 20px;
@@ -18,46 +18,12 @@ const Section = styled.section`
     }
 `;
 
-const BaseHeadingStyles = css`
-    padding: 4px 8px;
-    margin-bottom: 10px;
-
-    font-size: 24px;
-
-    @media (max-width: ${sizes.xSmall}) {
-        font-size: 5vw;
-    }
-`;
-
 const DarkSectionHeading = styled.h1`
-    ${BaseHeadingStyles}
-
-    background-color: ${colours.primary};
-    color: ${colours.primaryTextLight};
-
-    &::before {
-        content: "// ";
-    }
+    ${DarkHeadingStyles}
 `;
 
 const LightSectionHeading = styled.h1`
-    ${BaseHeadingStyles}
-
-    padding: 4px 10px;
-
-    line-height: 24px;
-
-    a {
-        color: ${colours.primaryTextDark};
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    @media (max-width: ${sizes.xSmall}) {
-        line-height: 5vw;
-    }
+    ${LightHeadingStyles}
 `;
 
 const SectionContent = styled.div`
