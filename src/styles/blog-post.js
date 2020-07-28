@@ -39,4 +39,9 @@ export default css`
     h2 {
         ${DarkHeadingStyles}
     }
+
+    ul {
+        padding: 0 40px;
+        margin-bottom: 12px;
+    }
 `;
