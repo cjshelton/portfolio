@@ -4,8 +4,7 @@ import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
 
-import { DarkHeadingStyles, BlogPublishDateStyles } from "../styles/shared";
-import { colours } from "../styles/variables";
+import { BlogPublishDateStyles } from "../styles/shared";
 import BlogPostStyles from "../styles/blog-post";
 
 function getSEO(post) {

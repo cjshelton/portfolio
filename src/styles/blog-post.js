@@ -1,5 +1,5 @@
 import { css } from "@emotion/core";
-import { colours } from "./variables";
+import { colours, sizes } from "./variables";
 import { DarkHeadingStyles } from "./shared";
 
 export default css`
@@ -15,7 +15,7 @@ export default css`
             width: 30% !important;
             margin: 0 20px !important;
 
-            @media (max-width: 450px) {
+            @media (max-width: ${sizes.xSmall}) {
                 width: 40% !important;
                 display: block !important;
                 margin: 5px auto !important;
@@ -51,6 +51,11 @@ export default css`
         border-radius: 3px;
         padding: 12px 60px;
         margin: 20px 0;
+
+        @media (max-width: ${sizes.xSmall}) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
 
         code {
             color: ${colours.primaryTextDark};
