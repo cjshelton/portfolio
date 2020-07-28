@@ -40,8 +40,6 @@ The Jekyll website explains all of the above well, and has an easy-to-follow tut
 
 I vary which machine I develop on, but for small development projects like this which aren't tied to Windows, I tend to use my Mac. Jekyll runs on Ruby which was already installed on my Mac, along with the RubyGems package manager (I believe they're pre-installed on all Mac machines by default). After updating my Ruby and RubyGems versions, I only had to run the below commands to install Jekyll and the Bundler, and scaffold a new blank Jekyll project.
 
-{:.code-block}
-
 ```
 sudo gem install jekyll bundler
 jekyll new --blank \Blog

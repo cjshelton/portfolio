@@ -13,7 +13,7 @@ export default css`
             vertical-align: middle;
 
             width: 30% !important;
-            margin: 0 20px 0 20px !important;
+            margin: 0 20px !important;
 
             @media (max-width: 450px) {
                 width: 40% !important;
@@ -43,5 +43,17 @@ export default css`
     ul {
         padding: 0 40px;
         margin-bottom: 12px;
+    }
+
+    // Code blocks
+    pre {
+        background-color: ${colours.primaryLight};
+        border-radius: 3px;
+        padding: 12px 60px;
+        margin: 20px 0;
+
+        code {
+            color: ${colours.primaryTextDark};
+        }
     }
 `;
