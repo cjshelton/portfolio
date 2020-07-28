@@ -16,9 +16,10 @@ When it came to creating this blog, I knew I didn't need anything fancy; I neede
 
 Considering the [DRY principle][dry-principle-url], this involved a lot of RY and not a lot of DRY. I wanted to find a better way to do it, and that's how I came across the combination of Jekyll and GitHub Pages which offered the workflow improvements I was after.
 
-{:#logo-duo-container}
-![Jekyll logo][jekyll-logo]
-![GitHub Pages logo][github-pages-logo]
+<div class="logo-duo-container">
+    <img src="./jekyll-logo.png" alt="Jekyll logo" />
+    <img src="./github-pages-logo.png" alt="GitHub Pages logo" />
+</div>
 
 [Jekyll][jekyll-url] is an open source static site generation tool written in Ruby. Static site generators like Jekyll simplify the process of building and maintaining static websites. Jekyll is also blog-aware, meaning it has features which make the process of creating a blog much easier, since a blog can be represented as a series of files served statically over the web.
 

@@ -6,6 +6,7 @@ import Page from "../components/layouts/page";
 
 import { DarkHeadingStyles, BlogPublishDateStyles } from "../styles/shared";
 import { colours } from "../styles/variables";
+import BlogPostStyles from "../styles/blog-post";
 
 function getSEO(post) {
     return {
@@ -15,22 +16,7 @@ function getSEO(post) {
 }
 
 const BlogPost = styled.article`
-    a {
-        color: ${colours.primaryTextMedium};
-        text-decoration: underline;
-
-        &:hover {
-            color: ${colours.primaryTextMedium};
-        }
-    }
-
-    p {
-        margin-bottom: 12px;
-    }
-
-    h2 {
-        ${DarkHeadingStyles}
-    }
+    ${BlogPostStyles}
 `;
 
 const BlogPostDate = styled.p`
