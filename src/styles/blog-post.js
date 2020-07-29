@@ -69,4 +69,9 @@ export default css`
             color: ${colours.primaryTextDark};
         }
     }
+
+    code {
+        color: ${colours.inlineCode};
+        font-size: 14px;
+    }
 `;

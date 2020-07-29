@@ -18,6 +18,8 @@ export const colours = {
     blogIconLight: "#990000",
     liveSiteIcon: "#0B66C1",
     liveSiteIconLight: "#0E80F1",
+
+    inlineCode: "#E83E8C",
 };
 
 export const fonts = {
