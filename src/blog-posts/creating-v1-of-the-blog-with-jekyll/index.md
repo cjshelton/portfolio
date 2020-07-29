@@ -6,11 +6,7 @@ description: ""
 
 # Introduction
 
-<!-- excerpt-start -->
-
 I have created a few simple static websites like this before, mainly when I was quite new to web development. I have spent most of my early software development career building ASP.NET MVC web applications, which one approaches in a totally different way -- you already have the framework there for layout pages, partials and programmatically displaying content through Razor syntax.
-
-<!-- excerpt-end -->
 
 When it came to creating this blog, I knew I didn't need anything fancy; I needed something simple, cheap to run and easy to maintain. It always bugged me how, with static websites I had previously built, all of the boilerplate content was duplicated between HTML files -- the head (including meta tags, favicons and CSS), the navbar, the footer and general page layout. As the website grows, it becomes hard to maintain and more prone to simple development mistakes. Any new pages require a copy and paste of content, and any edits to this content must be applied individually to all pages.
 
@@ -79,9 +75,6 @@ One of the main benefits I have found from using a static site generator is bein
 
 I created a Main layout page to act as the base HTML for all pages, containing placeholders for the header, nav, body and footer content, included using Liquid syntax. This means that all pages are based on the same HTML, ensuring consistency in the event of any changes.
 
-{:.code-block}
-{% raw %}
-
 ```
 <!doctype html>
 <html>
@@ -105,12 +98,7 @@ I created a Main layout page to act as the base HTML for all pages, containing p
 </html>
 ```
 
-{% endraw %}
-
 Every blog post has a very similar structure, so it makes sense to make use of a Layout page here too for defining the Bootstrap grid layout and setting the blog title, date published and blog content through Liquid syntax. Layout pages can use other layout pages. Using Front Matter defined at the top of the page, I configured the Post layout to make use of the Main layout:
-
-{:.code-block}
-{% raw %}
 
 ```
 ---
@@ -124,8 +112,6 @@ layout: main
 
     <!-- Code removed for brevity -->
 ```
-
-{% endraw %}
 
 ## Includes
 
@@ -145,8 +131,6 @@ Data Files are a way to define site and page content in configuration files, out
 
 For example, following the Jekyll tutorial, I created a Data File called `navigation.yml`{:.code-inline} in the `_data`{:.code-inline} directory to drive the content of the nav bar with the following contents:
 
-{:.code-block}
-
 ```
 links:
   - name: Home
@@ -158,9 +142,6 @@ links:
 ```
 
 As can be seen below, this data can be accessed from within the nav HTML, iterated over using a Liquid for-loop, to generate the different nav elements. Any additional nav elements require only a change to this configuration file -- another example of adopting the DRY principle.
-
-{:.code-block}
-{% raw %}
 
 ```
 <nav class="navbar navbar-expand-sm">
@@ -187,8 +168,6 @@ As can be seen below, this data can be accessed from within the nav HTML, iterat
     </div>
 </nav>
 ```
-
-{% endraw %}
 
 # Writing Blog Entries
 
