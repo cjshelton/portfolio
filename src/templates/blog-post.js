@@ -1,13 +1,23 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
+import { colours } from "../styles/variables";
 
 import Page from "../components/layouts/page";
 
 import { BlogPublishDateStyles } from "../styles/shared";
 import BlogPostStyles from "../styles/blog-post";
 
+// Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faHandPointLeft,
+    faHandPointRight,
+} from "@fortawesome/free-regular-svg-icons";
+
 // TODO: Apply same responsive font size to blog content as page section.
+// TODO: Excerpt
 
 function getSEO(post) {
     return {
@@ -36,6 +46,24 @@ const BlogPostDate = styled.p`
     margin-right: -10px;
 `;
 
+const BlogNav = styled.nav`
+    margin-top: 20px;
+
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        color: ${colours.primaryText};
+    }
+`;
+
 function getHeaderJsx(post) {
     return (
         <div>
@@ -56,33 +84,26 @@ function getContentJsx(post, { previous, next }) {
                 <section dangerouslySetInnerHTML={{ __html: post.html }} />
             </BlogPost>
 
-            <nav>
-                <ul
-                    style={{
-                        display: `flex`,
-                        flexWrap: `wrap`,
-                        justifyContent: `space-between`,
-                        listStyle: `none`,
-                        padding: 0,
-                        backgroundColor: "red",
-                    }}
-                >
+            <BlogNav>
+                <ul>
                     <li>
                         {previous && (
                             <Link to={previous.fields.slug} rel="prev">
-                                ← {previous.frontmatter.title}
+                                <FontAwesomeIcon icon={faHandPointLeft} />{" "}
+                                {previous.frontmatter.title}
                             </Link>
                         )}
                     </li>
                     <li>
                         {next && (
                             <Link to={next.fields.slug} rel="next">
-                                {next.frontmatter.title} →
+                                {next.frontmatter.title}{" "}
+                                <FontAwesomeIcon icon={faHandPointRight} />
                             </Link>
                         )}
                     </li>
                 </ul>
-            </nav>
+            </BlogNav>
         </div>
     );
 }
