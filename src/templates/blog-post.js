@@ -7,6 +7,8 @@ import Page from "../components/layouts/page";
 import { BlogPublishDateStyles } from "../styles/shared";
 import BlogPostStyles from "../styles/blog-post";
 
+// TODO: Apply same responsive font size to blog content as page section.
+
 function getSEO(post) {
     return {
         title: post.frontmatter.title,
@@ -16,12 +18,22 @@ function getSEO(post) {
 
 const BlogPost = styled.article`
     ${BlogPostStyles}
+
+    // Add padding and negative margins to mirror the layout used in the rest of the site.
+    padding-left: 10px;
+    padding-right: 10px;
+
+    h1 {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
 `;
 
 const BlogPostDate = styled.p`
     ${BlogPublishDateStyles}
 
     text-align: right;
+    margin-right: -10px;
 `;
 
 function getHeaderJsx(post) {

@@ -36,8 +36,14 @@ export default css`
         margin-bottom: 12px;
     }
 
-    h2 {
+    h1 {
         ${DarkHeadingStyles}
+    }
+
+    h2 {
+        font-size: 20px;
+        color: ${colours.primaryText};
+        margin-bottom: 10px;
     }
 
     ul {
@@ -51,6 +57,8 @@ export default css`
         border-radius: 3px;
         padding: 12px 60px;
         margin: 20px 0;
+
+        overflow-x: scroll;
 
         @media (max-width: ${sizes.xSmall}) {
             padding-left: 20px;

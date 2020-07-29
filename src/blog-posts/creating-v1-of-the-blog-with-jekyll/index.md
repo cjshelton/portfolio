@@ -4,7 +4,7 @@ date: "2019-01-31"
 description: ""
 ---
 
-## Introduction
+# Introduction
 
 <!-- excerpt-start -->
 
@@ -36,7 +36,7 @@ The Jekyll website explains all of the above well, and has an easy-to-follow tut
 
 [GitHub Pages][github-pages-url] is a free hosting platform provided by GitHub for websites that use static content, and is a natural choice for blogs written in Jekyll. It allows you to turn a public GitHub repository into a live static website, supporting Jekyll out-of-the-box so your site will be built and published on push to your selected branch.
 
-## Setup
+# Setup
 
 I vary which machine I develop on, but for small development projects like this which aren't tied to Windows, I tend to use my Mac. Jekyll runs on Ruby which was already installed on my Mac, along with the RubyGems package manager (I believe they're pre-installed on all Mac machines by default). After updating my Ruby and RubyGems versions, I only had to run the below commands to install Jekyll and the Bundler, and scaffold a new blank Jekyll project.
 
@@ -47,7 +47,7 @@ jekyll new --blank \Blog
 
 Installation is fairly trivial, and there are good instructions on the Jekyll website for installation on different environments. [This article][github-pages-jekyll-config-url] is also useful as it describes how to configure your Gemfile specifically for hosting on GitHub Pages.
 
-## Enabling GitHub Pages
+# Enabling GitHub Pages
 
 Turning your repo into a live website is pretty straight forward, and can be done from the repo settings.
 
@@ -57,23 +57,23 @@ I chose the master branch as the one that should be listened to for any changes.
 
 _N.B. After initially enabling GitHub pages, it can take around 30 mins for the change to take effect, but subsequent changes are made live straight away._
 
-## Creating the Walking Skeleton
+# Creating the "Walking Skeleton"
 
 As I do with most projects (in and out of work), I always try to start off with the most basic product and use that to setup my local development environment and prove the whole build and release process. Having both of these in place early makes development a smoother and more efficient experience. Solving issues with your environment or release process is much easier when there are fewer variables involved -- a small code base lessens the chance that any early issues are being caused by your code.
 
-#### Setting up my Local Dev Environment
+## Setting up my Local Dev Environment
 
 The first step involved creating the Git repo and pointing it at my newly scaffolded Jekyll project. I followed the Jekyll tutorial to get the basic configuration in place and have my basic site running on a local server using the Jekyll `serve`{:.code-inline} command. This command optionally takes in a few arguments to configure the application on start-up, and because I am using the bundler, I needed to prefix the command with `bundle exec`{:.code-inline}. I quickly realised that having a script to start my site locally would be useful. I created a shell script which first cleans the output `_site`{:.code-inline} directory, thens fire up Chrome on the expected port before finally spinning up the site locally with my specific configuration. The script is available in my repo as `sh-serve.command`{:.code-inline}.
 
-#### Proving the Build &amp; Release Process
+## Proving the Build &amp; Release Process
 
 As a Walking Skeleton, I chose to deploy a simple `index.html`{:.code-inline} page with a basic nav and footer. I merged these changes into my master branch to kick off a Jekyll build of my site in GitHub Pages. This highlighted an issue with my Gemfile. After fixing that, my changes were live.
 
-## Styling and Structure
+# Styling and Structure
 
 Once I had proved my build and release process, I got on with designing the general theme and structure of the blog, making use of the Jekyll features listed above to reduce the need for duplication and to make it as easy as possible to make future edits. The main ways I achieved this was to use Layouts, Includes and Data Files.
 
-#### Layouts
+## Layouts
 
 One of the main benefits I have found from using a static site generator is being able to define layout pages and use them to structure pages in a more readable and maintainable way.
 
@@ -127,7 +127,7 @@ layout: main
 
 {% endraw %}
 
-#### Includes
+## Includes
 
 Similar to Layouts, Includes help reduce duplication and promote a cleaner, more modular approach to defining HTML. For those who are familiar with ASP.NET, Includes work like Partial Views, abstracting the HTML out to separate files, allowing pages to be built from components which can be shared amongst other pages.
 
@@ -139,7 +139,7 @@ I created Includes for HTML that either needed to be used in multiple places, or
 
 Although not shared between pages, these components helped simplify the HTML of the main layout page, and set a precedent for abstracting out code to prevent any wildly long HTML source files.
 
-#### Data Files
+## Data Files
 
 Data Files are a way to define site and page content in configuration files, outside of your HTML, and have it included in your page using Liquid. Data Files are another good way to avoid repetition in your HTML and allow you to separate out your site configuration, rather than bloating the `_config.yml`{:.code-inline} file.
 
@@ -190,7 +190,7 @@ As can be seen below, this data can be accessed from within the nav HTML, iterat
 
 {% endraw %}
 
-## Writing Blog Entries
+# Writing Blog Entries
 
 Jekyll is blog-aware, meaning it has built-in features to make building blog websites simpler. One of the key features is being able to write blog posts in Markdown and have them automatically converted to HTML as part of the build process. To achieve this, Jekyll uses a Markdown parser plug-in which by default, offers good results, but can easily be configured to tailor the HTML output further.
 
@@ -200,7 +200,7 @@ Being able to write blog posts in this way has some significant benefits:
 1. Portability - Markdown has been widely adopted as a markup language, and is a good way of adding content to wiki pages. It's very readable in its raw format which makes distribution a lot easier, even to those who have never heard of it.
 1. Source control everything - Markdown files can easily be source controlled. This means everything that is required to generate this website is tracked in my repo.
 
-## Maintaining the Blog
+# Maintaining the Blog
 
 As with all websites that are built from scratch, there was an initial ramp-up of effort to get the blog in a place I was happy with -- setting up the repo, configuring Jekyll and my local development environment, structuring and styling the site, and getting a simple and repeatable deployment process in place.
 But now all that is done, assuming I don't want to make any radical changes to the look and feel of the blog, keeping it up-to-date with fresh posts is easy.
@@ -213,7 +213,3 @@ The source code for this blog is available publicly so feel free to have a look 
 [jekyll-url]: https://jekyllrb.com
 [github-pages-url]: https://pages.github.com
 [github-pages-jekyll-config-url]: https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
-
-[jekyll-logo]: {{ site.baseurl }}/assets/images/jekyll-logo.png "Jekyll logo"
-[github-pages-logo]: {{ site.baseurl }}/assets/images/github-pages-logo.png "GitHub Pages logo"
-[enabling-github-pages]: {{ "/assets/images/2019-01-31-github-pages.png" | relative_url }} "Enabling GitHub Pages for the repo"

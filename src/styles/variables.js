@@ -4,6 +4,8 @@ export const colours = {
     primaryMediumLight: "#486684",
     primaryMediumDark: "#243342",
     primaryDark: "#121A21",
+
+    primaryText: "#2C3E50",
     primaryTextLight: "#FFFFFF",
     primaryTextDark: "#121A21",
     primaryTextMedium: "#486884",
