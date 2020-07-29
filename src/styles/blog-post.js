@@ -46,7 +46,8 @@ export default css`
         margin-bottom: 10px;
     }
 
-    ul {
+    ul,
+    ol {
         padding: 0 40px;
         margin-bottom: 12px;
     }
