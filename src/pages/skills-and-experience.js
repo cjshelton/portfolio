@@ -1,36 +1,36 @@
-import React from "react"
-import { css } from "@emotion/core"
-import styled from "@emotion/styled"
+import React from "react";
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 
-import { sizes, colours } from "../styles/variables"
-import Page from "../components/layouts/page"
-import UolLogo from "../components/uol-logo"
-import TechLogo from "../components/tech-logo"
-import SkillPill from "../components/skillPill"
+import { sizes, colours } from "../styles/variables";
+import Page from "../components/layouts/page";
+import PageSection from "../components/page-section";
+import UolLogo from "../components/uol-logo";
+import TechLogo from "../components/tech-logo";
+import SkillPill from "../components/skillPill";
 
-import experienceData from "../data/experience.json"
+import experienceData from "../data/experience.json";
 
 const seo = {
     title: "Skills and Experience",
     description: `Skills and experience for Chris Shelton. Leeds-based software engineer,
         specialising in full-stack web application development using
         ASP.NET Core and Node.js`,
-}
+};
 
 const uolLogoContainer = css`
     width: 200px;
     margin: 20px auto;
-`
+`;
 
 const additionalCoreSkillText = css`
     display: inline-block;
     vertical-align: middle;
-`
+`;
 
 const ExperienceEntry = styled.div`
     margin-bottom: 20px;
-    margin-left: 10px;
-    padding: 10px 0;
+    padding: 10px;
 
     background-color: ${colours.primaryLight};
     border-left: 5px solid ${colours.primary};
@@ -38,7 +38,6 @@ const ExperienceEntry = styled.div`
     .experience-company {
         font-size: 20px;
         font-weight: 600;
-        margin: 0 10px;
 
         @media (max-width: ${sizes.xSmall}) {
             font-size: 5vw;
@@ -48,20 +47,19 @@ const ExperienceEntry = styled.div`
     .experience-title {
         font-size: 16px;
         margin-bottom: 10px;
-        margin: 0 10px 10px 10px;
 
         @media (max-width: ${sizes.xSmall}) {
             font-size: 4vw;
         }
     }
-`
+`;
 
 const SkillsList = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 10px;
-`
+`;
 
 const SkillEntry = styled.div`
     flex: 1 0 150px;
@@ -83,7 +81,7 @@ const SkillEntry = styled.div`
             max-width: 60px;
         }
     }
-`
+`;
 
 const headerJsx = (
     <div>
@@ -92,12 +90,11 @@ const headerJsx = (
             Learn more about my skills &amp; experience as a software engineer
         </h2>
     </div>
-)
+);
 
 const contentJsx = (
     <div>
-        <section className="section-block">
-            <h1 className="section-header">Education</h1>
+        <PageSection heading="Education">
             <div css={uolLogoContainer}>
                 <UolLogo></UolLogo>
             </div>
@@ -114,9 +111,8 @@ const contentJsx = (
                 something as a job every day, which feels much more like a
                 hobby.
             </p>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Professional Experience</h1>
+        </PageSection>
+        <PageSection heading="Professional Experience">
             {experienceData.timeline.map(
                 ({ company, title, period, description }, index) => {
                     return (
@@ -125,14 +121,13 @@ const contentJsx = (
                                 {company}, {period}
                             </h2>
                             <h3 className="experience-title">{title}</h3>
-                            <p className="section-text">{description}</p>
+                            <p className="section-description">{description}</p>
                         </ExperienceEntry>
-                    )
+                    );
                 }
             )}
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Core Skills</h1>
+        </PageSection>
+        <PageSection heading="Core Skills">
             <p className="section-text">
                 Below are some examples of my core skills which I am competent
                 in.
@@ -149,7 +144,7 @@ const contentJsx = (
                                     ></TechLogo>
                                 </div>
                             </SkillEntry>
-                        )
+                        );
                     }
                 )}
             </SkillsList>
@@ -159,13 +154,12 @@ const contentJsx = (
                     experience with
                 </div>
                 {experienceData.additionalCoreSkills.map((skill, index) => {
-                    return <SkillPill key={index}>{skill}</SkillPill>
+                    return <SkillPill key={index}>{skill}</SkillPill>;
                 })}
                 <div css={additionalCoreSkillText}>and more&hellip;</div>
             </div>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Other Skills</h1>
+        </PageSection>
+        <PageSection heading="Other Skills">
             <p className="section-text">
                 I also spend time outside of work on personal and side projects
                 which helps me up-skill in other technical areas. Below are some
@@ -174,12 +168,12 @@ const contentJsx = (
             </p>
             <div className="section-text">
                 {experienceData.otherSkills.map((skill, index) => {
-                    return <SkillPill key={index}>{skill}</SkillPill>
+                    return <SkillPill key={index}>{skill}</SkillPill>;
                 })}
             </div>
-        </section>
+        </PageSection>
     </div>
-)
+);
 
 const SkillsPage = () => {
     return (
@@ -191,7 +185,7 @@ const SkillsPage = () => {
             backgroundImageUrl="/images/code.jpg"
             initialBackgroundColour="#1e2022"
         ></Page>
-    )
-}
+    );
+};
 
-export default SkillsPage
+export default SkillsPage;

@@ -1,17 +1,17 @@
-import React, { useState } from "react"
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
-import { Link } from "gatsby"
+import React, { useState } from "react";
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
+import { Link } from "gatsby";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import Image from "../components/image"
-import Nav from "../components/nav"
+import Image from "../components/image";
+import Nav from "../components/nav";
 
-import { colours, sizes } from "../styles/variables"
+import { colours, sizes } from "../styles/variables";
 
 const TopNav = styled.div`
     display: none; /* Hidden by default. Show on smaller devices. */
@@ -29,11 +29,11 @@ const TopNav = styled.div`
         flex-direction: row;
         align-items: center;
     }
-`
+`;
 
 const mugshotContainer = css`
     flex-shrink: 1;
-`
+`;
 
 const mugshot = css`
     width: 50px;
@@ -41,7 +41,7 @@ const mugshot = css`
     @media (max-width: ${sizes.xSmall}) {
         width: 12vw;
     }
-`
+`;
 
 const siteTitle = css`
     flex-grow: 1;
@@ -51,7 +51,7 @@ const siteTitle = css`
     @media (max-width: ${sizes.xSmall}) {
         font-size: 5vw;
     }
-`
+`;
 
 const navContainer = css`
     flex-shrink: 1;
@@ -105,7 +105,7 @@ const navContainer = css`
             }
         }
     }
-`
+`;
 
 const navButtonContainer = css`
     display: none;
@@ -127,10 +127,10 @@ const navButtonContainer = css`
         display: block;
         flex-shrink: 1;
     }
-`
+`;
 
 const Navbar = ({ page }) => {
-    const [isMenuOpen, toggleMenu] = useState(false)
+    const [isMenuOpen, toggleMenu] = useState(false);
 
     return (
         <TopNav>
@@ -158,7 +158,7 @@ const Navbar = ({ page }) => {
                 <Nav page={page}></Nav>
             </div>
         </TopNav>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;

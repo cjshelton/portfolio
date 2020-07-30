@@ -18,29 +18,30 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
-        // {
-        //     resolve: `gatsby-source-filesystem`,
-        //     options: {
-        //         path: `${__dirname}/content/blog`,
-        //         name: `blog`,
-        //     },
-        // },
-        // {
-        //     resolve: `gatsby-transformer-remark`,
-        //     options: {
-        //         plugins: [
-        //             {
-        //                 resolve: `gatsby-remark-images`,
-        //                 options: {
-        //                     maxWidth: 590,
-        //                 },
-        //             },
-        //             `gatsby-remark-prismjs`,
-        //             `gatsby-remark-copy-linked-files`,
-        //             `gatsby-remark-smartypants`,
-        //         ],
-        //     },
-        // },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/src/blog-posts`,
+                name: `blog`,
+            },
+        },
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 590,
+                        },
+                    },
+                    // `gatsby-remark-prismjs`,
+                    `gatsby-remark-copy-linked-files`,
+                    `gatsby-remark-smartypants`,
+                    `gatsby-remark-attr`,
+                ],
+            },
+        },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
@@ -74,4 +75,4 @@ module.exports = {
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
     ],
-}
+};

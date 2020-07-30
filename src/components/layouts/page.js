@@ -1,15 +1,19 @@
-import React from "react"
-import { Global } from "@emotion/core"
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
+import React from "react";
+import { Global } from "@emotion/core";
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 
-import SEO from "../../components/seo"
-import Layout from "../../components/layouts/site"
+import SEO from "../../components/seo";
+import Layout from "../../components/layouts/site";
 
-import globalStyles from "../../styles/global"
-import { sizes, colours } from "../../styles/variables"
+import globalStyles from "../../styles/global";
+import { sizes, colours } from "../../styles/variables";
 
-function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
+function getImageContainerStyles(
+    backgroundImageUrl,
+    initialBackgroundColour,
+    styles
+) {
     return css`
         width: 100%;
         min-height: 250px;
@@ -48,7 +52,7 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
                 font-weight: 400;
 
                 @media (max-width: ${sizes.xSmall}) {
-                    font-size: 10vw;
+                    font-size: 9vw;
                 }
             }
 
@@ -57,7 +61,7 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
                 font-weight: 300;
 
                 @media (max-width: ${sizes.xSmall}) {
-                    font-size: 5vw;
+                    font-size: 4vw;
                 }
             }
         }
@@ -77,7 +81,9 @@ function getImageContainerStyles(backgroundImageUrl, initialBackgroundColour) {
             */
             z-index: 0;
         }
-    `
+
+        ${styles}
+    `;
 }
 
 const PageContent = styled.div`
@@ -91,37 +97,7 @@ const PageContent = styled.div`
     @media (max-width: ${sizes.xSmall}) {
         padding: 20px 20px;
     }
-
-    .section-block {
-        margin-bottom: 20px;
-
-        .section-header {
-            font-size: 24px;
-            margin-bottom: 10px;
-            background-color: ${colours.primary};
-            color: ${colours.primaryTextLight};
-            padding: 4px 8px;
-
-            &::before {
-                content: "// ";
-            }
-
-            @media (max-width: ${sizes.xSmall}) {
-                font-size: 5vw;
-            }
-        }
-
-        .section-text {
-            font-size: 16px;
-            margin-bottom: 10px;
-            padding: 0 10px;
-
-            @media (max-width: ${sizes.xSmall}) {
-                font-size: 4vw;
-            }
-        }
-    }
-`
+`;
 
 export default ({
     header,
@@ -130,11 +106,13 @@ export default ({
     seo,
     backgroundImageUrl,
     initialBackgroundColour,
+    styles = {},
 }) => {
     const imageContainerStyles = getImageContainerStyles(
         backgroundImageUrl,
-        initialBackgroundColour
-    )
+        initialBackgroundColour,
+        styles
+    );
 
     return (
         <Layout page={page}>
@@ -147,5 +125,5 @@ export default ({
             </div>
             <PageContent>{content}</PageContent>
         </Layout>
-    )
-}
+    );
+};

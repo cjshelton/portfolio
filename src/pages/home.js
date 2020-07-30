@@ -1,19 +1,21 @@
-import React from "react"
-import { css } from "@emotion/core"
+import React from "react";
+import { css } from "@emotion/core";
 
-import Page from "../components/layouts/page"
-import { sizes } from "../styles/variables"
+import Page from "../components/layouts/page";
+import PageSection from "../components/page-section";
+
+import { sizes } from "../styles/variables";
 
 const seo = {
     title: "Home",
     description: `Portfolio for Chris Shelton. Leeds-based software engineer,
         specialising in full-stack web application development using
         ASP.NET Core and Node.js`,
-}
+};
 
 const bold = css`
     font-weight: 400;
-`
+`;
 
 const headerSection = (
     <div>
@@ -24,22 +26,20 @@ const headerSection = (
             <span css={bold}>Node.js</span>
         </h2>
     </div>
-)
+);
 
 const greeting = css`
     font-size: 20px;
     margin-bottom: 10px;
-    margin-left: 10px;
 
     @media (max-width: ${sizes.xSmall}) {
-        font-size: 5vw;
+        font-size: 4.5vw;
     }
-`
+`;
 
 const contentSection = (
     <div>
-        <section className="section-block">
-            <h1 className="section-header">About Me</h1>
+        <PageSection heading="About Me">
             <p css={greeting}>
                 Hi{" "}
                 <span role="img" aria-label="Waving hand emoji">
@@ -66,9 +66,8 @@ const contentSection = (
                 and doing projects in my own time. I specialise in full-stack
                 web application development using both ASP.NET Core and Node.js.
             </p>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">Where I Work</h1>
+        </PageSection>
+        <PageSection heading="Where I Work">
             <p className="section-text">
                 I am an experienced Technical Specialist at Bluesmith
                 Information Systems, Leeds. We design and build bespoke
@@ -89,9 +88,8 @@ const contentSection = (
                 technologies. I have held multiple roles at Bluesmith, including
                 tech and team-lead responsibilities.
             </p>
-        </section>
-        <section className="section-block">
-            <h1 className="section-header">A Bit More About Me</h1>
+        </PageSection>
+        <PageSection heading="A Bit More About Me">
             <p className="section-text">
                 Software development is a passion of mine, and something I like
                 to spend my spare time doing also to help me up-skill and
@@ -107,9 +105,9 @@ const contentSection = (
                 I&apos;m not a total techie &mdash; I also have a keen interest
                 in sports, video games, theatre and cooking.
             </p>
-        </section>
+        </PageSection>
     </div>
-)
+);
 
 const HomePage = () => {
     return (
@@ -121,7 +119,7 @@ const HomePage = () => {
             backgroundImageUrl="/images/home.jpg"
             initialBackgroundColour="#d5d5d5"
         ></Page>
-    )
-}
+    );
+};
 
-export default HomePage
+export default HomePage;
