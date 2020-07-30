@@ -46,6 +46,12 @@ export default css`
         margin-bottom: 10px;
     }
 
+    h3 {
+        font-size: 16px;
+        color: ${colours.primaryText};
+        margin-bottom: 10px;
+    }
+
     ul,
     ol {
         padding: 0 40px;
