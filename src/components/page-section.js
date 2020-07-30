@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { sizes, colours } from "../styles/variables";
+import { colours } from "../styles/variables";
 import {
     DarkHeadingStyles,
     LightHeadingStyles,
