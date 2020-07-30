@@ -2,19 +2,20 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import { sizes, colours } from "../styles/variables";
-import { DarkHeadingStyles, LightHeadingStyles } from "../styles/shared";
+import {
+    DarkHeadingStyles,
+    LightHeadingStyles,
+    SiteTextStyles,
+} from "../styles/shared";
 
 const Section = styled.section`
     margin-bottom: 20px;
     color: ${colours.primaryTextDark};
 
     .section-text {
-        font-size: 16px;
-        margin-bottom: 10px;
+        ${SiteTextStyles}
 
-        @media (max-width: ${sizes.xSmall}) {
-            font-size: 4vw;
-        }
+        margin-bottom: 10px;
     }
 `;
 

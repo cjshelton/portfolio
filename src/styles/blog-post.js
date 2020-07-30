@@ -1,6 +1,6 @@
 import { css } from "@emotion/core";
 import { colours, sizes } from "./variables";
-import { DarkHeadingStyles } from "./shared";
+import { DarkHeadingStyles, SiteTextStyles } from "./shared";
 
 export default css`
     .logo-duo-container {
@@ -21,35 +21,6 @@ export default css`
                 margin: 5px auto !important;
             }
         }
-    }
-
-    a {
-        color: ${colours.primaryTextMedium};
-        text-decoration: underline;
-
-        &:hover {
-            color: ${colours.primaryTextMedium};
-        }
-    }
-
-    p {
-        margin-bottom: 12px;
-    }
-
-    h1 {
-        ${DarkHeadingStyles}
-    }
-
-    h2 {
-        font-size: 20px;
-        color: ${colours.primaryText};
-        margin-bottom: 10px;
-    }
-
-    h3 {
-        font-size: 16px;
-        color: ${colours.primaryText};
-        margin-bottom: 10px;
     }
 
     ul,
@@ -79,11 +50,56 @@ export default css`
 
     code {
         color: ${colours.inlineCode};
-        font-size: 14px;
     }
 
     .gatsby-resp-image-wrapper {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+
+    a {
+        color: ${colours.primaryTextMedium};
+        text-decoration: underline;
+
+        &:hover {
+            color: ${colours.primaryTextMedium};
+        }
+    }
+
+    p {
+        margin-bottom: 12px;
+    }
+
+    // Apply site text styles to all blog elements, and then override text styles for
+    // specific elements below.
+    // This is easier than trying to target all elements generated from the Markdown.
+    * {
+        ${SiteTextStyles}
+    }
+
+    h2 {
+        margin-bottom: 10px;
+
+        font-size: 20px;
+        color: ${colours.primaryText};
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 4vw;
+        }
+    }
+
+    h3 {
+        margin-bottom: 10px;
+
+        font-size: 16px;
+        color: ${colours.primaryText};
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 3.5vw;
+        }
+    }
+
+    h1 {
+        ${DarkHeadingStyles}
     }
 `;

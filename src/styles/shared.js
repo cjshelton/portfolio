@@ -50,3 +50,11 @@ export const BlogPublishDateStyles = css`
     font-style: italic;
     color: ${colours.primaryTextMedium};
 `;
+
+export const SiteTextStyles = css`
+    font-size: 16px;
+
+    @media (max-width: ${sizes.xSmall}) {
+        font-size: 3.5vw;
+    }
+`;

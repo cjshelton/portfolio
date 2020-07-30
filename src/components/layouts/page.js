@@ -52,7 +52,7 @@ function getImageContainerStyles(
                 font-weight: 400;
 
                 @media (max-width: ${sizes.xSmall}) {
-                    font-size: 10vw;
+                    font-size: 9vw;
                 }
             }
 
@@ -61,7 +61,7 @@ function getImageContainerStyles(
                 font-weight: 300;
 
                 @media (max-width: ${sizes.xSmall}) {
-                    font-size: 5vw;
+                    font-size: 4vw;
                 }
             }
         }
