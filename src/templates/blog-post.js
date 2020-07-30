@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
-import { colours } from "../styles/variables";
+import { colours, sizes } from "../styles/variables";
 
 import Page from "../components/layouts/page";
 
@@ -52,7 +52,29 @@ const BlogNav = styled.nav`
     ul {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+
+        .blog-post-nav-item {
+            display: flex;
+            align-items: center;
+
+            margin: 5px 0;
+
+            &__icon {
+                margin: 0 10px;
+            }
+
+            &__prev {
+                text-align: left;
+                margin-left: -10px;
+            }
+
+            &__next {
+                text-align: right;
+                margin-right: -10px;
+            }
+        }
     }
 
     li {
@@ -88,18 +110,28 @@ function getContentJsx(post, { previous, next }) {
                 <ul>
                     <li>
                         {previous && (
-                            <Link to={previous.fields.slug} rel="prev">
-                                <FontAwesomeIcon icon={faHandPointLeft} />{" "}
-                                {previous.frontmatter.title}
-                            </Link>
+                            <div className="blog-post-nav-item blog-post-nav-item__prev">
+                                <FontAwesomeIcon
+                                    icon={faHandPointLeft}
+                                    className="blog-post-nav-item__icon"
+                                />
+                                <Link to={previous.fields.slug} rel="prev">
+                                    {previous.frontmatter.title}
+                                </Link>
+                            </div>
                         )}
                     </li>
                     <li>
                         {next && (
-                            <Link to={next.fields.slug} rel="next">
-                                {next.frontmatter.title}{" "}
-                                <FontAwesomeIcon icon={faHandPointRight} />
-                            </Link>
+                            <div className="blog-post-nav-item blog-post-nav-item__next">
+                                <Link to={next.fields.slug} rel="next">
+                                    {next.frontmatter.title}
+                                </Link>
+                                <FontAwesomeIcon
+                                    icon={faHandPointRight}
+                                    className="blog-post-nav-item__icon"
+                                />
+                            </div>
                         )}
                     </li>
                 </ul>
