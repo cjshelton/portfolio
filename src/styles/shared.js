@@ -1,7 +1,6 @@
-import { css } from "@emotion/core";
 import { colours, sizes } from "./variables";
 
-const BaseHeadingStyles = css`
+const BaseHeadingStyles = `
     padding: 4px 8px;
     margin-bottom: 10px;
 
@@ -12,7 +11,7 @@ const BaseHeadingStyles = css`
     }
 `;
 
-export const DarkHeadingStyles = css`
+export const DarkHeadingStyles = `
     ${BaseHeadingStyles}
 
     background-color: ${colours.primary};
@@ -23,7 +22,7 @@ export const DarkHeadingStyles = css`
     }
 `;
 
-export const LightHeadingStyles = css`
+export const LightHeadingStyles = `
     ${BaseHeadingStyles}
 
     padding: 4px 10px;
@@ -43,7 +42,7 @@ export const LightHeadingStyles = css`
     }
 `;
 
-export const BlogPublishDateStyles = css`
+export const BlogPublishDateStyles = `
     margin-bottom: 10px;
 
     font-size: 14px;
@@ -51,7 +50,7 @@ export const BlogPublishDateStyles = css`
     color: ${colours.primaryTextMedium};
 `;
 
-export const SiteTextStyles = css`
+export const SiteTextStyles = `
     font-size: 16px;
 
     @media (max-width: ${sizes.xSmall}) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
-import { colours, sizes } from "../styles/variables";
+import { colours } from "../styles/variables";
 
 import Page from "../components/layouts/page";
 
@@ -15,9 +15,6 @@ import {
     faHandPointLeft,
     faHandPointRight,
 } from "@fortawesome/free-regular-svg-icons";
-
-// TODO: Apply same responsive font size to blog content as page section.
-// TODO: Excerpt
 
 function getSEO(post) {
     return {
