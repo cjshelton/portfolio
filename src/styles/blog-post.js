@@ -81,4 +81,9 @@ export default css`
         color: ${colours.inlineCode};
         font-size: 14px;
     }
+
+    .gatsby-resp-image-wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 `;
