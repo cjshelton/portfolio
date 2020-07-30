@@ -97,43 +97,6 @@ const PageContent = styled.div`
     @media (max-width: ${sizes.xSmall}) {
         padding: 20px 20px;
     }
-
-    .section-block {
-        margin-bottom: 20px;
-        color: ${colours.primaryTextDark};
-
-        h1 {
-            padding: 4px 8px;
-        }
-
-        .section-header {
-            font-size: 24px;
-            margin-bottom: 10px;
-            background-color: ${colours.primary};
-            color: ${colours.primaryTextLight};
-
-            &::before {
-                content: "// ";
-            }
-
-            @media (max-width: ${sizes.xSmall}) {
-                font-size: 5vw;
-            }
-        }
-
-        .section-text {
-            font-size: 16px;
-            margin-bottom: 10px;
-
-            @media (max-width: ${sizes.xSmall}) {
-                font-size: 4vw;
-            }
-        }
-
-        .section-content {
-            padding: 0 10px;
-        }
-    }
 `;
 
 export default ({
