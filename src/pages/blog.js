@@ -41,35 +41,41 @@ const headerJsx = (
 function getContentJsx(posts) {
     return (
         <BlogArticlesList>
-            {posts.map(({ node }) => {
-                const title = node.frontmatter.title || node.fields.slug;
+            {posts
+                .sort((a, b) => {
+                    return a.node.fields.slug < b.node.fields.slug ? 1 : -1;
+                })
+                .map(({ node }) => {
+                    const title = node.frontmatter.title || node.fields.slug;
 
-                const blogPostSlug = rewriteSlug(node.fields.slug);
-                const publishedDate = generateUserFriendlyDateFromSlug(
-                    node.fields.slug
-                );
-                const BlogTitleLink = <Link to={blogPostSlug}>{title}</Link>;
+                    const blogPostSlug = rewriteSlug(node.fields.slug);
+                    const publishedDate = generateUserFriendlyDateFromSlug(
+                        node.fields.slug
+                    );
+                    const BlogTitleLink = (
+                        <Link to={blogPostSlug}>{title}</Link>
+                    );
 
-                return (
-                    <PageSection
-                        key={node.fields.slug}
-                        heading={BlogTitleLink}
-                        light
-                    >
-                        <BlogArticleDate>
-                            Published on {publishedDate}
-                        </BlogArticleDate>
-                        <p
-                            className="section-text"
-                            dangerouslySetInnerHTML={{
-                                __html:
-                                    node.frontmatter.description ||
-                                    node.excerpt,
-                            }}
-                        />
-                    </PageSection>
-                );
-            })}
+                    return (
+                        <PageSection
+                            key={node.fields.slug}
+                            heading={BlogTitleLink}
+                            light
+                        >
+                            <BlogArticleDate>
+                                Published on {publishedDate}
+                            </BlogArticleDate>
+                            <p
+                                className="section-text"
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        node.frontmatter.description ||
+                                        node.excerpt,
+                                }}
+                            />
+                        </PageSection>
+                    );
+                })}
         </BlogArticlesList>
     );
 }
@@ -94,7 +100,7 @@ export default PersonalProjectsPage;
 
 export const pageQuery = graphql`
     query {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        allMarkdownRemark {
             edges {
                 node {
                     excerpt(pruneLength: 150)
@@ -102,7 +108,6 @@ export const pageQuery = graphql`
                         slug
                     }
                     frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
                         title
                         description
                     }
