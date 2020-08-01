@@ -1,6 +1,5 @@
 ---
 title: "SSL and Client Certificate Authentication in RabbitMQ with .NET Standard 2.1"
-date: "2019-12-18"
 description: ""
 ---
 

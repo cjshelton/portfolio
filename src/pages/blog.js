@@ -5,6 +5,11 @@ import styled from "@emotion/styled";
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
 
+import {
+    rewriteSlug,
+    generateUserFriendlyDateFromSlug,
+} from "../utils/blog-utils";
+
 import { colours } from "../styles/variables";
 
 const seo = {
@@ -38,9 +43,12 @@ function getContentJsx(posts) {
         <BlogArticlesList>
             {posts.map(({ node }) => {
                 const title = node.frontmatter.title || node.fields.slug;
-                const BlogTitleLink = (
-                    <Link to={node.fields.slug}>{title}</Link>
+
+                const blogPostSlug = rewriteSlug(node.fields.slug);
+                const publishedDate = generateUserFriendlyDateFromSlug(
+                    node.fields.slug
                 );
+                const BlogTitleLink = <Link to={blogPostSlug}>{title}</Link>;
 
                 return (
                     <PageSection
@@ -49,7 +57,7 @@ function getContentJsx(posts) {
                         light
                     >
                         <BlogArticleDate>
-                            Published on {node.frontmatter.date}
+                            Published on {publishedDate}
                         </BlogArticleDate>
                         <p
                             className="section-text"

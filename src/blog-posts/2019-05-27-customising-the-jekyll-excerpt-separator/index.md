@@ -1,6 +1,5 @@
 ---
 title: "Customising the Excerpt Separators in Jekyll"
-date: "2019-05-27"
 description: ""
 ---
 

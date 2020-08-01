@@ -91,14 +91,12 @@ function getHeaderJsx(post) {
     );
 }
 
-function getContentJsx(post, { previous, next }) {
+function getContentJsx(post, { previous, next, publishedDate }) {
     return (
         <div>
             <BlogPost>
                 <header>
-                    <BlogPostDate>
-                        Published on {post.frontmatter.date}
-                    </BlogPostDate>
+                    <BlogPostDate>Published on {publishedDate}</BlogPostDate>
                 </header>
                 <section dangerouslySetInnerHTML={{ __html: post.html }} />
             </BlogPost>
