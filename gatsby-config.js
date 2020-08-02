@@ -3,7 +3,7 @@ module.exports = {
         title: `Portfolio`,
         description: `Chris Shelton's Portfolio.`,
         author: `Chris Shelton`,
-        socials: {
+        profileLinks: {
             github: "https://github.com/cjshelton",
             linkedIn: "https://www.linkedin.com/in/chris-shelton-aa135084/",
         },

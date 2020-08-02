@@ -1,6 +1,5 @@
 ---
 title: Creating V1 of the blog with Jekyll
-date: "2019-01-31"
 description: ""
 ---
 

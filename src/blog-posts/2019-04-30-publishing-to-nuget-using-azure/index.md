@@ -1,6 +1,5 @@
 ---
 title: "Publishing a .NET Standard Library to NuGet using Azure"
-date: "2019-04-30"
 description: ""
 ---
 

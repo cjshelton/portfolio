@@ -1,5 +1,9 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const {
+    rewriteSlug,
+    generateUserFriendlyDateFromSlug,
+} = require("./src/utils/blog-utils");
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
@@ -8,10 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const result = await graphql(
         `
             {
-                allMarkdownRemark(
-                    sort: { fields: [frontmatter___date], order: DESC }
-                    limit: 1000
-                ) {
+                allMarkdownRemark {
                     edges {
                         node {
                             fields {
@@ -38,13 +39,19 @@ exports.createPages = async ({ graphql, actions }) => {
             index === posts.length - 1 ? null : posts[index + 1].node;
         const next = index === 0 ? null : posts[index - 1].node;
 
+        const blogSlug = rewriteSlug(post.node.fields.slug);
+        const publishedDate = generateUserFriendlyDateFromSlug(
+            post.node.fields.slug
+        );
+
         createPage({
-            path: post.node.fields.slug,
+            path: blogSlug,
             component: blogPostTemplate,
             context: {
                 slug: post.node.fields.slug,
                 previous,
                 next,
+                publishedDate,
             },
         });
     });

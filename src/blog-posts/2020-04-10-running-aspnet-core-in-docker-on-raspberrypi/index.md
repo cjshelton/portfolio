@@ -1,6 +1,5 @@
 ---
 title: "Running ASP.NET Core in Docker on a Raspberry Pi"
-date: "2020-04-10"
 description: ""
 ---
 
