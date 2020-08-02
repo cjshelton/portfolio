@@ -1,13 +1,13 @@
-import React from "react"
-import Socials from "../components/socials"
+import React from "react";
+import ProfileLinks from "../components/profile-links";
 
-import { css } from "@emotion/core"
+import { css } from "@emotion/core";
 
-import { sizes } from "../styles/variables"
+import { sizes } from "../styles/variables";
 
 const expandedStyles = css`
     flex-direction: row;
-`
+`;
 
 const collapsedStyles = css`
     flex-direction: column;
@@ -16,7 +16,7 @@ const collapsedStyles = css`
     .copyright {
         margin-top: 5px;
     }
-`
+`;
 
 function getFooterStyles(isCollapsed) {
     return css`
@@ -25,37 +25,37 @@ function getFooterStyles(isCollapsed) {
 
         align-items: center;
 
-        .socials {
-            flex-grow: 1;
+        .profile-links {
+            flex: 1 0 0;
             text-align: left;
         }
 
         .copyright {
-            flex-grow: 1;
+            flex-grow: 1 0 0;
             text-align: right;
         }
 
         @media (max-width: ${sizes.small}) {
             ${collapsedStyles}
         }
-    `
+    `;
 }
 
 const Footer = ({ collapsed }) => {
-    const styles = getFooterStyles(collapsed)
+    const styles = getFooterStyles(collapsed);
 
     return (
         <footer>
             <div css={styles}>
-                <div className="socials">
-                    <Socials></Socials>
+                <div className="profile-links">
+                    <ProfileLinks></ProfileLinks>
                 </div>
                 <div className="copyright">
                     &copy; {new Date().getFullYear()}, Chris Shelton
                 </div>
             </div>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;
