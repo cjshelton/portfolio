@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
+import { Link } from "gatsby";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -33,7 +34,7 @@ const baseLinkStyle = css`
 const GitHubLinkStyle = css`
     ${baseLinkStyle}
     background-color: ${colours.githubIcon};
-    color: white;
+    color: ${colours.primaryTextLight};
 
     &:hover {
         background-color: ${colours.githubIconLight};
@@ -43,7 +44,7 @@ const GitHubLinkStyle = css`
 const BlogLinkStyle = css`
     ${baseLinkStyle}
     background-color: ${colours.blogIcon};
-    color: white;
+    color: ${colours.primaryTextLight};
     margin-right: 5px;
 
     &:hover {
@@ -54,7 +55,7 @@ const BlogLinkStyle = css`
 const LiveSiteLinkStyle = css`
     ${baseLinkStyle}
     background-color: ${colours.liveSiteIcon};
-    color: white;
+    color: ${colours.primaryTextLight};
     margin-right: 5px;
 
     &:hover {
@@ -101,15 +102,15 @@ const contentJsx = (
                                 </a>
                             )}
                             {blogURL && (
-                                <a css={BlogLinkStyle} href={blogURL}>
+                                <Link css={BlogLinkStyle} to={blogURL}>
                                     <FontAwesomeIcon icon={faBookOpen} /> View
                                     Article
-                                </a>
+                                </Link>
                             )}
                             {liveSiteURL && (
-                                <a css={LiveSiteLinkStyle} href={liveSiteURL}>
+                                <Link css={LiveSiteLinkStyle} to={liveSiteURL}>
                                     <FontAwesomeIcon icon={faGlobe} /> View Site
-                                </a>
+                                </Link>
                             )}
 
                             <ClearFix />

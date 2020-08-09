@@ -23,4 +23,18 @@ export default css`
         color: ${colours.primaryTextLight};
         text-decoration: none;
     }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .primary-text-link {
+        color: ${colours.primaryTextMedium};
+        text-decoration: underline;
+
+        &:hover {
+            color: ${colours.primaryTextMedium};
+            text-decoration: underline;
+        }
+    }
 `;
