@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
+import { Link } from "gatsby";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -101,15 +102,15 @@ const contentJsx = (
                                 </a>
                             )}
                             {blogURL && (
-                                <a css={BlogLinkStyle} href={blogURL}>
+                                <Link css={BlogLinkStyle} to={blogURL}>
                                     <FontAwesomeIcon icon={faBookOpen} /> View
                                     Article
-                                </a>
+                                </Link>
                             )}
                             {liveSiteURL && (
-                                <a css={LiveSiteLinkStyle} href={liveSiteURL}>
+                                <Link css={LiveSiteLinkStyle} to={liveSiteURL}>
                                     <FontAwesomeIcon icon={faGlobe} /> View Site
-                                </a>
+                                </Link>
                             )}
 
                             <ClearFix />
