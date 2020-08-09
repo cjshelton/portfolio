@@ -33,7 +33,7 @@ const baseLinkStyle = css`
 const GitHubLinkStyle = css`
     ${baseLinkStyle}
     background-color: ${colours.githubIcon};
-    color: white;
+    color: ${colours.primaryTextLight};
 
     &:hover {
         background-color: ${colours.githubIconLight};
@@ -43,7 +43,7 @@ const GitHubLinkStyle = css`
 const BlogLinkStyle = css`
     ${baseLinkStyle}
     background-color: ${colours.blogIcon};
-    color: white;
+    color: ${colours.primaryTextLight};
     margin-right: 5px;
 
     &:hover {
@@ -54,7 +54,7 @@ const BlogLinkStyle = css`
 const LiveSiteLinkStyle = css`
     ${baseLinkStyle}
     background-color: ${colours.liveSiteIcon};
-    color: white;
+    color: ${colours.primaryTextLight};
     margin-right: 5px;
 
     &:hover {
