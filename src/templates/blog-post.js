@@ -110,8 +110,8 @@ function getContentJsx(post, { previous, next, publishedDate }) {
                                     icon={faHandPointLeft}
                                     className="blog-post-nav-item__icon"
                                 />
-                                <Link to={previous.fields.slug} rel="prev">
-                                    {previous.frontmatter.title}
+                                <Link to={previous.slug} rel="prev">
+                                    {previous.title}
                                 </Link>
                             </div>
                         )}
@@ -119,8 +119,8 @@ function getContentJsx(post, { previous, next, publishedDate }) {
                     <li>
                         {next && (
                             <div className="blog-post-nav-item blog-post-nav-item__next">
-                                <Link to={next.fields.slug} rel="next">
-                                    {next.frontmatter.title}
+                                <Link to={next.slug} rel="next">
+                                    {next.title}
                                 </Link>
                                 <FontAwesomeIcon
                                     icon={faHandPointRight}

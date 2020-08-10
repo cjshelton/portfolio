@@ -23,8 +23,18 @@ function generateUserFriendlyDateFromSlug(slug) {
     return parsedPublishedDate.format("MMMM DD, YYYY");
 }
 
+function generateBlogPostNavigationItem(node) {
+    return node
+        ? {
+              slug: rewriteSlug(node.fields.slug),
+              title: node.frontmatter.title,
+          }
+        : null;
+}
+
 module.exports = {
     parseDateFromSlug,
     rewriteSlug,
     generateUserFriendlyDateFromSlug,
+    generateBlogPostNavigationItem,
 };

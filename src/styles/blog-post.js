@@ -36,7 +36,7 @@ export default css`
         padding: 12px 60px;
         margin: 20px 0;
 
-        overflow-x: scroll;
+        overflow-x: auto;
 
         @media (max-width: ${sizes.xSmall}) {
             padding-left: 20px;
