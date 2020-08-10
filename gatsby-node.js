@@ -3,6 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 const {
     rewriteSlug,
     generateUserFriendlyDateFromSlug,
+    generateBlogPostNavigationItem,
 } = require("./src/utils/blog-utils");
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -49,8 +50,8 @@ exports.createPages = async ({ graphql, actions }) => {
             component: blogPostTemplate,
             context: {
                 slug: post.node.fields.slug,
-                previous,
-                next,
+                previous: generateBlogPostNavigationItem(previous),
+                next: generateBlogPostNavigationItem(next),
                 publishedDate,
             },
         });
