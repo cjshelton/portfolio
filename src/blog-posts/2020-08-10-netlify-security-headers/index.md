@@ -5,6 +5,16 @@ description: ""
 
 # Introduction
 
-One of my most recent personal projects has been to create a dashboard application to be utilised around the home. It uses VueJS as the front-end technology, which is supported by an ASP.NET Core 2.1 Web API. Unfortunately, I had to downgrade from ASP.NET 3.1 to 2.1 for reasons explained [later in the post](#problems-with-grpc).
+Netlify is a great platform for simple web hosting, which comes with a whole load of benefits including a generous free plan, HTTPS out-of-the-box, and cool features like AWS Lambda integration and form submissions. I plan on writing a blog post specifically about Netlify, including how I use it and what benefits I get from it.
 
-Some of the functionality of the API requires it to be on the local network and not cloud-hosted, and I had a Raspberry Pi which wasn't being put to any good use, so I thought it would be an ideal hosting platform for the application.
+I was made aware, that by default, some HTTP Security Headers are not set by default, and sure enough, for my Portfolio site, most were not set which resulted in a pretty poor grading on [Security Headers][security-headers-url]:
+
+<img src="./security-headers-report.png" alt="Security Headers report showing grade D" />
+
+As you can see above, the poor rating is due to Content Security Policy, X-Frame Options and other security headers not be setup or configured correctly.
+
+I was keen to fix these security issues, and blog my journey.
+
+[security-headers-url]: https://securityheaders.com/
+
+# Security Headers - what and why?
