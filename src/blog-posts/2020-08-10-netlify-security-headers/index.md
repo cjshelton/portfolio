@@ -7,7 +7,7 @@ description: ""
 
 Netlify is a great platform for simple web hosting, which comes with a whole load of benefits including a generous free plan, HTTPS out-of-the-box, and cool features like AWS Lambda integration and form submissions. I plan on writing a blog post specifically about Netlify, including how I use it and what benefits I get from it.
 
-I was made aware, that by default, some HTTP Security Headers are not set by default on Netlify, and sure enough, for my Portfolio site, most were not set which resulted in a pretty poor rating on [Security Headers][security-headers-url]:
+I was made aware, that by default, some HTTP Security Headers are not set by default when hosting a site on Netlify, and sure enough, for my Portfolio site, most were not set which resulted in a pretty poor rating on [Security Headers][security-headers-url]:
 
 <img src="./security-headers-report.png" alt="Security Headers report showing a poor rating of D" />
 
@@ -17,7 +17,15 @@ I was keen to fix these security issues, and blog my process.
 
 # Security Headers - what and why?
 
-Security headers are instructions sent by the browser in the HTTP response which inform the browser how to handle communication with it, specifically in a way which maximises the security of the communication.
+Security headers are instructions sent by the server in the HTTP response which inform the browser how to handle communication with it, specifically in a way which maximises the security of the communication.
+
+<img src="./owasp-logo.jpg" alt="Security Headers report showing a poor rating of D" />
+
+It's hard to talk about web security and not mention [OWASP][owasp-url] -- the Open Web Application Security Project. If you're not familiar with OWASP, and you are involved in the technical aspects of web application development, regardless of technology, it is recommended you familiarise yourself with the guidelines to help you and your team build more resilient and secure applications.
+
+Importantly, OWASP has a project specifically for providing guidance on securing web applications through the use of HTTP headers -- the [OWASP Secure Headers Project][owasp-secure-headers-project-url] -- which defines them as:
+
+> ...HTTP response headers that your application can use to increase the security of your application. Once set, these HTTP response headers can restrict modern browsers from running into easily preventable vulnerabilities. The OWASP Secure Headers Project intends to raise awareness and use of these headers.
 
 There are numerous security headers which can be sent by the server, but the most common, and ones which I'll be focusing on are:
 
@@ -55,4 +63,8 @@ Fortunately, all Netlify apps are served over HTTPS and use HTTPS redirection by
 
 As can be seen above, HSTS is already in action on my site, configured automatically by Netlify, so I didn't have to do any work here. Result!
 
+## Content-Security-Policy
+
 [security-headers-url]: https://securityheaders.com/
+[owasp-url]: https://owasp.org/
+[owasp-secure-headers-project-url]: https://owasp.org/www-project-secure-headers/

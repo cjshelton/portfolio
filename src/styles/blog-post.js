@@ -59,6 +59,8 @@ export default css`
         background-color: ${colours.lightGrey};
 
         p {
+            font-style: italic;
+
             // Override the margin on the last p tag as the spacing is handled instead
             // by the padding on the blockquote.
             &:last-child {
