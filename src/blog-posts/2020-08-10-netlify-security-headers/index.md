@@ -40,15 +40,19 @@ The server will always respond with the HSTS header, even if the browser has alr
 
 1. The user accesses `http://www.cshelton.co.uk/` for the very first time (note the use of HTTP, not HTTPS)
 1. The browser has never received the HSTS header for this site before, so continues to send the request over HTTP.
-1. HTTPS redirection is setup on the server which redirects traffic to use HTTPS, and the server responds to the browser with the HSTS header in the response.
+1. HTTPS redirection is setup on the server, which issues a `301 Moved Permanently` HTTP response to the browser, with an updated location URL, so the browser can issue the request again, but using HTTPS.
+   <img src="./https-redirection.png" alt="Network request showing redirect from HTTP to HTTPS" />
+1. The server responds to the now secure request with the page content, along with the HSTS header in the HTTP response.
+   <img src="./hsts-response-header.png" alt="Network request HSTS response header" />
 1. The browser stores the HSTS instruction to be used for subsequent requests.
 1. The user accesses the site again, or another page on the site, over HTTP.
-1. Before sending the request to the server, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server.
+1. Before sending the request to the server over HTTP, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server, resulting in only one secure request being made.
+   <img src="./browser-using-hsts-instruction.png" alt="Network request showing the browser making only one HTTPS request" />
 
 ### Resolution
 
 Fortunately, all Netlify apps are served over HTTPS and use HTTPS redirection by default, for no cost -- this is an excellent move by Netlify <span role="img" aria-label="Thumbs up emoji">&#128077;</span>.
 
-The HSTS header is automatically configured by Netlify too, so I didn't have to do any work here.
+As can be seen above, HSTS is already in action on my site, configured automatically by Netlify, so I didn't have to do any work here. Result!
 
 [security-headers-url]: https://securityheaders.com/
