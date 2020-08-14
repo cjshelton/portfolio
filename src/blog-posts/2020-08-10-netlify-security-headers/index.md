@@ -7,15 +7,13 @@ description: ""
 
 Netlify is a great platform for simple web hosting, which comes with a whole load of benefits including a generous free plan, HTTPS out-of-the-box, and cool features like AWS Lambda integration and form submissions. I plan on writing a blog post specifically about Netlify, including how I use it and what benefits I get from it.
 
-I was made aware, that by default, some HTTP Security Headers are not set by default, and sure enough, for my Portfolio site, most were not set which resulted in a pretty poor grading on [Security Headers][security-headers-url]:
+I was made aware, that by default, some HTTP Security Headers are not set by default on Netlify, and sure enough, for my Portfolio site, most were not set which resulted in a pretty poor rating on [Security Headers][security-headers-url]:
 
-<img src="./security-headers-report.png" alt="Security Headers report showing grade D" />
+<img src="./security-headers-report.png" alt="Security Headers report showing a poor rating of D" />
 
-As you can see above, the poor rating is due to Content Security Policy, X-Frame Options and other security headers not be setup or configured correctly.
+As you can see above, the poor rating is due to Content Security Policy, X-Frame Options and other security headers not being setup or configured correctly.
 
 I was keen to fix these security issues, and blog my process.
-
-[security-headers-url]: https://securityheaders.com/
 
 # Security Headers - what and why?
 
@@ -48,3 +46,5 @@ The server will always respond with the HSTS header, even if the browser has alr
 1. Before sending the request to the server, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server.
 
 TODO: Explanation that HSTS is already set up with screenshot.
+
+[security-headers-url]: https://securityheaders.com/
