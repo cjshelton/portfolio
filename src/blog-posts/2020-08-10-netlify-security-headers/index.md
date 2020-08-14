@@ -45,6 +45,10 @@ The server will always respond with the HSTS header, even if the browser has alr
 1. The user accesses the site again, or another page on the site, over HTTP.
 1. Before sending the request to the server, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server.
 
-TODO: Explanation that HSTS is already set up with screenshot.
+### Resolution
+
+Fortunately, all Netlify apps are served over HTTPS and use HTTPS redirection by default, for no cost -- this is an excellent move by Netlify <span role="img" aria-label="Thumbs up emoji">&#128077;</span>.
+
+The HSTS header is automatically configured by Netlify too, so I didn't have to do any work here.
 
 [security-headers-url]: https://securityheaders.com/
