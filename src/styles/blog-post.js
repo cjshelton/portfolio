@@ -52,6 +52,21 @@ export default css`
         color: ${colours.inlineCode};
     }
 
+    blockquote {
+        margin: 0 10px 10px 10px;
+        padding: 10px;
+        border-left: 3px solid ${colours.primary};
+        background-color: ${colours.lightGrey};
+
+        p {
+            // Override the margin on the last p tag as the spacing is handled instead
+            // by the padding on the blockquote.
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
     .gatsby-resp-image-wrapper {
         margin-top: 20px;
         margin-bottom: 20px;
