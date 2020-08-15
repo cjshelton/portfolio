@@ -1,3 +1,4 @@
 /*
     Content-Security-Policy-Report-Only: default-src https://*.cshelton.co.uk
+    Content-Security-Policy-Report-Only: script-src https://www.googletagmanager.com https://www.google-analytics.com
     Content-Security-Policy-Report-Only: style-src 'unsafe-inline'
