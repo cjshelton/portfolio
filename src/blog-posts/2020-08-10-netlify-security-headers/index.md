@@ -116,9 +116,40 @@ A few things to note:
 
 As noted above, my CSP is certainly not as strong as I'd like, but I am somewhat limited to the way Gatsby works, and ultimately, my site is purely static, with no user content other than my own, so I'm not too concerned. The [gatsby-plugin-csp][gatsby-plugin-csp] seemed like an option to use hash values instead of `unsafe-inline`, but there is a known [compatibility issue][gatsby-plugin-csp-compatibility-issue] which prevents me from using it. I will be keeping an eye on any improvements to Gatsby and its plugins which might allow me to tighten up my policies in the future.
 
-For now anyway, I do get some limited protection with this CSP header in place, and checking my site against [Security Headers][security-headers-url] again, I can see I have a tick for CSP, and a slightly improved rating -- getting there!
+For now anyway, I do get some limited protection with this CSP header in place, and checking my site against [Security Headers][security-headers-url] again, I can see I have a <span role="img" aria-label="Tick emoji">&#9989;</span> for CSP, and a slightly improved rating -- getting there!
 
 <img src="./security-headers-report-csp.png" alt="Security Headers report showing an improved rating of C with a tick for CSP">
+
+# X-Frame-Options (XFO)
+
+The `<iframe>` HTML element allows a site to embed another site's content within it, much like in the screenshot below, where I created a basic test page with an `<iframe>` pointing to my Portfolio site:
+
+<img src="./clickjacking-example-before-xfo-header.png" alt="Using an iframe to embed my Portfolio site without the XFO header" />
+
+It has its uses, but the `<iframe>` tag can be used to facilitate a malicious [Clickjacking][owasp-clickjacking] attack, where an invisible `<iframe>` is placed in front of a malicious site, which tricks the user into clicking on a button within it, which has most likely rendered a genuine site which the user is already logged into, causing the user to perform an authenticated action unknowingly.
+
+I highly recommend reading [Troy Hunt's blog post on Clickjacking][troy-hunt-clickjacking-blog-post], where he walks through an example and talks in more detail about the implications of the attack.
+
+So now onto the XFO header, which is a fairly simple one (compared to CSP at least) -- this header instructs the browser what to do when a site is being rendered into an `<iframe>`.
+
+There are two supported directives:
+
+-   `DENY` - Do not allow the site to be loaded into an `<iframe>`.
+-   `SAMEORIGIN` - Only allow the site to be loaded into an `<iframe>` from within a page on that same site.
+
+## Resolution
+
+I have no requirement for any site, not even my own, to be able to render my site within an `<iframe>`, so I chose the `DENY` directive here. After doing so, the `<iframe>` on my basic test site no longer works, and I can see a suitable error in the browser console.
+
+<img src="./clickjacking-example-after-xfo-header.png" alt="Using an iframe to embed my Portfolio site without the XFO header" />
+
+And the XFO response header is visible in the network tab when trying to request the page:
+
+<img src="./clickjacking-response-header.png" alt="The XFO response header in the dev tools Network tab" />
+
+Running my site through [Security Headers][security-headers-url] yet again, the rating has improved and I now have a <span role="img" aria-label="Tick emoji">&#9989;</span> against `X-Frame-Options`.
+
+<img src="./security-headers-report-xfo.png" alt="Security Headers report showing an improved rating of B with a tick for XFO">
 
 [security-headers-url]: https://securityheaders.com/
 [owasp-url]: https://owasp.org/
@@ -128,3 +159,5 @@ For now anyway, I do get some limited protection with this CSP header in place, 
 [netlify-headers-file]: https://docs.netlify.com/routing/headers/
 [gatsby-plugin-csp]: https://www.gatsbyjs.com/plugins/gatsby-plugin-csp/
 [gatsby-plugin-csp-compatibility-issue]: https://github.com/gatsbyjs/gatsby/issues/10890
+[owasp-clickjacking]: https://owasp.org/www-community/attacks/Clickjacking
+[troy-hunt-clickjacking-blog-post]: https://www.troyhunt.com/clickjack-attack-hidden-threat-right-in/
