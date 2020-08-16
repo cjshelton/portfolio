@@ -153,9 +153,9 @@ After doing so, the `<iframe>` on my basic test site no longer works, and I can 
 
 And the XFO response header is visible in the network tab when trying to request the page:
 
-<img src="./clickjacking-response-header.png" alt="The XFO response header in the dev tools Network tab" />
+<img src="./xfo-response-header.png" alt="The XFO response header in the dev tools Network tab" />
 
-Running my site through [Security Headers][security-headers-url] yet again, the rating has improved and I now have a <span role="img" aria-label="Tick emoji">&#9989;</span> against `X-Frame-Options`.
+Running my site through [Security Headers][security-headers-url] yet again, the rating has improved and I now have a <span role="img" aria-label="Tick emoji">&#9989;</span> against `X-Frame-Options`:
 
 <img src="./security-headers-report-xfo.png" alt="Security Headers report showing an improved rating of B with a tick for XFO">
 
@@ -163,7 +163,7 @@ Running my site through [Security Headers][security-headers-url] yet again, the 
 
 Next up is the `X-Content-Type-Options` header, which is one of the simplest to configure, and only has one possible directive -- `nosniff`. This header instructs the browser not to do any [MIME type sniffing][mime-type-sniffing], and instead, rely on the MIME type provided in the `Content-Type` header from the sever without changing it.
 
-This helps prevent the browser from downloading a potentially malicious file without the user's consent, AKA a Drive-by download. It also helps ensure that files being downloaded with consent, remain the type specified, without, for example, the browser changing them to an executable.
+This helps prevent the browser from downloading a potentially malicious file without the user's consent, AKA a "Drive-by download". It also helps ensure that files being downloaded with consent, remain the type specified, without, for example, the browser changing them to an executable.
 
 I added this header to my `_headers` file:
 
@@ -175,6 +175,12 @@ I added this header to my `_headers` file:
 ```
 
 And observed that it is now being sent in the response headers:
+
+<img src="./x-content-type-options-response-header.png" alt="The X-Content-Type-Options response header in the dev tools Network tab" />
+
+[Security Headers][security-headers-url] now shows an A rating along with a <span role="img" aria-label="Tick emoji">&#9989;</span> against `X-Content-Type-Options`:
+
+<img src="./security-headers-report-x-content-type-options.png" alt="Security Headers report showing an improved rating of A with a tick for X-Content-Type-Options">
 
 [security-headers-url]: https://securityheaders.com/
 [owasp-url]: https://owasp.org/
