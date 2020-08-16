@@ -1,3 +1,4 @@
 /*
     Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com
     X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
