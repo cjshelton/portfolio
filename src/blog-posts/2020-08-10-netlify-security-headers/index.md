@@ -139,7 +139,15 @@ There are two supported directives:
 
 ## Resolution
 
-I have no requirement for any site, not even my own, to be able to render my site within an `<iframe>`, so I chose the `DENY` directive here. After doing so, the `<iframe>` on my basic test site no longer works, and I can see a suitable error in the browser console.
+I have no requirement for any site, not even my own, to be able to render my site within an `<iframe>`, so I chose the `DENY` directive here.
+
+```
+/*
+    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com
+    X-Frame-Options: DENY
+```
+
+After doing so, the `<iframe>` on my basic test site no longer works, and I can see a suitable error in the browser console.
 
 <img src="./clickjacking-example-after-xfo-header.png" alt="Using an iframe to embed my Portfolio site without the XFO header" />
 
@@ -151,6 +159,23 @@ Running my site through [Security Headers][security-headers-url] yet again, the 
 
 <img src="./security-headers-report-xfo.png" alt="Security Headers report showing an improved rating of B with a tick for XFO">
 
+# X-Content-Type-Options
+
+Next up is the `X-Content-Type-Options` header, which is one of the simplest to configure, and only has one possible directive -- `nosniff`. This header instructs the browser not to do any [MIME type sniffing][mime-type-sniffing], and instead, rely on the MIME type provided in the `Content-Type` header from the sever without changing it.
+
+This helps prevent the browser from downloading a potentially malicious file without the user's consent, AKA a Drive-by download. It also helps ensure that files being downloaded with consent, remain the type specified, without, for example, the browser changing them to an executable.
+
+I added this header to my `_headers` file:
+
+```
+/*
+    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+```
+
+And observed that it is now being sent in the response headers:
+
 [security-headers-url]: https://securityheaders.com/
 [owasp-url]: https://owasp.org/
 [owasp-secure-headers-project-url]: https://owasp.org/www-project-secure-headers/
@@ -161,3 +186,4 @@ Running my site through [Security Headers][security-headers-url] yet again, the 
 [gatsby-plugin-csp-compatibility-issue]: https://github.com/gatsbyjs/gatsby/issues/10890
 [owasp-clickjacking]: https://owasp.org/www-community/attacks/Clickjacking
 [troy-hunt-clickjacking-blog-post]: https://www.troyhunt.com/clickjack-attack-hidden-threat-right-in/
+[mime-type-sniffing]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#MIME_sniffing
