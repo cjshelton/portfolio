@@ -36,7 +36,11 @@ There are numerous security headers which can be sent by the server, but the mos
 -   Referrer Policy
 -   Feature-Policy
 
-## HTTP Strict-Transport-Security (HSTS)
+## Setting Security Headers in Netlify
+
+There are a couple of ways to set headers in Netlify -- using a toml configuration file or using a `_headers` file. I chose the latter, initially for simplicity. The [documentation][netlify-headers-file] explains how to use this file.
+
+# HTTP Strict-Transport-Security (HSTS)
 
 The HSTS header sent by the server informs the browser that any requests made to a site must only be made using HTTPS. HSTS is not to be confused with HTTPS redirection, which is a configuration setting on the server which will force redirect any traffic made over HTTP to use HTTPS.
 
@@ -44,7 +48,7 @@ The instruction to always use HSTS is remembered by the browser after the initia
 
 The server will always respond with the HSTS header, even if the browser has already received this instruction previously. This means that every time the user visits the site, the expiry date of the HSTS instruction stored by the browser is continually updated, ensuring that the user is protected for as long as possible with a reduced chance of the instruction ever expiring.
 
-### An Example Flow
+## An Example Flow
 
 1. The user accesses `http://www.cshelton.co.uk/` for the very first time (note the use of HTTP, not HTTPS)
 1. The browser has never received the HSTS header for this site before, so continues to send the request over HTTP.
@@ -57,14 +61,70 @@ The server will always respond with the HSTS header, even if the browser has alr
 1. Before sending the request to the server over HTTP, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server, resulting in only one secure request being made.
    <img src="./browser-using-hsts-instruction.png" alt="Network request showing the browser making only one HTTPS request" />
 
-### Resolution
+## Resolution
 
 Fortunately, all Netlify apps are served over HTTPS and use HTTPS redirection by default, for no cost -- this is an excellent move by Netlify <span role="img" aria-label="Thumbs up emoji">&#128077;</span>.
 
 As can be seen above, HSTS is already in action on my site, configured automatically by Netlify, so I didn't have to do any work here. Result!
 
-## Content-Security-Policy
+# Content-Security-Policy (CSP)
+
+Now onto the first security header which has been flagged as missing -- Content Security Policy.
+
+The CSP header is an important one to help guard against Cross-site scripting (XSS) attacks. XSS is [recognised by OWASP][owasp-top-ten] as being one of the top 10 most critical security risks to web applications, so it's key to be aware of this attack and how to guard against it.
+
+One way to help guard against XSS is to make use of the CSP header, and make sure it's configured to be as strict as possible. A CSP is a way for a web server to tell the browser what kind of content is allowed for a site, and if that content is hosted externally, where is it allowed to come from. A CSP is defined by a set of semi-colon delimitered policy directives, where a policy directive takes the form `<directive name> <directive value>`.
+
+There are many directives which help restrict content, but some of the most common are:
+
+-   `default-src` - Acts as a fall back source any directives which haven't been explicitly included.
+-   `script-src` - Restricts how JavaScript can be used on the site.
+-   `style-src` - Restricts how CSS can be used on the site.
+-   `img-src` - Restricts how images can be used on the site.
+
+For each directive included, the value must be supplied, which defines how that content can be included and used. Typically, most content will come from your own domain, like external JS files, style sheets and images, and for that, you can specify your own domain. You may then provide additional domains for whitelisting specific content, like Google Analytics scripts for example, or styles from a Content Delivery Network (CDN). It's important to note that this also applies to inline `<script>` and `<style>` tags -- unless explicitly whitelisted using the `unsafe-inline` value, inline content will be blocked by default.
+
+It's not difficult to see from the directives above how a strict CSP can help guard against XSS attacks -- by specifying exactly where content should come from, specifically script content, and how it should be executed, an attempt to load in a script tag entered maliciously by an attacker will not be permitted by the browser.
+
+Consider carefully whether to use the `unsafe-inline` value, as this begins to negate the benefit having the CSP against XSS attacks. You may find you can extract your inline scripts and styles to external files instead, unless you are making use of patterns like critical CSS, where that's not possible, and you will have to look into safer approaches, like hashing or using a nonce value. Troy Hunt wrote a [good article][troy-hunt-hash-nonce] about the safer alternatives to using `unsafe-inline` -- it's definitely worth a read.
+
+Ultimately, unless you have a very basic application, configuring the CSP header, and doing it properly, is not a trivial task. This was my first time implementing one, and it does feel like there's a certain art to it. There are many ways to set the values of the policy directives, including using wildcards and specifying the allowed scheme and port. I would recommend reading up further on CSP before implementing your own.
+
+## Resolution
+
+Something very useful to know when configuring your CSP, is the `Content-Security-Policy-Report-Only` header, which acts just like the `Content-Security-Policy` header, only it reports back what issues you be having with your CSP, rather than actually applying it. This makes testing much easier and safer against a live site, if that's all you have (as I do).
+
+I first added just the `default-src` directive with my own domain as the value, pushed my changes, and then checked the browser console:
+
+<img src="./csp-report-only-errors.png" alt="Console errors present after applying the CSP Report Only header">
+
+Lots of errors... good? It shows my new header is working, but is only reporting the errors to me, so I can see what changes I need to make.
+
+Anyway, after a lot of experimentation, my final CSP header looks like this:
+
+```
+/*
+    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com
+```
+
+A few things to note:
+
+-   I have set my `default-src` directive to `https://*.cshelton.co.uk`, so that the fallback for any omitted directive is to only allow the content to come from my domain, over HTTPS.
+-   As well as whitelisting my own domain in the `script-src` directive, I am permitting script content to be loaded specifically for Google Analytics to work. I am also, unfortunately, permitting scripts to be loaded inline, which is a side effect of using Gatsby, which introduces inline script tags in my pages.
+-   I am also permitting style content to be loaded inline, another side effect of using CSS-in-JS and Gatsby, which inserts my page styles into the `<head>` of each page, for quicker page load times.
+-   As well as whitelisting my own domain in the `img-src` directive, I am also permitting images to be loaded using the `data` scheme, which is used to embed images using a base-64 string, and from Google Analytics, which is required.
+
+As noted above, my CSP is certainly not as strong as I'd like, but I am somewhat limited to the way Gatsby works, and ultimately, my site is purely static, with no user content other than my own, so I'm not too concerned. The [gatsby-plugin-csp][gatsby-plugin-csp] seemed like an option to use hash values instead of `unsafe-inline`, but there is a known [incompatibility issue][gatsby-plugin-csp-compatibility-issue] which prevents me from using it. I will be keeping an eye on any improvements to Gatsby and its plugins which might make allow me to tighten up my policies in the future.
+
+For now anyway, I do get some limited protection with this CSP header in place, and checking my site against [Security Headers][security-headers-url] again, I can see I have a tick for CSP, and a slightly improved rating -- getting there!
+
+<img src="./security-headers-report-csp.png" alt="Security Headers report showing an improved rating of C with a tick for CSP">
 
 [security-headers-url]: https://securityheaders.com/
 [owasp-url]: https://owasp.org/
 [owasp-secure-headers-project-url]: https://owasp.org/www-project-secure-headers/
+[owasp-top-ten]: https://owasp.org/www-project-top-ten/
+[troy-hunt-hash-nonce]: https://www.troyhunt.com/locking-down-your-website-scripts-with-csp-hashes-nonces-and-report-uri/
+[netlify-headers-file]: https://docs.netlify.com/routing/headers/
+[gatsby-plugin-csp]: https://www.gatsbyjs.com/plugins/gatsby-plugin-csp/
+[gatsby-plugin-csp-compatibility-issue]: https://github.com/gatsbyjs/gatsby/issues/10890
