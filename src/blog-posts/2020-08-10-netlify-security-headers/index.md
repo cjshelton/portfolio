@@ -182,6 +182,18 @@ And observed that it is now being sent in the response headers:
 
 <img src="./security-headers-report-x-content-type-options.png" alt="Security Headers report showing an improved rating of A with a tick for X-Content-Type-Options">
 
+As indicated in the summary above, I have reached my maximum rating of an A now, with an A+ unattainable due to my use of `unsafe-inline` above. I could stop here, but for completeness, I thought I'd see it through to add in the remaining headers.
+
+# Referrer Policy
+
+When navigating from one site to another, say from `https://www.cshelton.co.uk/` to `https://github.com/`, the browser sends a Referer request header which can provide some basic information about where the request originated from. How much information is sent in this header can be configured through the origin's Referrer Policy response header.
+
+There are a variety of directives to choose from, ranging from `no-referrer`, which sends no information, to `unsafe-url`, which always sends the sends the origin, path and query string, and as indicated in the name, is not recommended for use.
+
+I have no reason to hide any referrer information, so I opted for the `no-referrer-when-downgrade` directive. This is the default if not specified, and ensures that referrer information is only sent when navigating to a destination which uses the same or a stronger security protocol (i.e. HTTP to HTTP, HTTPS to HTTPS and HTTP to HTTPS). Since my Portfolio site is setup to always use HTTPS, referrer information will only be sent when navigating to other sites using HTTPS.
+
+# Useful Links
+
 [security-headers-url]: https://securityheaders.com/
 [owasp-url]: https://owasp.org/
 [owasp-secure-headers-project-url]: https://owasp.org/www-project-secure-headers/
