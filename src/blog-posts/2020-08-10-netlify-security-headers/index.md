@@ -216,23 +216,28 @@ Checking [Security Headers][security-headers-url] again, it shows a <span role="
 
 # Feature Policy
 
-And finally, the last header to address in order to get a <span role="img" aria-label="Tick emoji">&#9989;</span> across the board is the Feature Policy response header.
+And finally, the last header to address in order to get a <span role="img" aria-label="Tick emoji">&#9989;</span> across the board is the Feature Policy.
 
-As browsers and the web evolve, the features available to the developer when building web applications become richer. For example, modern browsers permit the use of the host machine's webcam and microphone, and access to the accelerometer and geolocation data, to name a few.
+As browsers and the web evolve, the features available to the developer in the browser when building web applications become richer. For example, modern browsers permit the use of the host machine's webcam and microphone, and access to the accelerometer and geolocation data, to name a few.
 
-The Feature Policy header is a way of defining what features are allowed to be used on a site, and by any `<iframe>` elements on the page. For each feature, there is a corresponding directive which can be configured in the header, similar to the [CSP](#content-security-policy).
+The Feature Policy header is a way of defining what features are allowed to be used on a site, and by any `<iframe>` elements on the page. For each feature, there is a corresponding directive which can be configured in the header, similar to the [CSP](#content-security-policy). According to [MDN][mdn-feature-policy-header], this header is still in an experimental state, and so the directives are subject to change. For an up-to-date list of the available directives, it is worth checking out the [MDN][mdn-feature-policy-header] page.
 
 ## Resolution
 
-According to MDN, this header is still in an experimental state, and so the directives are subject to change. This makes it difficult to know how to configure this header. For me, I opted to set the following directives to `none`, preventing these features from being used on the site, in an effort to restrict any features which might pose a security risk:
+Given this header is experimental, it's difficult to know how to configure it, but I landed on the following, choosing to prevent the use of any features which might pose a security risk on my site:
 
--   `camera`
--   `display-capture`
--   `document-domain`
--   `geolocation`
--   `microphone`
--   `payment`
--   `usb`
+```
+/*
+    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: no-referrer-when-downgrade
+    Feature-Policy: camera 'none'; display-capture 'none'; document-domain 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'
+```
+
+And now [Security Headers][security-headers-url] shows a <span role="img" aria-label="Tick emoji">&#9989;</span> against `Feature-Policy`, completing the headers I set out to configure:
+
+<img src="./security-headers-report-feature-policy.png" alt="Security Headers report showing a rating of A with a tick for Feature-Policy and all other headers">
 
 # Useful Links
 
@@ -247,3 +252,4 @@ According to MDN, this header is still in an experimental state, and so the dire
 [owasp-clickjacking]: https://owasp.org/www-community/attacks/Clickjacking
 [troy-hunt-clickjacking-blog-post]: https://www.troyhunt.com/clickjack-attack-hidden-threat-right-in/
 [mime-type-sniffing]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#MIME_sniffing
+[mdn-feature-policy-header]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
