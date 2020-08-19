@@ -11,6 +11,7 @@ export const colours = {
     primaryTextMedium: "#486884",
 
     white: "#FFFFFF",
+    lightGrey: "#E3E3E3",
 
     githubIcon: "#000000",
     githubIconLight: "#333333",
