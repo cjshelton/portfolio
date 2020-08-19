@@ -1,5 +1,5 @@
 ---
-title: "Netlify Security Headers"
+title: "Configuring Netlify HTTP Security Headers"
 description: ""
 ---
 
