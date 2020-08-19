@@ -67,7 +67,7 @@ Fortunately, all Netlify apps are served over HTTPS and use HTTPS redirection by
 
 As can be seen above, HSTS is already in action on my site, configured automatically by Netlify, so I didn't have to do any work here. Result!
 
-# Content-Security-Policy (CSP)
+# Content-Security-Policy (CSP) {#content-security-policy}
 
 Now onto the first security header which has been flagged as missing -- Content Security Policy.
 
@@ -165,7 +165,9 @@ Next up is the `X-Content-Type-Options` header, which is one of the simplest to 
 
 This helps prevent the browser from downloading a potentially malicious file without the user's consent, AKA a "Drive-by download". It also helps ensure that files being downloaded with consent, remain the type specified, without, for example, the browser changing them to an executable.
 
-I added this header to my `_headers` file:
+## Resolution
+
+I added the `X-Content-Type-Options` header to my `_headers` file:
 
 ```
 /*
@@ -190,7 +192,47 @@ When navigating from one site to another, say from `https://www.cshelton.co.uk/`
 
 There are a variety of directives to choose from, ranging from `no-referrer`, which sends no information, to `unsafe-url`, which always sends the sends the origin, path and query string, and as indicated in the name, is not recommended for use.
 
+## Resolution
+
 I have no reason to hide any referrer information, so I opted for the `no-referrer-when-downgrade` directive. This is the default if not specified, and ensures that referrer information is only sent when navigating to a destination which uses the same or a stronger security protocol (i.e. HTTP to HTTP, HTTPS to HTTPS and HTTP to HTTPS). Since my Portfolio site is setup to always use HTTPS, referrer information will only be sent when navigating to other sites using HTTPS.
+
+I added the `Referrer-Policy` header to my `_headers` file:
+
+```
+/*
+    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: no-referrer-when-downgrade
+```
+
+Below shows the Referrer Policy response header set on my Portfolio site, and the Referer request header set when navigating away to GitHub.
+
+<img src="./referrer-policy-headers.png" alt="The Referrer Policy response header and Referer request header as seen in the dev tools Network tab" />
+
+Checking [Security Headers][security-headers-url] again, it shows a <span role="img" aria-label="Tick emoji">&#9989;</span> against `Referrer-Policy`, and the rating remains at an A:
+
+<img src="./security-headers-report-referrer-policy.png" alt="Security Headers report showing a rating of A with a tick for Referrer-Policy">
+
+# Feature Policy
+
+And finally, the last header to address in order to get a <span role="img" aria-label="Tick emoji">&#9989;</span> across the board is the Feature Policy response header.
+
+As browsers and the web evolve, the features available to the developer when building web applications become richer. For example, modern browsers permit the use of the host machine's webcam and microphone, and access to the accelerometer and geolocation data, to name a few.
+
+The Feature Policy header is a way of defining what features are allowed to be used on a site, and by any `<iframe>` elements on the page. For each feature, there is a corresponding directive which can be configured in the header, similar to the [CSP](#content-security-policy).
+
+## Resolution
+
+According to MDN, this header is still in an experimental state, and so the directives are subject to change. This makes it difficult to know how to configure this header. For me, I opted to set the following directives to `none`, preventing these features from being used on the site, in an effort to restrict any features which might pose a security risk:
+
+-   `camera`
+-   `display-capture`
+-   `document-domain`
+-   `geolocation`
+-   `microphone`
+-   `payment`
+-   `usb`
 
 # Useful Links
 
