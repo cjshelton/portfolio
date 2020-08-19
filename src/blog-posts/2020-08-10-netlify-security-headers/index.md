@@ -5,15 +5,13 @@ description: ""
 
 # Introduction
 
-Netlify is a great platform for simple web hosting, which comes with a whole load of benefits including a generous free plan, HTTPS out-of-the-box, and cool features like AWS Lambda integration and form submissions. I plan on writing a blog post specifically about Netlify, including how I use it and what benefits I get from it.
+Netlify is a great platform for simple web hosting, which comes with a whole load of benefits, including a generous free plan, HTTPS out-of-the-box, and cool features like AWS Lambda integration and form submissions. I plan on writing a blog post specifically about Netlify, including how I use it and what benefits I get from it.
 
 I was made aware, that by default, some HTTP Security Headers are not set by default when hosting a site on Netlify, and sure enough, for my Portfolio site, most were not set which resulted in a pretty poor rating on [Security Headers][security-headers-url]:
 
 <img src="./security-headers-report.png" alt="Security Headers report showing a poor rating of D" />
 
-As you can see above, the poor rating is due to Content Security Policy, X-Frame Options and other security headers not being setup or configured correctly.
-
-I was keen to fix these security issues, and blog my process.
+As you can see above, the poor rating is due to Content Security Policy, X-Frame Options and other security headers not being setup or configured correctly. I was keen to fix these security issues, and blog my process.
 
 # Security Headers - what and why?
 
@@ -36,9 +34,15 @@ There are numerous security headers which can be sent by the server, but the mos
 -   Referrer Policy
 -   Feature-Policy
 
-## Setting Security Headers in Netlify
+# Security Headers in Netlify
 
-There are a couple of ways to set headers in Netlify -- using a `netlify.toml` configuration file or using a `_headers` file. I chose the latter, initially for simplicity. The [documentation][netlify-headers-file] explains how to use this file.
+Netlify offers a couple of ways to set the headers for your site, as explained in the [documentation][netlify-headers-file].
+
+The first way is by creating a `netlify.toml` configuration file, which is stored in the root of your repository, and configures settings related to your build and deployment, along with setting response headers and any environment variables.
+
+The second way is by creating a `_headers` file, which is stored in the root of your repository, and is specific for configuring the headers for your site. Headers can be set either globally across the domain using `/*`, or for specific paths in your site using `/skills-and-experience`, for example, with the headers nested underneath.
+
+Given I was only interested in configuring the headers for my site, I chose the latter approach, targeting the whole domain.
 
 # HTTP Strict-Transport-Security (HSTS)
 
@@ -50,15 +54,15 @@ The server will always respond with the HSTS header, even if the browser has alr
 
 ## An Example Flow
 
-1. The user accesses `http://www.cshelton.co.uk/` for the very first time (note the use of HTTP, not HTTPS)
+1. The user accesses `http://www.cshelton.co.uk/` for the very first time (note the use of HTTP, not HTTPS).
 1. The browser has never received the HSTS header for this site before, so continues to send the request over HTTP.
-1. HTTPS redirection is setup on the server, which issues a `301 Moved Permanently` HTTP response to the browser, with an updated location URL, so the browser can issue the request again, but using HTTPS.
+1. HTTPS redirection is setup on the server, which issues a `301 Moved Permanently` HTTP response to the browser, with an updated location URL, so the browser can issue the request again, but using HTTPS:
    <img src="./https-redirection.png" alt="Network request showing redirect from HTTP to HTTPS" />
-1. The server responds to the now secure request with the page content, along with the HSTS header in the HTTP response.
+1. The server responds to the now secure request with the page content, along with the HSTS header in the HTTP response:
    <img src="./hsts-response-header.png" alt="Network request HSTS response header" />
 1. The browser stores the HSTS instruction to be used for subsequent requests.
 1. The user accesses the site again, or another page on the site, over HTTP.
-1. Before sending the request to the server over HTTP, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server, resulting in only one secure request being made.
+1. Before sending the request to the server over HTTP, the browser realises that it has an instruction to only send requests using HTTPS, so it automatically converts the request to use HTTPS and then submits it to the server, resulting in only one secure request being made:
    <img src="./browser-using-hsts-instruction.png" alt="Network request showing the browser making only one HTTPS request" />
 
 ## Resolution
@@ -86,7 +90,7 @@ For each directive included, the value must be supplied, which defines how that 
 
 It's not difficult to see from the directives above how a strict CSP can help guard against XSS attacks -- by specifying exactly where content should come from, specifically script content, and how it should be executed, an attempt to load in a script tag entered maliciously by an attacker can be prevented by the browser.
 
-Consider carefully whether to use the `unsafe-inline` value, as this begins to negate the benefit having the CSP against XSS attacks. You may find you can extract your inline scripts and styles to external files instead, unless you are making use of patterns like critical CSS, where that's not possible, and you will have to look into safer approaches, like hashing or using a nonce value. Troy Hunt wrote a [good article][troy-hunt-hash-nonce] about the safer alternatives to using `unsafe-inline` -- it's definitely worth a read.
+Consider carefully whether to use the `unsafe-inline` value, as this begins to negate the benefit of having the CSP to guard against XSS attacks. You may find you can extract your inline scripts and styles to external files instead, unless you are making use of patterns like critical CSS, where that's not possible, and you will have to look into safer approaches, like hashing or using a nonce value. Troy Hunt wrote a [good article][troy-hunt-hash-nonce] about the safer alternatives to using `unsafe-inline` -- it's definitely worth a read.
 
 Ultimately, unless you have a very basic application, configuring the CSP header, and doing it properly, is not a trivial task. This was my first time implementing one, and it does feel like there's a certain art to it. There are many ways to set the values of the policy directives, including using wildcards and specifying the allowed scheme and port. I would recommend reading up further on CSP before implementing your own.
 
@@ -147,7 +151,7 @@ I have no requirement for any site, not even my own, to be able to render my sit
     X-Frame-Options: DENY
 ```
 
-After doing so, the `<iframe>` on my basic test site no longer works, and I can see a suitable error in the browser console.
+After doing so, the `<iframe>` on my basic test site no longer works, and I can see a suitable error in the browser console:
 
 <img src="./clickjacking-example-after-xfo-header.png" alt="Using an iframe to embed my Portfolio site without the XFO header" />
 
@@ -190,7 +194,7 @@ As indicated in the summary above, I have reached my maximum rating of an A now,
 
 When navigating from one site to another, say from `https://www.cshelton.co.uk/` to `https://github.com/`, the browser sends a Referer request header which can provide some basic information about where the request originated from. How much information is sent in this header can be configured through the origin's Referrer Policy response header.
 
-There are a variety of directives to choose from, ranging from `no-referrer`, which sends no information, to `unsafe-url`, which always sends the sends the origin, path and query string, and as indicated in the name, is not recommended for use.
+There are a variety of directives to choose from, ranging from `no-referrer`, which sends no information, to `unsafe-url`, which always sends the origin, path and query string, and as indicated in the name, is not recommended for use.
 
 ## Resolution
 
@@ -206,7 +210,7 @@ I added the `Referrer-Policy` header to my `_headers` file:
     Referrer-Policy: no-referrer-when-downgrade
 ```
 
-Below shows the Referrer Policy response header set on my Portfolio site, and the Referer request header set when navigating away to GitHub.
+Below shows the Referrer Policy response header set on my Portfolio site, and the Referer request header set when navigating away to GitHub:
 
 <img src="./referrer-policy-headers.png" alt="The Referrer Policy response header and Referer request header as seen in the dev tools Network tab" />
 
@@ -235,11 +239,9 @@ Given this header is experimental, it's difficult to know how to configure it, b
     Feature-Policy: camera 'none'; display-capture 'none'; document-domain 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'
 ```
 
-And now [Security Headers][security-headers-url] shows a <span role="img" aria-label="Tick emoji">&#9989;</span> against `Feature-Policy`, completing the headers I set out to configure:
+And that's it! [Security Headers][security-headers-url] shows a <span role="img" aria-label="Tick emoji">&#9989;</span> against `Feature-Policy`, completing the headers I set out to configure:
 
 <img src="./security-headers-report-feature-policy.png" alt="Security Headers report showing a rating of A with a tick for Feature-Policy and all other headers">
-
-# Useful Links
 
 [security-headers-url]: https://securityheaders.com/
 [owasp-url]: https://owasp.org/
