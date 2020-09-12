@@ -24,14 +24,16 @@ written across separate files, and if any of those files depended on another, li
 declared in a specific order to work, which made for some frustrating errors.*
 
 There are different formats for creating and using modules in JavaScript depending on your tooling available, and whether
-you're developing for the browser or Node. The most common formats, and those which I'll be covering in detail here
-include:
-- CommonJS
-- ES Modules
-- AMD
+you're developing for the browser or Node. What really sets these different module formats apart as a developer, really
+comes down to how you include dependencies in a file, and how you expose functionality from a file.
 
-# CommonJS
+The most common formats, and those which I'll be covering in detail here include:
+- [Common JS](#common-js)
+- [ES Modules](#es-modules)
+- [AMD](#amd)
 
-# ES Modules
+# CommonJS {#common-js}
 
-# AMD
+# ES Modules {#es-modules}
+
+# AMD {#amd}
