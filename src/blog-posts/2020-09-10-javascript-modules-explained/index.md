@@ -17,19 +17,39 @@ As with any programming language, we as developers are always after ways of writ
 maintainable way. Modules in JavaScript help us achieve this by allowing us to split our code into logical chunks, in
 separate files, and with a way to share these modules with one another to build out our application.
 
-Modules also play a fundamental role when building large-scale client-side applications, by enabling dependencies of
-files to be declared explicitly per file, without worrying about the order in which scripts must be positioned
-in the HTML. *When JavaScript was not so dominant, and applications weren't as feature rich, JavaScript was typically
+Since JavaScript can be written for both client and server-side applications, there are different things to take into
+account when dealing with modules, and it's worth understanding these differences and how it affects the code you write.
+
+### Modules in Node (Server)
+
+Node is built on the idea of modules, and anyone familiar with modern JavaScript application development will be
+familiar with the (in)famous `node_modules` folder. Node has had support of modules since it was introduced, making use
+of the [CommonJS](#common-js) format to write files and even entire libraries which can be shared within or across
+applications.
+
+### Modules in the Browser (Client)
+
+Until the introduction of [ES Modules](#es-modules) in ES2015 (ES6), modules were not supported in browsers in any format
+natively, and developers had to (and for the most part still do) rely on bundling tools like [Webpack][webpack-url] or
+[Browserify][browserify-url], or use a client-side library like [require.js][requirejs-url], to make use of them.
+
+But writing modular JavaScript still plays a fundamental role when building large-scale client-side applications,
+enabling dependencies of files to be declared explicitly per file, without worrying about the order in which scripts
+must be positioned in the HTML, and without the need for one huge file containing all of your code.
+
+*When JavaScript was not so dominant, and applications weren't as feature rich, JavaScript was typically
 written across separate files, and if any of those files depended on another, like JQuery for example, they had to be
 declared in a specific order to work, which made for some frustrating errors.*
 
-There are different formats for creating and using modules in JavaScript depending on your tooling available, and whether
+### Module Formats
+
+There are different formats available for creating and using modules in JavaScript depending on your tooling available, and whether
 you're developing for the browser or Node. What really sets these different module formats apart as a developer, really
 comes down to how you include dependencies in a file, and how you expose functionality from a file.
 
 Being able to choose what to expose from a module is very important, helping us to encapsulate state and functionality
 within the module itself, without exposing everything to the outside world, or needing to pollute the global `window`
-object.
+object in the browser.
 
 The most common formats, and those which I'll be covering in detail here include:
 - [CommonJS](#common-js)
@@ -158,10 +178,24 @@ module.exports = {
 ```
 
 Convention is to use `module.exports`, assigning it to a new object, but it is worth knowing about this alternative
-approach and how it could cause you problems when used incorrectly.
+approach and how it could cause you problems if used incorrectly.
 
 ## Using CommonJS for Client-Side Development {#using-commonjs-for-client-side-development}
+
+As previously mentioned, the CommonJS module format is not understood by the browser, and using the keywords `require`
+and `module.exports` results in a console error. Since ES2015 (ES6), some browsers support modules natively, but in the
+ES Module format which I'll be covering [next](#es-modules).
+
+If you're wanting to write JavaScript using the CommonJS module format to be run in the browser, you will need to use
+a bundling tool like [Webpack][webpack-url] or [Browserify][browserify-url]. These tools will intelligently scan your
+code and output a single JavaScript file (bundle) which can be referenced in the HTML, and executed as normal by the
+browser. So really, the browser is unaware of the use of CommonJS modules, or that the code was originally made up of
+many different files in the first place.
 
 # ES Modules {#es-modules}
 
 # AMD {#amd}
+
+[webpack-url]: https://webpack.js.org/
+[browserify-url]: http://browserify.org/
+[requirejs-url]: https://requirejs.org/
