@@ -46,8 +46,6 @@ recognised by the use of the `require` and `exports` terms seen in the examples 
 that later](#using-commonjs-for-client-side-development). Executing a file in the browser which uses `require` will
 result in a console error reading `Uncaught ReferenceError: require is not defined`.**
 
-Sync
-
 In this format, dependencies are included in module using the `require` keyword, whilst `module.exports` is used for
 declaring what we want to expose from the module to the outside world.
 
@@ -90,6 +88,77 @@ and requiring, which makes them a bit more like [ES Modules](#es-modules). If yo
 more in-depth look at CommonJS modules.
 
 ## A Deeper Look into CommonJS Modules
+
+Every CommonJS module in Node has the special keyword `module` available, along with a few others. `module` is an object
+with an `exports` property on it, set initially to an empty object. The value assigned to this `module.exports` property
+is what is exposed from the module.
+
+There is also another way of exposing from a module, and that is by using another special keyword available -- `exports`,
+as seen below.
+
+```
+// stringUtils.js
+
+function toUpperCase(input) {
+    return input ? input.toUpperCase() : input;
+}
+
+function toLowerCase(input) {
+    return input ? input.toLowerCase() : input;
+}
+
+exports.toUpperCase = toUpperCase;
+exports.toLowerCase = toLowerCase;
+```
+
+`exports` here is an object, but it is important to understand that for every module, it is set to equal the value of
+`module.exports`, and with how referencing works in JavaScript, making them equal means that they are pointing to the
+same object instance, and modifications to one will be seen in the other, and vice versa. This means the two definitions
+of `stringUtils.js` above are actually the same, since they are both adding the two functions to the `module.exports`
+object, just in slightly different ways.
+
+The below snippet will hopefully explain this a little better, showing how you can think of a JavaScript module in Node:
+
+```
+// Credit: https://stackoverflow.com/a/16383925
+
+const module = {
+    exports: {}
+};
+
+const exports = module.exports;
+
+// Your code here...
+
+return module.exports;
+```
+
+Given it is the value of `module.exports` which is exposed from a module, and the typical approach is to return a new
+object rather than modifying the existing one, you must be careful when also using the `exports` keyword, as `exports`
+will no longer be pointing to the same `module.exports` object. In the example below, only the `toLowerCase` function
+will be available; `toUpperCase` has been lost since we changed the value of `module.exports`, and `exports` no longer
+points to it.
+
+```
+// stringUtils.js
+
+function toUpperCase(input) {
+    return input ? input.toUpperCase() : input;
+}
+
+function toLowerCase(input) {
+    return input ? input.toLowerCase() : input;
+}
+
+exports.toUpperCase = toUpperCase;
+
+module.exports = {
+    toLowerCase,
+}
+```
+
+Convention is to use `module.exports`, assigning it to a new object, but it is worth knowing about this alternative
+approach and how it could cause you problems when used incorrectly.
 
 ## Using CommonJS for Client-Side Development {#using-commonjs-for-client-side-development}
 
