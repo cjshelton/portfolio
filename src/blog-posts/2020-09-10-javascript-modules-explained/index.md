@@ -103,7 +103,21 @@ an object assigned to `module.exports` -- a special keyword in CommonJS modules 
 expose functionality from a module. The `index.js` file simply uses the other special keyword -- `require` -- to declare
 that `stringUtils` is a dependency to be used.
 
-That is the basic usage of CommonJS modules, and is how they are mainly used today, but there are other ways of exporting
+When the value of `module.exports` is an object, it can also be de-structured on require as shown below -- a common
+pattern to improve the readability of your dependencies.
+
+```
+// index.js
+
+const { toLowerCase, toUpperCase } = require('./stringUtils');
+
+const str = 'hello, world!';
+
+console.log(toUpperCase(str));
+
+```
+
+That covers the basic usage of CommonJS modules, and is how they are mainly used today, but there are other ways of exporting
 and requiring, which makes them a bit more like [ES Modules](#es-modules). If you're intrigued, continue reading for a
 more in-depth look at CommonJS modules.
 
