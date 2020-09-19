@@ -92,9 +92,7 @@ module.exports = {
 
 const stringUtils = require('./stringUtils');
 
-const str = 'hello, world!';
-
-console.log(stringUtils.toUpperCase(str));
+stringUtils.toUpperCase('hello, world!');
 
 ```
 
@@ -111,10 +109,7 @@ pattern to improve the readability of your dependencies.
 
 const { toLowerCase, toUpperCase } = require('./stringUtils');
 
-const str = 'hello, world!';
-
-console.log(toUpperCase(str));
-
+toUpperCase('hello, world!');
 ```
 
 That covers the basic usage of CommonJS modules, and is how they are mainly used today, but there are other ways of exporting
@@ -208,8 +203,193 @@ many different files in the first place.
 
 # ES Modules {#es-modules}
 
+ES2015 (ES6) introduced a module system to the ECMAScript standard, enabling browsers to understand modular JavaScript
+natively, without the need for bundling. ES Module syntax can easily be recognised by the `import` and `export` terms as
+shown in the upcoming examples.
+
+When importing and exporting with ES Modules, you have a few options when compared to using CommonJS. There are two
+ways to export from a module -- Named Exports and Default Export.
+
+## Default Export
+
+The default export allows for a single value to be exported from a module, be that an object, function or primitive type,
+much like the way `module.exports` behaves in CommonJS:
+
+```
+// stringUtils.js
+
+function toUpperCase(input) {
+    return input ? input.toUpperCase() : input;
+}
+
+function toLowerCase(input) {
+    return input ? input.toLowerCase() : input;
+}
+
+export default {
+    toUpperCase,
+    toLowerCase,
+}
+```
+
+A default export can then be imported using using the syntax below. **Note: There can be only one default export per
+module, and default exports cannot be de-structured on import due to a conflict with the syntax of importing a named
+export.**
+
+```
+// index.js
+
+import stringUtils from './stringUtils';
+
+stringUtils.toUpperCase('hello, world!');
+```
+
+## Named Export
+
+Another approach is for modules to export its members through named exports, where each member is exported using a
+separate export statement, providing a name for how that member should be imported:
+
+```
+// stringUtils.js
+
+export function toUpperCase(input) {
+    return input ? input.toUpperCase() : input;
+}
+
+export function toLowerCase(input) {
+    return input ? input.toLowerCase() : input;
+}
+```
+
+And these members can then be imported using various techniques as shown below. **Note: Trying to import using
+`import stringUtils from...` will not work when only named exports are being used, as this syntax is reserved for
+importing a default export only.**
+
+### Named Imports
+
+Individual exports can be optionally imported into the module using object de-structuring syntax along with their
+explicitly exported names, as shown below. This is the most common way of importing named exports.
+
+```
+import { toUpperCase } from './stringUtils';
+
+toUpperCase('hello, world!');
+```
+
+### Import All Exported Members
+
+It is possible to import all named exports in one go using the `*` keyword along with an alias as shown below. Much like
+the default import syntax, this makes all named exports available on the supplied alias -- `stringUtils` in this example.
+
+```
+import * as stringUtils from './stringUtils';
+
+stringUtils.toUpperCase('hello, world!');
+stringUtils.toLowerCase('HELLO, WORLD!');
+```
+
+### Named Imports Using An Alias
+
+If you want to alter the name of a named export when importing, you can use the `as` keyword to provide an alias, which
+can be useful for shortening the name of any of the imported members.
+
+```
+import {
+    toUpperCase as toUpper,
+    toLowerCase as toLower
+} from './stringUtils';
+
+stringUtils.toUpperCase('hello, world!');
+stringUtils.toLowerCase('HELLO, WORLD!');
+```
+
+## Combining Default Export With Named Exports
+
+It is possible to export from a module using both a single default export, and as many named exports as you wish:
+
+```
+// stringUtils.js
+
+export function toUpperCase(input) {
+    return input ? input.toUpperCase() : input;
+}
+
+export default {
+    toLowerCase: toLowerCase,
+}
+```
+
+And a mixture of the approaches covered previously can be used to import what you require from this type of module:
+
+### Import All Exports
+
+Using the `*` keyword will import all exports, including default and named, and make them available on the alias
+provided. Notice the additional `.default` required to access the default exported member.
+
+```
+import * as stringUtils from './stringUtils';
+
+stringUtils.toUpperCase('hello, world!');
+stringUtils.default.toLowerCase('HELLO, WORLD!');
+```
+
+### Import Default and Named Exports
+
+It is possible to import both the default and named exports from a module using different syntax, all within the same
+import statement. This can be useful for importing the default export as normal (`stringUtils`), whilst also selectively
+importing any named exports and optionally providing an alias for them. The example below hopefully showcases this a bit
+better:
+
+```
+import stringUtils, { toUpperCase as toUpper } from './stringUtils';
+
+toUpper('hello, world!');
+stringUtils.toLowerCase('HELLO, WORLD!');
+```
+
+## Using ES Modules in the Browser without Bundling
+
+The above has assumed that you are still using a module bundler like [Webpack][webpack-url], because even though most
+modern browsers do now support the use of modules natively, there are still a few bumps in the road, mainly the network
+overhead involved; the browser will be making lots of HTTP calls to fetch all of the required module files, which will
+slow down the loading of a web page significantly, as network requests are typically the bottleneck for most sites.
+
+Though the common approach for writing client JavaScript is using ES Modules along with a bundler, the future is looking
+promising for running modules natively in the browser, particularly due to the introduction of HTTP/2 -- the first
+major upgrade to the original HTTP protocol in over 15 years. HTTP/2 brings some major improvements to the way internet
+traffic is handled, and one of the most significant changes is the introduction of multiplexing -- the ability to request
+multiple resources (in this case, modules) from a server at the same time using a single TCP connection, rather than each
+one being requested individually and sequentially, as in HTTP/1.1.
+
+I recommend reading up further on HTTP/2 and some of the other improvements it brings, and this
+[Cloudflare page][cloudflare-http2-url] serves as a good introduction in my opinion.
+
+## Using ES Modules in Node
+
+As of Node v13.9.0, ES Modules can be used natively for creating your modular server side JavaScript; prior to that
+version, this was an experimental feature which had to be explicitly enabled.
+
+In order to use ES Modules in Node, files need to be saved with the `mjs` extension and imported with the extension
+included, or more simply, you can specify `{ "type": "module" }` in your `package.json`.
+
+goes a long way with helping unify the module experience
+
+- tree shaking and make use of [Tree Shaking][tree-shaking-url].
+
+## Using ES Modules for Node development
+
 # AMD {#amd}
+
+# Closing Thoughts
+
+- Future of web dev using modules - ESMods goto. goes a long way with helping unify the module experience. HTTP2/push.
 
 [webpack-url]: https://webpack.js.org/
 [browserify-url]: http://browserify.org/
 [requirejs-url]: https://requirejs.org/
+[tree-shaking-url]: https://webpack.js.org/guides/tree-shaking/
+[cloudflare-http2-url]: https://www.cloudflare.com/website-optimization/http2/what-is-http2/
+
+* async/sync
+* [Tree Shaking][tree-shaking-url]
+*
