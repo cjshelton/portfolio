@@ -352,6 +352,35 @@ toUpper('hello, world!');
 stringUtils.toLowerCase('HELLO, WORLD!');
 ```
 
+## Tree Shaking
+
+Tree Shaking is a process of removing JavaScript code (and other ECMAScript languages) which is not used
+(aka "dead code") in an effort to optimise the final bundle produced by a tool like [Webpack][webpack-url] -- the less
+JavaScript code we can send over the network to the browser the better! [Webpack][webpack-url] has support for Tree
+Shaking, and has a [helpful guide][tree-shaking-url] on how to get started.
+
+Tree Shaking is possible using ES Modules because of its static structure, meaning the code can be analysed at compile
+time, determining what is being imported and exported in each module. This enables a dependency tree to be generated
+without even needing to run the code, and enabling a tool like Webpack to determine what code is not being used which can
+be excluded from the production-ready bundle. In contrast, CommonJS has a more dynamic structure, where dependencies are resolved
+only at run time rather than at compile time, which makes it unsuitable for Tree Shaking optimisation.
+
+### An Example - Lodash
+
+A common misconception is that importing named functions from Lodash as shown below is a way to avoid the whole of the
+library being imported, which is notoriously large. But that alone is not enough, you have to employ Tree Shaking.
+
+```
+import { isNil, groupBy, size } from 'lodash';
+```
+
+With the named imports above, it is clear that only these functions are needed from Lodash, and this is
+where Tree Shaking would come in. But it's important to understand that without Tree Shaking as part of your build
+process, the entire library will still be included in your final bundle.
+
+I have trivialised the process a bit here, and there's more to it than "just enabling Tree Shaking", so I encourage
+you to read more, but I felt it would be worth mentioning whilst on the topic of ES Modules.
+
 ## Using ES Modules in the Browser without Bundling {#using-es-modules-in-the-browser-without-bundling}
 
 The above has assumed that you are still using a module bundler like [Webpack][webpack-url], because even though most
@@ -380,8 +409,6 @@ included, or more simply, you can specify `{ "type": "module" }` in your `packag
 goes a long way with helping unify the module experience
 
 - tree shaking and make use of [Tree Shaking][tree-shaking-url].
-
-## Using ES Modules for Node development
 
 # AMD {#amd}
 
