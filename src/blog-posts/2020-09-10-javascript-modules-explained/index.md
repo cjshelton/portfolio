@@ -5,8 +5,8 @@ description: ""
 
 # Introduction
 
-This post aims to introduce modules in Javascript, including why they are used and the different formats available, and
-when to use them.
+This post aims to introduce modules in Javascript, including why they are used and some of the the different formats
+available, and when to use them.
 
 Modules are a fundamental building block of modern JavaScript application development, but I, like many
 others, felt I had some gaps in my understanding, so I was keen to dig a bit deeper.
@@ -203,9 +203,14 @@ many different files in the first place.
 
 # ES Modules {#es-modules}
 
-ES2015 (ES6) introduced a module system to the ECMAScript standard, enabling browsers to understand modular JavaScript
-natively, without the need for bundling. ES Module syntax can easily be recognised by the `import` and `export` terms as
-shown in the upcoming examples.
+ES2015 (ES6) introduced a module system to the ECMAScript standard, enabling modern browsers to understand modular
+JavaScript natively, without the need for bundling. ES Module syntax can easily be recognised by the `import` and
+`export` terms as shown in the upcoming examples.
+
+**Note: Though modern browsers can handle JavaScript modules natively using the ES Module format, it is worth pointing
+out that it is common practice to use the newer ES Module format for client-side JavaScript, whilst still using a module
+bundler like [Webpack][webpack-url] to bundle your assets into a single JS file. This is
+[explained in more detail](#using-es-modules-in-the-browser-without-bundling) later.**
 
 When importing and exporting with ES Modules, you have a few options when compared to using CommonJS. There are two
 ways to export from a module -- Named Exports and Default Export.
@@ -347,7 +352,7 @@ toUpper('hello, world!');
 stringUtils.toLowerCase('HELLO, WORLD!');
 ```
 
-## Using ES Modules in the Browser without Bundling
+## Using ES Modules in the Browser without Bundling {#using-es-modules-in-the-browser-without-bundling}
 
 The above has assumed that you are still using a module bundler like [Webpack][webpack-url], because even though most
 modern browsers do now support the use of modules natively, there are still a few bumps in the road, mainly the network
