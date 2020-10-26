@@ -37,9 +37,9 @@ But writing modular JavaScript still plays a fundamental role when building larg
 enabling dependencies of files to be declared explicitly per file, without worrying about the order in which scripts
 must be positioned in the HTML, and without the need for one huge file containing all of your code.
 
-*When JavaScript was not so dominant, and applications weren't as feature rich, JavaScript was typically
+_When JavaScript was not so dominant, and applications weren't as feature rich, JavaScript was typically
 written across separate files, and if any of those files depended on another, like JQuery for example, they had to be
-declared in a specific order to work, which made for some frustrating errors.*
+declared in a specific order to work, which made for some frustrating errors._
 
 ### Module Formats
 
@@ -52,9 +52,10 @@ within the module itself, without exposing everything to the outside world, or n
 object in the browser.
 
 The most common formats, and those which I'll be covering in detail here include:
-- [CommonJS](#common-js)
-- [ES Modules](#es-modules)
-- [AMD](#amd)
+
+-   [CommonJS](#common-js)
+-   [ES Modules](#es-modules)
+-   [AMD](#amd)
 
 # CommonJS {#common-js}
 
@@ -87,6 +88,7 @@ module.exports = {
     toUpperCase,
 }
 ```
+
 ```
 // index.js
 
@@ -346,7 +348,10 @@ importing any named exports and optionally providing an alias for them. The exam
 better:
 
 ```
-import stringUtils, { toUpperCase as toUpper } from './stringUtils';
+import
+    stringUtils,
+    { toUpperCase as toUpper }
+from './stringUtils';
 
 toUpper('hello, world!');
 stringUtils.toLowerCase('HELLO, WORLD!');
@@ -403,25 +408,90 @@ I recommend reading up further on HTTP/2 and some of the other improvements it b
 As of Node v13.9.0, ES Modules can be used natively for creating your modular server side JavaScript; prior to that
 version, this was an experimental feature which had to be explicitly enabled.
 
-In order to use ES Modules in Node, files need to be saved with the `mjs` extension and imported with the extension
+In order to use ES Modules in Node, files need to be saved with the `.mjs` extension and imported with the extension
 included, or more simply, you can specify `{ "type": "module" }` in your `package.json`.
 
-goes a long way with helping unify the module experience
-
-- tree shaking and make use of [Tree Shaking][tree-shaking-url].
+The adoption of ES Modules in Node is a promising sign towards having a more unified module experience across both the
+client and server in the not too distant future.
 
 # AMD {#amd}
 
+The final module format I will cover is AMD, which stands for Asynchronous Module Format, and was very popular in the
+early days of client-side JavaScript development as the way to write modular JavaScript, which CommonJS was unsuitable
+for. With AMD, each module can be loaded asynchronously -- perfect for executing JavaScript in the browser for quicker
+page load times.
+
+Unlike ES Modules which can be run natively in most modern browsers, a library must be used which implements the AMD API
+in order to use AMD modules. The most popular library for writing modules in the AMD format is
+[RequireJS][requirejs-url].
+
+AMD has largely been superseded by the use ES Modules as the de-facto way to write modular JavaScript for the browser,
+but it's still worth covering off the main syntax. Though the AMD syntax looks very differing to working with
+[CommonJS](#common-js) and [ES Modules](#es-modules), the principles are exactly the same.
+
+## Declaring a Module
+
+The reserved word `define` is used to create an AMD module, which is a function which takes a callback as a parameter.
+The callback function should be used setup the module, declaring functions and variables as necessary, and returning
+either an object, function or primitive type, which acts as the exported functionality.
+
+Below is an example of a simple module which exports an object containing the two functions previously shown.
+
+```
+define(function () {
+    const toUpperCase = (input) => {
+        return input ? input.toUpperCase() : input;
+    };
+
+    const toLowerCase = (input) => {
+        return input ? input.toLowerCase() : input;
+    };
+
+    return {
+        toUpperCase,
+        toLowerCase,
+    };
+});
+```
+
+## Importing a Module
+
+When declaring a module, dependencies can be imported by also supplying an array of strings as a parameter to `define`,
+before the callback function, as shown below. Each string should either correspond to a module using a relative
+path, or the name of a module from `node_modules`. Each dependency should additionally be added as a parameter to the
+callback function, which will take on the instance of the dependency once loaded.
+
+```
+define(["./stringUtils"], function (stringUtils) {
+    const greeting = 'Hello, world!';
+
+    return stringUtils.toUpperCase(greeting);
+});
+```
+
+You could also make use of object destructuring for each dependency in the callback function as shown below, though you
+would have to use [Babel][babel-url], meaning you are also using a tool like [Webpack][webpack-url], in which case
+[ES Modules](#es-modules) are your better option over AMD.
+
+```
+define(["./stringUtils"], function ({ toUpperCase }) {
+    const greeting = 'Hello, world!';
+
+    return toUpperCase(greeting);
+});
+```
+
+As originally mentioned, AMD is asynchronous, meaning the callback function supplied to `define` will not execute until
+all dependencies have loaded and are ready to be used in the callback function.
+
 # Closing Thoughts
 
-- Future of web dev using modules - ESMods goto. goes a long way with helping unify the module experience. HTTP2/push.
+-   Future of web dev using modules - ESMods goto. goes a long way with helping unify the module experience. HTTP2/push.
 
 [webpack-url]: https://webpack.js.org/
 [browserify-url]: http://browserify.org/
 [requirejs-url]: https://requirejs.org/
 [tree-shaking-url]: https://webpack.js.org/guides/tree-shaking/
 [cloudflare-http2-url]: https://www.cloudflare.com/website-optimization/http2/what-is-http2/
-
-* async/sync
-* [Tree Shaking][tree-shaking-url]
-*
+[requirejs-url]: https://requirejs.org/
+[babel-url]: https://babeljs.io/
