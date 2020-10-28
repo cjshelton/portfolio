@@ -9,7 +9,7 @@ This post aims to introduce modules in Javascript, including why they are used a
 available, and when to use them.
 
 Modules are a fundamental building block of modern JavaScript application development, but I, like many
-others, felt I had some gaps in my understanding, so I was keen to dig a bit deeper.
+others, felt I had some gaps in my understanding across the different formats, so I was keen to dig a bit deeper.
 
 ## Modules in JavaScript
 
@@ -24,7 +24,7 @@ account when dealing with modules, and it's worth understanding these difference
 
 Node is built on the idea of modules, and anyone familiar with modern JavaScript application development will be
 familiar with the (in)famous `node_modules` folder. Node has had support of modules since it was introduced, making use
-of the [CommonJS](#common-js) format to write files and even entire libraries which can be shared within or across
+of the [CommonJS](#common-js) format to write files, and even entire libraries, which can be shared within or across
 applications.
 
 ### Modules in the Browser (Client)
@@ -103,6 +103,9 @@ an object assigned to `module.exports` -- a special keyword in CommonJS modules 
 expose functionality from a module. The `index.js` file simply uses the other special keyword -- `require` -- to declare
 that `stringUtils` is a dependency to be used.
 
+**Require statements in CommonJS are executed synchronously, one after another, which is fine for server-side execution,
+but is another reason why the format is unsuitable for browsers where performance is key.**
+
 When the value of `module.exports` is an object, it can also be de-structured on require as shown below -- a common
 pattern to improve the readability of your dependencies.
 
@@ -144,7 +147,7 @@ exports.toLowerCase = toLowerCase;
 
 `exports` here is an object, but it is important to understand that for every module, it is set to equal the value of
 `module.exports`, and with how referencing works in JavaScript, making them equal means that they are pointing to the
-same object instance, and modifications to one will be seen in the other, and vice versa. This means the two definitions
+same object instance in memory, and modifications to one will be reflected in the other, and vice versa. This means the two definitions
 of `stringUtils.js` above are actually the same, since they are both adding the two functions to the `module.exports`
 object, just in slightly different ways.
 
@@ -268,7 +271,7 @@ export function toLowerCase(input) {
 }
 ```
 
-And these members can then be imported using various techniques as shown below. **Note: Trying to import using
+These members can then be imported using various techniques as shown below. **Note: Trying to import using
 `import stringUtils from...` will not work when only named exports are being used, as this syntax is reserved for
 importing a default export only.**
 
@@ -326,7 +329,7 @@ export default {
 }
 ```
 
-And a mixture of the approaches covered previously can be used to import what you require from this type of module:
+A mixture of the approaches covered previously can be used to import what you require from this type of module:
 
 ### Import All Exports
 
@@ -373,7 +376,7 @@ only at run time rather than at compile time, which makes it unsuitable for Tree
 ### An Example - Lodash
 
 A common misconception is that importing named functions from Lodash as shown below is a way to avoid the whole of the
-library being imported, which is notoriously large. But that alone is not enough, you have to employ Tree Shaking.
+library being imported, which is notoriously large. But that alone is not enough, you have to also employ Tree Shaking.
 
 ```
 import { isNil, groupBy, size } from 'lodash';
@@ -391,7 +394,9 @@ you to read more, but I felt it would be worth mentioning whilst on the topic of
 The above has assumed that you are still using a module bundler like [Webpack][webpack-url], because even though most
 modern browsers do now support the use of modules natively, there are still a few bumps in the road, mainly the network
 overhead involved; the browser will be making lots of HTTP calls to fetch all of the required module files, which will
-slow down the loading of a web page significantly, as network requests are typically the bottleneck for most sites.
+slow down the loading of a web page significantly, as network requests are typically the bottleneck for most applications.
+
+### HTTP/2
 
 Though the common approach for writing client JavaScript is using ES Modules along with a bundler, the future is looking
 promising for running modules natively in the browser, particularly due to the introduction of HTTP/2 -- the first
@@ -417,13 +422,11 @@ client and server in the not too distant future.
 # AMD {#amd}
 
 The final module format I will cover is AMD, which stands for Asynchronous Module Format, and was very popular in the
-early days of client-side JavaScript development as the way to write modular JavaScript, which CommonJS was unsuitable
-for. With AMD, each module can be loaded asynchronously -- perfect for executing JavaScript in the browser for quicker
-page load times.
+early days of client-side JavaScript development as the way to write modular code. With AMD, each module can be loaded
+asynchronously -- perfect for executing JavaScript in the browser for quicker page load times.
 
 Unlike ES Modules which can be run natively in most modern browsers, a library must be used which implements the AMD API
-in order to use AMD modules. The most popular library for writing modules in the AMD format is
-[RequireJS][requirejs-url].
+in order to use AMD modules. The most popular library for writing modules in this format is [RequireJS][requirejs-url].
 
 AMD has largely been superseded by the use ES Modules as the de-facto way to write modular JavaScript for the browser,
 but it's still worth covering off the main syntax. Though the AMD syntax looks very differing to working with
@@ -462,31 +465,15 @@ path, or the name of a module from `node_modules`. Each dependency should additi
 callback function, which will take on the instance of the dependency once loaded.
 
 ```
-define(["./stringUtils"], function (stringUtils) {
+define(['./stringUtils'], function (stringUtils) {
     const greeting = 'Hello, world!';
 
     return stringUtils.toUpperCase(greeting);
 });
 ```
 
-You could also make use of object destructuring for each dependency in the callback function as shown below, though you
-would have to use [Babel][babel-url], meaning you are also using a tool like [Webpack][webpack-url], in which case
-[ES Modules](#es-modules) are your better option over AMD.
-
-```
-define(["./stringUtils"], function ({ toUpperCase }) {
-    const greeting = 'Hello, world!';
-
-    return toUpperCase(greeting);
-});
-```
-
 As originally mentioned, AMD is asynchronous, meaning the callback function supplied to `define` will not execute until
 all dependencies have loaded and are ready to be used in the callback function.
-
-# Closing Thoughts
-
--   Future of web dev using modules - ESMods goto. goes a long way with helping unify the module experience. HTTP2/push.
 
 [webpack-url]: https://webpack.js.org/
 [browserify-url]: http://browserify.org/
