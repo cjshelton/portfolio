@@ -281,6 +281,8 @@ Individual exports can be optionally imported into the module using object de-st
 explicitly exported names, as shown below. This is the most common way of importing named exports.
 
 ```
+// index.js
+
 import { toUpperCase } from './stringUtils';
 
 toUpperCase('hello, world!');
@@ -292,6 +294,8 @@ It is possible to import all named exports in one go using the `*` keyword along
 the default import syntax, this makes all named exports available on the supplied alias -- `stringUtils` in this example.
 
 ```
+// index.js
+
 import * as stringUtils from './stringUtils';
 
 stringUtils.toUpperCase('hello, world!');
@@ -304,6 +308,8 @@ If you want to alter the name of a named export when importing, you can use the 
 can be useful for shortening the name of any of the imported members.
 
 ```
+// index.js
+
 import {
     toUpperCase as toUpper,
     toLowerCase as toLower
@@ -337,6 +343,8 @@ Using the `*` keyword will import all exports, including default and named, and 
 provided. Notice the additional `.default` required to access the default exported member.
 
 ```
+// index.js
+
 import * as stringUtils from './stringUtils';
 
 stringUtils.toUpperCase('hello, world!');
@@ -351,6 +359,8 @@ importing any named exports and optionally providing an alias for them. The exam
 better:
 
 ```
+// index.js
+
 import
     stringUtils,
     { toUpperCase as toUpper }
@@ -441,6 +451,7 @@ either an object, function or primitive type, which acts as the exported functio
 Below is an example of a simple module which exports an object containing the two functions previously shown.
 
 ```
+// stringUtils.js
 define(function () {
     const toUpperCase = (input) => {
         return input ? input.toUpperCase() : input;
@@ -465,6 +476,8 @@ path, or the name of a module from `node_modules`. Each dependency should additi
 callback function, which will take on the instance of the dependency once loaded.
 
 ```
+// index.js
+
 define(['./stringUtils'], function (stringUtils) {
     const greeting = 'Hello, world!';
 
