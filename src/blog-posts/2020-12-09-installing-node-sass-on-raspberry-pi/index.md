@@ -21,6 +21,14 @@ outweighs the benefit of doing so, and this can be problematic for hobbyists lik
 
 ## Node SASS NPM Package Incompatibility
 
+Now onto the specific issue which sparked off this blog post.
+
+The app has been building in Docker on the Pi fine for a while now, but after deploying some recent changes, the Docker build kept failing with the following error:
+
+```
+
+```
+
 [raspberry-pi-blog-post-url]: /blog/2020/04/10/running-aspnet-core-in-docker-on-raspberrypi/
 [google-firestore-url]: https://cloud.google.com/firestore
 [instruction-set-architecture-url]: https://en.wikipedia.org/wiki/Instruction_set_architecture
