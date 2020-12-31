@@ -22,8 +22,8 @@ set of validation rules.
 To preface this blog post, it is worth being clear on terminology around typing.
 
 There are two ways to describe the typing
-of a language - whether it is statically or dynamically typed, and whether it is strongly or weakly typed. JavaScript is both
-statically typed and weakly typed.
+of a language - whether it is statically or dynamically typed, and whether it is strongly or weakly typed. JavaScript is
+both dynamically typed and weakly typed.
 
 The difference between them is often misunderstood, but below is my understanding of the terminology:
 
@@ -32,8 +32,8 @@ The difference between them is often misunderstood, but below is my understandin
     For example
 
 ```
-const a = 1; // a is a number
-a = 'one';   // a is now a string
+let a = 1; // a is a number
+a = 'one'; // a is now a string
 ```
 
 -   Weakly typed - On a similar note, programming languages can also be strongly or weakly typed, which determines how strict
@@ -49,7 +49,7 @@ const result = 3 + '5';
 There are many different ways to make use of Joi, but I have picked out some of the key features which make this a great
 library to use when dealing with data validation in JavaScript, particularly when saving arrays and objects to Mongo.
 
-The [documentation for Joi][joi-api-url] is excellent, and it also includes an [sandbox environment][joi-sandbox-url]
+The [API documentation for Joi][joi-api-url] is excellent, and it also includes an [sandbox environment][joi-sandbox-url]
 which is helpful for testing your schemas before you implement them in code. I will be using this sandbox environment to
 demonstrate the features covered in this blog post.
 
@@ -86,7 +86,7 @@ schema.validate(d); // Failed
 
 ### Reference Types
 
-Joi can be used against reference types like Objects and Arrays, which can themselves include nested Objects and Arrays:
+Joi can be used against reference types like objects and arrays, which can themselves include nested objects and arrays:
 
 ```
 const objectSchema = Joi.object({
@@ -96,13 +96,7 @@ const objectSchema = Joi.object({
 });
 
 const arraySchema = Joi.array().items(objectSchema);
-```
 
-Calling `validate` on your schema will return an object with a `value` and `error` property, where `value` always contains
-the value which has been validated, and `error` will be an object describing why the validation failed if it did, otherwise
-it will be `undefined`.
-
-```
 const personA = {
     forename: 'Joe',
     surname: 'Bloggs',
@@ -179,7 +173,7 @@ Fields can be explicitly declared as required or optional; by default, all field
 It is important to understand that the `required` attribute validates against `undefined`, either implicitly
 (the field not being there), or explicitly (the field has the value `undefined`).
 
-`null` values are treated different in Joi, and this is explained in the next section.
+`null` values are treated different in Joi, and this is explained in the [next section](#allowing-null-values).
 
 Here are a few examples of using the `required` and `optional` attributes:
 
@@ -203,13 +197,13 @@ const validPerson = {
     age: 35,
 };
 
-schema.validate(invalidPerson); // Fails due to missing required 'surname'.
-schema.validate(validPerson);   // Passes, even though 'middleName' has not been set.
+schema.validate(invalidPerson); // Fails due to missing required 'surname'
+schema.validate(validPerson);   // Passes, even though 'middleName' has not been set
 ```
 
 ### Allowing Special Values
 
-#### Allowing Null Values
+#### Allowing Null Values {#allowing-null-values}
 
 `null` values must be accounted for explicitly, as by default, they are not a valid value when validating with Joi, even
 for `optional` fields:
@@ -401,14 +395,14 @@ const schema = Joi.object().pattern(/\w+@gmail.com/, Joi.boolean());
 
 ## References
 
-Joi allows for much more dynamic validation through the use of references. References allow you to describe valid
-values in the Joi schema based on other values in the same schema, similarly to that used in
+Joi allows for much more dynamic validation through the use of references. References allow you to describe valid values
+based on other values being validated in the schema, similarly to that used in
 [Restricting Array Items](#restricting-array-items).
 
-Being able to use references allows for more flexible validation, as the rules do not need to defined up front, but can
-be set and evaluated at runtime.
+Being able to use references allows for more flexible validation, as the rule specifics do not need to defined up front,
+but can be set and evaluated at runtime.
 
-A simple example of using references in Joi can be seen below, which describes a schema for a game between two opponents
+A simple example of using references in Joi can be seen below, which describes a schema for a game between two opponents,
 where a player cannot play against themselves (the opponent names cannot be the same):
 
 ```
@@ -449,7 +443,7 @@ and then access `opponent2.name`.
 ## Strip Unknown
 
 When validating against a schema using Joi, an `options` object may be passed to configure how the validation should run.
-One of these options is `stripUnknown`.
+One of the available options is `stripUnknown`.
 
 When set to `true`, `stripUnknown` instructs Joi to omit any fields from the validated object which are not defined in
 schema. This can be very useful for ensuring you only ever persist data to Mongo which is expected and defined in the
@@ -480,9 +474,15 @@ Though `data` has the `passportNumber` field, the result of validation, stored i
 
 # Performance
 
-# Testing
+Through my own experience with Joi, I have not noticed any performance issues with using Joi on particularly large schemas
+and data sets.
 
-# Async
+It is expected that at some point, calling `validate` on a complex schema for some large data set, particularly one which
+is very nested, will see some performance degradation and validation running slowly. However I am yet to experience this,
+and it is unlikely performance would be an issue for any real use case of Joi.
+
+In the future I may look further into this topic to understand what aspects of Joi and dataset sizes might contribute to
+poor performance.
 
 [joi-github-url]: https://github.com/sideway/joi
 [joi-api-url]: https://joi.dev/api
