@@ -319,7 +319,7 @@ const schema = Joi.alternatives().try(
 );
 ```
 
-## Conditional Validation (when... then...)
+## Conditional Validation
 
 Joi allows for much more complicated validation rules to be set, where, for example, the validity of a value in a field
 is conditional on the value of another field.
@@ -343,9 +343,61 @@ const schema = Joi.object({
 });
 ```
 
-## Restricting array items
+## Restricting Array Items
 
-## Pattern matching for objects (regex)
+As previously covered, it is possible to declare an array in a Joi schema using `Joi.array().items()`, where `items`
+takes the Joi schema as a parameter which each of the items must adhere to.
+
+Further to being able to set the type expected for each item, an array can be declared with a fixed set of items allowed
+like so:
+
+```
+const schema = Joi.array().items(Joi.number().valid(1, 2, 3));
+
+schema.validate([1, 2, 3, 4]); // Fails due to 4 not being included as an item option in the schema
+schema.validate([1, 2]);       // Passed
+```
+
+Array items can also be restricted such that they must be a subset of another array in the schema. The example below
+creates a schema where `playedSports` must be a subset of `allSports`, and `favouriteSports` must be a subset of
+`playedSports`:
+
+```
+const allSports = ['tennis', 'football', 'badminton', 'basketball', 'rugby'];
+
+const schema = Joi.object({
+    name: Joi.string(),
+    playedSports: Joi.array().items(Joi.string().valid(...allSports)),
+    favouriteSports: Joi.array().items(
+        Joi.string().valid(Joi.in('playedSports'))
+    ),
+});
+
+const invalidObject = {
+    name: 'Joe Bloggs',
+    playedSports: ['tennis', 'football'],
+    favouriteSports: ['tennis', 'rugby'],
+}
+
+const { value, error } = schema.validate(invalidObject);
+```
+
+Validation fails in this example because although 'rugby' is included in `allSports`, it is not included in
+`playedSports`.
+
+## Pattern Matching Object Keys Using Regex
+
+If you have an object where you don't know the exact names of the keys, but you expect each one to follow a particular
+naming pattern and data type, you can use Pattern Matching in Joi, as shown below. This helps avoid using `Joi.any()`
+which acts as a "catch all" in validation.
+
+The contrived and simplistic example below validates an object where its keys are Gmail email addresses, and the value is
+a Boolean indicating whether the email address has been verified. Any keys which do not end in '@gmail.com', or where
+their values are not booleans, will cause validation to fail.
+
+```
+const schema = Joi.object().pattern(/\w+@gmail.com/, Joi.boolean());
+```
 
 ## References
 
