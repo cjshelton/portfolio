@@ -116,6 +116,17 @@ export default css`
         }
     }
 
+    h4 {
+        margin-bottom: 10px;
+
+        font-size: 13px;
+        color: ${colours.primaryText};
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: 3vw;
+        }
+    }
+
     h1 {
         ${DarkHeadingStyles}
     }
