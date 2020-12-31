@@ -343,7 +343,7 @@ const schema = Joi.object({
 });
 ```
 
-## Restricting Array Items
+## Restricting Array Items {#restricting-array-items}
 
 As previously covered, it is possible to declare an array in a Joi schema using `Joi.array().items()`, where `items`
 takes the Joi schema as a parameter which each of the items must adhere to.
@@ -401,11 +401,82 @@ const schema = Joi.object().pattern(/\w+@gmail.com/, Joi.boolean());
 
 ## References
 
+Joi allows for much more dynamic validation through the use of references. References allow you to describe valid
+values in the Joi schema based on other values in the same schema, similarly to that used in
+[Restricting Array Items](#restricting-array-items).
+
+Being able to use references allows for more flexible validation, as the rules do not need to defined up front, but can
+be set and evaluated at runtime.
+
+A simple example of using references in Joi can be seen below, which describes a schema for a game between two opponents
+where a player cannot play against themselves (the opponent names cannot be the same):
+
+```
+const schema = Joi.object({
+    opponent1: Joi.object({
+        name: Joi.string().disallow(Joi.ref('...opponent2.name')),
+    }),
+    opponent2: Joi.object({
+        name: Joi.string(),
+    }),
+});
+
+const invalidGame = {
+    opponent1: {
+        name: "Joe",
+    },
+    opponent2: {
+        name: "Joe",
+    },
+};
+
+const validGame = {
+    opponent1: {
+        name: "Joe",
+    },
+    opponent2: {
+        name: "Sarah",
+    },
+};
+
+schema.validate(invalidGame); // Fails due to the opponents sharing the same name
+schema.validate(game);        // Passed
+```
+
+This example uses `Joi.ref` paired with the `...` separator to gain access to the "grandparent" of the current context,
+and then access `opponent2.name`.
+
 ## Strip Unknown
 
-# Full Example
+When validating against a schema using Joi, an `options` object may be passed to configure how the validation should run.
+One of these options is `stripUnknown`.
 
-Bringing everything together.
+When set to `true`, `stripUnknown` instructs Joi to omit any fields from the validated object which are not defined in
+schema. This can be very useful for ensuring you only ever persist data to Mongo which is expected and defined in the
+schema.
+
+An example of `stripUnknown` in practice can be seen below:
+
+```
+const schema = Joi.object({
+    forename: Joi.string(),
+    surname: Joi.string(),
+    age: Joi.number(),
+});
+
+const data = {
+    forename: 'Sarah',
+    surname: 'Hart',
+    age: 35,
+    passportNumber: '123SH456',
+}
+
+const { value, error } = schema.validate(data, {
+    stripUnknown: true,
+});
+```
+
+Though `data` has the `passportNumber` field, the result of validation, stored in `value`, does not.
 
 # Performance
 
