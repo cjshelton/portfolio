@@ -27,17 +27,28 @@ hassle-free edits as and when I need to.
 Whilst [building my Portfolio](#building-my-personal-portfolio-using-gatsby), I started investigating options for web
 hosting. Netlify quickly seemed like the obvious choice, particularly in the JAMstack world.
 
-Netlify is a very impressive platform for hosting modern front-end applications, and will always remain at the top of my
-list for any future projects.
-
 Netlify proved to be very easy from start to finish. From connecting the source code repository, setting up any
 build and deployment commands, and finally setting up any notifications to be sent on success or failure of a deployment.
 I also managed to connect my own private domain and setup DNS in Netlify easily, following their excellent documentation.
 
 And best of all, this is all under their free-plan offering - ideal for any of your own small personal projects.
 
-I feel I have only scratched the surface of what Netlify can offer, even under the free plan, so I certainly plan on
-exploring more with Netlify in 2021.
+Netlify is a very impressive platform for hosting modern front-end applications, and will always remain at the top of my
+list for any future projects. I feel I have only scratched the surface of what Netlify can offer, even under the free plan,
+so I certainly plan on exploring more with Netlify in 2021.
+
+## Tech Blog Migration Into Portfolio
+
+Another goal I set for 2020 was to migrate my tech blog from GitHub Pages over to be integrated into my Portfolio site.
+My reasoning for doing this was to simplify maintenance for myself, and to have some consistency for my online presence.
+
+I achieved this goal about halfway through the year. It wasn't as time consuming as I anticipated, and certainly allowed
+me to delve deeper into Gatsby, and how it can be leveraged to create a blog site, including using Markdown to write
+the content.
+
+I have posted a few times on my blog since the migration was completed and I have certainly felt the benefits I was
+hoping for, and I certainly appreciate having all of my content in one place and the consistent look-and-feel it has
+throughout.
 
 
 # 2021 - What's In Store
