@@ -76,6 +76,16 @@ This was a nice change of pace from development, and enabled me to understand fu
 and server when users visit my site. It also gave me an opportunity to learn how to make server configuration changes in
 Netlify.
 
+I wrote a blog post on what I learnt and used that to show what Security Header configuration I had opted for and why.
+
+## JavaScript Model Validation Using Joi
+
+I chose to end the year with a blog post on JavaScript model validation using the Joi validation library.
+
+Joi is a library I used extensively in 2020, and it impressed me for a few reasons, so I felt it would be a good topic for a
+detailed blog post to share some of my favourite features. I'm happy with how the blog post came out; I feel it had a
+good mix of detail and code snippets, and will hopefully prove to be a helpful resource for someone else considering
+using Joi and wanting a starting point.
 # 2021 - What's In Store
 
 [gatsby-url]: https://www.gatsbyjs.com/
