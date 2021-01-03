@@ -50,6 +50,31 @@ I have posted a few times on my blog since the migration was completed and I hav
 hoping for, and I certainly appreciate having all of my content in one place and the consistent look-and-feel it has
 throughout.
 
+## Understanding JavaScript Modules
+
+I spent most of my time in 2020 writing both client-side and server-side JavaScript, but I realised that even with writing
+JavaScript on a daily basis, I didn't truly understand the module system in JavaScript, the different ones available and
+when to use which one.
+
+I decided it would be a good idea for a blog post, to give me the opportunity to explore JavaScript modules more,
+and document what I learnt to hopefully help others who had the same questions as me.
+
+This blog post took longer than expected, partly because some of the differences between the modules systems are so subtle,
+and you interact with them in slightly different ways. But the blog post turned out well, and certainly helped me gain a
+stronger understanding of the module systems I work with on a daily basis.
+
+## Understanding and Configuring HTTP Security Headers in Netlify
+
+After creating my Portfolio site, I was keen to understand the different HTTP Security Headers, and how they could be
+configured specifically for Netlify.
+
+Being a developer, especially a web application developer, it is valuable to understand not only how to develop for the web,
+but also how other aspects work, like HTTP. I used my Portfolio site to dig into some of the main Security Headers available,
+what each one is for and what different configurations can be used.
+
+This was a nice change of pace from development, and enabled me to understand further what was happening between the client
+and server when users visit my site. It also gave me an opportunity to learn how to make server configuration changes in
+Netlify.
 
 # 2021 - What's In Store
 
