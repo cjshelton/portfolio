@@ -86,6 +86,37 @@ Joi is a library I used extensively in 2020, and it impressed me for a few reaso
 detailed blog post to share some of my favourite features. I'm happy with how the blog post came out; I feel it had a
 good mix of detail and code snippets, and will hopefully prove to be a helpful resource for someone else considering
 using Joi and wanting a starting point.
-# 2021 - What's In Store
+
+## Building a Home Dashboard Application
+
+Another large project I set out to complete in 2020 was to build a home dashboard application, to act as a central place
+for controlling smart appliances in my home, and for simplifying everyday tasks like meal planning, for example.
+
+This was a great opportunity to bringing together multiple technologies; strengthening my VueJS and .NET Core skills,
+whilst learning new tech like .NET Background Services, SignalR, Xamarin, Google Firestore data storage, and deployment
+and hosting on a Raspberry Pi. I wrote a blog post which goes into a bit more detail on the tech, and focuses a lot on
+the process of running .NET Core in Docker on a Raspberry Pi.
+
+I certainly learnt a lot from this project, particularly about the challenges of running a .NET Core application on a
+Raspberry Pi. But the app works really well and I get the use out of it which I hoped for, and I have plenty of ideas on
+what improvements I can make in the future!
+
+## First Open-Source Contribution
+
+2020 was also the year where I made my first contribution to Open Source. I created a small PR to fix a broken link in
+the Gatsby documentation, which was ultimately rejected in favour of keeping the broken link and fixing the issue with a
+server redirect.
+
+Though the change was only small, and wasn't even merged, it still gave me a taste for contributing to Open Source, and
+hasn't discouraged me from making contributions in the future.
+
+## Using More Modern JavaScript and CSS Features
+
+2020 has been a year where I have paid a lot of attention to my front-end skills, making the transition to working with
+more modern JavaScript ES6 syntax, and getting familiar with newer CSS features like Flexbox and Grid.
+
+Overall, this has made the experience a lot more enjoyable and has opened up new ways for me to write rich front-end web
+applications. I feel the JavaScript I write is now much more concise and carries a lot more meaning, and using CSS
+features like Flexbox and Grid has made it much simpler to build custom complicated layouts.
 
 [gatsby-url]: https://www.gatsbyjs.com/
