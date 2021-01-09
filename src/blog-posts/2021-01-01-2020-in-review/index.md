@@ -119,4 +119,37 @@ Overall, this has made the experience a lot more enjoyable and has opened up new
 applications. I feel the JavaScript I write is now much more concise and carries a lot more meaning, and using CSS
 features like Flexbox and Grid has made it much simpler to build custom complicated layouts.
 
+## Writing Good Unit and Integration Tests in JavaScript
+
+I'm a big fan of automated testing, and have been practicing it from the beginning of my professional career, sometimes
+dipping into true TDD if the project allows.
+
+At the start of 2020, I felt very confident in the principles of writing good unit and integration tests, particularly in
+the .NET world, but I wanted to apply these same principles and become proficient in writing good tests in JavaScript too.
+
+I'm happy to say that I achieved this goal, and writing automated tests in JavaScript now feels as natural as it does in
+.NET for me, though the experience has some differences in my opinion, and the journey to get this point took longer, for
+a few different reasons:
+
+-   To me, it didn't feel like the JavaScript world had fully adopted automated testing, and that this was a concept only
+    experienced and senior developers would practice (I now know this not to be the case). To be fair, this is in
+    comparison to C# in .NET, which is probably an unfair comparison, with C# being a much more mature language than
+    JavaScript, particularly for application development.
+-   Due to the functional nature of JavaScript, the lack of a native typing system, and sometimes an over-reliance on 3rd
+    party libraries (e.g. Lodash), it can be easy to write code which is awkward to test. Writing tests shouldn't be difficult
+    or awkward; writing tests should be easy to encourage contributions. This is also where TDD comes in to help, but
+    I'll not be delving into that topic here.
+-   Unlike in C#, where there are a small handful of testing frameworks used, there seems to be lots of testing libraries available
+    in JavaScript. This is typical of npm, and it's certainly not a bad thing, but in my opinion, it's just harder to set a
+    standard which makes tests consistent between different developers and libraries used. This again feels like another
+    barrier to entry for some developers trying to adopt testing in their development workflow.
+-   Mocking - an essential part of writing unit tests - seemed more complicated in JavaScript than I was used to. With an
+    array of different mocking libraries available, like Rewire and Proxyquire as examples, each with their own approach,
+    which also differed further based on which module loading system was being used, it all felt a bit clunky and difficult
+    to do at times.
+
+All in all, getting familiar with automated testing in JavaScript, and being competent at writing good unit and
+integration tests, took longer than I had anticipated. However, I definitely feel I am now in a place where writing tests
+alongside my JavaScript code comes naturally, and is just as enjoyable as I find it when writing tests in C#.
+
 [gatsby-url]: https://www.gatsbyjs.com/
