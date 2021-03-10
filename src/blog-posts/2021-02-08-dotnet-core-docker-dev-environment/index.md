@@ -75,5 +75,34 @@ docker-compose up --build webapi
 In under a minute, your app should be up and running in a Docker Container and ready to receive requests.
 
 The next step is to add Live Compilation, so that any changes to the source code are automatically built and served up, without needing to stop and re-build the image again.
+
+# Adding Live Compilation
+
+As mentioned previously, Live Compilation allows for changes in your source code to be reflected inside your running Docker Container almost straight away, and without needing to rebuild the image again and again. This makes developing a .NET Core app in Docker a much more efficient and pleasant experience.
+
+Adding Live Compilation requires just 2 simple changes to the current setup.
+
+Firstly, change the Docker Container startup command to include the `watch` parameter, like so: `ENTRYPOINT ["dotnet", "watch", "run"]`. This uses the file watcher tool built into the .NET CLI, which will watch for file changes in your project, and run the command it is instructed to - in this case `run`, the same command we were using before to build and run the app.
+
+Secondly, given the application is running inside Docker, we need to mount the source files as a volume in the Container. This allows the Container to still be connected to the project files on the host machine, allowing the File Watcher to detect any changes made. Without the volume mounting, the File Watcher would never know of any changes, and so would not know when to execute the `run` command again, nor would it have the updated source files. To mount the source files as a volume, we need to add a volume mapping in the Docker Compose file from the `server` directory on the host machine which holds the WebAPI project, to the `app` directory inside the Container. The Docker Compose file should now look like this:
+
+```
+version: "3"
+services:
+  webapi:
+    container_name: webapi
+    build:
+      context: ./server/
+      dockerfile: ./Dockerfile.dev
+    volumes:
+      - ./server/:/app
+    ports:
+      - 5000:5000
+```
+
+With these changes in place, running the app again should result in a message in the logs saying that the File Watcher is enabled.
+
+Try changing one of your source files &mdash; you should see the File Watcher detect which file has changed and will rebuild the app automatically with the latest change applied.
+
 [vscode-url]: https://code.visualstudio.com/
 [vs-url]: https://visualstudio.microsoft.com/vs/
