@@ -66,7 +66,9 @@ services:
 
 Again, this is nice and simple, specifying a name for the resulting container, the build context and Dockerfile to use, and finally the port bindings.
 
-And now the app can be spun up by running the following command:
+## Testing the Changes
+
+The app can be spun up by running the following command:
 
 ```
 docker-compose up --build webapi
@@ -82,7 +84,11 @@ As mentioned previously, Live Compilation allows for changes in your source code
 
 Adding Live Compilation requires just 2 simple changes to the current setup.
 
+## Enabling the File Watcher
+
 Firstly, change the Docker Container startup command to include the `watch` parameter, like so: `ENTRYPOINT ["dotnet", "watch", "run"]`. This uses the file watcher tool built into the .NET CLI, which will watch for file changes in your project, and run the command it is instructed to - in this case `run`, the same command we were using before to build and run the app.
+
+## Mounting the Source Files as a Volume in the Container
 
 Secondly, given the application is running inside Docker, we need to mount the source files as a volume in the Container. This allows the Container to still be connected to the project files on the host machine, allowing the File Watcher to detect any changes made. Without the volume mounting, the File Watcher would never know of any changes, and so would not know when to execute the `run` command again, nor would it have the updated source files. To mount the source files as a volume, we need to add a volume mapping in the Docker Compose file from the `server` directory on the host machine which holds the WebAPI project, to the `app` directory inside the Container. The Docker Compose file should now look like this:
 
@@ -100,6 +106,8 @@ services:
       - 5000:5000
 ```
 
+## Testing the Changes
+
 With these changes in place, running the app again should result in a message in the logs saying that the File Watcher is enabled.
 
 Try changing one of your source files &mdash; you should see the File Watcher detect which file has changed and will rebuild the app automatically with the latest change applied.
@@ -107,6 +115,8 @@ Try changing one of your source files &mdash; you should see the File Watcher de
 # Enabling Debugging in the Docker Container
 
 The final step is to get debugging working within the Container such that we can set breakpoints and step through the code, as you would typically do when running in Visual Studio. This requires two changes to our setup.
+
+## Installing the Microsoft Debugger
 
 The first change to make is to install the Microsoft debugger for .NET Core in the image which the remote debugger in VS Code can be attached to. Add the following `RUN` command right after the initial `FROM` command in the Dockerfile:
 
@@ -121,6 +131,8 @@ RUN apt-get update \
 ```
 
 This command looks like it's doing quite a lot, but it's essentially updating the local package list, installing the `unzip` package and then finally downloading a shell script which is used to install the debugger by piping it to the shell executable, storing the output in `/vsdbg`.
+
+## Creating a VSCode Launch Profile
 
 The second step is to create a VS Code launch profile which can be used to attach the remote debugger to the debugger we just installed in the running Container. Add the following profile to the `configurations` array inside `./.vscode/launch.json`.
 
@@ -149,7 +161,9 @@ If you are interested to learn more about VSCode Launch Profiles, the official [
 
 That's all we need to enable debugging inside the Docker Container.
 
-To test it, first start the app as before using Docker Compose:
+## Testing the Changes
+
+To test these changes, first start the app as before using Docker Compose:
 
 ```
 docker-compose up --build webapi
