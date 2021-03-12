@@ -17,7 +17,7 @@ I was keen to try and adopt a similarly efficient setup for my .NET development.
 past, but it never quite worked how I wanted, and I always felt a little less productive then I would be using Visual Studio.
 
 This post aims to explain how to setup an efficient local .NET Core development environment in Docker with debugging and
-live compilation (see changes immediately without needing to re-build the Docker container) using VS Code.
+Live Compilation (see changes immediately without needing to re-build the Docker container) using VS Code.
 
 # Setting Up the Docker Image
 
@@ -44,11 +44,11 @@ ENTRYPOINT ["dotnet", "run"]
 
 The main steps in the Dockerfile are:
 
-1. Base the image on the .NET Core 2.1 SDK. The SDK base image has all the tools we need to compile and run the application.
+1. Base the image on the .NET Core 2.1 SDK. The SDK base image has all of the tools we need to compile and run the application.
 1. Copy all of the project files into a new `/app` directory within the image.
 1. Set a couple of environment variables needed for running the application in development mode.
 1. Set the working directory to the root of the web application where the project files are.
-1. Set the command to run when the Container is started. In this case, `dotnet run`, which performs a restore and build of the application before running it.
+1. Set the command to run when the Container is started. In this case, `dotnet run`, which performs a restore and build of the application before starting it.
 
 Whenever I'm using Docker, I always use Docker Compose for running Containers. Below is an example Docker Compose file for running the application:
 
@@ -58,7 +58,7 @@ services:
   webapi:
     container_name: webapi
     build:
-      context: ./server/
+      context: ./
       dockerfile: ./Dockerfile.dev
     ports:
       - 5000:5000
@@ -80,7 +80,7 @@ The next step is to add Live Compilation, so that any changes to the source code
 
 # Adding Live Compilation
 
-As mentioned previously, Live Compilation allows for changes in your source code to be reflected inside your running Docker Container almost straight away, and without needing to rebuild the image again and again. This makes developing a .NET Core app in Docker a much more efficient and pleasant experience.
+As mentioned previously, Live Compilation allows for changes in your source code to be reflected inside your running Docker Container almost straight away, without needing to rebuild the image again and again. This makes developing a .NET Core app in Docker a much more efficient and pleasant experience.
 
 Adding Live Compilation requires just 2 simple changes to the current setup.
 
@@ -90,7 +90,7 @@ Firstly, change the Docker Container startup command to include the `watch` para
 
 ## Mounting the Source Files as a Volume in the Container
 
-Secondly, given the application is running inside Docker, we need to mount the source files as a volume in the Container. This allows the Container to still be connected to the project files on the host machine, allowing the File Watcher to detect any changes made. Without the volume mounting, the File Watcher would never know of any changes, and so would not know when to execute the `run` command again, nor would it have the updated source files. To mount the source files as a volume, we need to add a volume mapping in the Docker Compose file from the `server` directory on the host machine which holds the WebAPI project, to the `app` directory inside the Container. The Docker Compose file should now look like this:
+Secondly, given the application is running inside Docker, we need to mount the source files as a volume in the Container. This allows the Container to still be connected to the project files on the host machine, allowing the File Watcher to detect any changes made. Without the volume mounting, the File Watcher would never know of any changes, and so would not know when to execute the `run` command again, nor would it have any of the updated source files in the image. To mount the source files as a volume, we need to add a volume mapping in the Docker Compose file from the `server` directory on the host machine which holds the WebAPI project, to the `app` directory inside the Container. The Docker Compose file should now look like this:
 
 ```
 version: "3"
@@ -98,10 +98,10 @@ services:
   webapi:
     container_name: webapi
     build:
-      context: ./server/
+      context: ./
       dockerfile: ./Dockerfile.dev
     volumes:
-      - ./server/:/app
+      - ./:/app
     ports:
       - 5000:5000
 ```
@@ -155,7 +155,7 @@ The second step is to create a VS Code launch profile which can be used to attac
 }
 ```
 
-Unless you're really interested, it's not important to get bogged down with the details of what is being configured here, but the key thing to note is the value being supplied to `debuggerPath` &mdash; the path to the `vsdbg` debugger we installed earlier. Change `"/app": "${workspaceRoot}/"` and `"pipeArgs": ["exec", "-i", "webapi"]` as appropriate based on your own project setup.
+Unless you're really interested, it's not important to get bogged down with the details of what is being configured here, but the key thing to note is the value being supplied to `debuggerPath` &mdash; it is the path to the `vsdbg` debugger we installed earlier. Change `"/app": "${workspaceRoot}/"` and `"pipeArgs": ["exec", "-i", "webapi"]` as appropriate based on your own project setup.
 
 If you are interested to learn more about VSCode Launch Profiles, the official [docs][vscode-launch-json] has a detailed breakdown of each option and how they can be configured.
 
@@ -169,16 +169,23 @@ To test these changes, first start the app as before using Docker Compose:
 docker-compose up --build webapi
 ```
 
-Once that has started successfully, head over to the Run tab in VSCode and choose the new launch profile we have just created and click the "Start Debugging" green button.
+Once the app has started successfully, head over to the Run tab in VSCode and choose the new launch profile we have just created and click the "Start Debugging" green button.
 
 <img src="./launch-profile.png" alt="Selecting the Debug .NET Core in Docker launch profile">
 
-You will now be presented with the option to choose which process to attach the remote debugger to. Choose the process which is executing your DLL file, which in my case is `WebAPI.dll`.
+You will now be presented with the option to choose which process to attach the remote debugger to. Choose the process which is executing your DLL, which in my case is `WebAPI.dll`.
 
 <img src="./attach-to-process.png" alt="Attaching remote debugger to container">
 
 After a few moments, the remote debugger should be attached, allowing you to hit any breakpoints you have set.
 
+# Wrapping Up
+
+I have covered the steps required to have a .NET Core Web API application running inside Docker, with Live Compilation and debugging capabilities.
+
+This has generally worked really well for me when developing locally as an alternative to using Visual Studio, with the Live Compilation occasionally not being able to recover if there is a build failure whilst the remote debugger is attached.
+
+With this setup, you get the benefit of a Visual Studio-like development experience, but using more modern development practices, like running in Docker.
 
 [vscode-url]: https://code.visualstudio.com/
 [vs-url]: https://visualstudio.microsoft.com/vs/
