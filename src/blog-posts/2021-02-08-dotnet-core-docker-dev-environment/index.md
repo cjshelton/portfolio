@@ -104,5 +104,68 @@ With these changes in place, running the app again should result in a message in
 
 Try changing one of your source files &mdash; you should see the File Watcher detect which file has changed and will rebuild the app automatically with the latest change applied.
 
+# Enabling Debugging in the Docker Container
+
+The final step is to get debugging working within the Container such that we can set breakpoints and step through the code, as you would typically do when running in Visual Studio. This requires two changes to our setup.
+
+The first change to make is to install the Microsoft debugger for .NET Core in the image which the remote debugger in VS Code can be attached to. Add the following `RUN` command right after the initial `FROM` command in the Dockerfile:
+
+```
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build
+
+RUN apt-get update \
+    && apt-get install unzip \
+    && curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l /vsdbg
+
+# Remainder removed for brevity.
+```
+
+This command looks like it's doing quite a lot, but it's essentially updating the local package list, installing the `unzip` package and then finally downloading a shell script which is used to install the debugger by piping it to the shell executable, storing the output in `/vsdbg`.
+
+The second step is to create a VS Code launch profile which can be used to attach the remote debugger to the debugger we just installed in the running Container. Add the following profile to the `configurations` array inside `./.vscode/launch.json`.
+
+```
+{
+    "name": "Debug .NET Core in Docker",
+    "type": "coreclr",
+    "request": "attach",
+    "processId": "${command:pickRemoteProcess}",
+    "sourceFileMap": {
+        "/app": "${workspaceRoot}/"
+    },
+    "pipeTransport": {
+        "pipeCwd": "${workspaceRoot}",
+        "pipeProgram": "docker",
+        "pipeArgs": ["exec", "-i", "webapi"],
+        "quoteArgs": false,
+        "debuggerPath": "/vsdbg/vsdbg"
+    }
+}
+```
+
+Unless you're really interested, it's not important to get bogged down with the details of what is being configured here, but the key thing to note is the value being supplied to `debuggerPath` &mdash; the path to the `vsdbg` debugger we installed earlier. Change `"/app": "${workspaceRoot}/"` and `"pipeArgs": ["exec", "-i", "webapi"]` as appropriate based on your own project setup.
+
+If you are interested to learn more about VSCode Launch Profiles, the official [docs][vscode-launch-json] has a detailed breakdown of each option and how they can be configured.
+
+That's all we need to enable debugging inside the Docker Container.
+
+To test it, first start the app as before using Docker Compose:
+
+```
+docker-compose up --build webapi
+```
+
+Once that has started successfully, head over to the Run tab in VSCode and choose the new launch profile we have just created and click the "Start Debugging" green button.
+
+<img src="./launch-profile.png" alt="Selecting the Debug .NET Core in Docker launch profile">
+
+You will now be presented with the option to choose which process to attach the remote debugger to. Choose the process which is executing your DLL file, which in my case is `WebAPI.dll`.
+
+<img src="./attach-to-process.png" alt="Attaching remote debugger to container">
+
+After a few moments, the remote debugger should be attached, allowing you to hit any breakpoints you have set.
+
+
 [vscode-url]: https://code.visualstudio.com/
 [vs-url]: https://visualstudio.microsoft.com/vs/
+[vscode-launch-json]: https://code.visualstudio.com/docs/cpp/launch-json-reference
