@@ -9,6 +9,7 @@ module.exports = {
         },
     },
     plugins: [
+        `gatsby-plugin-preact`,
         `gatsby-plugin-emotion`,
         `gatsby-plugin-react-helmet`,
         {
