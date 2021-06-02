@@ -1,5 +1,5 @@
 ---
-title: "Improving GatsbyJS Performance: Replacing React with Preact"
+title: "Improving Gatsby Performance: Replacing React with Preact"
 description: ""
 ---
 
