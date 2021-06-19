@@ -11,6 +11,7 @@ import {
 } from "../utils/blog-utils";
 
 import { colours } from "../styles/variables";
+import blogPostsMetadata from "../data/blog-posts";
 
 const seo = {
     title: "Tech Blog",
@@ -25,7 +26,8 @@ const BlogArticlesList = styled.div`
 `;
 
 const BlogArticleDate = styled.div`
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 3px;
 
     font-size: 14px;
     font-style: italic;
@@ -37,6 +39,24 @@ const headerJsx = (
         <h1>Tech Blog</h1>
     </div>
 );
+
+const StyledPills = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`;
+
+const StyledPill = styled.div`
+    padding: 2px 6px;
+    margin: 2px 5px 2px 0;
+
+    background-color: ${colours.primary};
+    color: ${colours.primaryTextLight};
+    border-radius: 8px;
+    font-size: 12px;
+`;
+
+const pillJsx = <StyledPill>javascript</StyledPill>;
 
 function getContentJsx(posts) {
     return (
@@ -56,6 +76,14 @@ function getContentJsx(posts) {
                         <Link to={blogPostSlug}>{title}</Link>
                     );
 
+                    const postMetadata = blogPostsMetadata[title];
+                    if (!postMetadata)
+                        throw new Error(
+                            `No metadata found for blog post "${title}"`
+                        );
+
+                    const tags = postMetadata.tags || [];
+
                     return (
                         <PageSection
                             key={node.fields.slug}
@@ -65,6 +93,12 @@ function getContentJsx(posts) {
                             <BlogArticleDate>
                                 Published on {publishedDate}
                             </BlogArticleDate>
+
+                            <StyledPills>
+                                {tags.map(tag => {
+                                    return <StyledPill>{tag}</StyledPill>;
+                                })}
+                            </StyledPills>
                             <p
                                 className="section-text"
                                 dangerouslySetInnerHTML={{
@@ -80,7 +114,7 @@ function getContentJsx(posts) {
     );
 }
 
-const PersonalProjectsPage = ({ data }) => {
+const BlogPage = ({ data }) => {
     const posts = data.allMarkdownRemark.edges;
 
     return (
@@ -96,7 +130,7 @@ const PersonalProjectsPage = ({ data }) => {
     );
 };
 
-export default PersonalProjectsPage;
+export default BlogPage;
 
 export const pageQuery = graphql`
     query {

@@ -15,7 +15,7 @@ import PageSection from "../components/page-section";
 import SkillPill from "../components/skillPill";
 import ClearFix from "../components/clearfix";
 
-import personalProjectsData from "../data/personal-projects.json";
+import personalProjectsData from "../data/personal-projects";
 
 const seo = {
     title: "Personal Projects",
