@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
+import SkillPill from "../components/skillPill";
 
 import {
     rewriteSlug,
@@ -39,24 +40,6 @@ const headerJsx = (
         <h1>Tech Blog</h1>
     </div>
 );
-
-const StyledPills = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-`;
-
-const StyledPill = styled.div`
-    padding: 2px 6px;
-    margin: 2px 5px 2px 0;
-
-    background-color: ${colours.primary};
-    color: ${colours.primaryTextLight};
-    border-radius: 8px;
-    font-size: 12px;
-`;
-
-const pillJsx = <StyledPill>javascript</StyledPill>;
 
 function getContentJsx(posts) {
     return (
@@ -94,11 +77,9 @@ function getContentJsx(posts) {
                                 Published on {publishedDate}
                             </BlogArticleDate>
 
-                            <StyledPills>
-                                {tags.map(tag => {
-                                    return <StyledPill>{tag}</StyledPill>;
-                                })}
-                            </StyledPills>
+                            {tags.map(tag => {
+                                return <SkillPill key={tag}>{tag}</SkillPill>;
+                            })}
                             <p
                                 className="section-text"
                                 dangerouslySetInnerHTML={{
