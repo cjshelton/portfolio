@@ -1,4 +1,5 @@
 const moment = require("moment");
+const blogPostsMetadata = require("../data/blog-posts").default;
 
 function parseDateFromSlug(slug) {
     // The publish date is the first 11 characters (/YYYY-MM-DD).
@@ -32,9 +33,18 @@ function generateBlogPostNavigationItem(node) {
         : null;
 }
 
+function getBlogPostMetadata({ title }) {
+    const postMetadata = blogPostsMetadata[title];
+    if (!postMetadata)
+        throw new Error(`No metadata found for blog post "${title}"`);
+
+    return postMetadata;
+}
+
 module.exports = {
     parseDateFromSlug,
     rewriteSlug,
     generateUserFriendlyDateFromSlug,
     generateBlogPostNavigationItem,
+    getBlogPostMetadata,
 };

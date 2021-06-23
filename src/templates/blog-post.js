@@ -8,7 +8,7 @@ import SkillPill from "../components/skillPill";
 
 import { BlogPublishDateStyles } from "../styles/shared";
 import BlogPostStyles from "../styles/blog-post";
-import blogPostsMetadata from "../data/blog-posts";
+import { getBlogPostMetadata } from "../utils/blog-utils";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -100,11 +100,7 @@ function getHeaderJsx(post) {
 }
 
 function getContentJsx(post, { previous, next, publishedDate }, title) {
-    const postMetadata = blogPostsMetadata[title];
-    if (!postMetadata)
-        throw new Error(`No metadata found for blog post "${title}"`);
-
-    const tags = postMetadata.tags || [];
+    const { tags = [] } = getBlogPostMetadata({ title });
 
     return (
         <div>

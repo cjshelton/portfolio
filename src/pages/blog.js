@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
 import SkillPill from "../components/skillPill";
+import { getBlogPostMetadata } from "../utils/blog-utils";
 
 import {
     rewriteSlug,
@@ -12,7 +13,6 @@ import {
 } from "../utils/blog-utils";
 
 import { colours } from "../styles/variables";
-import blogPostsMetadata from "../data/blog-posts";
 
 const seo = {
     title: "Tech Blog",
@@ -59,13 +59,7 @@ function getContentJsx(posts) {
                         <Link to={blogPostSlug}>{title}</Link>
                     );
 
-                    const postMetadata = blogPostsMetadata[title];
-                    if (!postMetadata)
-                        throw new Error(
-                            `No metadata found for blog post "${title}"`
-                        );
-
-                    const tags = postMetadata.tags || [];
+                    const { tags = [] } = getBlogPostMetadata({ title });
 
                     return (
                         <PageSection
