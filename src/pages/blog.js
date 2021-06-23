@@ -78,7 +78,11 @@ function getContentJsx(posts) {
                             </BlogArticleDate>
 
                             {tags.map(tag => {
-                                return <SkillPill key={tag}>{tag}</SkillPill>;
+                                return (
+                                    <SkillPill key={tag} size="small">
+                                        {tag}
+                                    </SkillPill>
+                                );
                             })}
                             <p
                                 className="section-text"
