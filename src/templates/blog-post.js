@@ -110,7 +110,11 @@ function getContentJsx(post, { previous, next, publishedDate }, title) {
                     <BlogPostPills>
                         {tags.map(tag => {
                             return (
-                                <SkillPill key={tag} size="small">
+                                <SkillPill
+                                    key={tag}
+                                    size="small"
+                                    showTagIcon={true}
+                                >
                                     {tag}
                                 </SkillPill>
                             );
