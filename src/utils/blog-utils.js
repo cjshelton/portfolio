@@ -1,5 +1,5 @@
 const moment = require("moment");
-const blogPostsMetadata = require("../data/blog-posts").default;
+const blogPostsMetadata = require("../data/blog-posts");
 
 function parseDateFromSlug(slug) {
     // The publish date is the first 11 characters (/YYYY-MM-DD).

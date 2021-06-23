@@ -1,6 +1,6 @@
-import techData from "./tech.json";
+const techData = require("./tech.json");
 
-export default {
+module.exports = {
     projects: [
         {
             name: "ASP.NET Core Dependency Tools",

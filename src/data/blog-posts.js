@@ -1,4 +1,4 @@
-import techData from "./tech.json";
+const techData = require("./tech.json");
 
 const blogPostsData = {
     "Improving Gatsby Performance: Replacing React with Preact": {
@@ -85,4 +85,4 @@ for (const property in blogPostsData) {
     blogPostsData[property].tags.sort();
 }
 
-export default blogPostsData;
+module.exports = blogPostsData;
