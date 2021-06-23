@@ -4,9 +4,11 @@ import styled from "@emotion/styled";
 import { colours } from "../styles/variables";
 
 import Page from "../components/layouts/page";
+import SkillPill from "../components/skillPill";
 
 import { BlogPublishDateStyles } from "../styles/shared";
 import BlogPostStyles from "../styles/blog-post";
+import blogPostsMetadata from "../data/blog-posts";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -41,6 +43,12 @@ const BlogPostDate = styled.p`
 
     text-align: right;
     margin-right: -10px;
+`;
+
+const BlogPostPills = styled.div`
+    text-align: right;
+    margin-right: -10px;
+    margin-bottom: 10px;
 `;
 
 const BlogNav = styled.nav`
@@ -91,12 +99,27 @@ function getHeaderJsx(post) {
     );
 }
 
-function getContentJsx(post, { previous, next, publishedDate }) {
+function getContentJsx(post, { previous, next, publishedDate }, title) {
+    const postMetadata = blogPostsMetadata[title];
+    if (!postMetadata)
+        throw new Error(`No metadata found for blog post "${title}"`);
+
+    const tags = postMetadata.tags || [];
+
     return (
         <div>
             <BlogPost>
                 <header>
                     <BlogPostDate>Published on {publishedDate}</BlogPostDate>
+                    <BlogPostPills>
+                        {tags.map(tag => {
+                            return (
+                                <SkillPill key={tag} size="small">
+                                    {tag}
+                                </SkillPill>
+                            );
+                        })}
+                    </BlogPostPills>
                 </header>
                 <section dangerouslySetInnerHTML={{ __html: post.html }} />
             </BlogPost>
@@ -135,13 +158,14 @@ function getContentJsx(post, { previous, next, publishedDate }) {
     );
 }
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const BlogPostTemplate = ({ data, pageContext }) => {
     const post = data.markdownRemark;
+    const title = data.markdownRemark.frontmatter.title;
 
     return (
         <Page
             header={getHeaderJsx(post)}
-            content={getContentJsx(post, pageContext)}
+            content={getContentJsx(post, pageContext, title)}
             page="Blog Entry"
             seo={getSEO(post)}
             backgroundImageUrl="/images/blog.jpg"
