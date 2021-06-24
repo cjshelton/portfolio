@@ -25,12 +25,6 @@ const getPillContainerStyles = size => css`
     padding: 2px 6px;
     border-radius: 5px;
 
-    font-size: ${fontSizes[size]};
-
-    @media (max-width: ${sizes.xSmall}) {
-        font-size: ${fontSizes.responsive[size]};
-    }
-
     background-color: ${colours.primaryMediumLight};
     color: ${colours.primaryTextLight};
 
@@ -40,6 +34,15 @@ const getPillContainerStyles = size => css`
 
         .tag-icon {
             margin-right: 5px;
+        }
+    }
+
+    .contents,
+    .tag-icon {
+        font-size: ${fontSizes[size]};
+
+        @media (max-width: ${sizes.xSmall}) {
+            font-size: ${fontSizes.responsive[size]};
         }
     }
 `;
