@@ -17,7 +17,7 @@ const fontSizes = {
     },
 };
 
-const getSkillPillContainerStyles = size => css`
+const getPillContainerStyles = size => css`
     display: inline-block;
     vertical-align: middle;
     white-space: nowrap;
@@ -44,8 +44,8 @@ const getSkillPillContainerStyles = size => css`
     }
 `;
 
-const SkillPill = ({ children, size = "large", showTagIcon = false }) => (
-    <div css={getSkillPillContainerStyles(size)}>
+const Pill = ({ children, size = "large", showTagIcon = false }) => (
+    <div css={getPillContainerStyles(size)}>
         <div className="contents">
             {showTagIcon && (
                 <FontAwesomeIcon icon={faTag} className="tag-icon" />
@@ -55,4 +55,4 @@ const SkillPill = ({ children, size = "large", showTagIcon = false }) => (
     </div>
 );
 
-export default SkillPill;
+export default Pill;

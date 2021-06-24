@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
-import SkillPill from "../components/skillPill";
+import Pill from "../components/pill";
 import { getBlogPostMetadata } from "../utils/blog-utils";
 
 import {
@@ -73,13 +73,13 @@ function getContentJsx(posts) {
 
                             {tags.map(tag => {
                                 return (
-                                    <SkillPill
+                                    <Pill
                                         key={tag}
                                         size="small"
                                         showTagIcon={true}
                                     >
                                         {tag}
-                                    </SkillPill>
+                                    </Pill>
                                 );
                             })}
                             <p

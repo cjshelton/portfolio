@@ -12,7 +12,7 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { colours } from "../styles/variables";
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
-import SkillPill from "../components/skillPill";
+import Pill from "../components/pill";
 import ClearFix from "../components/clearfix";
 
 import personalProjectsData from "../data/personal-projects";
@@ -119,9 +119,7 @@ const contentJsx = (
                         <div dangerouslySetInnerHTML={htmlDescription}></div>
                         <div className="section-text">
                             {tags.map((skill, index) => {
-                                return (
-                                    <SkillPill key={index}>{skill}</SkillPill>
-                                );
+                                return <Pill key={index}>{skill}</Pill>;
                             })}
                         </div>
                     </PageSection>

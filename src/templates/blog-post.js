@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { colours } from "../styles/variables";
 
 import Page from "../components/layouts/page";
-import SkillPill from "../components/skillPill";
+import Pill from "../components/pill";
 
 import { BlogPublishDateStyles } from "../styles/shared";
 import BlogPostStyles from "../styles/blog-post";
@@ -110,13 +110,9 @@ function getContentJsx(post, { previous, next, publishedDate }, title) {
                     <BlogPostPills>
                         {tags.map(tag => {
                             return (
-                                <SkillPill
-                                    key={tag}
-                                    size="small"
-                                    showTagIcon={true}
-                                >
+                                <Pill key={tag} size="small" showTagIcon={true}>
                                     {tag}
-                                </SkillPill>
+                                </Pill>
                             );
                         })}
                     </BlogPostPills>

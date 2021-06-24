@@ -7,7 +7,7 @@ import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
 import UolLogo from "../components/uol-logo";
 import TechLogo from "../components/tech-logo";
-import SkillPill from "../components/skillPill";
+import Pill from "../components/pill";
 
 import experienceData from "../data/experience.json";
 
@@ -154,7 +154,7 @@ const contentJsx = (
                     experience with
                 </div>
                 {experienceData.additionalCoreSkills.map((skill, index) => {
-                    return <SkillPill key={index}>{skill}</SkillPill>;
+                    return <Pill key={index}>{skill}</Pill>;
                 })}
                 <div css={additionalCoreSkillText}>and more&hellip;</div>
             </div>
@@ -168,7 +168,7 @@ const contentJsx = (
             </p>
             <div className="section-text">
                 {experienceData.otherSkills.map((skill, index) => {
-                    return <SkillPill key={index}>{skill}</SkillPill>;
+                    return <Pill key={index}>{skill}</Pill>;
                 })}
             </div>
         </PageSection>
