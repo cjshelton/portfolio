@@ -119,7 +119,15 @@ const contentJsx = (
                         <div dangerouslySetInnerHTML={htmlDescription}></div>
                         <div className="section-text">
                             {tags.map((skill, index) => {
-                                return <Pill key={index}>{skill}</Pill>;
+                                return (
+                                    <Pill
+                                        key={index}
+                                        size="small"
+                                        showTagIcon={true}
+                                    >
+                                        {skill}
+                                    </Pill>
+                                );
                             })}
                         </div>
                     </PageSection>
