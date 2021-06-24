@@ -31,9 +31,9 @@ const SectionContent = styled.div`
     padding: 0 10px;
 `;
 
-const PageSection = ({ children, heading, light }) => {
+const PageSection = ({ children, heading, light, className }) => {
     return (
-        <Section>
+        <Section className={className}>
             {heading && (
                 <header>
                     {light ? (

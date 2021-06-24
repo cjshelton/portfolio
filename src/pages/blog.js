@@ -24,6 +24,10 @@ const BlogArticlesList = styled.div`
         margin-bottom: 0;
         padding-bottom: 0;
     }
+
+    .blog-item {
+        margin-bottom: 30px;
+    }
 `;
 
 const BlogArticleDate = styled.div`
@@ -63,6 +67,7 @@ function getContentJsx(posts) {
 
                     return (
                         <PageSection
+                            className="blog-item"
                             key={node.fields.slug}
                             heading={BlogTitleLink}
                             light
