@@ -122,7 +122,9 @@ export default BlogPage;
 
 export const pageQuery = graphql`
     query {
-        allMarkdownRemark {
+        allMarkdownRemark(
+            filter: { fields: { sourceInstanceName: { eq: "blog" } } }
+        ) {
             edges {
                 node {
                     excerpt(pruneLength: 150)
