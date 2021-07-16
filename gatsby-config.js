@@ -1,3 +1,8 @@
+// Load the environment specific config file.
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
     siteMetadata: {
         title: `Portfolio`,
@@ -13,6 +18,14 @@ module.exports = {
         `gatsby-plugin-emotion`,
         `gatsby-plugin-react-helmet`,
         {
+            resolve: `gatsby-source-git`,
+            options: {
+                name: `hippogriff`,
+                remote: `https://cjshelton:${process.env.HIPPOGRIFF_PERSONAL_ACCESS_TOKEN}@github.com/cjshelton/hippogriff`,
+                branch: `main`,
+            },
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `images`,
@@ -22,8 +35,8 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/src/blog-posts`,
                 name: `blog`,
+                path: `${__dirname}/src/blog-posts`,
             },
         },
         {

@@ -57,7 +57,7 @@ const generateBlogPostPages = async ({ graphql, createPage }) => {
     });
 };
 
-const generateHippogriffPages = async ({ graphql, createPage }) => {
+const generateHippogriffPages = async ({ graphql, createPage, slugPrefix }) => {
     const hippogriffMarkdownData = await graphql(
         `
             {
@@ -91,7 +91,7 @@ const generateHippogriffPages = async ({ graphql, createPage }) => {
         const relativeDirectory = hippogriff.node.fields.relativeDirectory;
 
         createPage({
-            path: `/application${slug}`,
+            path: `/${slugPrefix}${slug}`,
             component: hippogriffTemplate,
             context: {
                 slug,

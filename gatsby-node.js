@@ -9,7 +9,11 @@ exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
 
     await generateBlogPostPages({ graphql, createPage });
-    await generateHippogriffPages({ graphql, createPage });
+    await generateHippogriffPages({
+        graphql,
+        createPage,
+        slugPrefix: process.env.HIPPOGRIFF_SLUG_PREFIX,
+    });
 };
 
 /**
