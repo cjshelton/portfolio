@@ -18,16 +18,18 @@ function getImageContainerStyles(
         width: 100%;
         min-height: 250px;
         background-color: ${initialBackgroundColour}; /* Base colour from the image to show before it loads. */
-        background-image: url(${backgroundImageUrl});
+        ${backgroundImageUrl
+            ? `background-image: url(${backgroundImageUrl});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom center;
-        position: relative;
+        position: relative;`
+            : ""}
 
-        /* 
+        /*
             Three elements are stacked together in the image container section:
             background image, overlay and header content. The background image should
-            be at the back of the stack. 
+            be at the back of the stack.
         */
         z-index: -1;
 
@@ -40,10 +42,10 @@ function getImageContainerStyles(
         text-align: center;
 
         .header {
-            /* 
+            /*
                 Three elements are stacked together in the image container section:
                 background image, overlay and header content. The header content should
-                be at the front of the stack. 
+                be at the front of the stack.
             */
             z-index: 1;
 
@@ -74,10 +76,10 @@ function getImageContainerStyles(
             right: 0;
             background-color: rgba(18, 26, 33, 0.5);
 
-            /* 
+            /*
                 Three elements are stacked together in the image container section:
                 background image, overlay and header content. The overlay should
-                be in the middle of the stack. 
+                be in the middle of the stack.
             */
             z-index: 0;
         }
