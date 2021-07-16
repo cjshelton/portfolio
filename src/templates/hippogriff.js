@@ -7,14 +7,14 @@ import Page from "../components/layouts/page";
 
 import MarkdownStyles from "../styles/markdown";
 
-function getSEO(application) {
+function getSEO(hippogriff) {
     return {
-        title: application.frontmatter.title,
-        description: application.frontmatter.description,
+        title: hippogriff.frontmatter.title,
+        description: hippogriff.frontmatter.description,
     };
 }
 
-const Application = styled.article`
+const Hippogriff = styled.article`
     ${MarkdownStyles}
 
     // Add padding and negative margins to mirror the layout used in the rest of the site.
@@ -27,7 +27,7 @@ const Application = styled.article`
     }
 `;
 
-function getHeaderJsx(application, image) {
+function getHeaderJsx(hippogriff, image) {
     const HeaderContainer = styled.div`
         display: flex;
         flex-direction: row;
@@ -45,43 +45,43 @@ function getHeaderJsx(application, image) {
             <div className="logo-container">
                 <Img fluid={image.fluid} alt="logo" />
             </div>
-            <h1>{application.frontmatter.title}</h1>
+            <h1>{hippogriff.frontmatter.title}</h1>
         </HeaderContainer>
     );
 }
 
-function getContentJsx(application) {
+function getContentJsx(hippogriff) {
     return (
         <div>
-            <Application>
+            <Hippogriff>
                 <section
-                    dangerouslySetInnerHTML={{ __html: application.html }}
+                    dangerouslySetInnerHTML={{ __html: hippogriff.html }}
                 />
-            </Application>
+            </Hippogriff>
         </div>
     );
 }
 
-const ApplicationTemplate = ({ data }) => {
-    const application = data.markdownRemark;
+const HippogriffTemplate = ({ data }) => {
+    const hippogriff = data.markdownRemark;
     const image = data.imageSharp;
 
     return (
         <Page
-            header={getHeaderJsx(application, image)}
-            content={getContentJsx(application)}
-            page="Application"
-            seo={getSEO(application)}
-            initialBackgroundColour={`#${application.frontmatter.primaryColor}`}
+            header={getHeaderJsx(hippogriff, image)}
+            content={getContentJsx(hippogriff)}
+            page="Hippogriff"
+            seo={getSEO(hippogriff)}
+            initialBackgroundColour={`#${hippogriff.frontmatter.primaryColor}`}
             styles="background-position: center center;"
         ></Page>
     );
 };
 
-export default ApplicationTemplate;
+export default HippogriffTemplate;
 
 export const pageQuery = graphql`
-    query ApplicationBySlug($slug: String!, $relativeDirectory: String!) {
+    query HippogriffBySlug($slug: String!, $relativeDirectory: String!) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
             id
             html

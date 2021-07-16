@@ -7,7 +7,7 @@ const {
 } = require("../../utils/blog-utils");
 
 const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`);
-const applicationTemplate = path.resolve(`./src/templates/application.js`);
+const hippogriffTemplate = path.resolve(`./src/templates/hippogriff.js`);
 
 const generateBlogPostPages = async ({ graphql, createPage }) => {
     const blogMarkdownData = await graphql(
@@ -57,13 +57,13 @@ const generateBlogPostPages = async ({ graphql, createPage }) => {
     });
 };
 
-const generateApplicationPages = async ({ graphql, createPage }) => {
-    const applicationMarkdownData = await graphql(
+const generateHippogriffPages = async ({ graphql, createPage }) => {
+    const hippogriffMarkdownData = await graphql(
         `
             {
                 allMarkdownRemark(
                     filter: {
-                        fields: { sourceInstanceName: { eq: "applications" } }
+                        fields: { sourceInstanceName: { eq: "hippogriff" } }
                     }
                 ) {
                     edges {
@@ -83,16 +83,16 @@ const generateApplicationPages = async ({ graphql, createPage }) => {
         `
     );
 
-    if (applicationMarkdownData.errors) throw applicationMarkdownData.errors;
+    if (hippogriffMarkdownData.errors) throw hippogriffMarkdownData.errors;
 
-    const applications = applicationMarkdownData.data.allMarkdownRemark.edges;
-    applications.forEach(application => {
-        const slug = application.node.fields.slug;
-        const relativeDirectory = application.node.fields.relativeDirectory;
+    const hippogriffs = hippogriffMarkdownData.data.allMarkdownRemark.edges;
+    hippogriffs.forEach(hippogriff => {
+        const slug = hippogriff.node.fields.slug;
+        const relativeDirectory = hippogriff.node.fields.relativeDirectory;
 
         createPage({
             path: `/application${slug}`,
-            component: applicationTemplate,
+            component: hippogriffTemplate,
             context: {
                 slug,
                 relativeDirectory,
@@ -103,5 +103,5 @@ const generateApplicationPages = async ({ graphql, createPage }) => {
 
 module.exports = {
     generateBlogPostPages,
-    generateApplicationPages,
+    generateHippogriffPages,
 };

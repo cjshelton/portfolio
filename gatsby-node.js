@@ -2,14 +2,14 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const {
     generateBlogPostPages,
-    generateApplicationPages,
+    generateHippogriffPages,
 } = require("./src/data/graphql/page-generators");
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
 
     await generateBlogPostPages({ graphql, createPage });
-    await generateApplicationPages({ graphql, createPage });
+    await generateHippogriffPages({ graphql, createPage });
 };
 
 /**
