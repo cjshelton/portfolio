@@ -7,7 +7,7 @@ import Page from "../components/layouts/page";
 import Pill from "../components/pill";
 
 import { BlogPublishDateStyles } from "../styles/shared";
-import BlogPostStyles from "../styles/blog-post";
+import MarkdownStyles from "../styles/markdown";
 import { getBlogPostMetadata } from "../utils/blog-utils";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
@@ -26,7 +26,7 @@ function getSEO(post) {
 }
 
 const BlogPost = styled.article`
-    ${BlogPostStyles}
+    ${MarkdownStyles}
 
     // Add padding and negative margins to mirror the layout used in the rest of the site.
     padding-left: 10px;

@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
 
-import BlogPostStyles from "../styles/blog-post";
+import MarkdownStyles from "../styles/markdown";
 
 function getSEO(application) {
     return {
@@ -15,7 +15,7 @@ function getSEO(application) {
 }
 
 const Application = styled.article`
-    ${BlogPostStyles}
+    ${MarkdownStyles}
 
     // Add padding and negative margins to mirror the layout used in the rest of the site.
     padding-left: 10px;
