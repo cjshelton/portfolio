@@ -8,7 +8,7 @@ import Pill from "../components/pill";
 import { getBlogPostMetadata } from "../utils/blog-utils";
 
 import {
-    rewriteSlug,
+    rewriteBlogPostSlug,
     generateUserFriendlyDateFromSlug,
 } from "../utils/blog-utils";
 
@@ -55,7 +55,7 @@ function getContentJsx(posts) {
                 .map(({ node }) => {
                     const title = node.frontmatter.title || node.fields.slug;
 
-                    const blogPostSlug = rewriteSlug(node.fields.slug);
+                    const blogPostSlug = rewriteBlogPostSlug(node.fields.slug);
                     const publishedDate = generateUserFriendlyDateFromSlug(
                         node.fields.slug
                     );

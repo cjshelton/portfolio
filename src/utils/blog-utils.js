@@ -8,7 +8,7 @@ function parseDateFromSlug(slug) {
     return moment(rawPublishedDate);
 }
 
-function rewriteSlug(slug) {
+function rewriteBlogPostSlug(slug) {
     const parsedPublishedDate = parseDateFromSlug(slug);
 
     // The post title can be found from the 12th index, after the date part.
@@ -27,7 +27,7 @@ function generateUserFriendlyDateFromSlug(slug) {
 function generateBlogPostNavigationItem(node) {
     return node
         ? {
-              slug: rewriteSlug(node.fields.slug),
+              slug: rewriteBlogPostSlug(node.fields.slug),
               title: node.frontmatter.title,
           }
         : null;
@@ -43,7 +43,7 @@ function getBlogPostMetadata({ title }) {
 
 module.exports = {
     parseDateFromSlug,
-    rewriteSlug,
+    rewriteBlogPostSlug,
     generateUserFriendlyDateFromSlug,
     generateBlogPostNavigationItem,
     getBlogPostMetadata,
