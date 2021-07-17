@@ -122,7 +122,7 @@ export default ({
             <SEO title={seo.title} description={seo.description} />
 
             <div css={imageContainerStyles}>
-                <div className="overlay"></div>
+                {backgroundImageUrl && <div className="overlay"></div>}
                 <div className="header">{header}</div>
             </div>
             <PageContent>{content}</PageContent>
