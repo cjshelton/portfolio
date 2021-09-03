@@ -35,8 +35,11 @@ function getHeaderJsx(hippogriff, image) {
         justify-content: center;
 
         .logo-container {
-            width: 50px;
-            margin-right: 10px;
+            width: ${hippogriff.frontmatter.logoWidthPx || "50"}px;
+        }
+
+        .title {
+            margin-left: 10px;
         }
     `;
 
@@ -45,7 +48,9 @@ function getHeaderJsx(hippogriff, image) {
             <div className="logo-container">
                 <Img fluid={image.fluid} alt="logo" />
             </div>
-            <h1>{hippogriff.frontmatter.title}</h1>
+            {hippogriff.frontmatter.title && (
+                <h1 className="title">{hippogriff.frontmatter.title}</h1>
+            )}
         </HeaderContainer>
     );
 }
@@ -89,11 +94,12 @@ export const pageQuery = graphql`
                 title
                 description
                 primaryColor
+                logoWidthPx
             }
         }
         imageSharp(fields: { relativeDirectory: { eq: $relativeDirectory } }) {
             id
-            fluid(maxWidth: 100) {
+            fluid(maxWidth: 250) {
                 ...GatsbyImageSharpFluid
             }
         }
