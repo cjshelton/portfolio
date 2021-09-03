@@ -50,8 +50,10 @@
     "scripts": {
         "build": "gatsby build",
         "develop": "gatsby develop",
+        "develop-network": "gatsby develop -H 0.0.0.0",
         "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
         "start": "npm run develop",
+        "start-network": "npm run develop-network",
         "serve": "gatsby serve",
         "clean": "gatsby clean",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
