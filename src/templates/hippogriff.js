@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
+import { colours } from "../styles/variables";
 
 import MarkdownStyles from "../styles/markdown";
 
@@ -13,6 +14,20 @@ function getSEO(hippogriff) {
         description: hippogriff.frontmatter.description,
     };
 }
+
+const Content = styled.div`
+    .generated-info {
+        margin-bottom: 15px;
+
+        text-align: right;
+        font-size: 12px;
+
+        a {
+            color: ${colours.primaryTextDark};
+            text-decoration: underline;
+        }
+    }
+`;
 
 const Hippogriff = styled.article`
     ${MarkdownStyles}
@@ -57,13 +72,34 @@ function getHeaderJsx(hippogriff, image) {
 
 function getContentJsx(hippogriff) {
     return (
-        <div>
+        <Content>
+            <div className="generated-info">
+                <p>
+                    This page has been automatically generated using{" "}
+                    <a
+                        target="__blank"
+                        href="https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/"
+                    >
+                        Gatsby Transformer Remark
+                    </a>
+                </p>
+                <p>
+                    See the{" "}
+                    <a
+                        target="__blank"
+                        href="https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/"
+                    >
+                        Gatsby Docs
+                    </a>{" "}
+                    for more information on using Markdown in Gatsby
+                </p>
+            </div>
             <Hippogriff>
                 <section
                     dangerouslySetInnerHTML={{ __html: hippogriff.html }}
                 />
             </Hippogriff>
-        </div>
+        </Content>
     );
 }
 
