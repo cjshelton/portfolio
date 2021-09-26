@@ -165,8 +165,9 @@ const contentJsx = (
             <p className="section-text">
                 I also spend time outside of work on personal and side projects
                 which helps me up-skill in other technical areas. Below are some
-                of the skills I am less experienced in, but contribute to my
-                abilities as a well-rounded software engineer.
+                of my progressive skills which I am getting more experienced in,
+                but still contribute to my abilities as a well-rounded software
+                engineer.
             </p>
             <div className="section-text">
                 {experienceData.otherSkills.map((skill, index) => {

@@ -19,9 +19,9 @@ const headerSection = (
     <div>
         <h1>Portfolio</h1>
         <h2>
-            Specialising in full-stack web application development using{" "}
-            <span css={bold}>ASP.NET Core</span> and{" "}
-            <span css={bold}>Node.js</span>
+            Specialising in <span css={bold}>full-stack</span> web application
+            development in the <span css={bold}>JavaScript</span> technology
+            stack
         </h2>
     </div>
 );
