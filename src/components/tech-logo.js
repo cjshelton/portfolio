@@ -1,6 +1,6 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 
 const Image = ({ image, altText }) => {
     const data = useStaticQuery(graphql`
@@ -63,8 +63,47 @@ const Image = ({ image, altText }) => {
                     }
                 }
             }
+            javascript: file(
+                relativePath: { eq: "tech-logos/javascript.png" }
+            ) {
+                childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+            typescript: file(
+                relativePath: { eq: "tech-logos/typescript.png" }
+            ) {
+                childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+            mongodb: file(relativePath: { eq: "tech-logos/mongo-db.png" }) {
+                childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+            openApi: file(relativePath: { eq: "tech-logos/open-api.png" }) {
+                childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+            jest: file(relativePath: { eq: "tech-logos/jest.png" }) {
+                childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
         }
-    `)
+    `);
 
     return (
         <Img
@@ -73,7 +112,7 @@ const Image = ({ image, altText }) => {
             style={{ maxHeight: "100%" }}
             imgStyle={{ objectFit: "contain" }}
         />
-    )
-}
+    );
+};
 
-export default Image
+export default Image;

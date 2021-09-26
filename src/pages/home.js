@@ -96,8 +96,8 @@ const contentSection = (
             <p className="section-text">
                 I run a tech blog which I post to occasionally to share new
                 experiences, things I have built, and problems I have solved. I
-                also enjoy attending local conferences, namely Leeds Sharp and
-                LeedsJS.
+                also enjoy attending local conferences, namely LeedsJS and Leeds
+                Sharp.
             </p>
             <p className="section-text">
                 I&apos;m not a total techie &mdash; I also have a keen interest

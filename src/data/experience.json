@@ -21,6 +21,56 @@
     ],
     "coreSkills": [
         {
+            "name": "JavaScript",
+            "imageSource": "javascript",
+            "imageAltText": "JavaScript logo"
+        },
+        {
+            "name": "TypeScript",
+            "imageSource": "typescript",
+            "imageAltText": "TypeScript logo"
+        },
+        {
+            "name": "Vue",
+            "imageSource": "vue",
+            "imageAltText": "Vue logo"
+        },
+        {
+            "name": "Node.js + Express",
+            "imageSource": "nodeJs",
+            "imageAltText": "Node.js and Express logos"
+        },
+        {
+            "name": "Open API",
+            "imageSource": "openApi",
+            "imageAltText": "Open API logo"
+        },
+        {
+            "name": "Jest",
+            "imageSource": "jest",
+            "imageAltText": "Jest logo"
+        },
+        {
+            "name": "HTML / CSS / SCSS",
+            "imageSource": "frontEnd",
+            "imageAltText": "Front-end logos"
+        },
+        {
+            "name": "MongoDB",
+            "imageSource": "mongodb",
+            "imageAltText": "MongoDB logo"
+        },
+        {
+            "name": "Docker",
+            "imageSource": "docker",
+            "imageAltText": "Docker logo"
+        },
+        {
+            "name": "git",
+            "imageSource": "git",
+            "imageAltText": "git logo"
+        },
+        {
             "name": "C#",
             "imageSource": "cSharp",
             "imageAltText": "C Sharp logo"
@@ -31,34 +81,9 @@
             "imageAltText": "Dot Net Core logo"
         },
         {
-            "name": "Node.js",
-            "imageSource": "nodeJs",
-            "imageAltText": "Node.js logo"
-        },
-        {
-            "name": "HTML / CSS / JS",
-            "imageSource": "frontEnd",
-            "imageAltText": "Front-end logos"
-        },
-        {
-            "name": "Vue",
-            "imageSource": "vue",
-            "imageAltText": "Vue logo"
-        },
-        {
-            "name": "git",
-            "imageSource": "git",
-            "imageAltText": "git logo"
-        },
-        {
             "name": "SQL Server",
             "imageSource": "sqlServer",
             "imageAltText": "SQL Server logo"
-        },
-        {
-            "name": "Docker",
-            "imageSource": "docker",
-            "imageAltText": "Docker logo"
         }
     ],
     "additionalCoreSkills": [

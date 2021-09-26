@@ -68,15 +68,19 @@ const SkillEntry = styled.div`
     padding: 10px 10px;
 
     @media (max-width: ${sizes.xSmall}) {
-        flex-basis: 60px;
+        flex-basis: 120px;
     }
 
     .logo {
         width: 100%;
         max-width: 100px;
 
+        .gatsby-image-wrapper {
+            height: 100%;
+        }
+
         @media (max-width: ${sizes.xSmall}) {
-            max-width: 60px;
+            max-width: 80px;
         }
     }
 `;
