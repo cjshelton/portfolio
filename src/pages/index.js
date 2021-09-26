@@ -1,22 +1,22 @@
-import React from "react"
-import SEO from "../components/seo"
-import styled from "@emotion/styled"
-import { Global } from "@emotion/core"
+import React from "react";
+import SEO from "../components/seo";
+import styled from "@emotion/styled";
+import { Global } from "@emotion/core";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons"
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
 
-import Image from "../components/image"
-import Button from "../components/btn"
-import Footer from "../components/footer"
-import CookieBanner from "../components/cookie-banner"
+import Image from "../components/image";
+import Button from "../components/btn";
+import Footer from "../components/footer";
+import CookieBanner from "../components/cookie-banner";
 
-import globalStyles from "../styles/global"
-import pageStyles from "../styles/index"
+import globalStyles from "../styles/global";
+import pageStyles from "../styles/index";
 
-import { colours } from "../styles/variables"
+import { colours } from "../styles/variables";
 
 const Container = styled.div`
     height: 100vh;
@@ -26,7 +26,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
-`
+`;
 
 const Content = styled.main`
     flex-grow: 1;
@@ -40,18 +40,16 @@ const Content = styled.main`
     .view-portfolio-button {
         margin-top: 20px;
     }
-`
+`;
 
 const FooterContainer = styled.div`
     flex-shrink: 1;
-`
+`;
 
 const seo = {
     title: "Portfolio",
-    description: `Portfolio for Chris Shelton. Leeds-based software engineer,
-        specialising in full-stack web application development using
-        ASP.NET Core and Node.js`,
-}
+    description: `The landing page for Chris Shelton's Portfolio. I am a UK-based software engineer, specialising in full-stack web application development in the JavaScript technology stack.`,
+};
 
 const IndexPage = () => (
     <Container>
@@ -78,6 +76,6 @@ const IndexPage = () => (
         </FooterContainer>
         <CookieBanner />
     </Container>
-)
+);
 
-export default IndexPage
+export default IndexPage;

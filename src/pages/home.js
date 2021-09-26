@@ -8,9 +8,7 @@ import { sizes } from "../styles/variables";
 
 const seo = {
     title: "Home",
-    description: `Portfolio for Chris Shelton. Leeds-based software engineer,
-        specialising in full-stack web application development using
-        ASP.NET Core and Node.js`,
+    description: `Home page for Chris Shelton's Portfolio. I am a UK-based software engineer, specialising in full-stack web application development in the JavaScript technology stack.`,
 };
 
 const bold = css`

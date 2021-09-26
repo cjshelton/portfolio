@@ -1,21 +1,19 @@
-import React from "react"
-import { Global } from "@emotion/core"
-import { css } from "@emotion/core"
-import styled from "@emotion/styled"
+import React from "react";
+import { Global } from "@emotion/core";
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 
-import SEO from "../components/seo"
-import Footer from "../components/footer"
-import Button from "../components/btn"
+import SEO from "../components/seo";
+import Footer from "../components/footer";
+import Button from "../components/btn";
 
-import globalStyles from "../styles/global"
-import { colours, sizes } from "../styles/variables"
+import globalStyles from "../styles/global";
+import { colours, sizes } from "../styles/variables";
 
 const seo = {
     title: "Page Not Found",
-    description: `Portfolio for Chris Shelton. Leeds-based software engineer,
-        specialising in full-stack web application development using
-        ASP.NET Core and Node.js`,
-}
+    description: `The requested page could not be found.`,
+};
 
 const container = css`
     height: 100%;
@@ -23,7 +21,7 @@ const container = css`
     flex-direction: column;
     padding: 20px;
     background-color: ${colours.primary};
-`
+`;
 
 const Content = styled.div`
     flex-grow: 1;
@@ -68,11 +66,11 @@ const Content = styled.div`
     .home-button {
         min-width: 80px;
     }
-`
+`;
 
 const FooterContainer = styled.div`
     flex-shrink: 1;
-`
+`;
 
 const NotFoundPage = () => (
     <div css={container}>
@@ -93,6 +91,6 @@ const NotFoundPage = () => (
             <Footer></Footer>
         </FooterContainer>
     </div>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

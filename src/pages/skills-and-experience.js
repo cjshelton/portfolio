@@ -13,9 +13,7 @@ import experienceData from "../data/experience.json";
 
 const seo = {
     title: "Skills and Experience",
-    description: `Skills and experience for Chris Shelton. Leeds-based software engineer,
-        specialising in full-stack web application development using
-        ASP.NET Core and Node.js`,
+    description: `An overview of my career experience so far and some of the skills I am most competent in.`,
 };
 
 const uolLogoContainer = css`

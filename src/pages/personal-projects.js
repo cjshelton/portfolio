@@ -19,9 +19,7 @@ import personalProjectsData from "../data/personal-projects";
 
 const seo = {
     title: "Personal Projects",
-    description: `Personal Projects for Chris Shelton. Leeds-based software engineer,
-        specialising in full-stack web application development using
-        ASP.NET Core and Node.js`,
+    description: `A showcase of some of my personal projects which I use to solve problems and learn new skills.`,
 };
 
 const baseLinkStyle = css`
