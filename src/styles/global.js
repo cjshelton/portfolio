@@ -28,6 +28,10 @@ export default css`
         font-style: italic;
     }
 
+    .bold {
+        font-weight: 600;
+    }
+
     .primary-text-link {
         color: ${colours.primaryTextMedium};
         text-decoration: underline;

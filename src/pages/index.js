@@ -63,9 +63,9 @@ const IndexPage = () => (
             <div css={pageStyles.location}>Leeds, UK</div>
             <div css={pageStyles.title}>Software Engineer</div>
             <p css={pageStyles.experience}>
-                Specialising in full-stack web application development using
-                <span css={pageStyles.bold}> ASP.NET Core</span> and
-                <span css={pageStyles.bold}> Node.js</span>
+                Specialising in <span className="bold">full-stack</span> web
+                application development in the{" "}
+                <span className="bold">JavaScript</span> technology stack
             </p>
             <Button mediumLight className="view-portfolio-button" to="/home">
                 <FontAwesomeIcon icon={faChevronCircleRight} /> View Portfolio

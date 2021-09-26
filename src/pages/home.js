@@ -11,17 +11,13 @@ const seo = {
     description: `Home page for Chris Shelton's Portfolio. I am a UK-based software engineer, specialising in full-stack web application development in the JavaScript technology stack.`,
 };
 
-const bold = css`
-    font-weight: 400;
-`;
-
 const headerSection = (
     <div>
         <h1>Portfolio</h1>
         <h2>
-            Specialising in <span css={bold}>full-stack</span> web application
-            development in the <span css={bold}>JavaScript</span> technology
-            stack
+            Specialising in <span className="bold">full-stack</span> web
+            application development in the{" "}
+            <span className="bold">JavaScript</span> technology stack
         </h2>
     </div>
 );
