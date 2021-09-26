@@ -4,7 +4,7 @@
             "company": "Bluesmith Information Systems",
             "title": "Technical Specialist",
             "period": "2017-Present",
-            "description": "Working on various Agile projects, all focused on full-stack web application development for enterprise applications, using technologies like ASP.NET, ASP.NET Core, Node.js, SQL Server, Knockout and Vue."
+            "description": "Working on various Agile projects, focusing on full-stack web application development for enterprise applications in the JavaScript technology stack, specifically Vue, Node.js and MongoDB. Prior to that I specialised in the Microsoft technology stack, including C#, ASP.NET Core and SQL Server."
         },
         {
             "company": "Bluesmith Information Systems",
@@ -100,14 +100,15 @@
         "DRY / YAGNI"
     ],
     "otherSkills": [
-        "TypeScript",
-        "Mongo",
         "React",
+        "GraphQL",
+        "Kubernetes",
+        "Cypress",
+        "Python",
         "Xamarin",
         "Jamstack and Static Site Generators",
         "CSS in JS",
         "Google Cloud Firestore",
-        "Web Sockets",
-        "Swagger"
+        "Web Sockets"
     ]
 }
