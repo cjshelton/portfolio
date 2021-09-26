@@ -70,12 +70,6 @@ module.exports = {
                 icon: `src/images/mugshot-colour.jpg`, // This path is relative to the root of the site.
             },
         },
-        {
-            resolve: `gatsby-plugin-google-fonts`,
-            options: {
-                fonts: [`Poppins\:300,400`, `Roboto\:300,900`],
-            },
-        },
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
