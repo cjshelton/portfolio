@@ -1,5 +1,5 @@
 /*
-    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src fonts.googleapis.com 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com; font-src https://*.cshelton.co.uk
+    Content-Security-Policy: default-src https://*.cshelton.co.uk; script-src https://*.cshelton.co.uk https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src fonts.googleapis.com 'unsafe-inline'; img-src data: https://*.cshelton.co.uk www.google-analytics.com; font-src data: https://*.cshelton.co.uk
     X-Frame-Options: DENY
     X-Content-Type-Options: nosniff
     Referrer-Policy: no-referrer-when-downgrade
