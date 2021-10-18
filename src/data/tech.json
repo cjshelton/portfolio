@@ -1,5 +1,6 @@
 {
     "javascript": "JavaScript",
+    "typescript": "TypeScript",
     "react": "React",
     "preact": "Preact",
     "cSharp": "C#",
@@ -16,6 +17,9 @@
     "nuget": "NuGet",
 
     "gatsby": "Gatsby",
+    "nextjs": "Next.js",
+    "auth0": "Auth0",
+    "supabase": "Supabase",
     "dotNetCore": ".NET Core",
     "aspDotNetCore": "ASP.NET Core",
     "dotNetStandard": ".NET Standard",
@@ -28,6 +32,7 @@
     "azureDevOps": "Azure DevOps",
     "googleCloudFirestore": "Google Cloud Firestore",
     "netlify": "Netlify",
+    "netlifyFunctions": "Netlify Functions",
     "raspberryPi": "Raspberry Pi",
     "crossPlatform": "Cross Platform",
 

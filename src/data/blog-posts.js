@@ -1,13 +1,24 @@
 const techData = require("./tech.json");
 
 const blogPostsData = {
+    "Building a Serverless Booking System with Next.js": {
+        tags: [
+            techData.typescript,
+            techData.react,
+            techData.nextjs,
+            techData.gatsby,
+            techData.auth0,
+            techData.supabase,
+            techData.netlify,
+            techData.netlifyFunctions,
+        ],
+    },
     "Improving Gatsby Performance: Replacing React with Preact": {
         tags: [
             techData.javascript,
             techData.react,
             techData.preact,
             techData.gatsby,
-            techData.aspDotNetCoreWebApi,
         ],
     },
     ".NET Core Dev in Docker with Live Compilation and Debugging": {
