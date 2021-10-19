@@ -3,6 +3,17 @@ import { colours, sizes } from "./variables";
 import { DarkHeadingStyles, SiteTextStyles } from "./shared";
 
 export default css`
+    .img-attribute {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .img-single-small {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 150px;
+    }
+
     .logo-duo-container {
         margin: 20px 0;
         text-align: center;

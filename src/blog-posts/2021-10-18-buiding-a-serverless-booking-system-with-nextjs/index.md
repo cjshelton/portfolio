@@ -50,6 +50,27 @@ Read on to find out more about these technologies and how they helped me achieve
     </div>
 </div>
 
+# Going Serverless
+
+<img src="./serverless.png" alt="Serverless diagram" />
+<p class="img-attribute">Source: https://assets2.botmetric.com/wp-content/uploads/2017/10/The-benefits-of-going-serverless-1.png</p>
+
+Serverless technology has become hugely popular since the introduction of Cloud Computing, with developers realising
+that the costs, effort and lead times associated with building and maintaining your own server can be drastically reduced.
+
+Serverless is not truly serverless, but its name comes from the perception of the developers who themselves do not need
+to think in terms of building and maintaining a server; instead relying on SaaS products and services like [AWS Lambda][aws-lambda]
+to handle most of the work for them.
+
+Aside from saving time and costs, serverless also helps to mitigate risk and responsibility in certain key areas like
+scalability, authentication and GDPR, to name a few.
+
+Going serverless played a significant role in acheiving my main goals for the project - to have something functional in a
+short space of time with zero costs.
+
+For more information on serverless technology, Martin Fowler has a [comprehensive article][martin-fowler-serverless-article-url]
+on the topic which is a good read.
+
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
