@@ -6,8 +6,13 @@ description: ""
 # Introduction
 
 My family recently acquired a static caravan to be shared throughout the year as a place to have a break. My first thought
-was "This will be great", and my second thought, like most other software engineers, was "I think a custom booking system
-is in order here".
+was
+
+<p class="italic">"This will be great."</p>
+
+And my second thought, like most other software engineers, was
+
+<p class="italic">"I think a custom booking system is in order here."</p>
 
 Jokes aside, something was needed to help coordinate who's in the caravan and when throughout the year, and I
 saw this as an opportunity to see how quickly I could get something working in the space of a few evenings, using serverless
