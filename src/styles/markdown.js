@@ -23,6 +23,33 @@ export default css`
         }
     }
 
+    .flex-images {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .img-container {
+            flex: 1 0 120px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 1rem;
+
+            .img-container-inner {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                width: 100%;
+                max-width: 100px;
+            }
+
+            .gatsby-resp-image-wrapper {
+                flex: 1 0 0;
+            }
+        }
+    }
+
     ul,
     ol {
         padding: 0 40px;
