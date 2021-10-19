@@ -71,6 +71,32 @@ short space of time with zero costs.
 For more information on serverless technology, Martin Fowler has a [comprehensive article][martin-fowler-serverless-article-url]
 on the topic which is a good read.
 
+# Technical Architecture
+
+Below is an overview of all of the tech used and how they each contributed to the goals of the project.
+
+## Next.js
+
+<div class="img-single-small">
+    <img src="./nextjs-logo.png" alt="Next.js logo" />
+</div>
+
+Next.js is a React based JavaScript framework for building static and server-side rendered (SSR) applications. I was
+looking to build a static site to make use of performance enhancements and cheap and fast web hosting so it seemed like
+a sensible choice.
+
+It also had the following in its favour:
+
+-   It supports TypeScript out-of-the-box. From memory, this required little to no initial effort other than supplying a flag
+    when using the Create CLI. I'm a big fan of TypeScript, more so in the last 6 months where I have been able to use it
+    extensively. Once accustomed to writing in a typed fashion, it requires minimal development overhead and produces
+    far more readable code which noticeably suffers from fewer bugs (like passing the wrong type to a third-party library).
+-   It is a suitable alternative Framework to Gatsby which I'm already familiar with and a big fan of. I was keen to try
+    an alternative to see how it compared.
+-   Much like Gatsby, it has nice things like route pre-fetching and image optimisation which contribute to a much better
+    user experience when navigating around the app.
+-   And finally - built-in support for API routes. This proved to be very useful when integrating with the Auth0 library,
+    which I'll come onto next.
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
