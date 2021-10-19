@@ -18,8 +18,8 @@ Jokes aside, something was needed to help coordinate who's in the caravan and wh
 saw this as an opportunity to see how quickly I could get something working in the space of a few evenings, using serverless
 technology and SaaS products, with zero setup or operating costs.
 
-I achieved my goal with the help of [Next.js](nextjs-url), [Auth0](auth0-url), [Supabase](supabase-url) and [Netlify](netlify-functions-url)
-(for hosting and serverless functions), and it's all written in [TypeScript](typescript-url) too.
+I achieved my goal with the help of [Next.js][nextjs-url], [Auth0][auth0-url], [Supabase][supabase-url] and [Netlify][netlify-functions-url]
+(for hosting and serverless functions), and it's all written in [TypeScript][typescript-url] too.
 Read on to find out more about these technologies and how they helped me achieve my goal.
 
 <div class="flex-images">
