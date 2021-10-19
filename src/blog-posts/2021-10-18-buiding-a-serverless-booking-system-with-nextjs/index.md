@@ -102,3 +102,5 @@ It also had the following in its favour:
 [auth0-url]: https://auth0.com/
 [supabase-url]: https://supabase.io/
 [netlify-functions-url]: https://www.netlify.com/products/functions/
+[martin-fowler-serverless-article-url]: https://martinfowler.com/articles/serverless.html
+[aws-lambda]: https://aws.amazon.com/lambda/
