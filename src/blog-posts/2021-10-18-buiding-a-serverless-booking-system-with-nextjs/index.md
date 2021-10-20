@@ -100,7 +100,7 @@ Below is an overview of all of the tech used and how they each contributed to th
 ## Next.js
 
 <div class="img-single-small">
-    <a href="https://nextjs.org/" aria-label="Next.js"><img src="./nextjs-logo.png" alt="Next.js logo" /></a>
+    <img src="./nextjs-logo.png" alt="Next.js logo" />
 </div>
 
 Next.js is a React based JavaScript framework for building static and server-side rendered (SSR) applications. I was
@@ -123,7 +123,7 @@ It also had the following in its favour:
 ## Auth0
 
 <div class="img-single-small">
-    <a href="https://auth0.com/" aria-label="Auth0"><img src="./auth0-logo.png" alt="Auth0 logo" /></a>
+    <img src="./auth0-logo.png" alt="Auth0 logo" />
 </div>
 
 The application needed to have authentication to control access to the site and to keep track of who had made bookings, but
