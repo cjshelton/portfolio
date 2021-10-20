@@ -100,7 +100,7 @@ Below is an overview of all of the tech used and how they each contributed to th
 ## Next.js
 
 <div class="img-single-small">
-    <img src="./nextjs-logo.png" alt="Next.js logo" />
+    <a href="https://nextjs.org/" aria-label="Next.js"><img src="./nextjs-logo.png" alt="Next.js logo" /></a>
 </div>
 
 Next.js is a React based JavaScript framework for building static and server-side rendered (SSR) applications. I was
