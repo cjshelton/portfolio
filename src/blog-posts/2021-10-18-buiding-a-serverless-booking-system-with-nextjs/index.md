@@ -30,6 +30,16 @@ Read on to find out more about these technologies and how they helped me achieve
     </div>
     <div class="img-container">
         <div class="img-container-inner">
+            <img src="./ts-logo.png" alt="TypeScript logo" />
+        </div>
+    </div>
+    <div class="img-container">
+        <div class="img-container-inner">
+            <img src="./twilio-logo.png" alt="Twilio logo" />
+        </div>
+    </div>
+    <div class="img-container">
+        <div class="img-container-inner">
             <img src="./auth0-logo.png" alt="Auth0 logo" />
         </div>
     </div>
@@ -41,11 +51,6 @@ Read on to find out more about these technologies and how they helped me achieve
     <div class="img-container">
         <div class="img-container-inner">
             <img src="./netlify-logo.png" alt="Netlify logo" />
-        </div>
-    </div>
-    <div class="img-container">
-        <div class="img-container-inner">
-            <img src="./ts-logo.png" alt="TypeScript logo" />
         </div>
     </div>
 </div>
