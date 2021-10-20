@@ -206,6 +206,24 @@ authentication mechanism. Auth0 handles the rendering of the login form (which c
 off to help prevent unwanted users registering, and Auth0 maintains the user details which can be found in the Auth0 dashboard.
 
 <img src="./auth0-users.png" alt="User list in the Auth0 dashboard" />
+
+A lot of the magic happens in the `/pages/api/auth/[...auth0].js` file, specifically the call to `handleAuth`.
+
+The use of `[...auth]` in the file name declares the file as a [catch-all, dynamic route handler][auth0-nextjs-catch-all-route-handler-url],
+allowing it to match to all routes within `/api/auth/`. Calling `handleAuth1` transparently creates route handlers which
+each perform some function in the auth flow, like `/api/auth/login` and `/api/auth/logout`.
+
+Next.js has support for building [API routes][nextjs-api-routes-url] which are serverless Node.js functions designed to
+respond to HTTP requests. This allows developers to create simple full-stack applications right within the Next.js
+framework. API files are created within the `./pages/api/` directory and do not end up in the final client-side bundle.
+
+When hosted on Netlify, each API route becomes a Netlify Function. This wasn't immediately obvious to me, mainly due to the
+fact that this required no special configuration, and the Functions just started to work once the app was deployed.
+
+<img src="./auth0-netlify-function.png" alt="Auth0 Netlify Function" />
+
+Authentication is normally stressful and time-consuming to implement, but Auth0 took all of the complexity away,
+and the Auth0 Next.js package made the process even easier, all whilst still resulting in a really good user experience.
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
