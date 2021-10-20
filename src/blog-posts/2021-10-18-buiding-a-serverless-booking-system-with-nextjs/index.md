@@ -59,7 +59,7 @@ Serverless technology has become hugely popular since the introduction of Cloud 
 that the costs, effort and lead times associated with building and maintaining your own server can be drastically reduced.
 
 Serverless is not truly serverless, but its name comes from the perception of the developers who themselves do not need
-to think in terms of building and maintaining a server; instead relying on SaaS products and services like [AWS Lambda][aws-lambda]
+to think in terms of building and maintaining a server; instead relying on SaaS products and services like [AWS Lambda][aws-lambda-url]
 to handle most of the work for them.
 
 Aside from saving time and costs, serverless also helps to mitigate risk and responsibility in certain key areas like
@@ -97,10 +97,102 @@ It also had the following in its favour:
     user experience when navigating around the app.
 -   And finally - built-in support for API routes. This proved to be very useful when integrating with the Auth0 library,
     which I'll come onto next.
+
+## Auth0
+
+<div class="img-single-small">
+    <a href="https://auth0.com/" aria-label="Auth0"><img src="./auth0-logo.png" alt="Auth0 logo" /></a>
+</div>
+
+The application needed to have authentication to control access to the site and to keep track of who had made bookings, but
+I didn't want to build any of the sign-up / sign-in flow myself, and I wanted to hand over the responsibility of user
+information to an authentication service.
+
+There are numerous options available to do this, including [Netlify Identity][netlify-identity-url] and [Supabase Auth][supabase-auth-url],
+but I decided on Auth0 as it had been on my radar to experiment with for a while, and it had a really simple integration
+with Next.js apps.
+
+Auth0 was super simple to add into my app, requiring only the following steps to be completed:
+
+-   Sign-up for an Auth0 account on the free tier.
+-   Create a new application of the Regular Web Application type.
+-   Configure the "Allowed Callback URLs" and "Allowed Logout URLs" in the Application Settings. I included two entries
+    for each to enable it to work locally and when deployed to Netlify. E.g. `http://localhost:3000/api/auth/callback` and
+    `https://xxxxx.netlify.app/api/auth/callback` for Allowed Callback URLs.
+-   Install the Auth0 Next.js integration package from [npm][auth0-npm-url].
+-   Add environment variables for the Auth0 secret, base URL, issuer base url, client ID and client secret. These were added
+    to both an `.env.local` file as well as in the Environment Variables section in Netlify.
+-   Add a new API route file in the Next.js application - `/pages/api/auth/[...auth0].js` which automatically handles the
+    creation of all necessary authentication API routes. It simply calls `handleAuth` with some custom config to handle
+    redirect on successful login:
+
+```
+import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+
+export default handleAuth({
+    async login(req, res) {
+        await handleLogin(req, res, {
+            returnTo: '/bookings',
+        });
+    },
+});
+```
+
+-   Wrap the main App component in the UserProvider component provided by the Auth0 package. This ensures every
+    component can access basic details about the authenticated user like username and email address:
+
+```
+import React from 'react';
+import type { AppProps } from 'next/app';
+import { UserProvider } from '@auth0/nextjs-auth0';
+
+import '../styles/globals.scss';
+
+function MyApp({ Component, pageProps }: AppProps) {
+    return (
+        <UserProvider>
+            <Component {...pageProps} />
+        </UserProvider>
+    );
+}
+export default MyApp;
+```
+
+-   For each page which should be protected, wrap the exported component function in the `withPageAuthRequired` function
+    also provided by the Auth0 package:
+
+```
+import React from 'react';
+import type { NextPage } from 'next';
+import { withPageAuthRequired, useUser } from '@auth0/nextjs-auth0';
+
+import styles from '../styles/Bookings.module.scss';
+
+const Bookings: NextPage = () => {
+    const { user } = useUser(); // The logged in user's profile.
+
+    return (
+        <div className={styles.bookings}>{/* Code removed for brevity */}</div>
+    );
+};
+
+export default withPageAuthRequired(Bookings);
+```
+
+And that's it - some account setup and a few code changes and the application is protected by a fully functioning
+authentication mechanism. Auth0 handles the rendering of the login form (which can be customised), sign-up can be turned
+off to help prevent unwanted users registering, and Auth0 maintains the user details which can be found in the Auth0 dashboard.
+
+<img src="./auth0-users.png" alt="User list in the Auth0 dashboard" />
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
 [supabase-url]: https://supabase.io/
 [netlify-functions-url]: https://www.netlify.com/products/functions/
 [martin-fowler-serverless-article-url]: https://martinfowler.com/articles/serverless.html
-[aws-lambda]: https://aws.amazon.com/lambda/
+[aws-lambda-url]: https://aws.amazon.com/lambda/
+[netlify-identity-url]: https://www.netlify.com/pricing/#add-ons-identity
+[supabase-auth-url]: https://supabase.io/auth
+[auth0-npm-url]: https://www.npmjs.com/package/@auth0/nextjs-auth0
+[auth0-nextjs-tutorial]: https://auth0.com/docs/quickstart/webapp/nextjs/01-login
+[github-auth0-nextjs-tutorial]: https://github.com/auth0/nextjs-auth0
