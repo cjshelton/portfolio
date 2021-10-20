@@ -55,6 +55,23 @@ Read on to find out more about these technologies and how they helped me achieve
     </div>
 </div>
 
+# The Requirements
+
+Aside from the main goals of quick delivery and no cost, I wanted the booking system to have the following features in
+order to be as functional and usable as possible:
+
+-   A simple and intuitive UI/UX to make booking as straight-forward as possible for everyone.
+-   Full authentication flow with username/password and social login (e.g. Google). Sign-up had to be restricted in some
+    way to prevent unwanted sign-ups.
+-   A page for showing all future bookings planned in. This would be in a list format ordered chronologically and also in
+    a calendar format. This would help family members have some visibility of who is staying over and when, and when there is
+    availability for booking a stay.
+-   A page showing all booking specific for the logged in user along with a form for booking a new stay. The form would have
+    basic validation in place and would allow the user to select the dates using a calendar. The form should not allow duplicate
+    bookings to be made.
+-   An email confirmation to be sent out on successful booking.
+-   Bookings should be able to be deleted. Users can delete their own bookings but not others'.
+
 # Going Serverless
 
 <img src="./serverless.png" alt="Serverless diagram" />
