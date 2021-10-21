@@ -227,6 +227,88 @@ and the Auth0 Next.js package made the process even easier, all whilst still res
 
 For more information on integrating Auth0 with Next.js, I'd recommend looking at the [package docs on GitHub][github-auth0-nextjs-tutorial]
 and also [this Auth0 quickstart tutorial][auth0-nextjs-tutorial].
+
+## Supabase
+
+<div class="img-single-small">
+    <img src="./supabase-logo.png" alt="Supabase logo" />
+</div>
+
+Supabase is another "Backend as a Service" which I have had my eye on for a little while, and has been growing hugely in popularity
+recently, so I wanted to give it a try as my data storage mechanism for the bookings.
+
+Supabase, along with offering a few other features, allows developers to quickly provision [Postgres][postgres-url] databases,
+all hosted and managed for them. There is a suitable free-tier plan which is fairly limited, most notably because:
+
+-   It is limited to 500MB of space per database.
+-   It will "pause" the database after 1 week of inactivity, which essentially shuts down the database and is only re-activated
+    after a login to the Supabase dashboard. This actually isn't all that ideal for me, as I expect database interactivity
+    to be quite sporadic throughout the year, so this may be the source of some pain, but I'll keep an eye on it.
+
+Creating a database was very straightforward, and only required the following steps through the dashboard:
+
+-   Create an account.
+-   Create a new organisation.
+-   Create a new database project, choosing a project name, database password and a hosting region.
+
+And from there you can add your tables as required. For the booking system, I needed two tables, one to hold the bookings
+and another to hold some non-sensitive user mapping details.
+
+The database can be queried right from the front-end application using the [Supabase npm package][supabase-npm-url],
+supplying the `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` when instantiating the client to be used for
+all requests:
+
+```
+// initSupabase.ts
+
+import { createClient } from '@supabase/supabase-js';
+
+export const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
+```
+
+Requests can then be simply made like so:
+
+```
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+import { supabase } from './initSupabase';
+import Booking from '../data/models/booking';
+
+dayjs.extend(utc);
+
+export const fetchBookings = async ({
+    match = {},
+}: {
+    match?: { user_nickname?: string };
+}): Promise<Array<Booking>> => {
+    const today = dayjs.utc();
+
+    let { data: bookings, error } = await supabase
+        .from('bookings')
+        .select('*')
+        .match(match)
+        .order('check_in', { ascending: true })
+        .gte('check_out', today.toISOString());
+
+    if (error) throw error;
+    if (bookings === null) throw new Error('Bookings were unexpectedly null.');
+
+    return bookings.map((booking) => {
+        // Code removed for brevity.
+    });
+};
+```
+
+The above will return all bookings which match a supplied filter and where checkout is on or after the current date,
+sorted by check-in date ascending.
+
+Tables and the data within them can be locked down on a very granular level using Row Level Security and Postgres Policies.
+See the [Auth docs][supabase-auth-url] for more information.
+
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
@@ -239,3 +321,11 @@ and also [this Auth0 quickstart tutorial][auth0-nextjs-tutorial].
 [auth0-npm-url]: https://www.npmjs.com/package/@auth0/nextjs-auth0
 [auth0-nextjs-tutorial]: https://auth0.com/docs/quickstart/webapp/nextjs/01-login
 [github-auth0-nextjs-tutorial]: https://github.com/auth0/nextjs-auth0
+[auth0-nextjs-catch-all-route-handler-url]: https://nextjs.org/docs/api-routes/dynamic-api-routes#catch-all-api-routes
+[nextjs-api-routes-url]: https://nextjs.org/docs/api-routes/introduction
+[supabase-npm-url]: https://www.npmjs.com/package/@supabase/supabase-js
+[supabase-auth-url]: https://supabase.io/docs/learn/auth-deep-dive/auth-row-level-security
+[netlify-url]: https://www.netlify.com/
+[vercel-url]: https://vercel.com/
+[heroku-url]: https://www.heroku.com/
+[postgres-url]: https://www.postgresql.org/
