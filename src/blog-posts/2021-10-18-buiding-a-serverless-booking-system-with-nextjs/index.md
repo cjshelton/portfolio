@@ -16,7 +16,7 @@ And my second thought, like most other software engineers, was
 
 Jokes aside, something was needed to help coordinate who's in the caravan and when throughout the year, and I
 saw this as an opportunity to see how quickly I could get something working in the space of a few evenings, using serverless
-technology and SaaS products, with zero setup or operating costs.
+technology and BaaS (Backend as a Service) solutions, with zero setup or operating costs.
 
 I achieved my goal with the help of [Next.js][nextjs-url], [Auth0][auth0-url], [Supabase][supabase-url] and [Netlify][netlify-functions-url]
 (for hosting and serverless functions), and it's all written in [TypeScript][typescript-url] too.
@@ -209,7 +209,7 @@ off to help prevent unwanted users registering, and Auth0 maintains the user det
 
 A lot of the magic happens in the `/pages/api/auth/[...auth0].js` file, specifically the call to `handleAuth`.
 
-The use of `[...auth]` in the file name declares the file as a [catch-all, dynamic route handler][auth0-nextjs-catch-all-route-handler-url],
+The use of `[...auth0]` in the file name declares the file as a [catch-all, dynamic route handler][auth0-nextjs-catch-all-route-handler-url],
 allowing it to match to all routes within `/api/auth/`. Calling `handleAuth1` transparently creates route handlers which
 each perform some function in the auth flow, like `/api/auth/login` and `/api/auth/logout`.
 
@@ -224,6 +224,9 @@ fact that this required no special configuration, and the Functions just started
 
 Authentication is normally stressful and time-consuming to implement, but Auth0 took all of the complexity away,
 and the Auth0 Next.js package made the process even easier, all whilst still resulting in a really good user experience.
+
+For more information on integrating Auth0 with Next.js, I'd recommend looking at the [package docs on GitHub][github-auth0-nextjs-tutorial]
+and also [this Auth0 quickstart tutorial][auth0-nextjs-tutorial].
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
