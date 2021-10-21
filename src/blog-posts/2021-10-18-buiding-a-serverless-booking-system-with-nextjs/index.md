@@ -130,9 +130,9 @@ The application needed to have authentication to control access to the site and 
 I didn't want to build any of the sign-up / sign-in flow myself, and I wanted to hand over the responsibility of user
 information to an authentication service.
 
-There are numerous options available to do this, including [Netlify Identity][netlify-identity-url] and [Supabase Auth][supabase-auth-url],
-but I decided on Auth0 as it had been on my radar to experiment with for a while, and it had a really simple integration
-with Next.js apps.
+There are numerous "Authentication as a Service" options available to do this, including [Netlify Identity][netlify-identity-url]
+and [Supabase Auth][supabase-auth-url], but I decided on Auth0 as it had been on my radar to experiment with for a while,
+and it has a really handy [npm package][auth0-npm-url], written in TypeScript also, for simple integration with Next.js apps.
 
 Auth0 was super simple to add into my app, requiring only the following steps to be completed:
 
