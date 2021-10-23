@@ -6,6 +6,7 @@ export default css`
     .img-attribute {
         text-align: center;
         font-size: 14px;
+        font-style: italic;
     }
 
     .img-single-small {
@@ -88,6 +89,7 @@ export default css`
 
     code {
         color: ${colours.inlineCode};
+        word-break: break-all;
     }
 
     blockquote {
@@ -110,6 +112,13 @@ export default css`
     .gatsby-resp-image-wrapper {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+
+    .image-thin-border-container {
+        .gatsby-resp-image-wrapper {
+            margin-bottom: 5px;
+            border: 1px solid #c9c9c9;
+        }
     }
 
     a {

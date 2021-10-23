@@ -408,6 +408,98 @@ implementation and fix a few issues. I then added a new environment variable to 
 my changes to the `main` branch. This triggered a build and deployment in Netlify, at which point my new function was picked up
 and deployed without trouble. Confirmation emails had now been added to the booking system.
 
+# The End Result
+
+I easily met my main goals of delivering quickly and with zero setup or operating costs. With about five hours spent across
+a couple of evenings, I had ticked off all requirements of the booking system I set out to complete, with the majority of
+that time spent on the development of React components and making the front-end responsive, as it would mostly be used on mobile devices.
+
+I'm really pleased with the end result, and is proving to be useful already. All of the tech mentioned have been great to
+work with and would certainly be on my list to use again.
+
+## Screenshots
+
+See below for some screenshots of the finished product (test data used).
+
+### Home
+
+<div class="image-thin-border-container">
+    <img src="./home-desktop.png" alt="Home screen on desktop" />
+</div>
+<p class="img-attribute">Home screen on desktop.</p>
+
+<div class="image-thin-border-container">
+    <img src="./home-mobile.png" alt="Home screen on mobile" />
+</div>
+<p class="img-attribute">Home screen on mobile.</p>
+
+### Auth0 Login
+
+<div class="image-thin-border-container">
+    <img src="./auth0-login-desktop.png" alt="Auth0 login screen on desktop" />
+</div>
+<p class="img-attribute">Auth0 login screen on desktop.</p>
+
+<div class="image-thin-border-container">
+    <img src="./auth0-login-mobile.png" alt="Auth0 login screen on mobile" />
+</div>
+<p class="img-attribute">Auth0 login screen on mobile.</p>
+
+### All Bookings - List View
+
+<div class="image-thin-border-container">
+    <img src="./all-bookings-list-view-desktop.png" alt="All bookings displayed in the list view on desktop" />
+</div>
+<p class="img-attribute">All bookings displayed in the list view on desktop.</p>
+
+<div class="image-thin-border-container">
+    <img src="./all-bookings-list-view-mobile.png" alt="All bookings displayed in the list view on mobile" />
+</div>
+<p class="img-attribute">All bookings displayed in the list view on mobile.</p>
+
+### All Bookings - Calendar View
+
+<div class="image-thin-border-container">
+    <img src="./all-bookings-calendar-view-desktop.png" alt="All bookings displayed in the calendar view on desktop" />
+</div>
+<p class="img-attribute">All bookings displayed in the calendar view on desktop.</p>
+
+<div class="image-thin-border-container">
+    <img src="./all-bookings-calendar-view-mobile.png" alt="All bookings displayed in the calendar view on mobile" />
+</div>
+<p class="img-attribute">All bookings displayed in the calendar view on mobile.</p>
+
+### My Bookings - List View
+
+<div class="image-thin-border-container">
+    <img src="./my-bookings-list-view-desktop.png" alt="My bookings displayed in the list view on desktop" />
+</div>
+<p class="img-attribute">My bookings displayed in the list view on desktop.</p>
+
+<div class="image-thin-border-container">
+    <img src="./my-bookings-list-view-mobile.png" alt="My bookings displayed in the list view on mobile" />
+</div>
+<p class="img-attribute">My bookings displayed in the list view on mobile.</p>
+
+### Creating a New Booking
+
+<div class="image-thin-border-container">
+    <img src="./my-bookings-new-desktop.png" alt="Creating a new booking on desktop" />
+</div>
+<p class="img-attribute">Creating a new booking on desktop.</p>
+
+<div class="image-thin-border-container">
+    <img src="./my-bookings-new-mobile.png" alt="Creating a new booking on mobile" />
+</div>
+<p class="img-attribute">Creating a new booking on mobile.</p>
+
+### Confirmation Email
+
+<div class="image-thin-border-container">
+    <img src="./confirmation-email.png" alt="Confirmation email received after completing a booking" />
+</div>
+<p class="img-attribute">Confirmation email received after completing a booking.</p>
+
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
