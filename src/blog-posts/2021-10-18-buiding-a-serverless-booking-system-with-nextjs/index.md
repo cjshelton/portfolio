@@ -309,6 +309,20 @@ sorted by check-in date ascending.
 Tables and the data within them can be locked down on a very granular level using Row Level Security and Postgres Policies.
 See the [Auth docs][supabase-auth-url] for more information.
 
+## Netlify Hosting
+
+<div class="img-single-small">
+    <img src="./netlify-logo.png" alt="Netlify logo" />
+</div>
+
+At this point I had a nice looking booking application with authentication and data storage all setup, so I was looking
+at hosting options. Obviously I wanted to steer clear of provisioning my own web server and handling the configuration myself
+because I wanted something quick to setup with zero costs, and frankly, there are some awesome "Platform as a Service"
+hosting platforms out there like [Netlify][netlify-url], [Vercel][vercel-url] and [Heroku][heroku-url].
+
+I have used Netlify countless times now and I have only positive things to say about it. It has a very generous free plan,
+excellent documentation, lots of cool features, and offers an all-round excellent developer experience. It also has solid
+compatibility with Next.js sites - more on this in the next section.
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
