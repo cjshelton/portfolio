@@ -323,6 +323,91 @@ hosting platforms out there like [Netlify][netlify-url], [Vercel][vercel-url] an
 I have used Netlify countless times now and I have only positive things to say about it. It has a very generous free plan,
 excellent documentation, lots of cool features, and offers an all-round excellent developer experience. It also has solid
 compatibility with Next.js sites - more on this in the next section.
+
+## Netlify Functions (AWS Lambda) + Twilio
+
+<div class="img-single-small">
+    <img src="./aws-lambda-twilio.png" alt="AWS Lambda Function plus Twilio" />
+</div>
+
+I touched on Netlify functions earlier in the Auth0 section, but they were mostly setup automatically when using the Auth0
+Next.js npm package.
+
+I had a requirement to send a confirmation email once a booking had been made. Twilio / SendGrid is a "Communications Platform as a
+Service" with a very generous free plan offering up to 100 emails a day - more than enough for this project. I have used
+Twilio numerous times before to programmatically send emails and have always been happy, so this was an easy decision to make.
+
+With Twilio selected, I needed some way of calling the APIs to send confirmation emails. This can't be done directly from
+the Next.js client side application, as that would expose the sensitive API key; instead a backend is needed which can be
+called over HTTP which would make the calls to Twilio.
+
+I was interested in creating my own Netlify Function, which under the hood uses an AWS Lambda function, as there is also
+a generous free tier available, and it would also help keep all of the serverless functions in one place. Netlify Functions
+can be written in TypeScript, and can be easily tested locally before deployment using the [Netlify Dev CLI][netlify-dev-url].
+
+I created a new file to hold the logic of the function - `netlify/functions/confirm-booking.ts` - with the following
+contents:
+
+```
+import { Handler } from '@netlify/functions';
+import sgMail from '@sendgrid/mail';
+
+interface Booking {
+    // Code removed for brevity.
+}
+
+const getBookingDetailsHtmlContent = ({
+    guestsDescription,
+    checkIn,
+    checkOut,
+}: Booking) => {
+    // Code removed for brevity.
+
+    return content;
+};
+
+const confirmBookingHandler: Handler = async (event) => {
+    // Code removed for brevity.
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+    const booking: Booking = JSON.parse(event.body);
+    const email = {
+        to: booking.email,
+        from: fromEmail,
+        subject: 'Long Ashes: Your Booking Has Been Made',
+        html: `Hi ${booking.nickname},
+                <br /><br />
+                Your booking has been made with the following details:
+                <br /><br />
+                ${getBookingDetailsHtmlContent(booking)}`,
+    };
+
+    try {
+        await sgMail.send(email);
+    } catch (err) {
+        return {
+            statusCode: 500,
+            body: 'There was a problem sending an email.',
+        };
+    }
+
+    return {
+        statusCode: 204,
+    };
+};
+
+exports.handler = confirmBookingHandler;
+```
+
+The function makes use of the [Netlify Functions][netlify-functions-npm-url] and [Sendgrid/Twilio][sendgrid-twilio-npm-url]
+npm packages - both typed, and easy to use.
+
+I first tested my function locally using the [Netlify Dev CLI][netlify-dev-url] which allowed me to quickly verify its
+implementation and fix a few issues. I then added a new environment variable to Netlify for the `SENDGRID_API_KEY` and pushed
+my changes to the `main` branch. This triggered a build and deployment in Netlify, at which point my new function was picked up
+and deployed without trouble. Confirmation emails had now been added to the booking system.
+
 [nextjs-url]: https://nextjs.org/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
@@ -343,3 +428,6 @@ compatibility with Next.js sites - more on this in the next section.
 [vercel-url]: https://vercel.com/
 [heroku-url]: https://www.heroku.com/
 [postgres-url]: https://www.postgresql.org/
+[netlify-dev-url]: https://www.netlify.com/products/dev/
+[netlify-functions-npm-url]: https://www.npmjs.com/package/@netlify/functions
+[sendgrid-twilio-npm-url]: https://www.npmjs.com/package/@sendgrid/mail
