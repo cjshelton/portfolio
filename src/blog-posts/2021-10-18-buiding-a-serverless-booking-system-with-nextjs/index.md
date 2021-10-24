@@ -493,6 +493,11 @@ See below for some screenshots of the finished product (test data used).
 
 ### Creating a New Booking
 
+-   When creating a new booking, the calendar prevents duplicate bookings by greying out already booked dates.
+-   The Guests input field defaults to the user's configured default Guests Description, but can be overridden if they are
+    booking on behalf of someone else.
+-   Validation prevents the user from making an invalid booking (e.g. one that is in the past).
+
 <div class="image-thin-border-container">
     <img src="./my-bookings-new-desktop.png" alt="Creating a new booking on desktop" />
 </div>
@@ -504,6 +509,8 @@ See below for some screenshots of the finished product (test data used).
 <p class="img-attribute">Creating a new booking on mobile.</p>
 
 ### Confirmation Email
+
+-   The confirmation email contains details of the booking made, including the guests and check-in/check-out dates.
 
 <div class="image-thin-border-container">
     <img src="./confirmation-email.png" alt="Confirmation email received after completing a booking" />
