@@ -5,21 +5,21 @@ description: ""
 
 # Introduction
 
-My family recently acquired a static caravan to be shared throughout the year as a place to have a break. My first thought
-was
+We recently acquired a holiday home in the family to be shared throughout the year as a place to have a break. My first thought
+was:
 
 <p class="italic">"This will be great."</p>
 
-And my second thought, like most other software engineers, was
+And my second thought, like most other software engineers, was:
 
 <p class="italic">"I think a custom booking system is in order here."</p>
 
-Jokes aside, something was needed to help coordinate who's in the caravan and when throughout the year, and I
-saw this as an opportunity to see how quickly I could get something working in the space of a few evenings, using serverless
-technology and BaaS (Backend as a Service) solutions, with zero setup or operating costs.
+Jokes aside, something was needed to help coordinate who's in the holiday home and when throughout the year, and I saw
+this as an opportunity to see how quickly I could get something working in the space of a few evenings, using serverless
+technology and <span class="bold">\*</span>aaS (mostly Backend as a Service) solutions, with zero setup or operating costs.
 
 I achieved my goal with the help of [Next.js][nextjs-url], [Auth0][auth0-url], [Supabase][supabase-url] and [Netlify][netlify-functions-url]
-(for hosting and serverless functions), and it's all written in [TypeScript][typescript-url] too.
+(for web hosting and serverless functions), and it's all written in [TypeScript][typescript-url] too.
 Read on to find out more about these technologies and how they helped me achieve my goal.
 
 <div class="flex-images">
@@ -61,14 +61,14 @@ Aside from the main goals of quick delivery and no cost, I wanted the booking sy
 order to be as functional and usable as possible:
 
 -   A simple and intuitive UI/UX to make booking as straight-forward as possible for everyone.
--   Full authentication flow with username/password and social login (e.g. Google). Sign-up had to be restricted in some
+-   Full authentication flow with username/password as well as social login (e.g. Google). Sign-up had to be restricted in some
     way to prevent unwanted sign-ups.
 -   A page for showing all future bookings planned in. This would be in a list format ordered chronologically and also in
     a calendar format. This would help family members have some visibility of who is staying over and when, and when there is
-    availability for booking a stay.
--   A page showing all booking specific for the logged in user along with a form for booking a new stay. The form would have
-    basic validation in place and would allow the user to select the dates using a calendar. The form should not allow duplicate
-    bookings to be made.
+    availability for making a new booking.
+-   A page showing all future bookings made by the logged-in user, along with a form for making a new booking. The form
+    would have basic validation in place and would allow the user to select the check-in and check-out dates using a calendar.
+    The form should not allow duplicate bookings to be made.
 -   An email confirmation to be sent out on successful booking.
 -   Bookings should be able to be deleted. Users can delete their own bookings but not others'.
 
@@ -78,24 +78,21 @@ order to be as functional and usable as possible:
 <p class="img-attribute">Source: https://assets2.botmetric.com/wp-content/uploads/2017/10/The-benefits-of-going-serverless-1.png</p>
 
 Serverless technology has become hugely popular since the introduction of Cloud Computing, with developers realising
-that the costs, effort and lead times associated with building and maintaining your own server can be drastically reduced.
+that the costs, effort and lead times associated with building and maintaining your own server and infrastructure can be
+drastically reduced.
 
 Serverless is not truly serverless, but its name comes from the perception of the developers who themselves do not need
-to think in terms of building and maintaining a server; instead relying on SaaS products and services like [AWS Lambda][aws-lambda-url]
-to handle most of the work for them.
+to think in terms of building and maintaining a server; instead relying on <span class="bold">\*</span>aaS products and
+services like [AWS Lambda][aws-lambda-url] to handle most of the work for them.
 
-Aside from saving time and costs, serverless also helps to mitigate risk and responsibility in certain key areas like
-scalability, authentication and GDPR, to name a few.
+Aside from saving time and costs, serverless also helps to mitigate risk in important areas like scalability, availability,
+authentication and security, to name a few.
 
-Going serverless played a significant role in acheiving my main goals for the project - to have something functional in a
-short space of time with zero costs.
-
-For more information on serverless technology, Martin Fowler has a [comprehensive article][martin-fowler-serverless-article-url]
-on the topic which is a good read.
+Going serverless played a significant role in acheiving my main goals for the project.
 
 # Technical Architecture
 
-Below is an overview of all of the tech used and how they each contributed to the goals of the project.
+Below is an overview of the tech used and how they each contributed to the goals of the project.
 
 ## Next.js
 
@@ -104,21 +101,22 @@ Below is an overview of all of the tech used and how they each contributed to th
 </div>
 
 Next.js is a React based JavaScript framework for building static and server-side rendered (SSR) applications. I was
-looking to build a static site to make use of performance enhancements and cheap and fast web hosting so it seemed like
-a sensible choice.
+looking to build a static site to benefit from performance optimisations and use cheap and fast web hosting, so it seemed
+like a sensible choice.
 
 It also had the following in its favour:
 
 -   It supports TypeScript out-of-the-box. From memory, this required little to no initial effort other than supplying a flag
-    when using the Create CLI. I'm a big fan of TypeScript, more so in the last 6 months where I have been able to use it
-    extensively. Once accustomed to writing in a typed fashion, it requires minimal development overhead and produces
-    far more readable code which noticeably suffers from fewer bugs (like passing the wrong type to a third-party library).
--   It is a suitable alternative Framework to Gatsby which I'm already familiar with and a big fan of. I was keen to try
+    when using the [Create Next App CLI][nextjs-create-app-url]. I'm a big fan of TypeScript, more so in the last six months
+    where I have been able to use it extensively. Once accustomed to writing in a typed fashion, it results in little development
+    overhead but produces far more readable code which noticeably suffers from fewer bugs (like passing the wrong type to
+    a third-party library).
+-   It is a suitable alternative Framework to [GatsbyJS][gatsbyjs-url] which I'm already familiar with and a big fan of. I was keen to try
     an alternative to see how it compared.
--   Much like Gatsby, it has nice things like route pre-fetching and image optimisation which contribute to a much better
+-   Much like GatsbyJS, it has nice things like route pre-fetching and image optimisation which contribute to a much better
     user experience when navigating around the app.
--   And finally - built-in support for API routes. This proved to be very useful when integrating with the Auth0 library,
-    which I'll come onto next.
+-   And finally - Next.js has built-in support for creating back-end API routes in Node.js. This proved to be very useful when integrating
+    with the Auth0 library, which I'll come onto next.
 
 ## Auth0
 
@@ -127,11 +125,11 @@ It also had the following in its favour:
 </div>
 
 The application needed to have authentication to control access to the site and to keep track of who had made bookings, but
-I didn't want to build any of the sign-up / sign-in flow myself, and I wanted to hand over the responsibility of user
+I didn't want to build any of the sign-up / sign-in flow myself, and I wanted to hand over the responsibility of storing user
 information to an authentication service.
 
 There are numerous "Authentication as a Service" options available to do this, including [Netlify Identity][netlify-identity-url]
-and [Supabase Auth][supabase-auth-url], but I decided on Auth0 as it had been on my radar to experiment with for a while,
+and [Supabase Auth][supabase-auth-url], but I decided on [Auth0][auth0-url] as it had been on my radar to experiment with for a while,
 and it has a really handy [npm package][auth0-npm-url], written in TypeScript also, for simple integration with Next.js apps.
 
 Auth0 was super simple to add into my app, requiring only the following steps to be completed:
@@ -143,12 +141,14 @@ Auth0 was super simple to add into my app, requiring only the following steps to
     `https://xxxxx.netlify.app/api/auth/callback` for Allowed Callback URLs.
 -   Install the Auth0 Next.js integration package from [npm][auth0-npm-url].
 -   Add environment variables for the Auth0 secret, base URL, issuer base url, client ID and client secret. These were added
-    to both an `.env.local` file as well as in the Environment Variables section in Netlify.
--   Add a new API route file in the Next.js application - `/pages/api/auth/[...auth0].js` which automatically handles the
-    creation of all necessary authentication API routes. It simply calls `handleAuth` with some custom config to handle
+    to both a `.env.local` file as well as in the Environment Variables section in Netlify.
+-   Add a new API route file in the Next.js application - `pages/api/auth/[...auth0].ts` - which automatically handles the
+    creation of all necessary authentication API routes. It simply calls `handleAuth` with some custom config to handle a
     redirect on successful login:
 
 ```
+// file: pages/api/auth/[...auth0].ts
+
 import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
 
 export default handleAuth({
@@ -160,30 +160,33 @@ export default handleAuth({
 });
 ```
 
--   Wrap the main App component in the UserProvider component provided by the Auth0 package. This ensures every
+-   Wrap the main App component in the `UserProvider` component provided by the Auth0 package. This ensures every
     component can access basic details about the authenticated user like username and email address:
 
 ```
+// file: pages/_app.tsx
+
 import React from 'react';
 import type { AppProps } from 'next/app';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 import '../styles/globals.scss';
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
     return (
         <UserProvider>
             <Component {...pageProps} />
         </UserProvider>
     );
 }
-export default MyApp;
 ```
 
 -   For each page which should be protected, wrap the exported component function in the `withPageAuthRequired` function
     also provided by the Auth0 package:
 
 ```
+// file: pages\bookings.tsx
+
 import React from 'react';
 import type { NextPage } from 'next';
 import { withPageAuthRequired, useUser } from '@auth0/nextjs-auth0';
@@ -203,22 +206,24 @@ export default withPageAuthRequired(Bookings);
 
 And that's it - some account setup and a few code changes and the application is protected by a fully functioning
 authentication mechanism. Auth0 handles the rendering of the login form (which can be customised), sign-up can be turned
-off to help prevent unwanted users registering, and Auth0 maintains the user details which can be found in the Auth0 dashboard.
+off to help prevent unwanted users registering, and Auth0 maintains the user details which can be found in the Auth0 dashboard
+as shown below.
 
 <img src="./auth0-users.png" alt="User list in the Auth0 dashboard" />
 
-A lot of the magic happens in the `/pages/api/auth/[...auth0].js` file, specifically the call to `handleAuth`.
-
-The use of `[...auth0]` in the file name declares the file as a [catch-all, dynamic route handler][auth0-nextjs-catch-all-route-handler-url],
-allowing it to match to all routes within `/api/auth/`. Calling `handleAuth1` transparently creates route handlers which
-each perform some function in the auth flow, like `/api/auth/login` and `/api/auth/logout`.
+A lot of the magic happens in the `pages/api/auth/[...auth0].ts` file, specifically the call to `handleAuth`.
 
 Next.js has support for building [API routes][nextjs-api-routes-url] which are serverless Node.js functions designed to
 respond to HTTP requests. This allows developers to create simple full-stack applications right within the Next.js
-framework. API files are created within the `./pages/api/` directory and do not end up in the final client-side bundle.
+framework. API files are created within the `pages/api/` directory and do not end up in the final client-side bundle.
 
-When hosted on Netlify, each API route becomes a Netlify Function. This wasn't immediately obvious to me, mainly due to the
-fact that this required no special configuration, and the Functions just started to work once the app was deployed.
+The use of `[...auth0]` in the file name declares the file as a [catch-all, dynamic route handler][auth0-nextjs-catch-all-route-handler-url],
+allowing it to match to all routes within `/api/auth/`. Calling `handleAuth` transparently creates route handlers which
+each perform some function in the auth flow, like `/api/auth/login` and `/api/auth/logout`.
+
+When hosted on Netlify, each API route becomes a [Netlify Function][netlify-functions-url]; this wasn't immediately
+obvious to me, mainly due to the fact that this required no special configuration, and the Functions just started to work
+once the app was deployed.
 
 <img src="./auth0-netlify-function.png" alt="Auth0 Netlify Function" />
 
@@ -234,13 +239,13 @@ and also [this Auth0 quickstart tutorial][auth0-nextjs-tutorial].
     <img src="./supabase-logo.png" alt="Supabase logo" />
 </div>
 
-Supabase is another "Backend as a Service" which I have had my eye on for a little while, and has been growing hugely in popularity
-recently, so I wanted to give it a try as my data storage mechanism for the bookings.
+[Supabase][supabase-url] is another "Backend as a Service" which I have had my eye on for a little while, and has been
+growing hugely in popularity recently, so I wanted to give it a try as my data storage mechanism for the bookings.
 
-Supabase, along with offering a few other features, allows developers to quickly provision [Postgres][postgres-url] databases,
-all hosted and managed for them. There is a suitable free-tier plan which is fairly limited, most notably because:
+Along with offering a few other features, it allows developers to quickly provision [Postgres][postgres-url] databases,
+all hosted and managed for them. There is a free-tier plan which is fairly limited, most notably because:
 
--   It is limited to 500MB of space per database.
+-   It is limited to 500MB of space per database - not a big deal for this project.
 -   It will "pause" the database after 1 week of inactivity, which essentially shuts down the database and is only re-activated
     after a login to the Supabase dashboard. This actually isn't all that ideal for me, as I expect database interactivity
     to be quite sporadic throughout the year, so this may be the source of some pain, but I'll keep an eye on it.
@@ -259,7 +264,7 @@ supplying the `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` whe
 all requests:
 
 ```
-// initSupabase.ts
+// file: lib/initSupabase.ts
 
 import { createClient } from '@supabase/supabase-js';
 
@@ -272,6 +277,8 @@ export const supabase = createClient(
 Requests can then be simply made like so:
 
 ```
+// file: lib/repository.ts
+
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 
@@ -306,8 +313,9 @@ export const fetchBookings = async ({
 The above will return all bookings which match a supplied filter and where checkout is on or after the current date,
 sorted by check-in date ascending.
 
-Tables and the data within them can be locked down on a very granular level using Row Level Security and Postgres Policies.
-See the [Auth docs][supabase-auth-url] for more information.
+It seemed strange at first to query a database directly from the client code, but Tables in Supabase and the data within
+them can be locked down on a very granular level using Row Level Security and Postgres Policies. See the [Auth docs][supabase-auth-url]
+for more information.
 
 ## Netlify Hosting
 
@@ -330,16 +338,16 @@ compatibility with Next.js sites - more on this in the next section.
     <img src="./aws-lambda-twilio.png" alt="AWS Lambda Function plus Twilio" />
 </div>
 
-I touched on Netlify functions earlier in the Auth0 section, but they were mostly setup automatically when using the Auth0
+I touched on Netlify functions earlier in the Auth0 section, but they were mostly set up implicitly when using the Auth0
 Next.js npm package.
 
-I had a requirement to send a confirmation email once a booking had been made. Twilio / SendGrid is a "Communications Platform as a
-Service" with a very generous free plan offering up to 100 emails a day - more than enough for this project. I have used
-Twilio numerous times before to programmatically send emails and have always been happy, so this was an easy decision to make.
+I had a requirement to send a confirmation email once a booking had been made. [Twilio Sendgrid][twilio-sendgrid-url] is a
+"Communications Platform as a Service" with a generous free plan offering up to 100 emails a day - more than enough for this project.
+I have used Twilio Sendgrid numerous times before to programmatically send emails and have always been happy, so this was an easy decision to make.
 
 With Twilio selected, I needed some way of calling the APIs to send confirmation emails. This can't be done directly from
-the Next.js client side application, as that would expose the sensitive API key; instead a backend is needed which can be
-called over HTTP which would make the calls to Twilio.
+the Next.js client side application, as that would expose the sensitive Twilio Sendgrid API key; instead a backend was needed
+which could be called over HTTP and would in turn make the calls to Twilio.
 
 I was interested in creating my own Netlify Function, which under the hood uses an AWS Lambda function, as there is also
 a generous free tier available, and it would also help keep all of the serverless functions in one place. Netlify Functions
@@ -349,6 +357,8 @@ I created a new file to hold the logic of the function - `netlify/functions/conf
 contents:
 
 ```
+// file: netlify/functions/confirm-booking.ts
+
 import { Handler } from '@netlify/functions';
 import sgMail from '@sendgrid/mail';
 
@@ -375,7 +385,7 @@ const confirmBookingHandler: Handler = async (event) => {
     const email = {
         to: booking.email,
         from: fromEmail,
-        subject: 'Long Ashes: Your Booking Has Been Made',
+        subject: 'Tree Top Park: Your Booking Has Been Made',
         html: `Hi ${booking.nickname},
                 <br /><br />
                 Your booking has been made with the following details:
@@ -388,7 +398,7 @@ const confirmBookingHandler: Handler = async (event) => {
     } catch (err) {
         return {
             statusCode: 500,
-            body: 'There was a problem sending an email.',
+            body: 'There was a problem sending the email.',
         };
     }
 
@@ -406,7 +416,7 @@ npm packages - both typed, and easy to use.
 I first tested my function locally using the [Netlify Dev CLI][netlify-dev-url] which allowed me to quickly verify its
 implementation and fix a few issues. I then added a new environment variable to Netlify for the `SENDGRID_API_KEY` and pushed
 my changes to the `main` branch. This triggered a build and deployment in Netlify, at which point my new function was picked up
-and deployed without trouble. Confirmation emails had now been added to the booking system.
+and deployed straight away without trouble. Confirmation emails had now been added to the booking system.
 
 # The End Result
 
@@ -414,7 +424,7 @@ I easily met my main goals of delivering quickly and with zero setup or operatin
 a couple of evenings, I had ticked off all requirements of the booking system I set out to complete, with the majority of
 that time spent on the development of React components and making the front-end responsive, as it would mostly be used on mobile devices.
 
-I'm really pleased with the end result, and is proving to be useful already. All of the tech mentioned have been great to
+I'm really pleased with the end result, and it's proving to be useful already. All of the tech mentioned have been great to
 work with and would certainly be on my list to use again.
 
 ## Screenshots
@@ -501,11 +511,12 @@ See below for some screenshots of the finished product (test data used).
 <p class="img-attribute">Confirmation email received after completing a booking.</p>
 
 [nextjs-url]: https://nextjs.org/
+[nextjs-create-app-url]: https://nextjs.org/docs/api-reference/create-next-app
+[gatsbyjs-url]: https://www.gatsbyjs.com/
 [typescript-url]: https://www.typescriptlang.org/
 [auth0-url]: https://auth0.com/
 [supabase-url]: https://supabase.io/
 [netlify-functions-url]: https://www.netlify.com/products/functions/
-[martin-fowler-serverless-article-url]: https://martinfowler.com/articles/serverless.html
 [aws-lambda-url]: https://aws.amazon.com/lambda/
 [netlify-identity-url]: https://www.netlify.com/pricing/#add-ons-identity
 [supabase-auth-url]: https://supabase.io/auth
@@ -523,3 +534,4 @@ See below for some screenshots of the finished product (test data used).
 [netlify-dev-url]: https://www.netlify.com/products/dev/
 [netlify-functions-npm-url]: https://www.npmjs.com/package/@netlify/functions
 [sendgrid-twilio-npm-url]: https://www.npmjs.com/package/@sendgrid/mail
+[twilio-sendgrid-url]: https://sendgrid.com/
