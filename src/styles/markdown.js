@@ -1,4 +1,4 @@
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import { colours, sizes } from "./variables";
 import { DarkHeadingStyles, SiteTextStyles } from "./shared";
 

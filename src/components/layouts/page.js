@@ -1,7 +1,7 @@
 import React from "react";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 
 import SEO from "../../components/seo";
 import Layout from "../../components/layouts/site";

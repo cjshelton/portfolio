@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+// import Img from "gatsby-image";
 
 const Image = ({ image, altText }) => {
     const data = useStaticQuery(graphql`
@@ -106,12 +106,13 @@ const Image = ({ image, altText }) => {
     `);
 
     return (
-        <Img
-            fluid={data[image].childImageSharp.fluid}
-            alt={altText}
-            style={{ maxHeight: "100%" }}
-            imgStyle={{ objectFit: "contain" }}
-        />
+        // <Img
+        //     fluid={data[image].childImageSharp.fluid}
+        //     alt={altText}
+        //     style={{ maxHeight: "100%" }}
+        //     imgStyle={{ objectFit: "contain" }}
+        // />
+        <h1>TEST TI</h1>
     );
 };
 

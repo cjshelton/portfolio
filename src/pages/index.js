@@ -1,7 +1,7 @@
 import React from "react";
 import SEO from "../components/seo";
 import styled from "@emotion/styled";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";

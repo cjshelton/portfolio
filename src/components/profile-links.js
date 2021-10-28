@@ -1,8 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+// import Img from "gatsby-image";
 import { colours } from "../styles/variables";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -65,23 +65,25 @@ const ProfileLinks = () => {
                 href={data.site.siteMetadata.profileLinks.github}
                 aria-label="Github profile"
             >
-                <Img
+                {/* <Img
                     fluid={data.gitHubImage.childImageSharp.fluid}
                     alt="GitHub logo"
                     css={profileLinkIconStyles}
-                />
+                /> */}
+                <h1>TEST 1</h1>
             </a>
 
             <a
                 href={data.site.siteMetadata.profileLinks.linkedIn}
                 aria-label="LinkedIn profile"
             >
-                <Img
+                {/* <Img
                     fluid={data.linkedInImage.childImageSharp.fluid}
                     alt="LinkedIn logo"
                     css={profileLinkIconStyles}
                     style={{ marginLeft: "10px" }}
-                />
+                /> */}
+                <h1>TEST 2</h1>
             </a>
             <a href="mailto:cjshelton@outlook.com" aria-label="Email me">
                 <div css={profileLinkIconStyles} style={{ marginLeft: "10px" }}>

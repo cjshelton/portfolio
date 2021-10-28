@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 
 const Image = () => {
     const data = useStaticQuery(graphql`
@@ -16,10 +16,11 @@ const Image = () => {
     `)
 
     return (
-        <Img
-            fluid={data.placeholderImage.childImageSharp.fluid}
-            alt="University of Leeds logo"
-        />
+        // <Img
+        //     fluid={data.placeholderImage.childImageSharp.fluid}
+        //     alt="University of Leeds logo"
+        // />
+        <h1>HELLO</h1>
     )
 }
 

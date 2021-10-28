@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileLinks from "../components/profile-links";
 
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 
 import { sizes } from "../styles/variables";
 

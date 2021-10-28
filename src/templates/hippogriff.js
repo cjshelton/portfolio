@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+// import Img from "gatsby-image";
 import styled from "@emotion/styled";
 
 import Page from "../components/layouts/page";
@@ -61,7 +61,8 @@ function getHeaderJsx(hippogriff, image) {
     return (
         <HeaderContainer>
             <div className="logo-container">
-                <Img fluid={image.fluid} alt="logo" />
+                {/* <Img fluid={image.fluid} alt="logo" /> */}
+                <h1>TEST hip</h1>
             </div>
             {hippogriff.frontmatter.title && (
                 <h1 className="title">{hippogriff.frontmatter.title}</h1>

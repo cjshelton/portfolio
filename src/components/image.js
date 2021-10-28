@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 import { colours } from "../styles/variables"
 
 /*
@@ -28,14 +28,15 @@ const Image = () => {
     `)
 
     return (
-        <Img
-            fluid={data.placeholderImage.childImageSharp.fluid}
-            alt="Chris Shelton portfolio"
-            style={{
-                borderRadius: `50%`,
-                boxShadow: `0px 6px 6px ${colours.primaryDark}`,
-            }}
-        />
+        <h1>HELLO</h1>
+        // <Img
+        //     fluid={data.placeholderImage.childImageSharp.fluid}
+        //     alt="Chris Shelton portfolio"
+        //     style={{
+        //         borderRadius: `50%`,
+        //         boxShadow: `0px 6px 6px ${colours.primaryDark}`,
+        //     }}
+        // />
     )
 }
 
