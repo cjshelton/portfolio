@@ -1,4 +1,4 @@
-import { css } from "@emotion/react"
+import { css } from "@emotion/react";
 
 function getResponsiveFontSize(size, maxSize) {
     return `
@@ -6,31 +6,31 @@ function getResponsiveFontSize(size, maxSize) {
         @media (min-width: 350px) {
             font-size: ${maxSize}px;
         }
-    `
+    `;
 }
 
 const mugshotContainer = css`
-    width: 150px;
-    margin: 0 auto;
-`
+    display: flex;
+    justify-content: center;
+`;
 
 const name = css`
     margin-top: 20px;
     ${getResponsiveFontSize(8, 30)}
-`
+`;
 
 const location = css`
     ${getResponsiveFontSize(4, 15)}
-`
+`;
 
 const title = css`
     margin-top: 20px;
     ${getResponsiveFontSize(8, 22)}
-`
+`;
 
 export default {
     mugshotContainer,
     name,
     location,
     title,
-}
+};
