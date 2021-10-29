@@ -9,6 +9,7 @@ const Image = () => {
             width={200}
             layout="fixed"
             placeholder="tracedSVG"
+            quality={80}
         />
     );
 };
