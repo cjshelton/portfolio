@@ -1,2 +1,3 @@
-develop:
-	gatsby develop
+dev:
+	npm run clean
+	npm run develop
