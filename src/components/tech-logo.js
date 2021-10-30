@@ -6,7 +6,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const Image = ({ image, altText }) => {
     const data = useStaticQuery(graphql`
-        fragment ImageData on ImageSharp {
+        fragment ImageProperties on ImageSharp {
             gatsbyImageData(
                 width: 150
                 placeholder: BLURRED
@@ -18,73 +18,73 @@ const Image = ({ image, altText }) => {
         query {
             cSharp: file(relativePath: { eq: "tech-logos/c-sharp.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             dotNetCore: file(
                 relativePath: { eq: "tech-logos/dot-net-core.png" }
             ) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             frontEnd: file(relativePath: { eq: "tech-logos/front-end.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             git: file(relativePath: { eq: "tech-logos/git.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             nodeJs: file(relativePath: { eq: "tech-logos/nodejs.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             sqlServer: file(relativePath: { eq: "tech-logos/sql-server.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             vue: file(relativePath: { eq: "tech-logos/vue.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             docker: file(relativePath: { eq: "tech-logos/docker.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             javascript: file(
                 relativePath: { eq: "tech-logos/javascript.png" }
             ) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             typescript: file(
                 relativePath: { eq: "tech-logos/typescript.png" }
             ) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             mongodb: file(relativePath: { eq: "tech-logos/mongo-db.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             openApi: file(relativePath: { eq: "tech-logos/open-api.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
             jest: file(relativePath: { eq: "tech-logos/jest.png" }) {
                 childImageSharp {
-                    ...ImageData
+                    ...ImageProperties
                 }
             }
         }
