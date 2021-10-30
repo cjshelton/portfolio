@@ -1,5 +1,4 @@
 import React from "react";
-import SEO from "../components/seo";
 import styled from "@emotion/styled";
 import { Global } from "@emotion/react";
 
@@ -8,6 +7,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
 
+import Seo from "../components/seo";
 import Mugshot from "../components/mugshot";
 import Button from "../components/btn";
 import Footer from "../components/footer";
@@ -53,7 +53,7 @@ const seo = {
 
 const IndexPage = () => (
     <Container>
-        <SEO title={seo.title} description={seo.description} />
+        <Seo title={seo.title} description={seo.description} />
         <Global styles={globalStyles} />
         <Content>
             <div css={pageStyles.mugshotContainer}>

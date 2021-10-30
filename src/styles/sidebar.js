@@ -28,9 +28,11 @@ const title = css`
     ${getResponsiveFontSize(8, 22)}
 `;
 
-export default {
+const styles = {
     mugshotContainer,
     name,
     location,
     title,
 };
+
+export default styles;

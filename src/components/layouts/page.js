@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import SEO from "../../components/seo";
+import Seo from "../../components/seo";
 import Layout from "../../components/layouts/site";
 
 import globalStyles from "../../styles/global";
@@ -106,7 +106,7 @@ const headerImgAltTextMappings = {
     blog: "Pen and paper resting on a laptop with a cup of coffee on the side",
 };
 
-export default ({
+const Page = ({
     header,
     content,
     page,
@@ -156,7 +156,7 @@ export default ({
     return (
         <Layout page={page}>
             <Global styles={globalStyles} />
-            <SEO title={seo.title} description={seo.description} />
+            <Seo title={seo.title} description={seo.description} />
 
             <div css={imageContainerStyles}>
                 {headerImageName && <div className="overlay"></div>}
@@ -173,3 +173,5 @@ export default ({
         </Layout>
     );
 };
+
+export default Page;

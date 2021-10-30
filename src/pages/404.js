@@ -3,7 +3,7 @@ import { Global } from "@emotion/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import Footer from "../components/footer";
 import Button from "../components/btn";
 
@@ -74,7 +74,7 @@ const FooterContainer = styled.div`
 
 const NotFoundPage = () => (
     <div css={container}>
-        <SEO title={seo.title} description={seo.description} />
+        <Seo title={seo.title} description={seo.description} />
         <Global styles={globalStyles} />
         <Content>
             <div className="sad-face">:(</div>
