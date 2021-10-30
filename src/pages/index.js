@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
 
-import Image from "../components/image";
+import Mugshot from "../components/mugshot";
 import Button from "../components/btn";
 import Footer from "../components/footer";
 import CookieBanner from "../components/cookie-banner";
@@ -57,7 +57,7 @@ const IndexPage = () => (
         <Global styles={globalStyles} />
         <Content>
             <div css={pageStyles.mugshotContainer}>
-                <Image />
+                <Mugshot />
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
             <div css={pageStyles.location}>Leeds, UK</div>

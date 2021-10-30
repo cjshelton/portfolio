@@ -2,8 +2,6 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-// import Img from "gatsby-image";
-
 const Image = ({ image, altText }) => {
     const data = useStaticQuery(graphql`
         fragment ImageProperties on ImageSharp {

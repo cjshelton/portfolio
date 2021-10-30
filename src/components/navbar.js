@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import Image from "../components/image";
+import Mugshot from "../components/mugshot";
 import Nav from "../components/nav";
 
 import { colours, sizes } from "../styles/variables";
@@ -137,7 +137,7 @@ const Navbar = ({ page }) => {
             <div css={mugshotContainer}>
                 <div css={mugshot}>
                     <Link to="/">
-                        <Image />
+                        <Mugshot />
                     </Link>
                 </div>
             </div>

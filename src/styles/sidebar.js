@@ -10,8 +10,8 @@ function getResponsiveFontSize(size, maxSize) {
 }
 
 const mugshotContainer = css`
-    display: flex;
-    justify-content: center;
+    width: 150px;
+    margin: 0 auto;
 `;
 
 const name = css`

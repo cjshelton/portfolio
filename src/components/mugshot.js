@@ -7,8 +7,8 @@ const Image = () => {
         <StaticImage
             src="../images/mugshot-colour.jpg"
             alt="Chris Shelton mugshot"
-            width={150}
-            layout="fixed"
+            width={200}
+            layout="constrained"
             placeholder="blurred"
             quality={100}
             style={{
