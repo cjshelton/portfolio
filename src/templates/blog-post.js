@@ -164,9 +164,8 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             content={getContentJsx(post, pageContext, title)}
             page="Blog Entry"
             seo={getSEO(post)}
-            backgroundImageUrl="/images/blog.jpg"
-            initialBackgroundColour="#767c80"
-            styles="background-position: center center;"
+            headerImageName="blog"
+            headerImagePosition="center center"
         ></Page>
     );
 };
