@@ -110,8 +110,7 @@ const HomePage = () => {
             content={contentSection}
             page="Home"
             seo={seo}
-            backgroundImageUrl="/images/home.jpg"
-            initialBackgroundColour="#d5d5d5"
+            headerImageName="home"
         ></Page>
     );
 };

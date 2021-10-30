@@ -109,11 +109,10 @@ const BlogPage = ({ data }) => {
         <Page
             header={headerJsx}
             content={getContentJsx(posts)}
-            page="Blog List"
+            page="Tech Blog"
             seo={seo}
-            backgroundImageUrl="/images/blog.jpg"
-            initialBackgroundColour="#767c80"
-            styles="background-position: center center;"
+            headerImageName="blog"
+            headerImagePosition="center center"
         ></Page>
     );
 };

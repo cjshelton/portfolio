@@ -142,8 +142,7 @@ const PersonalProjectsPage = () => {
             content={contentJsx}
             page="Personal Projects"
             seo={seo}
-            backgroundImageUrl="/images/personal-projects.jpg"
-            initialBackgroundColour="#767c80"
+            headerImageName="personalProjects"
         ></Page>
     );
 };

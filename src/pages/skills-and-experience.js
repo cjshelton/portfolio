@@ -185,8 +185,7 @@ const SkillsPage = () => {
             content={contentJsx}
             page="Skills and Experience"
             seo={seo}
-            backgroundImageUrl="/images/code.jpg"
-            initialBackgroundColour="#1e2022"
+            headerImageName="code"
         ></Page>
     );
 };
