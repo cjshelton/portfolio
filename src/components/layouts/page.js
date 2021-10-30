@@ -121,7 +121,7 @@ const Page = ({
             gatsbyImageData(
                 placeholder: DOMINANT_COLOR
                 layout: CONSTRAINED
-                quality: 100
+                quality: 75
             )
         }
 
