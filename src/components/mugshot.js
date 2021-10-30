@@ -12,6 +12,7 @@ const Image = () => {
             placeholder="blurred"
             quality={100}
             style={{
+                WebkitBorderRadius: `50%`,
                 borderRadius: `50%`,
                 boxShadow: `0px 6px 6px ${colours.primaryDark}`,
             }}
