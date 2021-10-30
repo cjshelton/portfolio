@@ -1,17 +1,17 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { Link } from "gatsby"
+import React from "react";
+import styled from "@emotion/styled";
+import { Link } from "gatsby";
 
-import { colours } from "../styles/variables"
-import navData from "../data/nav.json"
+import { colours } from "../styles/variables";
+import navData from "../data/nav.json";
 
 navData.sort((a, b) => {
     if (a.order < b.order) {
-        return -1
+        return -1;
     }
 
-    return 1
-})
+    return 1;
+});
 
 const List = styled.ul`
     list-style: none;
@@ -32,7 +32,7 @@ const List = styled.ul`
             text-decoration: underline;
         }
     }
-`
+`;
 
 const Nav = ({ page }) => (
     <nav>
@@ -42,7 +42,7 @@ const Nav = ({ page }) => (
                     <a href={data.link}>{data.name}</a>
                 ) : (
                     <Link to={data.link}>{data.name}</Link>
-                )
+                );
 
                 return (
                     <li
@@ -51,10 +51,10 @@ const Nav = ({ page }) => (
                     >
                         {linkComponent}
                     </li>
-                )
+                );
             })}
         </List>
     </nav>
-)
+);
 
-export default Nav
+export default Nav;
