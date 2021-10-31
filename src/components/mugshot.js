@@ -14,7 +14,7 @@ const Image = () => {
             alt="Chris Shelton mugshot"
             width={200}
             layout="constrained"
-            placeholder="dominantColor"
+            placeholder="none"
             quality={100}
             // Image styles need to be provided to both props to account for inconsistent
             // behaviour on different browsers.
