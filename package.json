@@ -34,7 +34,7 @@
         "lighthouse": "^8.6.0",
         "mini-css-extract-plugin": "^1.6.2",
         "moment": "^2.27.0",
-        "postcss": "8.2.4",
+        "postcss": "^8.3.11",
         "preact": "^10.5.15",
         "preact-render-to-string": "^5.1.19",
         "prismjs": "^1.25.0",
