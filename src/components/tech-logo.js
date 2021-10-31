@@ -51,6 +51,11 @@ const Image = ({ image, altText }) => {
                     ...ImageProperties
                 }
             }
+            react: file(relativePath: { eq: "tech-logos/react.png" }) {
+                childImageSharp {
+                    ...ImageProperties
+                }
+            }
             docker: file(relativePath: { eq: "tech-logos/docker.png" }) {
                 childImageSharp {
                     ...ImageProperties
