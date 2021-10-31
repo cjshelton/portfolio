@@ -36,6 +36,11 @@
             "imageAltText": "Vue logo"
         },
         {
+            "name": "React",
+            "imageSource": "react",
+            "imageAltText": "React logo"
+        },
+        {
             "name": "Node.js + Express",
             "imageSource": "nodeJs",
             "imageAltText": "Node.js and Express logos"
@@ -100,7 +105,6 @@
         "DRY / YAGNI"
     ],
     "otherSkills": [
-        "React",
         "GraphQL",
         "Kubernetes",
         "Cypress",
