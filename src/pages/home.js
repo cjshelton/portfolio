@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
@@ -110,8 +110,7 @@ const HomePage = () => {
             content={contentSection}
             page="Home"
             seo={seo}
-            backgroundImageUrl="/images/home.jpg"
-            initialBackgroundColour="#d5d5d5"
+            headerImageName="home"
         ></Page>
     );
 };

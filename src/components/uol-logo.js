@@ -1,26 +1,17 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Image = () => {
-    const data = useStaticQuery(graphql`
-        query {
-            placeholderImage: file(relativePath: { eq: "uol-logo.png" }) {
-                childImageSharp {
-                    fluid(maxWidth: 200, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                    }
-                }
-            }
-        }
-    `)
-
     return (
-        <Img
-            fluid={data.placeholderImage.childImageSharp.fluid}
+        <StaticImage
+            src="../images/uol-logo.png"
             alt="University of Leeds logo"
+            width={200}
+            layout="fixed"
+            placeholder="tracedSVG"
+            quality={80}
         />
-    )
-}
+    );
+};
 
-export default Image
+export default Image;

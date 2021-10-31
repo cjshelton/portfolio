@@ -1,26 +1,26 @@
-import React from "react"
-import { Global } from "@emotion/core"
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
-import Sidebar from "../sidebar"
-import Navbar from "../navbar"
-import Footer from "../footer"
+import React from "react";
+import { Global } from "@emotion/react";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import Sidebar from "../sidebar";
+import Navbar from "../navbar";
+import Footer from "../footer";
 
-import globalStyles from "../../styles/global"
-import { sizes, colours } from "../../styles/variables"
+import globalStyles from "../../styles/global";
+import { sizes, colours } from "../../styles/variables";
 
-import CookieBanner from "../cookie-banner"
+import CookieBanner from "../cookie-banner";
 
 const SiteContainer = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-`
+`;
 
 const navbarContainer = css`
     flex-shrink: 1;
-`
+`;
 
 const sidebarContainer = css`
     height: 100%;
@@ -34,7 +34,7 @@ const sidebarContainer = css`
     @media (max-width: ${sizes.medium}) {
         display: none;
     }
-`
+`;
 
 const content = css`
     flex-grow: 1;
@@ -47,7 +47,7 @@ const content = css`
     @media (max-width: ${sizes.medium}) {
         margin-left: 0;
     }
-`
+`;
 
 const footer = css`
     display: none;
@@ -60,9 +60,9 @@ const footer = css`
     @media (max-width: ${sizes.medium}) {
         display: block;
     }
-`
+`;
 
-export default ({ page, children }) => (
+const Site = ({ page, children }) => (
     <SiteContainer>
         <Global styles={globalStyles} />
         <div css={navbarContainer}>
@@ -77,4 +77,6 @@ export default ({ page, children }) => (
         </div>
         <CookieBanner />
     </SiteContainer>
-)
+);
+
+export default Site;

@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
 import { sizes, colours } from "../styles/variables";
@@ -185,8 +185,7 @@ const SkillsPage = () => {
             content={contentJsx}
             page="Skills and Experience"
             seo={seo}
-            backgroundImageUrl="/images/code.jpg"
-            initialBackgroundColour="#1e2022"
+            headerImageName="code"
         ></Page>
     );
 };

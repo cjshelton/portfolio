@@ -1,23 +1,23 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { Link } from "gatsby"
+import React from "react";
+import styled from "@emotion/styled";
+import { Link } from "gatsby";
 
-import Image from "../components/image"
-import Nav from "../components/nav"
-import Footer from "../components/footer"
+import Mugshot from "./mugshot";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 
-import { colours } from "../styles/variables"
-import pageStyles from "../styles/sidebar"
+import { colours } from "../styles/variables";
+import pageStyles from "../styles/sidebar";
 
-import navData from "../data/nav.json"
+import navData from "../data/nav.json";
 
 navData.sort((a, b) => {
     if (a.order < b.order) {
-        return -1
+        return -1;
     }
 
-    return 1
-})
+    return 1;
+});
 
 const Container = styled.div`
     height: 100%;
@@ -29,11 +29,11 @@ const Container = styled.div`
     background-color: ${colours.primary};
     padding: 20px;
     text-align: center;
-`
+`;
 
 const Upper = styled.div`
     flex-shrink: 1;
-`
+`;
 
 const Middle = styled.div`
     flex-grow: 1;
@@ -64,18 +64,18 @@ const Middle = styled.div`
             }
         }
     }
-`
+`;
 
 const Lower = styled.div`
     flex-shrink: 1;
-`
+`;
 
 const Sidebar = ({ page }) => (
     <Container>
         <Upper>
             <div css={pageStyles.mugshotContainer}>
                 <Link to="/">
-                    <Image />
+                    <Mugshot />
                 </Link>
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
@@ -89,6 +89,6 @@ const Sidebar = ({ page }) => (
             <Footer collapsed></Footer>
         </Lower>
     </Container>
-)
+);
 
-export default Sidebar
+export default Sidebar;

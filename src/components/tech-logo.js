@@ -1,125 +1,101 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const Image = ({ image, altText }) => {
     const data = useStaticQuery(graphql`
+        fragment ImageProperties on ImageSharp {
+            gatsbyImageData(
+                width: 150
+                placeholder: BLURRED
+                layout: CONSTRAINED
+                quality: 75
+            )
+        }
+
         query {
             cSharp: file(relativePath: { eq: "tech-logos/c-sharp.png" }) {
                 childImageSharp {
-                    fluid(maxHeight: 100, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             dotNetCore: file(
                 relativePath: { eq: "tech-logos/dot-net-core.png" }
             ) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             frontEnd: file(relativePath: { eq: "tech-logos/front-end.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             git: file(relativePath: { eq: "tech-logos/git.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             nodeJs: file(relativePath: { eq: "tech-logos/nodejs.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             sqlServer: file(relativePath: { eq: "tech-logos/sql-server.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             vue: file(relativePath: { eq: "tech-logos/vue.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             react: file(relativePath: { eq: "tech-logos/react.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             docker: file(relativePath: { eq: "tech-logos/docker.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             javascript: file(
                 relativePath: { eq: "tech-logos/javascript.png" }
             ) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             typescript: file(
                 relativePath: { eq: "tech-logos/typescript.png" }
             ) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             mongodb: file(relativePath: { eq: "tech-logos/mongo-db.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             openApi: file(relativePath: { eq: "tech-logos/open-api.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
             jest: file(relativePath: { eq: "tech-logos/jest.png" }) {
                 childImageSharp {
-                    fluid(maxWidth: 200, quality: 75) {
-                        ...GatsbyImageSharpFluid
-                    }
+                    ...ImageProperties
                 }
             }
         }
     `);
 
-    return (
-        <Img
-            fluid={data[image].childImageSharp.fluid}
-            alt={altText}
-            style={{ maxHeight: "100%" }}
-            imgStyle={{ objectFit: "contain" }}
-        />
-    );
+    const imageData = getImage(data[image]);
+
+    return <GatsbyImage image={imageData} alt={altText} objectFit="contain" />;
 };
 
 export default Image;

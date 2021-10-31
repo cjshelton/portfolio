@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import { colours, sizes } from "../styles/variables";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.

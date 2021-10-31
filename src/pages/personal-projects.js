@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import { Link } from "gatsby";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
@@ -142,8 +142,7 @@ const PersonalProjectsPage = () => {
             content={contentJsx}
             page="Personal Projects"
             seo={seo}
-            backgroundImageUrl="/images/personal-projects.jpg"
-            initialBackgroundColour="#767c80"
+            headerImageName="personalProjects"
         ></Page>
     );
 };

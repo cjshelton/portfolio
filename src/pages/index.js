@@ -1,14 +1,14 @@
 import React from "react";
-import SEO from "../components/seo";
 import styled from "@emotion/styled";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 
 // Ensure icon CSS is loaded immediately to prevent large icon sizes on page load.
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight as faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
 
-import Image from "../components/image";
+import Seo from "../components/seo";
+import Mugshot from "../components/mugshot";
 import Button from "../components/btn";
 import Footer from "../components/footer";
 import CookieBanner from "../components/cookie-banner";
@@ -53,11 +53,11 @@ const seo = {
 
 const IndexPage = () => (
     <Container>
-        <SEO title={seo.title} description={seo.description} />
+        <Seo title={seo.title} description={seo.description} />
         <Global styles={globalStyles} />
         <Content>
             <div css={pageStyles.mugshotContainer}>
-                <Image />
+                <Mugshot />
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
             <div css={pageStyles.location}>Leeds, UK</div>
