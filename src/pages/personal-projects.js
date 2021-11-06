@@ -61,6 +61,17 @@ const LiveSiteLinkStyle = css`
     }
 `;
 
+const projectDescriptionStyles = css`
+    a {
+        color: ${colours.primaryTextMedium};
+        text-decoration: underline;
+
+        &:hover {
+            color: ${colours.primaryTextMedium};
+        }
+    }
+`;
+
 const headerJsx = (
     <div>
         <h1>Personal Projects</h1>
@@ -114,7 +125,10 @@ const contentJsx = (
                             <ClearFix />
                         </div>
                         {/* dangerouslySetInnerHTML is safe to use here as the description content is static. */}
-                        <div dangerouslySetInnerHTML={htmlDescription}></div>
+                        <div
+                            css={projectDescriptionStyles}
+                            dangerouslySetInnerHTML={htmlDescription}
+                        ></div>
                         <div className="section-text">
                             {tags.map((skill, index) => {
                                 return (

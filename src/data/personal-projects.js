@@ -23,7 +23,8 @@ module.exports = {
                     The goal of this project was to build a system which had a full login and logout flow,
                     and would allow users to view all bookings, as well as make and delete bookings at the holiday home.
                     I planned to complete all of this within the space of a few evenings and with zero costs.
-                    As described in the accompanying blog post, I met this goal with the technology tagged below.
+                    As described in the accompanying <a href="/blog/2021/10/24/buiding-a-serverless-booking-system-with-nextjs/">blog post</a>,
+                    I met this goal with the technology tagged below.
                 </p>
                 <p class="section-text">
                     This was a really interesting hobby project to work on, allowing me to gain exposure to new
