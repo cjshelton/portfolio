@@ -3,6 +3,39 @@ const techData = require("./tech.json");
 module.exports = {
     projects: [
         {
+            name: "Holiday Home Booking System",
+            tags: [
+                techData.typescript,
+                techData.react,
+                techData.nextjs,
+                techData.gatsby,
+                techData.auth0,
+                techData.supabase,
+                techData.netlify,
+                techData.netlifyFunctions,
+            ],
+            description: `
+                <p class="section-text">
+                    A web application written in Next.js (React) and TypeScript, leveraging serverless technology,
+                    to allow overnight bookings to be made at a family holiday home.
+                </p>
+                <p class="section-text">
+                    The goal of this project was to build a system which had a full login and logout flow,
+                    and would allow users to view all bookings, as well as make and delete bookings at the holiday home.
+                    I planned to complete all of this within the space of a few evenings and with zero costs.
+                    As described in the accompanying <a href="/blog/2021/10/24/buiding-a-serverless-booking-system-with-nextjs/">blog post</a>,
+                    I met this goal with the technology tagged below.
+                </p>
+                <p class="section-text">
+                    This was a really interesting hobby project to work on, allowing me to gain exposure to new
+                    technologies and approaches to building web applications which I will certainly carry forward
+                    into future projects I work on.
+                </p>
+                    `,
+            blogURL:
+                "/blog/2021/10/24/buiding-a-serverless-booking-system-with-nextjs/",
+        },
+        {
             name: "ASP.NET Core Dependency Tools",
             tags: [
                 techData.dotNetCore,
