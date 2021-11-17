@@ -62,7 +62,8 @@
         "start-network": "npm run develop-network",
         "serve": "gatsby serve",
         "clean": "gatsby clean",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+        "new-blog": "node ./generate-blog-post.js"
     },
     "repository": {
         "type": "git",
