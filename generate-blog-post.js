@@ -71,10 +71,11 @@ const generateBlogPost = async () => {
     };
     createFolder();
 
+    const newBlogDataPlaceholder = `"${title}": {\r\n    tags: [],\r\n},`;
     const createIndexFile = () => {
         fs.writeFileSync(
             `${newFolder}/index.md`,
-            `---\r\ntitle: "${title}"\r\ndescription: ""\r\n---\r\n\r\n# Introduction\r\n`
+            `---\r\ntitle: "${title}"\r\ndescription: ""\r\n---\r\n\r\n# Introduction\r\n\r\nTODO: Add the following to src/data/blog-posts.js:\r\n\r\n${newBlogDataPlaceholder}`
         );
     };
     createIndexFile();
