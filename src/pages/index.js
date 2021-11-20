@@ -16,16 +16,17 @@ import CookieBanner from "../components/cookie-banner";
 import globalStyles from "../styles/global";
 import pageStyles from "../styles/index";
 
-import { colours } from "../styles/variables";
+import { BackgroundGradientStyles } from "../styles/shared";
 
 const Container = styled.div`
     height: 100vh;
     min-height: 600px;
     width: 100%;
-    background-color: ${colours.primary};
     display: flex;
     flex-direction: column;
+
     padding: 10px 20px;
+    ${BackgroundGradientStyles}
 `;
 
 const Content = styled.main`
