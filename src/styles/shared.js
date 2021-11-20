@@ -57,3 +57,10 @@ export const SiteTextStyles = `
         font-size: 3.5vw;
     }
 `;
+
+export const BackgroundGradientStyles = `
+    background-image: linear-gradient(
+        ${colours.primary},
+        ${colours.primaryDark}
+    );
+`;

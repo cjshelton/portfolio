@@ -24,7 +24,7 @@ const List = styled.ul`
         }
 
         a:hover {
-            color: ${colours.primaryLight};
+            color: ${colours.primaryTextLight};
             text-decoration: underline;
         }
 

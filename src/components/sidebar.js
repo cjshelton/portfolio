@@ -8,6 +8,7 @@ import Footer from "../components/footer";
 
 import { colours } from "../styles/variables";
 import pageStyles from "../styles/sidebar";
+import { BackgroundGradientStyles } from "../styles/shared";
 
 import navData from "../data/nav.json";
 
@@ -25,9 +26,9 @@ const Container = styled.div`
 
     display: flex;
     flex-direction: column;
-
-    background-color: ${colours.primary};
     padding: 20px;
+
+    ${BackgroundGradientStyles}
     text-align: center;
 `;
 
@@ -47,20 +48,20 @@ const Middle = styled.div`
 
         li {
             padding: 10px 2px;
-            background-color: ${colours.primaryMediumDark};
             margin: 10px 0;
+
+            background-color: ${colours.primaryMediumLight};
+            border: 1px solid transparent;
 
             a {
                 display: block;
                 width: 100%;
             }
 
+            &.current,
             &:hover {
                 background-color: ${colours.primaryDark};
-            }
-
-            &.current {
-                background-color: ${colours.primaryDark};
+                border-color: ${colours.white};
             }
         }
     }
