@@ -88,7 +88,6 @@ const navContainer = css`
                 li {
                     display: block;
                     width: 100%;
-                    padding: 8px 0;
                     margin-bottom: 10px;
 
                     background-color: ${colours.primaryMediumLight};
@@ -99,6 +98,11 @@ const navContainer = css`
                     }
 
                     ${MenuItemStyles}
+
+                    a {
+                        display: block;
+                        padding: 8px 0;
+                    }
                 }
             }
         }
