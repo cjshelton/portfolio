@@ -8,7 +8,7 @@ import Footer from "../components/footer";
 
 import { colours } from "../styles/variables";
 import pageStyles from "../styles/sidebar";
-import { BackgroundGradientStyles } from "../styles/shared";
+import { BackgroundGradientStyles, MenuItemStyles } from "../styles/shared";
 
 import navData from "../data/nav.json";
 
@@ -51,17 +51,11 @@ const Middle = styled.div`
             margin: 10px 0;
 
             background-color: ${colours.primaryMediumLight};
-            border: 1px solid transparent;
+            ${MenuItemStyles}
 
             a {
                 display: block;
                 width: 100%;
-            }
-
-            &.current,
-            &:hover {
-                background-color: ${colours.primaryDark};
-                border-color: ${colours.white};
             }
         }
     }

@@ -64,3 +64,13 @@ export const BackgroundGradientStyles = `
         ${colours.primaryDark}
     );
 `;
+
+export const MenuItemStyles = `
+    border: 1px solid transparent;
+
+    &.current,
+    &:hover {
+        background-color: ${colours.primaryDark};
+        border-color: ${colours.white};
+    }
+`;

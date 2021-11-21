@@ -13,6 +13,7 @@ import Nav from "../components/nav";
 
 import { BackgroundGradientStyles } from "../styles/shared";
 import { colours, sizes } from "../styles/variables";
+import { MenuItemStyles } from "../styles/shared";
 
 const TopNav = styled.div`
     display: none; /* Hidden by default. Show on smaller devices. */
@@ -92,17 +93,12 @@ const navContainer = css`
 
                     background-color: ${colours.primaryMediumLight};
                     text-align: center;
-                    border: 1px solid transparent;
 
                     &:not(:first-of-type) {
                         margin-left: 0;
                     }
 
-                    &.current,
-                    &:hover {
-                        background-color: ${colours.primaryDark};
-                        border-color: ${colours.white};
-                    }
+                    ${MenuItemStyles}
                 }
             }
         }
