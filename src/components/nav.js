@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 
-import { colours } from "../styles/variables";
+import { colours, sizes } from "../styles/variables";
 import navData from "../data/nav.json";
 
 navData.sort((a, b) => {
@@ -25,11 +25,12 @@ const List = styled.ul`
 
         a:hover {
             color: ${colours.primaryTextLight};
-            text-decoration: underline;
         }
 
-        &.current {
-            text-decoration: underline;
+        @media (max-width: ${sizes.medium}) and (min-width: ${sizes.small}) {
+            &.current {
+                text-decoration: underline;
+            }
         }
     }
 `;
