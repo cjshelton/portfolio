@@ -15,7 +15,6 @@ import CookieBanner from "../components/cookie-banner";
 
 import globalStyles from "../styles/global";
 import pageStyles from "../styles/index";
-
 import { BackgroundGradientStyles } from "../styles/shared";
 
 const Container = styled.div`
@@ -24,8 +23,8 @@ const Container = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-
     padding: 10px 20px;
+
     ${BackgroundGradientStyles}
 `;
 

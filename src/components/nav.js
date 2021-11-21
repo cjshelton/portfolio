@@ -27,7 +27,7 @@ const List = styled.ul`
             color: ${colours.primaryTextLight};
         }
 
-        @media (max-width: ${sizes.medium}) and (min-width: ${sizes.small}) {
+        @media (min-width: ${sizes.small}) and (max-width: ${sizes.medium}) {
             &.current {
                 text-decoration: underline;
             }

@@ -11,9 +11,8 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Mugshot from "../components/mugshot";
 import Nav from "../components/nav";
 
-import { BackgroundGradientStyles } from "../styles/shared";
+import { BackgroundGradientStyles, MenuItemStyles } from "../styles/shared";
 import { colours, sizes } from "../styles/variables";
-import { MenuItemStyles } from "../styles/shared";
 
 const TopNav = styled.div`
     display: none; /* Hidden by default. Show on smaller devices. */
