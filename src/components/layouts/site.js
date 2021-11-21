@@ -8,6 +8,7 @@ import Footer from "../footer";
 
 import globalStyles from "../../styles/global";
 import { sizes, colours } from "../../styles/variables";
+import { BackgroundGradientStyles } from "../../styles/shared";
 
 import CookieBanner from "../cookie-banner";
 
@@ -54,7 +55,7 @@ const footer = css`
     flex-shrink: 1;
     padding: 20px;
 
-    background-color: ${colours.primary};
+    ${BackgroundGradientStyles}
     color: ${colours.primaryTextLight};
 
     @media (max-width: ${sizes.medium}) {
