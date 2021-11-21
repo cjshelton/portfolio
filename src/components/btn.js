@@ -1,20 +1,23 @@
-import React from "react"
-import { Link } from "gatsby"
-import { css } from "@emotion/react"
-import { colours } from "../styles/variables"
+import React from "react";
+import { Link } from "gatsby";
+import { css } from "@emotion/react";
+import { colours } from "../styles/variables";
 
 const baseStyles = css`
-    padding: 8px 10px;
+    padding: 7px 10px;
     border-radius: 5px;
     border: none;
     font-size: 15px;
     text-decoration: none;
 
+    // Set a default border style. Transparent allows the colour to be changed for different
+    // button themes without changing the box height.
+    border: 1px solid transparent;
+
     &:hover {
-        text-decoration: underline;
         cursor: pointer;
     }
-`
+`;
 
 const darkStyles = css`
     ${baseStyles}
@@ -25,7 +28,7 @@ const darkStyles = css`
     &:hover {
         background-color: ${colours.primaryDark};
     }
-`
+`;
 
 const mediumStyles = css`
     ${baseStyles}
@@ -36,7 +39,7 @@ const mediumStyles = css`
     &:hover {
         background-color: ${colours.primaryDark};
     }
-`
+`;
 
 const mediumLightStyles = css`
     ${baseStyles}
@@ -45,9 +48,10 @@ const mediumLightStyles = css`
     box-shadow: 3px 3px 2px ${colours.primaryDark};
 
     &:hover {
-        background-color: ${colours.primaryMediumDark};
+        background-color: ${colours.primaryDark};
+        border-color: ${colours.white};
     }
-`
+`;
 
 const lightStyles = css`
     ${baseStyles}
@@ -58,7 +62,7 @@ const lightStyles = css`
     &:hover {
         background-color: ${colours.primaryLight};
     }
-`
+`;
 
 const whiteStyles = css`
     ${baseStyles}
@@ -70,7 +74,7 @@ const whiteStyles = css`
     &:hover {
         background-color: ${colours.primaryLight};
     }
-`
+`;
 
 const Button = ({
     white,
@@ -83,27 +87,27 @@ const Button = ({
     to,
     onClick,
 }) => {
-    let themeStyles
-    if (white) themeStyles = whiteStyles
-    else if (light) themeStyles = lightStyles
-    else if (mediumLight) themeStyles = mediumLightStyles
-    else if (medium) themeStyles = mediumStyles
-    else if (dark) themeStyles = darkStyles
-    else themeStyles = lightStyles
+    let themeStyles;
+    if (white) themeStyles = whiteStyles;
+    else if (light) themeStyles = lightStyles;
+    else if (mediumLight) themeStyles = mediumLightStyles;
+    else if (medium) themeStyles = mediumStyles;
+    else if (dark) themeStyles = darkStyles;
+    else themeStyles = lightStyles;
 
     if (to) {
         return (
             <Link css={themeStyles} className={className} to={to}>
                 {children}
             </Link>
-        )
+        );
     } else {
         return (
             <button css={themeStyles} className={className} onClick={onClick}>
                 {children}
             </button>
-        )
+        );
     }
-}
+};
 
-export default Button
+export default Button;

@@ -11,6 +11,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Mugshot from "../components/mugshot";
 import Nav from "../components/nav";
 
+import { BackgroundGradientStyles, MenuItemStyles } from "../styles/shared";
 import { colours, sizes } from "../styles/variables";
 
 const TopNav = styled.div`
@@ -20,6 +21,7 @@ const TopNav = styled.div`
     min-height: 60px;
     background-color: ${colours.primary};
     padding: 5px 10px 7px 10px;
+    ${BackgroundGradientStyles}
 
     flex-shrink: 1;
 
@@ -83,23 +85,22 @@ const navContainer = css`
                 font-size: 18px;
 
                 li {
-                    background-color: ${colours.primaryMediumDark};
-                    padding: 8px 0;
-                    margin-bottom: 10px;
                     display: block;
                     width: 100%;
+                    margin-bottom: 10px;
+
+                    background-color: ${colours.primaryMediumLight};
                     text-align: center;
 
                     &:not(:first-of-type) {
                         margin-left: 0;
                     }
 
-                    &:hover {
-                        background-color: ${colours.primaryDark};
-                    }
+                    ${MenuItemStyles}
 
-                    &.current {
-                        background-color: ${colours.primaryDark};
+                    a {
+                        display: block;
+                        padding: 8px 0;
                     }
                 }
             }
@@ -111,15 +112,15 @@ const navButtonContainer = css`
     display: none;
 
     button {
-        width: 30px;
-        font-size: 20px;
-        color: white;
-        background-color: transparent;
         padding: 2px 5px;
-        border-radius: 5px;
+
+        font-size: 30px;
+        color: ${colours.white};
+        background-color: transparent;
+        border: none;
 
         &:hover {
-            background-color: ${colours.primaryDark};
+            cursor: pointer;
         }
     }
 
