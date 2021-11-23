@@ -167,7 +167,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         <Page
             header={getHeaderJsx(post)}
             content={getContentJsx(post, pageContext, title)}
-            page="Blog Entry"
+            page="Tech Blog"
             seo={getSEO(post)}
             headerImageName="blog"
             headerImagePosition="center center"
