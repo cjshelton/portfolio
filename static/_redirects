@@ -1,0 +1,4 @@
+# I was clumsy enough to include a typo in the blog post folder name and then post a link on LinkedIn.
+# The blog post folder is used to generate the slug of the blog post URL.
+# Links to the wrong URL have been updated where possible but redirect as a catch-all. 
+/blog/2021/10/24/buiding-a-serverless-booking-system-with-nextjs/ /blog/2021/10/24/building-a-serverless-booking-system-with-nextjs/
