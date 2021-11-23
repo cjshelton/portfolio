@@ -45,6 +45,7 @@
         "react-helmet": "^6.0.0"
     },
     "devDependencies": {
+        "netlify-cli": "^7.1.0",
         "prettier": "2.0.4"
     },
     "keywords": [
@@ -55,6 +56,7 @@
         "build": "gatsby build",
         "develop": "gatsby develop",
         "develop-network": "gatsby develop -H 0.0.0.0",
+        "netlify-develop": "netlify dev",
         "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
         "start": "npm run develop",
         "start-network": "npm run develop-network",
