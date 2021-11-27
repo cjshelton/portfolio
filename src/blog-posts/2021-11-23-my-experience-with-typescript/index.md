@@ -1,0 +1,81 @@
+---
+title: "My Experience with TypeScript"
+description: ""
+---
+
+# Introduction
+
+<div class="img-single-small">
+  <img src="./typescript.png" alt="Serverless diagram" />
+</div>
+
+JavaScript is not a [statically typed][statically-typed-url] language, it is [dynamically typed][dynamically-typed-url], meaning the types of variables (and other constructs in the language) are not checked until the time of code execution, i.e. after the code has been written and is running in the browser or Node.js environment. Variables in statically typed languages like C#, Java and Go, however, have their types checked before the code is executed, typically during a compilation step.
+
+JavaScript, being a dynamically typed language, suffers from only getting type errors late in the development cycle when compared to statically typed languages. This leads to mistakes in the code, often simple ones, that could otherwise have been prevented by a quicker feedback loop on how types are being used.
+
+TypeScript helps bridge this gap in JavaScript, bringing type safety to a language which was created over [25 years ago][javascript-info-url]. JavaScript has since [matured][javascript-maturity-url] and become [one of the most popular programming languages][javascript-popularity-url] in recent years for all kinds of application development, so the introduction of type safety was a welcome adaptation to the language for many developers.
+
+# TypeScript
+
+Helps prevent simple errors and allows developers to spend less time worrying about syntax, calling a function etc. Just gets compiled down to JS. TS cannot be executed through the JS engine, it must become JS using TSC. Replacement for Babel?
+
+## Is TypeScript its Own Language?
+
+This is quite a common misunderstanding for those new to TypeScript, and can be one of a few factors which deters developers from picking up TypeScript - the expectation that they will need to invest many more hours learning a new language, with new syntax to get familiar with and with its own quirks to understand.
+
+Yes - TypeScript is its own programming language, but that's quite a misleading statement. TypeScript is developed and maintained by Microsoft and is [described as][typescript-url] "a strict syntactical superset of JavaScript" which "adds optional static typing to the language".
+
+So really it can be thought of more as an adaptation of the JavaScript language, with some nice optional extras - most notably type safety. If you know JavaScript you can very quickly start writing TypeScript code, and TypeScript code will look very familiar to you - functions look largely the same and you'll still use things like `let` and `const` to declare variables.
+
+"a strict syntactical superset of JavaScript" means that strictly all JavaScript code is valid TypeScript code. This is important as it means TypeScript can be adopted incrementally, and a project can have a mixture of both JS and TS files at any one time; you can use as much or as little as you want from TypeScript.
+
+## A Simple Example
+
+Below is a trivial example of JavaScript and its TypeScript equivalent, with an obvious flaw meaning it will always fail at runtime. Here, we try to add a new item to an array parameter using the [spread operator][spread-operator-url]. Further examples in this post will cover some more realistic and less obvious type errors which TypeScript can help us with.
+
+```
+function addApple(shoppingList) {
+    return [...shoppingList, "apple"];
+}
+
+addApple(1);
+```
+
+If you were to execute the JavaScript code above, you would be met with a `TypeError`, because we've tried to call the spread operator on the number 1, rather than something which is an iterable (specifically an array in this case). There is no**\*** early feedback telling us that we're misusing the `addApple` function until we actually use it, and then it falls over with the error below:
+
+<div class="image-thin-border-container">
+  <img src="./simple-javascript-example-runtime-type-error.png" alt="Screenshot of the TypeError thrown when the JS file is executed" />
+</div>
+<p class="img-attribute">We only find out that there is a TypeError when the function is executed.</p>
+
+Below is the TypeScript equivalent. Note the only difference is the use of `: string[]` to specify what type we expect `shoppingList` to be.
+
+```
+function addApple(shoppingList: string[]) {
+    return [...shoppingList, "apple"];
+}
+
+addApple(1);
+```
+
+The above example fails when running through the TypeScript compiler, and even gives us the error in the IDE right as the code is being written. Intellisense is also available to inform us how to use the function.
+
+<div class="image-thin-border-container">
+  <img src="./simple-typescript-example-type-error.png" alt="Screenshot of the type error displayed in the IDE" />
+</div>
+<p class="img-attribute">We get an early warning in the IDE that the function is not being used correctly.</p>
+
+<div class="image-thin-border-container">
+  <img src="./simple-typescript-example-intellisense.png" alt="Screenshot of the intellisense provided for the function call" />
+</div>
+<p class="img-attribute">We get intellisense for the function to inform us how it should be called.</p>
+
+**\*** There is an exception to this when using some IDEs like VSCode which is discussed in a later section.
+
+[statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
+[dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
+[javascript-popularity-url]: https://pypl.github.io/PYPL.html
+[javascript-maturity-url]: https://en.wikipedia.org/wiki/JavaScript#Reaching_maturity
+[typescript-url]: https://en.wikipedia.org/wiki/TypeScript
+[spread-operator-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+[javascript-info-url]: https://en.wikipedia.org/wiki/JavaScript
