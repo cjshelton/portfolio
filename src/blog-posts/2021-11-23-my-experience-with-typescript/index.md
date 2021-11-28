@@ -6,7 +6,7 @@ description: ""
 # Introduction
 
 <div class="img-single-small">
-  <img src="./typescript.png" alt="Serverless diagram" />
+  <img src="./typescript.png" alt="TypeScript logo" />
 </div>
 
 JavaScript is not a [statically typed][statically-typed-url] language, it is [dynamically typed][dynamically-typed-url], meaning the types of variables (and other constructs in the language) are not checked until the time of code execution, i.e. after the code has been written and is running in the browser or Node.js environment. Variables in statically typed languages like C#, Java and Go, however, have their types checked before the code is executed, typically during a compilation step.
@@ -17,7 +17,39 @@ TypeScript helps bridge this gap in JavaScript, bringing type safety to a langua
 
 # TypeScript
 
-Helps prevent simple errors and allows developers to spend less time worrying about syntax, calling a function etc. Just gets compiled down to JS. TS cannot be executed through the JS engine, it must become JS using TSC. Replacement for Babel?
+Helps prevent simple errors and allows developers to spend less time worrying about syntax, calling a function etc.
+
+## The TypeScript Compiler
+
+JavaScript engines, like Google's [V8][google-v8-url] which is used in Chrome and Node.js, cannot execute TypeScript code; it must first be compiled, or more accurately transpiled, into JavaScript code.
+
+The [TypeScript compiler][typescript-compiler-npm-url] is responsible for converting TypeScript code to its equivalent JavaScript code which can then be executed. This compilation process does a few things, most notably:
+
+-   Removing all of the type information you worked so hard on adding and maintaining during development. Remember, TypeScript is purely a development tool to help us write better JavaScript, and has no direct impact on the code when it's being executed.
+-   Downlevelling (often referred to as transpiling) the JavaScript code to a desired ECMAScript version through the [target][typescript-target-config-url] config option. Downlevelling is the process of altering the JavaScript code to ensure that it can safely run in your target environments.
+
+The TypeScript compiler can easily fit into a Webpack workflow using the [ts-loader][ts-loader-url], and even comes pre-installed and configured when using libraries like [Create React App][create-react-app-typescript-url] and [Vue CLI][vue-cli-typescript-url].
+
+### What About Babel?
+
+<div class="flex-images">
+  <div class="img-container">
+      <div class="img-container-inner">
+          <img src="./typescript.png" alt="TypeScript logo" />
+      </div>
+  </div>
+  <div class="img-container">
+      <div class="img-container-inner">
+          <img src="./babel.png" alt="Babel logo" />
+      </div>
+  </div>
+<div>
+
+The TypeScript compiler and [Babel][babeljs-url] are very similar tools, and often you can choose one or the other - they are both capable of TypeScript to JavaScript compilation and JavaScript downlevelling.
+
+**However, there is a key difference** - Babel cannot type check TypeScript code, it can only convert it to its JavaScript equivalent; you would still need to use the TypeScript compiler to verify your usage of types.
+
+Unless you're developing an application which requires the use of Babel, I'd recommend just using the TypeScript compiler.
 
 ## Is TypeScript its Own Language?
 
@@ -77,5 +109,12 @@ The above example fails when running through the TypeScript compiler, and even g
 [javascript-popularity-url]: https://pypl.github.io/PYPL.html
 [javascript-maturity-url]: https://en.wikipedia.org/wiki/JavaScript#Reaching_maturity
 [typescript-url]: https://en.wikipedia.org/wiki/TypeScript
+[typescript-target-config-url]: https://www.typescriptlang.org/tsconfig#target
+[typescript-compiler-npm-url]: https://www.typescriptlang.org/download
+[babeljs-url]: https://babeljs.io
 [spread-operator-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 [javascript-info-url]: https://en.wikipedia.org/wiki/JavaScript
+[create-react-app-typescript-url]: https://create-react-app.dev/docs/adding-typescript/#installation
+[vue-cli-typescript-url]: https://v3.vuejs.org/guide/typescript-support.html#project-creation
+[google-v8-url]: https://v8.dev/
+[ts-loader-url]: https://github.com/TypeStrong/ts-loader
