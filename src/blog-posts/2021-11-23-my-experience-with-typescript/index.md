@@ -21,6 +21,10 @@ Helps prevent simple errors and allows developers to spend less time worrying ab
 
 ## The TypeScript Compiler
 
+<div class="img-single-medium">
+  <img src="./typescript-compilation.png" alt="A cog in between TypeScript and JavaScript logos" />
+</div>
+
 JavaScript engines, like Google's [V8][google-v8-url] which is used in Chrome and Node.js, cannot execute TypeScript code; it must first be compiled, or more accurately transpiled, into JavaScript code.
 
 The [TypeScript compiler][typescript-compiler-npm-url] is responsible for converting TypeScript code to its equivalent JavaScript code which can then be executed. This compilation process does a few things, most notably:
@@ -32,18 +36,9 @@ The TypeScript compiler can easily fit into a Webpack workflow using the [ts-loa
 
 ### What About Babel?
 
-<div class="flex-images">
-  <div class="img-container">
-      <div class="img-container-inner">
-          <img src="./typescript.png" alt="TypeScript logo" />
-      </div>
-  </div>
-  <div class="img-container">
-      <div class="img-container-inner">
-          <img src="./babel.png" alt="Babel logo" />
-      </div>
-  </div>
-<div>
+<div class="img-single-medium">
+  <img src="./typescript-babel-compare.png" alt="A weighing scale with a TypeScript logo on one scale and a Babel logo on the other" />
+</div>
 
 The TypeScript compiler and [Babel][babeljs-url] are very similar tools, and often you can choose one or the other - they are both capable of TypeScript to JavaScript compilation and JavaScript downlevelling.
 
