@@ -101,6 +101,54 @@ The above example fails when running through the TypeScript compiler, and even g
 
 **\*** There is an exception to this when using some IDEs like VSCode which is discussed in a later section.
 
+# TypeScript Fundamentals
+
+## Duck Typing
+
+-   Structural type system (aka duck typing https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system) only requires a subset of an object's fields to match. There is no difference between how classes and objects conform to shapes
+-   nominal type system (https://www.typescriptlang.org/play#example/nominal-typing)
+
+## Module Imports
+
+## Type Guards
+
+## Type Definition Files
+
+## Encapsulation
+
+Readonly<T> and ReadonlyArray<T>, private readonly, const assertion
+
+## Generics
+
+## Interfaces and Types
+
+## OOP
+
+-   implementing interfaces, inheritance, static methods.
+
+## Working with Third-Party Libraries
+
+-   Really helpful when types are supported
+-   Type Definition files
+-   @types libs
+
+## Type Inference
+
+## Union and Intersection Types
+
+## None Types
+
+any, unknown, never and void types (https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) To get an error when TypeScript produces an any, use "noImplicitAny": true, or "strict": true in tsconfig.json.
+
+## typeof, instance of
+
+## Namespaces
+
+# My Key Takeaways / Fave Parts
+
+-   Explicit returns
+-   Using interfaces and types
+
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
 [javascript-popularity-url]: https://pypl.github.io/PYPL.html
