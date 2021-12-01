@@ -103,7 +103,59 @@ The above example fails when running through the TypeScript compiler, and even g
 
 # TypeScript Fundamentals
 
-## Duck Typing
+## Type System
+
+### Duck Typing
+
+<div class="img-single-small">
+  <img src="./duck.png" alt="TypeScript logo" />
+</div>
+
+A duck typed language is one which performs no type checks at compile time, only at runtime when code is being executed. And those runtime type checks only check the shape of an object - if you're trying to access a property or call a function on an object, and it's there, then it will work just fine, regardless of how that object was created or what else exists on it. Dynamically typed languages use duck typing.
+
+Duck typing gets its name from the duck test - "If it walks like a duck and it quacks like a duck, then it must be a duck". See [this Wikipedia article][duck-typing-wikipedia-url] for more info.
+
+By this definition, JavaScript is a duck typed language. This can easily be demonstrated with classes:
+
+```
+class House {
+	  lock() {
+  	    console.log("Front door locked!");
+    }
+
+    openGarageDoor() {
+        console.log("Garage door opened!");
+    }
+}
+
+class Car {
+	  lock() {
+  	    console.log("Driver door locked!");
+    }
+
+    start() {
+        console.log("Car started!");
+    }
+}
+
+const lockHouse = (house) => {
+	  house.lock();
+}
+
+const house = new House();
+const car = new Car();
+
+lockHouse(house);   // "Front door locked!"
+lockHouse(car);     // "Driver door locked!"
+```
+
+This example runs just fine, and logs out the locked messages for both the house and the car. The `lockHouse` function doesn't care what object is passed to it, or what else exists on it, as long as that object has a `lock` function it can call.
+
+### Structural Typing
+
+Structural typing is not the same as duck typing.
+
+### Nominal Typing
 
 -   Structural type system (aka duck typing https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system) only requires a subset of an object's fields to match. There is no difference between how classes and objects conform to shapes
 -   nominal type system (https://www.typescriptlang.org/play#example/nominal-typing)
@@ -144,11 +196,6 @@ any, unknown, never and void types (https://www.typescriptlang.org/docs/handbook
 
 ## Namespaces
 
-# My Key Takeaways / Fave Parts
-
--   Explicit returns
--   Using interfaces and types
-
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
 [javascript-popularity-url]: https://pypl.github.io/PYPL.html
@@ -163,3 +210,4 @@ any, unknown, never and void types (https://www.typescriptlang.org/docs/handbook
 [vue-cli-typescript-url]: https://v3.vuejs.org/guide/typescript-support.html#project-creation
 [google-v8-url]: https://v8.dev/
 [ts-loader-url]: https://github.com/TypeStrong/ts-loader
+[duck-typing-wikipedia-url]: https://en.wikipedia.org/wiki/Duck_typing
