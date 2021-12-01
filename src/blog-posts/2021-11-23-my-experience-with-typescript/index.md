@@ -17,7 +17,9 @@ TypeScript helps bridge this gap in JavaScript, bringing type safety to a langua
 
 # TypeScript
 
-Helps prevent simple errors and allows developers to spend less time worrying about syntax, calling a function etc.
+Due to the lack of static typing, writing JavaScript can sometimes feel like guesswork, especially to those less experienced with the language, or when you're working with third-party libraries. Only when you run your code do you realise you got some syntax wrong.
+
+When using TypeScript, you feel more confident that what you have written will work as you expect; you spend less time checking how something should be called and more time solving the problem at hand.
 
 ## The TypeScript Compiler
 
