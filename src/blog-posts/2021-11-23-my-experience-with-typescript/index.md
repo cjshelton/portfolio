@@ -112,7 +112,7 @@ More on these typing systems below.
 ### Duck Typing
 
 <div class="img-single-small">
-  <img src="./duck.png" alt="TypeScript logo" />
+  <img src="./duck.png" alt="A yellow rubber duck" />
 </div>
 
 A duck typed language is one which performs no type checks at compile time, only at runtime when code is being executed. And those runtime type checks only check the shape of an object - if you're trying to access a property or call a function on an object, and it's there, then it will work just fine, regardless of how that object was created or what else exists on it. Dynamically typed languages use duck typing.
@@ -134,13 +134,21 @@ const car = {
 
 const lockHouse = (house) => house.lock();
 
-lockHouse(house); // "Front door locked!"
-lockHouse(car); // "Driver door locked!"
+lockHouse(house);   // "Front door locked!"
+lockHouse(car);     // "Driver door locked!"
 ```
 
-This example runs just fine, logging out the locked messages for `house` and `car`. The `lockHouse` function doesn't care what object is passed to it, or what else exists on it, as long as that object has a `lock` function it can call. For this example, the `car` object matches the behaviour and structure expected by the `lockHouse` function, so as far as it's concerned - a car is a house &#129300;&hellip;
+This example runs just fine, logging out the locked messages for `house` and `car`. The `lockHouse` function doesn't care what object is passed to it, nor what else exists on it, as long as that object has a `lock` function it can call. For this example, the `car` object matches the behaviour and structure expected by the `lockHouse` function, so as far as it's concerned - a car is a house &#129300;&hellip;
 
-However, **this code is fragile** and can easily result in runtime errors. If the implementation of `lockHouse` were to change and now call `house.openGarageDoor()` instead, then it would result in a runtime TypeError when `lockHouse` is called with `car` - not ideal.
+However, **this code is fragile** and can easily result in runtime errors. If the implementation of `lockHouse` were to change and now call `house.openGarageDoor()` instead, then it would result in a runtime TypeError when `lockHouse` is called with `car`. Structural typing solves this problem for us.
+
+### Structural Typing
+
+<div class="img-single-small">
+  <img src="./shapes.png" alt="A triangle, square and circle overlapping" />
+</div>
+
+Structural typing, as used in TypeScript, builds on top of duck typing by validating how types are used at compile time. It uses the same principle as duck typing, whereby type compatibility is determined based on shape (the properties and functions available), but it also aims to validate that there's enough structural overlap between the type being used and what's expected; if there is, then compatibility is ensured and TypeScript is happy.
 
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
