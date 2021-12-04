@@ -105,6 +105,10 @@ The above example fails when running through the TypeScript compiler, and even g
 
 ## Type System
 
+JavScript is a duck typed language meaning no type checks are performed prior to the code running, and when it runs, it will try execute whatever it can on the objects supplied, regardless of their type or structure. TypeScript uses structural typing, meaning it determines types based on their structure - what properties and functions an object has, and these type checks happen at compile time, not runtime.
+
+More on these typing systems below.
+
 ### Duck Typing
 
 <div class="img-single-small">
@@ -113,88 +117,30 @@ The above example fails when running through the TypeScript compiler, and even g
 
 A duck typed language is one which performs no type checks at compile time, only at runtime when code is being executed. And those runtime type checks only check the shape of an object - if you're trying to access a property or call a function on an object, and it's there, then it will work just fine, regardless of how that object was created or what else exists on it. Dynamically typed languages use duck typing.
 
-Duck typing gets its name from the duck test - "If it walks like a duck and it quacks like a duck, then it must be a duck". See [this Wikipedia article][duck-typing-wikipedia-url] for more info.
+[Duck typing][duck-typing-wikipedia-url] gets its name from the duck test - "If it walks like a duck and it quacks like a duck, then it must be a duck".
 
-By this definition, JavaScript is a duck typed language. This can easily be demonstrated with classes:
+By this definition, JavaScript is a duck typed language, which can easily be demonstrated with the example below:
 
 ```
-class House {
-	  lock() {
-  	    console.log("Front door locked!");
-    }
+const house = {
+    lock: () => console.log("Front door locked!"),
+    openGarageDoor: () => console.log("Garage door opened!"),
+};
 
-    openGarageDoor() {
-        console.log("Garage door opened!");
-    }
-}
+const car = {
+    lock: () => console.log("Driver door locked!"),
+    start: () => console.log("Car started!"),
+};
 
-class Car {
-	  lock() {
-  	    console.log("Driver door locked!");
-    }
+const lockHouse = (house) => house.lock();
 
-    start() {
-        console.log("Car started!");
-    }
-}
-
-const lockHouse = (house) => {
-	  house.lock();
-}
-
-const house = new House();
-const car = new Car();
-
-lockHouse(house);   // "Front door locked!"
-lockHouse(car);     // "Driver door locked!"
+lockHouse(house); // "Front door locked!"
+lockHouse(car); // "Driver door locked!"
 ```
 
-This example runs just fine, and logs out the locked messages for both the house and the car. The `lockHouse` function doesn't care what object is passed to it, or what else exists on it, as long as that object has a `lock` function it can call.
+This example runs just fine, logging out the locked messages for `house` and `car`. The `lockHouse` function doesn't care what object is passed to it, or what else exists on it, as long as that object has a `lock` function it can call. For this example, the `car` object matches the behaviour and structure expected by the `lockHouse` function, so as far as it's concerned - a car is a house &#129300;&hellip;
 
-### Structural Typing
-
-Structural typing is not the same as duck typing.
-
-### Nominal Typing
-
--   Structural type system (aka duck typing https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system) only requires a subset of an object's fields to match. There is no difference between how classes and objects conform to shapes
--   nominal type system (https://www.typescriptlang.org/play#example/nominal-typing)
-
-## Module Imports
-
-## Type Guards
-
-## Type Definition Files
-
-## Encapsulation
-
-Readonly<T> and ReadonlyArray<T>, private readonly, const assertion
-
-## Generics
-
-## Interfaces and Types
-
-## OOP
-
--   implementing interfaces, inheritance, static methods.
-
-## Working with Third-Party Libraries
-
--   Really helpful when types are supported
--   Type Definition files
--   @types libs
-
-## Type Inference
-
-## Union and Intersection Types
-
-## None Types
-
-any, unknown, never and void types (https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) To get an error when TypeScript produces an any, use "noImplicitAny": true, or "strict": true in tsconfig.json.
-
-## typeof, instance of
-
-## Namespaces
+However, **this code is fragile** and can easily result in runtime errors. If the implementation of `lockHouse` were to change and now call `house.openGarageDoor()` instead, then it would result in a runtime TypeError when `lockHouse` is called with `car` - not ideal.
 
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
