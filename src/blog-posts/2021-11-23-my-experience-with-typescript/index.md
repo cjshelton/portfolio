@@ -148,7 +148,62 @@ However, **this code is fragile** and can easily result in runtime errors. If th
   <img src="./shapes.png" alt="A triangle, square and circle overlapping" />
 </div>
 
-Structural typing, as used in TypeScript, builds on top of duck typing by validating how types are used at compile time. It uses the same principle as duck typing, whereby type compatibility is determined based on shape (the properties and functions available), but it also aims to validate that there's enough structural overlap between the type being used and what's expected; if there is, then compatibility is ensured and TypeScript is happy.
+Structural typing, as used in TypeScript, builds on top of duck typing by validating how types are used at compile time. It uses the same principle as duck typing, whereby type compatibility is determined based on shape (the properties and functions available), but it aims to further validate that there's enough structural overlap between the type being used and what's expected; if there is, then compatibility is ensured and TypeScript is happy.
+
+To demonstrate this, see the example below.
+
+```
+// Declare Car and House types.
+type Car = {
+    wheelCount: number;
+    doorCount: number;
+    lock: () => void;
+}
+
+type House = {
+    doorCount: number;
+    lock: () => void;
+}
+
+// Create an object of each type.
+const car: Car = {
+    wheelCount: 4,
+    doorCount: 5,
+    lock: () => console.log('Car locked!')
+}
+
+const house: House = {
+    doorCount: 3,
+    lock: () => console.log("House locked!")
+}
+
+// Create a function for each type.
+const lockHouse = (house: House) => house.lock();
+const lockCar = (car: Car) => car.lock();
+
+// Attempt to pass the all of the objects to the `lockHouse` function. All OK.
+lockHouse(house);
+lockHouse(car);
+
+// Attempt to pass all of the objects to the `lockVehicle` function. We get a Type Error.
+lockCar(car);
+lockCar(house); // Type Error
+```
+
+In this example, two types are being declared - `Car` and `House`, and an object is created for each of these types. As you can see, there is some structural overlap between these two types - they both have a `doorCount` property and a `lock` function. However, there is an additional property on a Car - `wheelCount` - which is causing the TypeError.
+
+There is sufficient overlap between `Car` and `House` such that `lockHouse` can accept the `Car` type, but `lockCar` cannot accept the `House` type. In other words, `Car` can be seen as a subtype of `House`, meaning wherever a house is expected, we can also pass a car.
+
+This only works because of the overlap in properties and functions - `Car` has at least all of the properties and functions of `House`, but `House` does not have the `wheelCount` so it does not sufficiently overlap with `Car`.
+
+Looking at the Type Error in more detail, it's telling us exactly this: `TypeError - Argument of type 'House' is not assignable to parameter of type 'Car'. Property 'wheelCount' is missing in type 'House' but required in type 'Car'.`
+
+### Nominal Typing (Name-based )
+
+Most traditional statically typed languages like C# and Java are nominally typed, meaning the identity of the type itself is important, not just whether types share the same properties and behaviour. In C# for example, if you have two classes which are identical in their properties and methods, they still cannot be used interchangeably, because they fundamentally identify as different types through their name. Back to the car and house example - they are named differently and so are not equivalent types in nominal type systems.
+
+-   Structural type system (aka duck typing https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system) only requires a subset of an object's fields to match. There is no difference between how classes and objects conform to shapes
+-   nominal type system (https://www.typescriptlang.org/play#example/nominal-typing)
 
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
