@@ -177,15 +177,15 @@ const house: House = {
     lock: () => console.log("House locked!")
 }
 
-// Create a function for each type.
+// Create a locking function for each type.
 const lockHouse = (house: House) => house.lock();
 const lockCar = (car: Car) => car.lock();
 
-// Attempt to pass the all of the objects to the `lockHouse` function. All OK.
+// Attempt to pass both objects to the `lockHouse` function. All OK.
 lockHouse(house);
 lockHouse(car);
 
-// Attempt to pass all of the objects to the `lockVehicle` function. We get a Type Error.
+// Attempt to pass both objects to the `lockVehicle` function. We get a Type Error.
 lockCar(car);
 lockCar(house); // Type Error
 ```
@@ -200,10 +200,25 @@ Looking at the Type Error in more detail, it's telling us exactly this: `TypeErr
 
 ### Nominal Typing (Name-based )
 
-Most traditional statically typed languages like C# and Java are nominally typed, meaning the identity of the type itself is important, not just whether types share the same properties and behaviour. In C# for example, if you have two classes which are identical in their properties and methods, they still cannot be used interchangeably, because they fundamentally identify as different types through their name. Back to the car and house example - they are named differently and so are not equivalent types in nominal type systems.
+Most traditional statically typed languages like C# and Java are nominally typed, meaning the identity of the type itself is important, not just whether types share the same properties and behaviour.
 
--   Structural type system (aka duck typing https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system) only requires a subset of an object's fields to match. There is no difference between how classes and objects conform to shapes
--   nominal type system (https://www.typescriptlang.org/play#example/nominal-typing)
+In C# for example, if you have two interfaces which are identical in their structure, they still cannot be used interchangeably, because they fundamentally identify as different types through their name. Back to the Car and House example - they are named differently and so are not equivalent types in nominal type systems.
+
+## Module Imports
+
+TypeScript has support for all different module types, but is opinionated towards ES Modules (ESM) as defined in ECMAScript 2015 (ES6) - using the `import` and `export` keywords. A new TypeScript project typically comes with default settings to allow support for working with ESM over other module systems like CommonJS.
+
+TypeScript, being a transpiler, is able to treat CommonJS modules (and other module types) similar to ESM. This is really powerful as is allows for ESM import syntax to be used when working with CommonJS libraries in Node, like `fs` for example:
+
+```
+// Using an ESM import statement
+import fs from 'fs';
+
+// Rather than the more traditional Node CommonJS import statement
+const fs = require('fs');
+```
+
+This may be seen as a subtle advantage, but it really does help drive more consistency in the code you write, especially when developing on a codebase meant for multiple environments, like the browser and Node.js for example. For more information on this interoperability between different module systems in TypeScript, see the [documentation on the `esModuleInterop` flag][typescript-esmoduleinterop-url].
 
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
@@ -220,3 +235,4 @@ Most traditional statically typed languages like C# and Java are nominally typed
 [google-v8-url]: https://v8.dev/
 [ts-loader-url]: https://github.com/TypeStrong/ts-loader
 [duck-typing-wikipedia-url]: https://en.wikipedia.org/wiki/Duck_typing
+[typescript-esmoduleinterop-url]: https://www.typescriptlang.org/tsconfig#esModuleInterop
