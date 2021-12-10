@@ -198,7 +198,7 @@ This only works because of the overlap in properties and functions - `Car` has a
 
 Looking at the Type Error in more detail, it's telling us exactly this: `TypeError - Argument of type 'House' is not assignable to parameter of type 'Car'. Property 'wheelCount' is missing in type 'House' but required in type 'Car'.`
 
-### Nominal Typing (Name-based )
+### Nominal Typing (Name-based)
 
 Most traditional statically typed languages like C# and Java are nominally typed, meaning the identity of the type itself is important, not just whether types share the same properties and behaviour.
 
@@ -220,6 +220,56 @@ const fs = require('fs');
 
 This may be seen as a subtle advantage, but it really does help drive more consistency in the code you write, especially when developing on a codebase meant for multiple environments, like the browser and Node.js for example. For more information on this interoperability between different module systems in TypeScript, see the [documentation on the `esModuleInterop` flag][typescript-esmoduleinterop-url].
 
+## Type Narrowing
+
+Type narrowing is the process of refining a type down to one which is more specific than originally declared. Type narrowing is useful when dealing with union types (types made up of multiple types) and types with optional fields (those which could be undefined), helping you to control the flow of your code through different paths.
+
+There are multiple ways to narrow types, but one of the most common is by using a type guard which uses conditional branches to work on more specific types. See the example below to see a type guard in action.
+
+This example declares a `square` function which squares the input value provided to it, but the input can either be a number or a string, where the string can be the Roman numeral representation of an integer number. To represent this, the input function declares an input parameter with a union type of `number | string`.
+
+```
+// Trivial way of converting a Roman numeral to a number.
+const romanNumerals: Record<string, number> = {
+    "I": 1,
+    "II": 2,
+    "III": 3,
+};
+
+const square = (input: number | string): number => {
+    return Math.pow(input, 2);
+}
+```
+
+Without the use of a type guard to narrow the type of `input`, TypeScript tells us that we can't simply call `Math.pow` with `input` because it could be a string, and that's not a valid use of the `pow` function; it expects a `number` only. TypeScript gives us this error:
+
+<img src="./type-narrowing-without-type-guard.png" alt="TypeScript error message explaining that the pow function cannot be called with a variable of type string or number" />
+
+To fix this and help the TypeScript compiler, a type guard can be used to conditionally handle the different types in the union:
+
+```
+const romanNumerals: Record<string, number> = {
+    // Removed for brevity.
+};
+
+const square = (input: number | string): number => {
+    if (typeof input === "number") { // TypeGuard
+        return Math.pow(input, 2);
+    }
+
+    const romanNumeralAsNum = romanNumerals[input];
+    return Math.pow(romanNumeralAsNum, 2);
+}
+```
+
+The type guard allows us to have conditional logic based on the type of `input`. If `input` is a number, then TypeScript knows that within the `if` block, `input` has to be a `number` and so it can safely call `Math.pow`. If the type check fails, then TypeScript knows it must be a `string`, and so we convert to the number equivalent of the Roman numeral and then call `Math.pow`.
+
+If we hover over `input` in the different code branches, TypeScript gives us the actual type it has narrowed down to and not the union type, thanks to the type guard.
+
+<img src="./type-narrowing-with-type-guard.png" alt="TypeScript narrowing the input type to number in the if block and string otherwise" />
+
+Type guards can be more complex than this, and can instead use other ways of determining the type of a variable, including using the `instanceof` keyword or by having a special `kind` property on your custom object types. See the [TypeScript Handbook][typescript-handbook-type-narrowing-url] for a more detailed look into type narrowing.
+
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
 [javascript-popularity-url]: https://pypl.github.io/PYPL.html
@@ -236,3 +286,4 @@ This may be seen as a subtle advantage, but it really does help drive more consi
 [ts-loader-url]: https://github.com/TypeStrong/ts-loader
 [duck-typing-wikipedia-url]: https://en.wikipedia.org/wiki/Duck_typing
 [typescript-esmoduleinterop-url]: https://www.typescriptlang.org/tsconfig#esModuleInterop
+[typescript-handbook-type-narrowing-url]: https://www.typescriptlang.org/docs/handbook/2/narrowing.html
