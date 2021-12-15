@@ -1,5 +1,5 @@
 ---
-title: "My Experience with TypeScript"
+title: "TypeScript: Part 1 - An Introduction"
 description: ""
 ---
 
@@ -222,71 +222,21 @@ Most traditional statically typed languages like C# and Java are nominally typed
 
 In C# for example, if you have two interfaces which are identical in their structure, they still cannot be used interchangeably, because they fundamentally identify as different types through their name. Back to the Car and House example - they are named differently and so are not equivalent types in nominal type systems.
 
-## Module Imports
+# Conclusion
 
-TypeScript has support for all different module types, but is opinionated towards ES Modules (ESM) as defined in ECMAScript 2015 (ES6) - using the `import` and `export` keywords. A new TypeScript project typically comes with default settings to allow support for working with ESM over other module systems like CommonJS.
+My portfolio site is not written in TS, and I probably won't invest the time to migrate it. But all new projects I do I choose TypeScript by default.
 
-TypeScript, being a transpiler, is able to treat CommonJS modules (and other module types) similar to ESM. This is really powerful as is allows for ESM import syntax to be used when working with CommonJS libraries in Node, like `fs` for example:
+When you combine TypeScript with a linter, a suite of unit tests, a code formatter, an efficient CI process, you really start to get more confidence in the application your building.
 
-```
-// Using an ESM import statement
-import fs from 'fs';
+    -   Can make you feel like you need to write OOP, but you don't need to. You can make as much or as little use of TypeScript as you want. You'll get a lot of help just from using the typings in external libraries.
 
-// Rather than the more traditional Node CommonJS import statement
-const fs = require('fs');
-```
+TSDX
 
-This may be seen as a subtle advantage, but it really does help drive more consistency in the code you write, especially when developing on a codebase meant for multiple environments, like the browser and Node.js for example. For more information on this interoperability between different module systems in TypeScript, see the [documentation on the `esModuleInterop` flag][typescript-esmoduleinterop-url].
+-   Use the TypeScript Playground to give it a go.
 
-## Type Narrowing
+# Resources
 
-Type narrowing is the process of refining a type down to one which is more specific than originally declared. Type narrowing is useful when dealing with union types (types made up of multiple types) and types with optional fields (those which could be undefined), helping you to control the flow of your code through different paths.
-
-There are multiple ways to narrow types, but one of the most common is by using a type guard which uses conditional branches to work on more specific types. See the example below to see a type guard in action.
-
-This example declares a `square` function which squares the input value provided to it, but the input can either be a number or a string, where the string can be the Roman numeral representation of an integer number. To represent this, the input function declares an input parameter with a union type of `number | string`.
-
-```
-// Trivial way of converting a Roman numeral to a number.
-const romanNumerals: Record<string, number> = {
-    "I": 1,
-    "II": 2,
-    "III": 3,
-};
-
-const square = (input: number | string): number => {
-    return Math.pow(input, 2);
-}
-```
-
-Without the use of a type guard to narrow the type of `input`, TypeScript tells us that we can't simply call `Math.pow` with `input` because it could be a string, and that's not a valid use of the `pow` function; it expects a `number` only. TypeScript gives us this error:
-
-<img src="./type-narrowing-without-type-guard.png" alt="TypeScript error message explaining that the pow function cannot be called with a variable of type string or number" />
-
-To fix this and help the TypeScript compiler, a type guard can be used to conditionally handle the different types in the union:
-
-```
-const romanNumerals: Record<string, number> = {
-    // Removed for brevity.
-};
-
-const square = (input: number | string): number => {
-    if (typeof input === "number") { // TypeGuard
-        return Math.pow(input, 2);
-    }
-
-    const romanNumeralAsNum = romanNumerals[input];
-    return Math.pow(romanNumeralAsNum, 2);
-}
-```
-
-The type guard allows us to have conditional logic based on the type of `input`. If `input` is a number, then TypeScript knows that within the `if` block, `input` has to be a `number` and so it can safely call `Math.pow`. If the type check fails, then TypeScript knows it must be a `string`, and so we convert to the number equivalent of the Roman numeral and then call `Math.pow`.
-
-If we hover over `input` in the different code branches, TypeScript gives us the actual type it has narrowed down to and not the union type, thanks to the type guard.
-
-<img src="./type-narrowing-with-type-guard.png" alt="TypeScript narrowing the input type to number in the if block and string otherwise" />
-
-Type guards can be more complex than this, and can instead use other ways of determining the type of a variable, including using the `instanceof` keyword or by having a special `kind` property on your custom object types. See the [TypeScript Handbook][typescript-handbook-type-narrowing-url] for a more detailed look into type narrowing.
+https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html
 
 [statically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Static_type_checking
 [dynamically-typed-url]: https://en.wikipedia.org/wiki/Type_system#Dynamic_type_checking_and_runtime_type_information
