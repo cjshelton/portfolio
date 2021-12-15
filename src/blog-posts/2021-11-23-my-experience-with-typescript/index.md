@@ -103,6 +103,24 @@ The above example fails when running through the TypeScript compiler, and even g
 
 # TypeScript Fundamentals
 
+## Types
+
+TypeScript understands all of the primitive values built-in to JavaScript, including the more common ones like `number` and `string`, and those used less common like `bigint` and `symbol`.
+
+It also understands objects, undoubtedly the most popular data type used in JavaScript, and can distinguish at compile time between objects, functions and arrays, which are all fundamentally objects in JavaScript. TypeScript also lets you create your own custom object types with a custom name using types and interfaces - more on this in the next section.
+
+## Type Aliases and Interfaces
+
+Custom types can be defined either using the `type` or `interface` keywords. If you have used a strongly typed language like C# or Java before, you should be familiar with an interfaces being a contract which describes the structure of an object. A type is not much different, and that is a cause of confusion with the language - even the [TypeScript documentation][typescript-handbook-types-vs-interfaces-url] fails to concisely detail when to use one over the other, and mentions "for the most part, you can choose based on personal preference".
+
+Some of the key differences include:
+
+-   Interfaces can be extended to add fields to its structure (known as declaration merging), but types cannot.
+-   Interfaces cannot be defined as a primitive value, but types can (e.g. `type SanitizedString = string`).
+-   In certain scenarios, using interfaces over types will yield more useful and concise type error messages.
+
+For lack of a clear way to really distinguish which to go with, the documentation recommends that interfaces should be used by default unless there is a need to use the features of a type. This is generally what I've been following, though there are some occasions where using a type just feels more natural, like defining
+
 ## Type System
 
 JavScript is a duck typed language meaning no type checks are performed prior to the code running, and when it runs, it will try execute whatever it can on the objects supplied, regardless of their type or structure. TypeScript uses structural typing, meaning it determines types based on their structure - what properties and functions an object has, and these type checks happen at compile time, not runtime.
@@ -287,3 +305,4 @@ Type guards can be more complex than this, and can instead use other ways of det
 [duck-typing-wikipedia-url]: https://en.wikipedia.org/wiki/Duck_typing
 [typescript-esmoduleinterop-url]: https://www.typescriptlang.org/tsconfig#esModuleInterop
 [typescript-handbook-type-narrowing-url]: https://www.typescriptlang.org/docs/handbook/2/narrowing.html
+[typescript-handbook-types-vs-interfaces-url]: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
