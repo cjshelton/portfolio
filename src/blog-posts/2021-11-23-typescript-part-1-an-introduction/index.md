@@ -9,119 +9,23 @@ description: ""
   <img src="./typescript.png" alt="TypeScript logo" />
 </div>
 
+I have been using TypeScript everyday now for a while for both front and back-end development, and in doing so, I've learnt a lot about the language and the benefits of using it over JavaScript. This post aims to introduce the TypeScript language, look at some common misconceptions, and showcase what benefits can be found from using it. A future post will take a deeper dive into the language and focus on some of the more advanced topics.
+
+# The Type System
+
+## Static Typing in TypeScript
+
 JavaScript is not a [statically typed][statically-typed-url] language, it is [dynamically typed][dynamically-typed-url], meaning the types of variables (and other constructs in the language) are not checked until the time of code execution, i.e. after the code has been written and is running in the browser or Node.js environment. Variables in statically typed languages like C#, Java and Go, however, have their types checked before the code is executed, typically during a compilation step.
 
 JavaScript, being a dynamically typed language, suffers from only getting type errors late in the development cycle when compared to statically typed languages. This leads to mistakes in the code, often simple ones, that could otherwise have been prevented by a quicker feedback loop on how types are being used.
 
 TypeScript helps bridge this gap in JavaScript, bringing type safety to a language which was created over [25 years ago][javascript-info-url]. JavaScript has since [matured][javascript-maturity-url] and become [one of the most popular programming languages][javascript-popularity-url] in recent years for all kinds of application development, so the introduction of type safety was a welcome adaptation to the language for many developers.
 
-# TypeScript
-
 Due to the lack of static typing, writing JavaScript can sometimes feel like guesswork, especially to those less experienced with the language, or when you're working with third-party libraries. Only when you run your code do you realise you got some syntax wrong.
 
 When using TypeScript, you feel more confident that what you have written will work as you expect; you spend less time checking how something should be called and more time solving the problem at hand.
 
-## The TypeScript Compiler
-
-<div class="img-single-medium">
-  <img src="./typescript-compilation.png" alt="A cog in between TypeScript and JavaScript logos" />
-</div>
-
-JavaScript engines, like Google's [V8][google-v8-url] which is used in Chrome and Node.js, cannot execute TypeScript code; it must first be compiled, or more accurately transpiled, into JavaScript code.
-
-The [TypeScript compiler][typescript-compiler-npm-url] is responsible for converting TypeScript code to its equivalent JavaScript code which can then be executed. This compilation process does a few things, most notably:
-
--   Removing all of the type information you worked so hard on adding and maintaining during development. Remember, TypeScript is purely a development tool to help us write better JavaScript, and has no direct impact on the code when it's being executed.
--   Downlevelling (often referred to as transpiling) the JavaScript code to a desired ECMAScript version through the [target][typescript-target-config-url] config option. Downlevelling is the process of altering the JavaScript code to ensure that it can safely run in your target environments.
-
-The TypeScript compiler can easily fit into a Webpack workflow using the [ts-loader][ts-loader-url], and even comes pre-installed and configured when using libraries like [Create React App][create-react-app-typescript-url] and [Vue CLI][vue-cli-typescript-url].
-
-### What About Babel?
-
-<div class="img-single-medium">
-  <img src="./typescript-babel-compare.png" alt="A weighing scale with a TypeScript logo on one scale and a Babel logo on the other" />
-</div>
-
-The TypeScript compiler and [Babel][babeljs-url] are very similar tools, and often you can choose one or the other - they are both capable of TypeScript to JavaScript compilation and JavaScript downlevelling.
-
-**However, there is a key difference** - Babel cannot type check TypeScript code, it can only convert it to its JavaScript equivalent; you would still need to use the TypeScript compiler to verify your usage of types.
-
-Unless you're developing an application which requires the use of Babel, I'd recommend just using the TypeScript compiler.
-
-## Is TypeScript its Own Language?
-
-This is quite a common misunderstanding for those new to TypeScript, and can be one of a few factors which deters developers from picking up TypeScript - the expectation that they will need to invest many more hours learning a new language, with new syntax to get familiar with and with its own quirks to understand.
-
-Yes - TypeScript is its own programming language, but that's quite a misleading statement. TypeScript is developed and maintained by Microsoft and is [described as][typescript-url] "a strict syntactical superset of JavaScript" which "adds optional static typing to the language".
-
-So really it can be thought of more as an adaptation of the JavaScript language, with some nice optional extras - most notably type safety. If you know JavaScript you can very quickly start writing TypeScript code, and TypeScript code will look very familiar to you - functions look largely the same and you'll still use things like `let` and `const` to declare variables.
-
-"a strict syntactical superset of JavaScript" means that strictly all JavaScript code is valid TypeScript code. This is important as it means TypeScript can be adopted incrementally, and a project can have a mixture of both JS and TS files at any one time; you can use as much or as little as you want from TypeScript.
-
-## A Simple Example
-
-Below is a trivial example of JavaScript and its TypeScript equivalent, with an obvious flaw meaning it will always fail at runtime. Here, we try to add a new item to an array parameter using the [spread operator][spread-operator-url]. Further examples in this post will cover some more realistic and less obvious type errors which TypeScript can help us with.
-
-```
-function addApple(shoppingList) {
-    return [...shoppingList, "apple"];
-}
-
-addApple(1);
-```
-
-If you were to execute the JavaScript code above, you would be met with a `TypeError`, because we've tried to call the spread operator on the number 1, rather than something which is an iterable (specifically an array in this case). There is no**\*** early feedback telling us that we're misusing the `addApple` function until we actually use it, and then it falls over with the error below:
-
-<div class="image-thin-border-container">
-  <img src="./simple-javascript-example-runtime-type-error.png" alt="Screenshot of the TypeError thrown when the JS file is executed" />
-</div>
-<p class="img-attribute">We only find out that there is a TypeError when the function is executed.</p>
-
-Below is the TypeScript equivalent. Note the only difference is the use of `: string[]` to specify what type we expect `shoppingList` to be.
-
-```
-function addApple(shoppingList: string[]) {
-    return [...shoppingList, "apple"];
-}
-
-addApple(1);
-```
-
-The above example fails when running through the TypeScript compiler, and even gives us the error in the IDE right as the code is being written. Intellisense is also available to inform us how to use the function.
-
-<div class="image-thin-border-container">
-  <img src="./simple-typescript-example-type-error.png" alt="Screenshot of the type error displayed in the IDE" />
-</div>
-<p class="img-attribute">We get an early warning in the IDE that the function is not being used correctly.</p>
-
-<div class="image-thin-border-container">
-  <img src="./simple-typescript-example-intellisense.png" alt="Screenshot of the intellisense provided for the function call" />
-</div>
-<p class="img-attribute">We get intellisense for the function to inform us how it should be called.</p>
-
-**\*** There is an exception to this when using some IDEs like VSCode which is discussed in a later section.
-
-# TypeScript Fundamentals
-
-## Types
-
-TypeScript understands all of the primitive values built-in to JavaScript, including the more common ones like `number` and `string`, and those used less common like `bigint` and `symbol`.
-
-It also understands objects, undoubtedly the most popular data type used in JavaScript, and can distinguish at compile time between objects, functions and arrays, which are all fundamentally objects in JavaScript. TypeScript also lets you create your own custom object types with a custom name using types and interfaces - more on this in the next section.
-
-## Type Aliases and Interfaces
-
-Custom types can be defined either using the `type` or `interface` keywords. If you have used a strongly typed language like C# or Java before, you should be familiar with an interfaces being a contract which describes the structure of an object. A type is not much different, and that is a cause of confusion with the language - even the [TypeScript documentation][typescript-handbook-types-vs-interfaces-url] fails to concisely detail when to use one over the other, and mentions "for the most part, you can choose based on personal preference".
-
-Some of the key differences include:
-
--   Interfaces can be extended to add fields to its structure (known as declaration merging), but types cannot.
--   Interfaces cannot be defined as a primitive value, but types can (e.g. `type SanitizedString = string`).
--   In certain scenarios, using interfaces over types will yield more useful and concise type error messages.
-
-For lack of a clear way to really distinguish which to go with, the documentation recommends that interfaces should be used by default unless there is a need to use the features of a type. This is generally what I've been following, though there are some occasions where using a type just feels more natural, like defining
-
-## Type System
+## Structural Typing in TypeScript
 
 JavScript is a duck typed language meaning no type checks are performed prior to the code running, and when it runs, it will try execute whatever it can on the objects supplied, regardless of their type or structure. TypeScript uses structural typing, meaning it determines types based on their structure - what properties and functions an object has, and these type checks happen at compile time, not runtime.
 
@@ -222,17 +126,101 @@ Most traditional statically typed languages like C# and Java are nominally typed
 
 In C# for example, if you have two interfaces which are identical in their structure, they still cannot be used interchangeably, because they fundamentally identify as different types through their name. Back to the Car and House example - they are named differently and so are not equivalent types in nominal type systems.
 
-# Conclusion
+# The TypeScript Compiler
 
-My portfolio site is not written in TS, and I probably won't invest the time to migrate it. But all new projects I do I choose TypeScript by default.
+<div class="img-single-medium">
+  <img src="./typescript-compilation.png" alt="A cog in between TypeScript and JavaScript logos" />
+</div>
 
-When you combine TypeScript with a linter, a suite of unit tests, a code formatter, an efficient CI process, you really start to get more confidence in the application your building.
+JavaScript engines, like Google's [V8][google-v8-url] which is used in Chrome and Node.js, cannot execute TypeScript code; it must first be compiled, or more accurately transpiled, into JavaScript code.
 
-    -   Can make you feel like you need to write OOP, but you don't need to. You can make as much or as little use of TypeScript as you want. You'll get a lot of help just from using the typings in external libraries.
+The [TypeScript compiler][typescript-compiler-npm-url] is responsible for converting TypeScript code to its equivalent JavaScript code which can then be executed. This compilation process does a few things, most notably:
 
-TSDX
+-   Removing all of the type information you worked so hard on adding and maintaining during development. Remember, TypeScript is purely a development tool to help us write better JavaScript, and has no direct impact on the code when it's being executed.
+-   Downlevelling (often referred to as transpiling) the JavaScript code to a desired ECMAScript version through the [target][typescript-target-config-url] config option. Downlevelling is the process of altering the JavaScript code to ensure that it can safely run in your target environments.
 
--   Use the TypeScript Playground to give it a go.
+The TypeScript compiler can easily fit into a Webpack workflow using the [ts-loader][ts-loader-url], and even comes pre-installed and configured when using libraries like [Create React App][create-react-app-typescript-url] and [Vue CLI][vue-cli-typescript-url].
+
+## What About Babel?
+
+<div class="img-single-medium">
+  <img src="./typescript-babel-compare.png" alt="A weighing scale with a TypeScript logo on one scale and a Babel logo on the other" />
+</div>
+
+The TypeScript compiler and [Babel][babeljs-url] are very similar tools, and often you can choose one or the other - they are both capable of TypeScript to JavaScript compilation and JavaScript downlevelling.
+
+**However, there is a key difference** - Babel cannot type check TypeScript code, it can only convert it to its JavaScript equivalent; you would still need to use the TypeScript compiler to verify correct usage of types.
+
+Unless you're developing an application which requires the use of Babel, I'd recommend just using the TypeScript compiler.
+
+# A Simple Example
+
+Below is a trivial example of a JavaScript code snippet and its TypeScript equivalent, with an obvious flaw meaning it will always fail at runtime. Here, we try to add a new item to an array parameter using the [spread operator][spread-operator-url]. Further examples in this post will cover some more realistic and less obvious type errors which TypeScript can help us with.
+
+```
+function addApple(shoppingList) {
+    return [...shoppingList, "apple"];
+}
+
+addApple(1);
+```
+
+If you were to execute the JavaScript code above, you would be met with a `TypeError`, because we've tried to call the spread operator on the number 1, rather than something which is an iterable (specifically an array in this case). There is no**\*** early feedback telling us that we're misusing the `addApple` function until we actually use it, and then it falls over with the error below:
+
+<div class="image-thin-border-container">
+  <img src="./simple-javascript-example-runtime-type-error.png" alt="Screenshot of the TypeError thrown when the JS file is executed" />
+</div>
+<p class="img-attribute">We only find out that there is a TypeError when the function is executed.</p>
+
+Below is the TypeScript equivalent. Note the only difference is the use of `: string[]` to specify what type we expect `shoppingList` to be.
+
+```
+function addApple(shoppingList: string[]) {
+    return [...shoppingList, "apple"];
+}
+
+addApple(1);
+```
+
+The above example fails when running through the TypeScript compiler, and even gives us the error in the IDE right as the code is being written. Intellisense is also available to inform us how to use the function.
+
+<div class="image-thin-border-container">
+  <img src="./simple-typescript-example-type-error.png" alt="Screenshot of the type error displayed in the IDE" />
+</div>
+<p class="img-attribute">We get an early warning in the IDE that the function is not being used correctly.</p>
+
+<div class="image-thin-border-container">
+  <img src="./simple-typescript-example-intellisense.png" alt="Screenshot of the intellisense provided for the function call" />
+</div>
+<p class="img-attribute">We get intellisense for the function to inform us how it should be called.</p>
+
+**\*** There is an exception to this when using some IDEs like VSCode which is discussed in a later section.
+
+# TypeScript Fundamentals
+
+## Types
+
+TypeScript understands all of the primitive values built-in to JavaScript, including the more common ones like `number` and `string`, and those used less common like `bigint` and `symbol`.
+
+It also understands objects, undoubtedly the most popular data type used in JavaScript, and can distinguish at compile time between objects, functions and arrays, which are all fundamentally objects in JavaScript. TypeScript also lets you create your own custom object types with a custom name using types and interfaces - more on this in the next section.
+
+# Is TypeScript its Own Language?
+
+This is quite a common misunderstanding for those new to TypeScript, and can be one of a few factors which deters developers from picking up TypeScript - the expectation that they will need to invest many more hours learning a new language, with new syntax to get familiar with and with its own quirks to understand.
+
+Yes - TypeScript is its own programming language, but that's quite a misleading statement. TypeScript is developed and maintained by Microsoft and is [described as][typescript-url] "a strict syntactical superset of JavaScript" which "adds optional static typing to the language".
+
+So really it can be thought of more as an adaptation of the JavaScript language, with some nice optional extras - most notably type safety. If you know JavaScript you can very quickly start writing TypeScript code, and TypeScript code will look very familiar to you - functions look largely the same and you'll still use things like `let` and `const` to declare variables.
+
+"a strict syntactical superset of JavaScript" means that strictly all JavaScript code is valid TypeScript code. This is important as it means TypeScript can be adopted incrementally, and a project can have a mixture of both JS and TS files at any one time; you can use as much or as little as you want from TypeScript.
+
+# Getting Started with TypeScript
+
+This has only been a light introduction to TypeScript, with lots more to be covered in my next blog post, but if you're keen to get started, I recommend the following resources:
+
+-   The [TypeScript Handbook][typescript-handbook-url] is an excellent guide to TypeScript which covers all of the key concepts with examples and clear explanations.
+-   The [TypeScript Playground][typescript-playground-url] is an online editor which is pre-configured with TypeScript so you can start coding right away. It has a VSCode like feel with syntax highlighting, logging output and the ability to see the resulting JavaScript code after compilation.
+-   [TSDX][tsdx-github-url] is a brilliant library for quickly getting a TypeScript library off the ground. Applications created using TSDX not only have TypeScript configured out of the box, but also prettier and ESLint, and [Jest][jest-url] unit tests ready to run.
 
 # Resources
 
@@ -253,6 +241,7 @@ https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html
 [google-v8-url]: https://v8.dev/
 [ts-loader-url]: https://github.com/TypeStrong/ts-loader
 [duck-typing-wikipedia-url]: https://en.wikipedia.org/wiki/Duck_typing
-[typescript-esmoduleinterop-url]: https://www.typescriptlang.org/tsconfig#esModuleInterop
-[typescript-handbook-type-narrowing-url]: https://www.typescriptlang.org/docs/handbook/2/narrowing.html
-[typescript-handbook-types-vs-interfaces-url]: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
+[typescript-handbook-url]: https://www.typescriptlang.org/docs/handbook/intro.html
+[typescript-playground-url]: https://www.typescriptlang.org/play
+[tsdx-github-url]: https://github.com/jaredpalmer/tsdx
+[jest-url]: https://jestjs.io/
