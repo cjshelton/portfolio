@@ -15,6 +15,10 @@ A future post will take a deeper dive into the language and focus on some of the
 
 # The Type System
 
+<div class="img-single-small">
+  <img src="./typewriter.png" alt="A typewriter" />
+</div>
+
 ## Static Typing in TypeScript
 
 JavaScript is not a [statically typed][statically-typed-url] language, it is [dynamically typed][dynamically-typed-url], meaning the types of variables (and other constructs in the language) are based on their assigned values and are not checked until the time of code execution, i.e. after the code has been written and is running in the browser or Node.js environment. Variables in statically typed languages like C#, Java and Go, however, have their types checked before the code is executed, typically during a compilation step.
@@ -33,11 +37,11 @@ JavaScript is also a duck typed language meaning no type checks are performed pr
 
 More on these typing systems below.
 
-### Duck Typing
-
 <div class="img-single-small">
   <img src="./duck.png" alt="A yellow rubber duck" />
 </div>
+
+### Duck Typing
 
 A duck typed language is one which performs no type checks at compile time, only at runtime when code is being executed. And those runtime type checks only check the shape of an object - if you're trying to access a property or call a function on an object, and it's there, then it will work just fine, regardless of how that object was created or what else exists on it. Dynamically typed languages use duck typing.
 
@@ -66,11 +70,11 @@ This example runs just fine, logging out the locked messages for `house` and `ca
 
 However, although this code works, **it is fragile** and is susceptible to runtime errors. If the implementation of `lockHouse` were to change and now call `house.openGarageDoor()` instead, then it would result in a runtime type error when `lockHouse` is called with `car`. Structural typing solves this problem for us.
 
-### Structural Typing
-
 <div class="img-single-small">
   <img src="./shapes.png" alt="A triangle, square and circle overlapping" />
 </div>
+
+### Structural Typing
 
 Structural typing, as used in TypeScript, builds on top of duck typing by validating how types are used at compile time. It uses the same principle as duck typing, whereby type compatibility is determined based on shape (the properties and functions available), but it aims to further validate that there's enough structural overlap between the type being used and what's expected. If there's enough overlap, then the types are deemed compatible and TypeScript will be happy, but if there isn't, TypeScript will tell us to prevent type errors.
 
@@ -200,14 +204,6 @@ The above example fails when running through the TypeScript compiler, and even g
 <p class="img-attribute">We get intellisense for the function to inform us how it should be called.</p>
 
 **\*** There is an exception to this when using some IDEs like VSCode which is discussed in a later section.
-
-# TypeScript Fundamentals
-
-## Types
-
-TypeScript understands all of the primitive values built-in to JavaScript, including the more common ones like `number` and `string`, and those used less common like `bigint` and `symbol`.
-
-It also understands objects, undoubtedly the most popular data type used in JavaScript, and can distinguish at compile time between objects, functions and arrays, which are all fundamentally objects in JavaScript. TypeScript also lets you create your own custom object types with a custom name using types and interfaces - more on this in the next section.
 
 # Is TypeScript its Own Language?
 
