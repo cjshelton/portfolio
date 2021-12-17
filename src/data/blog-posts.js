@@ -1,6 +1,9 @@
 const techData = require("./tech.json");
 
 const blogPostsData = {
+    "TypeScript: Part 2 - A Deeper Dive": {
+        tags: [techData.typescript],
+    },
     "TypeScript: Part 1 - An Introduction": {
         tags: [techData.typescript],
     },
