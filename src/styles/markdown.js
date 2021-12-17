@@ -15,6 +15,12 @@ export default css`
         max-width: 150px;
     }
 
+    .img-single-medium {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 250px;
+    }
+
     .logo-duo-container {
         margin: 20px 0;
         text-align: center;

@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faHandPointLeft,
     faHandPointRight,
+    faArrowAltCircleLeft,
 } from "@fortawesome/free-regular-svg-icons";
 
 function getSEO(post) {
@@ -106,6 +107,10 @@ function getContentJsx(post, { previous, next, publishedDate }, title) {
         <div>
             <BlogPost>
                 <header>
+                    <FontAwesomeIcon icon={faArrowAltCircleLeft} />{" "}
+                    <Link to="/blog" rel="prev">
+                        Back
+                    </Link>
                     <BlogPostDate>Published on {publishedDate}</BlogPostDate>
                     <BlogPostPills>
                         {tags.map(tag => {
@@ -162,7 +167,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         <Page
             header={getHeaderJsx(post)}
             content={getContentJsx(post, pageContext, title)}
-            page="Blog Entry"
+            page="Tech Blog"
             seo={getSEO(post)}
             headerImageName="blog"
             headerImagePosition="center center"

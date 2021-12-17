@@ -1,6 +1,9 @@
 const techData = require("./tech.json");
 
 const blogPostsData = {
+    "TypeScript: Part 1 - An Introduction": {
+        tags: [techData.typescript],
+    },
     "Building a Serverless Booking System with Next.js": {
         tags: [
             techData.typescript,
