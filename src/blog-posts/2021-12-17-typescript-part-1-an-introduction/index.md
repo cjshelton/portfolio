@@ -203,7 +203,7 @@ The above example fails when running through the TypeScript compiler, and even g
 </div>
 <p class="img-attribute">We get intellisense for the function to inform us how it should be called.</p>
 
-**\*** There is an exception to this when using some IDEs like VSCode which is discussed in a later section.
+**\*** There is an exception to this when using some IDEs like VSCode which will be discussed in a future post.
 
 # Is TypeScript its Own Language?
 
