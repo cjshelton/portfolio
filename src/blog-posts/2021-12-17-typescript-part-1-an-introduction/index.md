@@ -6,7 +6,7 @@ description: ""
 # Introduction
 
 <div class="img-single-small">
-  <img src="./typescript.png" alt="TypeScript logo" />
+  <img src="./images/typescript.png" alt="TypeScript logo" />
 </div>
 
 I have been using TypeScript every day now for a while for both front and back-end development, and in doing so, I've learnt a lot about the language and the benefits of using it over JavaScript. This post aims to introduce the TypeScript language, look at some common misconceptions, and showcase what benefits can be found from using it.
@@ -16,7 +16,7 @@ A future post will take a deeper dive into the language and focus on some of the
 # The Type System
 
 <div class="img-single-small">
-  <img src="./typewriter.png" alt="A typewriter" />
+  <img src="./images/typewriter.png" alt="A typewriter" />
 </div>
 
 ## Static Typing in TypeScript
@@ -38,7 +38,7 @@ JavaScript is also a duck typed language meaning no type checks are performed pr
 More on these typing systems below.
 
 <div class="img-single-small">
-  <img src="./duck.png" alt="A yellow rubber duck" />
+  <img src="./images/duck.png" alt="A yellow rubber duck" />
 </div>
 
 ### Duck Typing
@@ -71,7 +71,7 @@ This example runs just fine, logging out the locked messages for `house` and `ca
 However, although this code works, **it is fragile** and is susceptible to runtime errors. If the implementation of `lockHouse` were to change and now call `house.openGarageDoor()` instead, then it would result in a runtime type error when `lockHouse` is called with `car`. Structural typing solves this problem for us.
 
 <div class="img-single-small">
-  <img src="./shapes.png" alt="A triangle, square and circle overlapping" />
+  <img src="./images/shapes.png" alt="A triangle, square and circle overlapping" />
 </div>
 
 ### Structural Typing
@@ -138,7 +138,7 @@ In C# for example, if you have two interfaces which are identical in their struc
 # The TypeScript Compiler
 
 <div class="img-single-medium">
-  <img src="./typescript-compilation.png" alt="A cog in between TypeScript and JavaScript logos" />
+  <img src="./images/typescript-compilation.png" alt="A cog in between TypeScript and JavaScript logos" />
 </div>
 
 JavaScript engines, like Google's [V8][google-v8-url] which is used in Chrome and Node.js, cannot execute TypeScript code; it must first be compiled, or more accurately transpiled, into JavaScript code.
@@ -153,7 +153,7 @@ The TypeScript compiler can easily fit into a Webpack workflow using the [ts-loa
 ## What About Babel?
 
 <div class="img-single-medium">
-  <img src="./typescript-babel-compare.png" alt="A weighing scale with a TypeScript logo on one scale and a Babel logo on the other" />
+  <img src="./images/typescript-babel-compare.png" alt="A weighing scale with a TypeScript logo on one scale and a Babel logo on the other" />
 </div>
 
 The TypeScript compiler and [Babel][babeljs-url] are very similar tools, and often you can choose one or the other - they are both capable of TypeScript compilation and downlevelling.
@@ -177,7 +177,7 @@ addApple(1);
 If you were to execute the JavaScript code above, you would be met with a type error, because we've tried to call the spread operator on the number one, rather than something which is an iterable (specifically an array in this case). There is no**\*** early feedback telling us that we're misusing the `addApple` function until we actually use it, and then it falls over with the error below:
 
 <div class="image-thin-border-container">
-  <img src="./simple-javascript-example-runtime-type-error.png" alt="Screenshot of the TypeError thrown when the JS file is executed" />
+  <img src="./images/simple-javascript-example-runtime-type-error.png" alt="Screenshot of the TypeError thrown when the JS file is executed" />
 </div>
 <p class="img-attribute">We only find out that there is a type error when the function is executed.</p>
 
@@ -194,12 +194,12 @@ addApple(1);
 The above example fails when running through the TypeScript compiler, and even gives us the error in the IDE right as the code is being written. Intellisense is also available to inform us how to use the function.
 
 <div class="image-thin-border-container">
-  <img src="./simple-typescript-example-type-error.png" alt="Screenshot of the type error displayed in the IDE" />
+  <img src="./images/simple-typescript-example-type-error.png" alt="Screenshot of the type error displayed in the IDE" />
 </div>
 <p class="img-attribute">We get an early warning in the IDE that the function is not being used correctly.</p>
 
 <div class="image-thin-border-container">
-  <img src="./simple-typescript-example-intellisense.png" alt="Screenshot of the intellisense provided for the function call" />
+  <img src="./images/simple-typescript-example-intellisense.png" alt="Screenshot of the intellisense provided for the function call" />
 </div>
 <p class="img-attribute">We get intellisense for the function to inform us how it should be called.</p>
 
