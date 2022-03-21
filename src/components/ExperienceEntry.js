@@ -14,6 +14,10 @@ const Container = styled.div`
 
     background-color: ${colours.primaryLight};
     border-left: 5px solid ${colours.primary};
+
+    @media (max-width: ${sizes.small}) {
+        flex-direction: column;
+    }
 `;
 
 const Logo = styled.div`
@@ -21,7 +25,16 @@ const Logo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
+    padding: 20px;
+    margin: 0 auto;
+
+    &.bluesmith {
+        padding: 20px 10px;
+
+        @media (max-width: ${sizes.small}) {
+            width: 150px;
+        }
+    }
 `;
 
 const Info = styled.div`
@@ -57,7 +70,7 @@ const ExperienceEntry = ({ experience }) => {
 
     return (
         <Container>
-            <Logo>{logoMap[logo]}</Logo>
+            <Logo className={logo}>{logoMap[logo]}</Logo>
             <Info>
                 <Company>
                     {company}, {period}
