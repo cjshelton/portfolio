@@ -60,7 +60,7 @@ const IndexPage = () => (
                 <Mugshot />
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
-            <div css={pageStyles.location}>Leeds, UK</div>
+            <div css={pageStyles.location}>UK - Leeds / London / Remote</div>
             <div css={pageStyles.title}>Software Engineer</div>
             <p css={pageStyles.experience}>
                 Specialising in <span className="bold">full-stack</span> web

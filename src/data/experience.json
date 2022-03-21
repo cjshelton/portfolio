@@ -1,22 +1,32 @@
 {
     "timeline": [
         {
+            "company": "Shell",
+            "title": "Software Engineer",
+            "period": "2022-Present",
+            "description": "Working within the Shell Agile Hub team in London, focusing on product development within environmental solutions, specifically the voluntary carbon market, enabling companies to meet their goals of reducing their net carbon footprint. The tech stack is primarily React, TypeScript, GraphQL, CosmosDB and Azure.",
+            "logo": "shell"
+        },
+        {
             "company": "Bluesmith Information Systems",
-            "title": "Technical Specialist",
-            "period": "2017-Present",
-            "description": "Working on various Agile projects, focusing on full-stack web application development for enterprise applications in the JavaScript technology stack, specifically Vue, Node.js and MongoDB. Prior to that I specialised in the Microsoft technology stack, including C#, ASP.NET Core and SQL Server."
+            "title": "Technical Specialist - Software Engineer",
+            "period": "2017-2022",
+            "description": "Working on various Agile projects, focusing on full-stack web application development for enterprise applications in the JavaScript technology stack, specifically Vue, React, Node.js and MongoDB. Prior to that I specialised in the Microsoft technology stack, including C#, ASP.NET Core and SQL Server. As Bluesmith is a software consultancy, I was able to experience a variety of different projects, both green and brown-field, for different clients, using a variety of technologies. I held multiple roles at Bluesmith, including those with tech and team-lead responsibilities.",
+            "logo": "bluesmith"
         },
         {
             "company": "Bluesmith Information Systems",
             "title": "Graduate Technical Specialist",
             "period": "2016-2017",
-            "description": "Completed graduate training and began working on projects in the Microsoft tech stack, using ASP.NET and SQL Server."
+            "description": "Completed graduate training and began working on projects in the Microsoft tech stack, using ASP.NET and SQL Server.",
+            "logo": "bluesmith"
         },
         {
             "company": "Bluesmith Information Systems",
             "title": "Technical Specialist - Industrial Placement",
             "period": "2014-2015",
-            "description": "As part of my degree, I opted to undertake a year-long industrial placement. After an initial training period, I was introduced to development in the Microsoft tech-stack, including ASP.NET and SQL Server."
+            "description": "As part of my degree, I opted to undertake a year-long industrial placement. After an initial training period, I was introduced to development in the Microsoft tech-stack, including ASP.NET and SQL Server.",
+            "logo": "bluesmith"
         }
     ],
     "coreSkills": [
