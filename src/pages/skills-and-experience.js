@@ -2,12 +2,13 @@ import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import { sizes, colours } from "../styles/variables";
+import ExperienceEntry from "../components/ExperienceEntry";
 import Page from "../components/layouts/page";
 import PageSection from "../components/page-section";
-import UolLogo from "../components/uol-logo";
-import TechLogo from "../components/tech-logo";
 import Pill from "../components/pill";
+import TechLogo from "../components/tech-logo";
+import UolLogo from "../components/uol-logo";
+import { sizes } from "../styles/variables";
 
 import experienceData from "../data/experience.json";
 
@@ -24,32 +25,6 @@ const uolLogoContainer = css`
 const additionalCoreSkillText = css`
     display: inline-block;
     vertical-align: middle;
-`;
-
-const ExperienceEntry = styled.div`
-    margin-bottom: 20px;
-    padding: 10px;
-
-    background-color: ${colours.primaryLight};
-    border-left: 5px solid ${colours.primary};
-
-    .experience-company {
-        font-size: 20px;
-        font-weight: 600;
-
-        @media (max-width: ${sizes.xSmall}) {
-            font-size: 5vw;
-        }
-    }
-
-    .experience-title {
-        font-size: 16px;
-        margin-bottom: 10px;
-
-        @media (max-width: ${sizes.xSmall}) {
-            font-size: 4vw;
-        }
-    }
 `;
 
 const SkillsList = styled.div`
@@ -115,19 +90,9 @@ const contentJsx = (
             </p>
         </PageSection>
         <PageSection heading="Professional Experience">
-            {experienceData.timeline.map(
-                ({ company, title, period, description }, index) => {
-                    return (
-                        <ExperienceEntry key={index}>
-                            <h2 className="experience-company">
-                                {company}, {period}
-                            </h2>
-                            <h3 className="experience-title">{title}</h3>
-                            <p className="section-description">{description}</p>
-                        </ExperienceEntry>
-                    );
-                }
-            )}
+            {experienceData.timeline.map((experience, index) => {
+                return <ExperienceEntry key={index} experience={experience} />;
+            })}
         </PageSection>
         <PageSection heading="Core Skills">
             <p className="section-text">
