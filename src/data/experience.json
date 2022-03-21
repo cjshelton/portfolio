@@ -1,10 +1,16 @@
 {
     "timeline": [
         {
+            "company": "Shell",
+            "title": "Software Engineer",
+            "period": "2022-Present",
+            "description": "Working within the Shell Agile Hub team in London, focusing on product development within environmental solutions, specifically the voluntary carbon market, enabling companies to meet their goals of reducing their net carbon footprint. The tech stack is primarily React, TypeScript, GraphQL, CosmosDB and Azure."
+        },
+        {
             "company": "Bluesmith Information Systems",
-            "title": "Technical Specialist",
-            "period": "2017-Present",
-            "description": "Working on various Agile projects, focusing on full-stack web application development for enterprise applications in the JavaScript technology stack, specifically Vue, Node.js and MongoDB. Prior to that I specialised in the Microsoft technology stack, including C#, ASP.NET Core and SQL Server."
+            "title": "Technical Specialist - Software Engineer",
+            "period": "2017-2022",
+            "description": "Working on various Agile projects, focusing on full-stack web application development for enterprise applications in the JavaScript technology stack, specifically Vue, React, Node.js and MongoDB. Prior to that I specialised in the Microsoft technology stack, including C#, ASP.NET Core and SQL Server. As Bluesmith is a software consultancy, I was able to experience a variety of different projects, both green and brown-field, for different clients, using a variety of technologies. I held multiple roles at Bluesmith, including those with tech and team-lead responsibilities."
         },
         {
             "company": "Bluesmith Information Systems",
