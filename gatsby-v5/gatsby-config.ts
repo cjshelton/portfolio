@@ -2,8 +2,14 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
     siteMetadata: {
-        title: `My Gatsby Site`,
-        siteUrl: `https://www.yourdomain.tld`,
+        title: `Portfolio`,
+        description: `Chris Shelton's Portfolio.`,
+        author: `Chris Shelton`,
+        profileLinks: {
+            github: "https://github.com/cjshelton",
+            linkedIn: "https://www.linkedin.com/in/chris-shelton-aa135084/",
+        },
+        siteUrl: "https://cshelton.co.uk",
     },
     // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
     // If you use VSCode you can also use the GraphQL plugin
@@ -14,9 +20,15 @@ const config: GatsbyConfig = {
         "gatsby-plugin-image",
         "gatsby-plugin-sitemap",
         {
-            resolve: "gatsby-plugin-manifest",
+            resolve: `gatsby-plugin-manifest`,
             options: {
-                icon: "src/images/icon.png",
+                name: `gatsby-starter-default`,
+                short_name: `starter`,
+                start_url: `/`,
+                background_color: `#663399`,
+                theme_color: `#663399`,
+                display: `minimal-ui`,
+                icon: `src/images/mugshot-colour.jpg`, // This path is relative to the root of the site.
             },
         },
         "gatsby-transformer-remark",
