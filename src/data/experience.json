@@ -2,9 +2,23 @@
     "timeline": [
         {
             "company": "Shell",
-            "title": "Software Engineer",
-            "period": "2022-Present",
-            "description": "Working within the Shell Agile Hub team in London, focusing on product development within environmental solutions, specifically the voluntary carbon market, enabling companies to meet their goals of reducing their net carbon footprint. The tech stack is primarily React, TypeScript, GraphQL, CosmosDB and Azure.",
+            "title": "Principal Software Engineer, LNG Trading",
+            "period": "2026-Present",
+            "description": "Technical leader for data, analytics and AI engineering within LNG Trading. I help lead a globally distributed engineering team supporting Shell LNG Marketing and Trading's Short-Term Trading desks across Europe, the Middle East and Asia. I work closely with Traders and Trading Analysts, combining front-office understanding with strong software engineering to deliver business-critical analytics and applications. The tech stack is primarily Azure, Azure Databricks and Python.",
+            "logo": "shell"
+        },
+        {
+            "company": "Shell",
+            "title": "Principal Software Engineer, Carbon Trading",
+            "period": "2024-2026",
+            "description": "Principal engineer for product development within Shell Trading and Supply's voluntary carbon market, setting technical direction and leading delivery across the team. Alongside this I was tech lead for Shell Energy, EPT from 2023 to 2025, responsible for enterprise service bus architecture and integration across the wider platform. The tech stack was primarily React, TypeScript, GraphQL, CosmosDB and Azure.",
+            "logo": "shell"
+        },
+        {
+            "company": "Shell",
+            "title": "Tech Lead, Trading & Supply (Contract)",
+            "period": "2022-2023",
+            "description": "Tech lead for product development within Shell Trading and Supply, specifically the voluntary carbon market, enabling companies to meet their goals of reducing their net carbon footprint. I worked within a multi-disciplinary team made up of other engineers, BAs, designers, testers, an agile coach and a product manager. The tech stack was primarily React, TypeScript, GraphQL, CosmosDB and Azure.",
             "logo": "shell"
         },
         {
@@ -112,13 +126,17 @@
         "Message queuing systems (RabbitMQ)",
         "Automated unit and integration testing",
         "Web security principles",
-        "DRY / YAGNI"
+        "DRY / YAGNI",
+        "Microsoft Azure",
+        "Azure Databricks",
+        "Python",
+        "Data and analytics engineering",
+        "Technical leadership"
     ],
     "otherSkills": [
         "GraphQL",
         "Kubernetes",
         "Cypress",
-        "Python",
         "Xamarin",
         "Jamstack and Static Site Generators",
         "CSS in JS",

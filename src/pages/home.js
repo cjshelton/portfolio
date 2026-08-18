@@ -9,16 +9,16 @@ import { sizes } from "../styles/variables";
 
 const seo = {
     title: "Home",
-    description: `Home page for Chris Shelton's Portfolio. I am a UK-based software engineer, specialising in full-stack web application development in the JavaScript technology stack.`,
+    description: `Home page for Chris Shelton's Portfolio. I am a UK-based Principal Software Engineer and technical leader, specialising in data, analytics and AI engineering for commodities trading.`,
 };
 
 const headerSection = (
     <div>
         <h1>Portfolio</h1>
         <h2>
-            Specialising in <span className="bold">full-stack</span> web
-            application development in the{" "}
-            <span className="bold">JavaScript</span> technology stack
+            Technical leader specialising in <span className="bold">data</span>,{" "}
+            <span className="bold">analytics</span> and{" "}
+            <span className="bold">AI</span> engineering for commodities trading
         </h2>
     </div>
 );
@@ -45,8 +45,8 @@ const contentSection = (
                 <span role="img" aria-label="Waving hand emoji">
                     &#128075;
                 </span>{" "}
-                I&apos;m Chris &mdash; I&apos;m an enthusiastic software
-                engineer based in the UK.
+                I&apos;m Chris &mdash; I&apos;m a Principal Software Engineer
+                and technical leader based in the UK.
             </p>
             <p className="section-text">
                 My Portfolio aims to outline my skills, experience and
@@ -55,17 +55,16 @@ const contentSection = (
                 me.
             </p>
             <p className="section-text">
-                I graduated from the University of Leeds in Computer Science,
-                and have been in the professional software industry since 2016,
-                with prior experience of working on personal projects and an
-                internship.
+                I&apos;ve been in the professional software industry since 2016,
+                working across software consultancy and global enterprise, and
+                now lead engineering teams delivering business-critical systems.
             </p>
             <p className="section-text">
-                I have a variety of skills and experience in the whole software
-                development life cycle, gained through my professional career
-                and doing projects in my own time. I specialise in full-stack
-                web application development in the JavaScript technology stack,
-                including React, Vue, Node.js and MongoDB.
+                I have broad experience across the whole software development
+                life cycle, from hands-on full-stack development through to
+                technical leadership and architecture. Today I specialise in
+                data, analytics and AI engineering on Azure, with a strong
+                background in full-stack JavaScript and TypeScript.
             </p>
         </PageSection>
         <PageSection heading="Where I Work">
@@ -73,20 +72,24 @@ const contentSection = (
                 <ShellLogo />
             </div>
             <p className="section-text">
-                I am a software engineer for{" "}
+                I am a Principal Software Engineer at{" "}
                 <a
                     href="https://www.shell.co.uk/"
                     className="primary-text-link"
                 >
                     Shell
                 </a>
-                , working as part of the Shell Agile Hub team in London.
+                , working in LNG Trading within Trading &amp; Supply.
             </p>
             <p className="section-text">
-                My team and I focus on product development within environmental
-                solutions, specifically the voluntary carbon market, enabling
-                companies to meet their goals of reducing their net carbon
-                footprint.
+                I help lead a globally distributed engineering team supporting
+                Shell LNG Marketing and Trading&apos;s Short-Term Trading desks
+                across Europe, the Middle East and Asia.
+            </p>
+            <p className="section-text">
+                I work closely with Traders and Trading Analysts, combining
+                front-office understanding with strong software engineering to
+                deliver business-critical analytics and applications.
             </p>
         </PageSection>
         <PageSection heading="A Bit More About Me">
