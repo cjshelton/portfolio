@@ -64,31 +64,14 @@ const headerJsx = (
     <div>
         <h1>Skills &amp; Experience</h1>
         <h2>
-            Learn more about my skills &amp; experience as a software engineer
+            Learn more about my skills and experience as a Principal Software
+            Engineer and technical leader
         </h2>
     </div>
 );
 
 const contentJsx = (
     <div>
-        <PageSection heading="Education">
-            <div css={uolLogoContainer}>
-                <UolLogo></UolLogo>
-            </div>
-            <p className="section-text">
-                I proudly graduated from The University of Leeds in 2016, with a
-                First-class (Hons) in Computer Science. I also received an award
-                for academic excellence two years in a row during my time at
-                University.
-            </p>
-            <p className="section-text">
-                I thoroughly enjoyed my degree. I enjoyed the challenges it
-                presented, and the opportunities it has given me for my future.
-                I worked hard, and it paid off, and that has enabled me to do
-                something as a job every day, which feels much more like a
-                hobby.
-            </p>
-        </PageSection>
         <PageSection heading="Professional Experience">
             {experienceData.timeline.map((experience, index) => {
                 return <ExperienceEntry key={index} experience={experience} />;
@@ -139,6 +122,24 @@ const contentJsx = (
                     return <Pill key={index}>{skill}</Pill>;
                 })}
             </div>
+        </PageSection>
+        <PageSection heading="Education">
+            <div css={uolLogoContainer}>
+                <UolLogo></UolLogo>
+            </div>
+            <p className="section-text">
+                I proudly graduated from The University of Leeds in 2016, with a
+                First-class (Hons) in Computer Science. I also received an award
+                for academic excellence two years in a row during my time at
+                University.
+            </p>
+            <p className="section-text">
+                I thoroughly enjoyed my degree. I enjoyed the challenges it
+                presented, and the opportunities it has given me for my future.
+                I worked hard, and it paid off, and that has enabled me to do
+                something as a job every day, which feels much more like a
+                hobby.
+            </p>
         </PageSection>
     </div>
 );

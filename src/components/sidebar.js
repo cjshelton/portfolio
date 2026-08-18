@@ -75,7 +75,7 @@ const Sidebar = ({ page }) => (
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
             <div css={pageStyles.location}>UK - Leeds / London / Remote</div>
-            <div css={pageStyles.title}>Software Engineer</div>
+            <div css={pageStyles.title}>Principal Software Engineer</div>
         </Upper>
         <Middle>
             <Nav page={page}></Nav>

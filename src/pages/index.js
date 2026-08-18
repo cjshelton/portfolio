@@ -48,7 +48,7 @@ const FooterContainer = styled.div`
 
 const seo = {
     title: "Portfolio",
-    description: `The landing page for Chris Shelton's Portfolio. I am a UK-based software engineer, specialising in full-stack web application development in the JavaScript technology stack.`,
+    description: `The landing page for Chris Shelton's Portfolio. I am a UK-based Principal Software Engineer and technical leader, specialising in data, analytics and AI engineering for commodities trading.`,
 };
 
 const IndexPage = () => (
@@ -61,11 +61,13 @@ const IndexPage = () => (
             </div>
             <div css={pageStyles.name}>Chris Shelton</div>
             <div css={pageStyles.location}>UK - Leeds / London / Remote</div>
-            <div css={pageStyles.title}>Software Engineer</div>
+            <div css={pageStyles.title}>Principal Software Engineer</div>
             <p css={pageStyles.experience}>
-                Specialising in <span className="bold">full-stack</span> web
-                application development in the{" "}
-                <span className="bold">JavaScript</span> technology stack
+                Technical leader specialising in{" "}
+                <span className="bold">data</span>,{" "}
+                <span className="bold">analytics</span> and{" "}
+                <span className="bold">AI</span> engineering for commodities
+                trading
             </p>
             <Button mediumLight className="view-portfolio-button" to="/home">
                 <FontAwesomeIcon icon={faChevronCircleRight} /> View Portfolio
